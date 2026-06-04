@@ -1,5 +1,5 @@
 /**
- * Semantic corner radius — product roles → Align UI primitive steps.
+ * Semantic corner radius — product roles → OpenUI primitive steps.
  */
 
 import type { RadiusPrimitiveToken } from '../primitives/radius';

@@ -1,6 +1,6 @@
 # OpenUI Design System
 
-Lightweight React design system based on [Align UI 2.0](https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-) color foundations.
+Lightweight React design system for AI-generated mobile app screens, patterns, and product UI.
 
 - **Name:** OpenUI  
 - **CSS prefix:** `.openui-*` (e.g. `.openui-app-screen`, `.openui-device-frame`)  
@@ -20,9 +20,9 @@ Lightweight React design system based on [Align UI 2.0](https://www.figma.com/de
 | **Layout primitives** | `src/tokens/primitives/spacing.ts` | 4px spacing scale (`space-0` … `space-10`) |
 | **Layout semantic** | `src/tokens/semantic/layout.ts` | Insets, stack/inline gaps, touch & grid guardrails |
 | **Layout tokens** | `src/tokens/layout.ts`, `layout.css` | `--layout-*` CSS variables |
-| **Radius primitives** | `src/tokens/primitives/radius.ts` | Align UI corner radius (0–28px, full) |
+| **Radius primitives** | `src/tokens/primitives/radius.ts` | OpenUI corner radius (0–28px, full) |
 | **Radius tokens** | `src/tokens/radius.ts`, `radius.css` | `--radius-*` CSS variables |
-| **Shadow primitives** | `src/tokens/primitives/shadows.ts` | Align UI effect styles |
+| **Shadow primitives** | `src/tokens/primitives/shadows.ts` | OpenUI effect styles |
 | **Shadow tokens** | `src/tokens/shadows.ts`, `shadows.css` | `--shadow-*` CSS variables |
 
 ## Scripts
@@ -46,14 +46,14 @@ Storybook 10 requires Node.js **20.19+** or **22.12+**. Run `nvm use` from the r
 - **Foundational → Typography** — primitives, semantic refs, mobile type scale (Inter / Inter Display)
 - **Components → Core** — first reusable mobile primitives and a device-frame composition
 - **Foundational → Effects → Shadows** — regular, custom, colored, card, and component shadow stacks
-- **Foundational → Effects → Radius** — Align UI corner radius scale and semantic roles
+- **Foundational → Effects → Radius** — OpenUI corner radius scale and semantic roles
 - **Foundational → Rules** — how to navigate `docs/*-RULES.md` for AI and humans
 
 Use the **Theme** toolbar control to switch `data-theme` between light and dark.
 
 ### Typography
 
-Mobile-only scale based on [Apple HIG Typography](https://developer.apple.com/design/human-interface-guidelines/typography) (default Dynamic Type sizes). Align UI dashboard display sizes (40px+) are excluded. **Inter** for text ≤19px; **Inter Display** for text ≥20px.
+Mobile-only scale based on [Apple HIG Typography](https://developer.apple.com/design/human-interface-guidelines/typography) (default Dynamic Type sizes). Desktop dashboard display sizes (40px+) are excluded. **Inter** for text ≤19px; **Inter Display** for text ≥20px.
 
 ### Icons
 

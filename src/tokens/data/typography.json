@@ -1,6 +1,6 @@
 {
   "source": {
-    "figma": "Align UI 2.0 — Type Scale (reference only, node 2697:307)",
+    "system": "OpenUI mobile type scale",
     "hig": "https://developer.apple.com/design/human-interface-guidelines/typography"
   },
   "fonts": {
@@ -10,7 +10,7 @@
   "productDecisions": {
     "screenTitle": "Uses largeTitle size with bold weight for generated mobile screen headings."
   },
-  "excludedFromAlign": [
+  "excludedFromMobileScale": [
     "Dashboard display sizes (40px–80px) — not used on mobile"
   ],
   "textStyles": [

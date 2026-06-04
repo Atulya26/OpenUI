@@ -1,9 +1,7 @@
 /**
  * Semantic color references — map to primitive paths (palette.step or alpha key)
- * Sourced from Align UI 2.0 Token System [Overview]
- * https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-?node-id=2645-344
  *
- * `neutral.*` uses the gray primitive scale per Align UI convention.
+ * `neutral.*` uses the OpenUI gray primitive scale.
  */
 
 export type PrimitiveRef = string;

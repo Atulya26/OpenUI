@@ -1,6 +1,5 @@
 /**
- * Shadow primitives — box-shadow stacks from Align UI 2.0 effect styles (Figma node 2767:1801).
- * @see https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-?node-id=2767-1801
+ * OpenUI shadow primitives.
  */
 
 export const shadowPrimitive = {

@@ -1,6 +1,5 @@
 /**
- * Primitive color palette — sourced from Align UI 2.0 Color Palette [Overview]
- * https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-?node-id=2623-2287
+ * OpenUI primitive color palette.
  */
 
 export type ColorStep =
@@ -167,7 +166,7 @@ export const primitiveColors = {
   },
 } as const satisfies Record<string, ColorScale>;
 
-/** Align UI uses "neutral" in semantic tokens — maps to gray scale */
+/** OpenUI neutral semantic tokens map to the gray scale. */
 export const neutral = primitiveColors.gray;
 
 export type PrimitivePalette = keyof typeof primitiveColors;

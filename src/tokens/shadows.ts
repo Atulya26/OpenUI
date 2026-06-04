@@ -87,7 +87,7 @@ export const shadowTokens = {
 } as const;
 
 export function buildShadowCssVariables(): string {
-  const lines: string[] = [':root {', '  /* Shadow primitives (Align UI 2.0 effect styles) */'];
+  const lines: string[] = [':root {', '  /* OpenUI shadow primitives */'];
 
   for (const { cssVar, value } of shadowCssEntries) {
     lines.push(`  ${cssVar}: ${value};`);

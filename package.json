@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "description": "OpenUI mobile design system — Align UI 2.0 tokens & React components",
+  "description": "OpenUI mobile design system tokens & React components",
   "main": "./dist/openui.js",
   "module": "./dist/openui.js",
   "types": "./dist/types/index.d.ts",

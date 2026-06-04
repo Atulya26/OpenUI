@@ -4,6 +4,16 @@ import { fileURLToPath } from 'node:url';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const failures = [];
+const externalSystemName = ['al' + 'ign', 'ui'].join(String.raw`\s*`);
+const externalSlug = ['al' + 'ign', 'ui'].join('-');
+const externalFileKey = 'uUbwm' + 'KRHEIIaSIUSoTsmL6';
+const legacyMetadataKey = 'excludedFrom' + ('Al' + 'ign');
+const forbiddenExternalRefs = [
+  new RegExp(externalSystemName, 'i'),
+  new RegExp(externalSlug, 'i'),
+  new RegExp(externalFileKey, 'i'),
+  new RegExp(legacyMetadataKey, 'i'),
+];
 
 function read(path) {
   return readFileSync(join(root, path), 'utf8');
@@ -158,6 +168,22 @@ for (const [file, expected] of [
 const componentsIndex = read('src/components/index.ts');
 if (componentsIndex.includes('DeviceFrame') || componentsIndex.includes('storybook')) {
   fail('src/components/index.ts must not export Storybook utilities');
+}
+
+const externalReferenceFiles = [
+  'package.json',
+  'README.md',
+  ...walk('docs', ['.md']),
+  ...walk('src', ['.ts', '.tsx', '.css', '.json']),
+];
+
+for (const file of externalReferenceFiles) {
+  const source = read(file);
+  for (const pattern of forbiddenExternalRefs) {
+    if (pattern.test(source)) {
+      fail(`${file} contains an external design-system reference (${pattern})`);
+    }
+  }
 }
 
 if (failures.length > 0) {

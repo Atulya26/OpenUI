@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Shadow effect styles from Align UI 2.0 (Figma node 2767:1801). Use `--shadow-*` tokens only — component stacks are pre-defined for future wiring.',
+          'OpenUI shadow effect styles. Use `--shadow-*` tokens only — component stacks are pre-defined for future wiring.',
       },
     },
   },
@@ -101,7 +101,7 @@ export const Overview: Story = {
     <DocPage
       eyebrow="Foundational · Effects"
       title="Shadows"
-      description="All Align UI 2.0 effect styles exported from Figma. Prefer semantic aliases (--shadow-surface-card, --shadow-elevation-subtle) in product UI when possible."
+      description="OpenUI effect styles for mobile elevation. Prefer semantic aliases (--shadow-surface-card, --shadow-elevation-subtle) in product UI when possible."
     >
       <Panel>
         <Section title="Regular" meta={`${REGULAR.length}`}>

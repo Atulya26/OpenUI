@@ -2,7 +2,7 @@
  * Semantic type styles — iOS text styles for mobile apps.
  * Each entry references primitive size / weight / family keys.
  *
- * Dashboard-only Align styles (e.g. display-72, title-64) are intentionally omitted.
+ * Dashboard-only display styles (e.g. display-72, title-64) are intentionally omitted.
  */
 
 import type { FontSizeToken } from '../primitives/typography';

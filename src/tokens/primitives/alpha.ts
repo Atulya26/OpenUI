@@ -1,5 +1,5 @@
 /**
- * Alpha primitives — Align UI 2.0 Color Palette [Overview] — Alpha Colors section
+ * OpenUI alpha color primitives.
  */
 
 export type AlphaOpacity = 10 | 16 | 24;

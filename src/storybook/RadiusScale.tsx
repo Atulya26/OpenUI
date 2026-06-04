@@ -7,7 +7,7 @@ export function RadiusScale() {
   return (
     <div className="openui-radius-scale">
       <p className="openui-radius-scale__meta">
-        Align UI 2.0 corner radius primitives. Product UI should prefer semantic roles (
+        OpenUI corner radius primitives. Product UI should prefer semantic roles (
         <code>--radius-control</code>, <code>--radius-surface</code>) or legacy{' '}
         <code>--layout-radius-*</code> aliases.
       </p>

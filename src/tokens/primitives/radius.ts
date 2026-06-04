@@ -1,6 +1,5 @@
 /**
- * Corner radius primitives — px values from Align UI 2.0 (Figma node 2839:15876).
- * @see https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-?node-id=2839-15876
+ * OpenUI corner radius primitives.
  */
 
 export const radiusPrimitive = {

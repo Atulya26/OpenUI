@@ -1,7 +1,7 @@
 # Typography rules
 
-Rules for humans and AI when using type in this design system.  
-References: [Apple HIG Typography](https://developer.apple.com/design/human-interface-guidelines/typography), Align UI 2.0 type scale (Figma node `2697-307` — mobile subset only).
+Rules for humans and AI when using type in OpenUI.
+Reference: [Apple HIG Typography](https://developer.apple.com/design/human-interface-guidelines/typography).
 
 **Navigation:** [docs/README.md](./README.md) · [COLOR](./COLOR-RULES.md) · [ICON](./ICON-RULES.md) · [LAYOUT](./LAYOUT-RULES.md) · [COMPONENT](./COMPONENT-RULES.md) · [PATTERN](./PATTERN-RULES.md)
 
@@ -15,7 +15,7 @@ References: [Apple HIG Typography](https://developer.apple.com/design/human-inte
 
 3. **No arbitrary type styles** — Use `--text-{style}-*` CSS variables or `typographyRoles` / `textStyles` from tokens. No one-off `font-size: 18px` in components.
 
-4. **Mobile HIG scale only** — Sizes 11–36px on the ramp. **Do not** add Align dashboard sizes (40, 48, 56, 64, 72, 80px).
+4. **Mobile HIG scale only** — Sizes 11–36px on the ramp. **Do not** add desktop dashboard sizes (40, 48, 56, 64, 72, 80px).
 
 5. **Semantic text styles in UI** — Prefer HIG names (`headline`, `body`, `footnote`) or product roles (`screenTitle`, `listTitle`) over raw `fontSize[17]`.
 

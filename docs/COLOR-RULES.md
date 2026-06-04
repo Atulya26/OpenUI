@@ -1,7 +1,6 @@
 # Color rules
 
-Rules for humans and AI when using color in this design system.  
-Source: [Align UI 2.0](https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-) (Figma nodes: Color Palette `2623-2287`, Token System `2645-344`).
+Rules for humans and AI when using color in OpenUI.
 
 **Navigation:** [docs/README.md](./README.md) · [TYPOGRAPHY](./TYPOGRAPHY-RULES.md) · [ICON](./ICON-RULES.md) · [LAYOUT](./LAYOUT-RULES.md) · [COMPONENT](./COMPONENT-RULES.md) · [PATTERN](./PATTERN-RULES.md)
 
@@ -20,7 +19,7 @@ Source: [Align UI 2.0](https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align
 
 4. **Theme-aware** — Colors must read correctly in **light and dark**. Set `data-theme` on `document.documentElement`; variables swap in `tokens.css`.
 
-5. **Neutral = gray scale** — Semantic `neutral.*` references the **gray** primitive ramp per Align UI convention.
+5. **Neutral = gray scale** — Semantic `neutral.*` references the **gray** primitive ramp per OpenUI convention.
 
 6. **State colors for feedback only** — `state.information`, `warning`, `error`, `success`, `faded` are for alerts, banners, badges, validation — not default text or backgrounds.
 
@@ -129,6 +128,6 @@ Do not manually invert colors in components — rely on `data-theme`.
 
 - Import `primitiveColors.gray[500]` directly in components
 - Use Material or Tailwind default palettes alongside this system
-- Add new brand colors without Align/Figma alignment
+- Add new brand colors without OpenUI design review
 - Use `state-*-lighter` as full-screen backgrounds without hierarchy
 - Assume `white0` is always `#ffffff` — it is theme-dependent

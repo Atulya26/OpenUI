@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Raw color ramps from Align UI 2.0. Use semantic tokens in product UI — not these values directly.',
+          'Raw OpenUI color ramps. Use semantic tokens in product UI — not these values directly.',
       },
     },
   },
@@ -25,7 +25,7 @@ export const AllPalettes: Story = {
     <DocPage
       eyebrow="Foundational · Colors"
       title="Primitive palette"
-      description="Full color ramps sourced from Align UI 2.0. Each scale is optimized for mobile surfaces and pairs with semantic tokens for light and dark themes."
+      description="Full OpenUI color ramps. Each scale is optimized for mobile surfaces and pairs with semantic tokens for light and dark themes."
     >
       <Panel>
         <div className="openui-ramp-list">

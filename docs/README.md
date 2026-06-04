@@ -68,7 +68,7 @@ npm run storybook   # http://localhost:6006
 | [ICON-RULES.md](./ICON-RULES.md) | Lucide, `Icon` wrapper, sizes, a11y, tree-shaking |
 | [DEVICE-RULES.md](./DEVICE-RULES.md) | iPhone 402×874, safe areas, Dynamic Island |
 | [LAYOUT-RULES.md](./LAYOUT-RULES.md) | Spacing scale, insets, gaps, touch targets, grid |
-| [SHADOW-RULES.md](./SHADOW-RULES.md) | Elevation, Align UI effect styles, component shadows |
+| [SHADOW-RULES.md](./SHADOW-RULES.md) | Elevation, OpenUI effect styles, component shadows |
 | [RADIUS-RULES.md](./RADIUS-RULES.md) | Corner radius scale, semantic roles |
 | [COMPONENT-RULES.md](./COMPONENT-RULES.md) | How to author DS components (API, tokens, a11y) |
 | [PATTERN-RULES.md](./PATTERN-RULES.md) | Composite mobile patterns (forms, lists, nav, sheets) |
@@ -77,13 +77,13 @@ npm run storybook   # http://localhost:6006
 
 ## Global hard rules (every change)
 
-1. **iPhone app** — **402×874** logical screen (iPhone 16 / 17 Pro class). Safe top **62px**, bottom **34px**. Content margins **16px** horizontal inside safe area. Not a web dashboard. No desktop-first layouts or Align dashboard type sizes (40px+). Details: [DEVICE-RULES.md](./DEVICE-RULES.md) · [LAYOUT-RULES.md](./LAYOUT-RULES.md).
+1. **iPhone app** — **402×874** logical screen (iPhone 16 / 17 Pro class). Safe top **62px**, bottom **34px**. Content margins **16px** horizontal inside safe area. Not a web dashboard. No desktop-first layouts or desktop dashboard type sizes (40px+). Details: [DEVICE-RULES.md](./DEVICE-RULES.md) · [LAYOUT-RULES.md](./LAYOUT-RULES.md).
 2. **Tokens only** — use CSS variables (`--color-*`, `--text-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--device-*`). No hard-coded hex, rgb, or arbitrary px for spacing/type/shadows/radius.
 3. **Semantic over primitive** — product UI uses semantic tokens (`--color-text-sub600`), not primitive ramps (`gray.600`), except in token definitions and Storybook primitives stories.
 4. **Light + dark** — UI must work with `data-theme="light"` \| `"dark"` on `<html>`. Never assume light-only.
 5. **One source of truth** — change tokens in `src/tokens/`, then CSS, then components. Do not fork values in Storybook-only CSS for product patterns.
 6. **Device chrome** — Status bar, Dynamic Island, and home indicator come from the **hardware frame PNG** in Storybook (`DeviceFrame`). Do not recreate them with icons, SVG, or extra overlays. Product UI uses `.openui-app-screen` + `.openui-app-content`.
-7. **Align UI 2.0 + HIG** — colors from Align Figma; typography & layout informed by [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/); spacing structure from [Material 3 layout](https://m3.material.io/foundations/layout/layout-overview/overview) where noted.
+7. **OpenUI + HIG** — color, radius, and shadow tokens come from OpenUI; typography & layout are informed by [Apple HIG](https://developer.apple.com/design/human-interface-guidelines/); spacing structure follows mobile app layout needs where noted.
 8. **Storybook** — new tokens or components need a Foundational or Components story.
 
 ---
@@ -136,8 +136,8 @@ AGENTS.md         AI entry point
 
 1. **Hard rule in a specific `*-RULES.md`** beats general guidance  
 2. **Token source code** beats Storybook copy if they disagree — fix the docs  
-3. **Figma Align UI** beats ad-hoc aesthetics for color primitives  
-4. **Apple HIG** beats Align for mobile typography sizes and touch targets  
+3. **OpenUI token source code** beats ad-hoc aesthetics for primitives
+4. **Apple HIG** guides mobile typography sizes and touch targets
 
 ---
 

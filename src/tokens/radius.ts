@@ -31,7 +31,7 @@ export const radiusTokens = {
 } as const;
 
 export function buildRadiusCssVariables(): string {
-  const lines: string[] = [':root {', '  /* Corner radius primitives (Align UI 2.0) */'];
+  const lines: string[] = [':root {', '  /* OpenUI corner radius primitives */'];
 
   for (const [key, value] of Object.entries(radiusPrimitive)) {
     lines.push(`  --radius-${key}: ${px(value)};`);

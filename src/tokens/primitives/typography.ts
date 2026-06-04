@@ -1,9 +1,8 @@
 /**
  * Typography primitives — Inter & Inter Display only.
  *
- * Size ramp is tuned for mobile (iOS Dynamic Type default), not Align UI dashboard
- * display sizes (48px+). Align type scale (Figma node 2697:307) informed
- * weight / tracking / line-height relationships.
+ * Size ramp is tuned for mobile (iOS Dynamic Type default), not desktop
+ * dashboard display sizes (48px+).
  *
  * @see https://developer.apple.com/design/human-interface-guidelines/typography
  */

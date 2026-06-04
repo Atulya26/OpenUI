@@ -12,7 +12,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Corner radius from Align UI 2.0 (Figma node 2839:15876). Primitives in `--radius-*`; semantic roles for controls and surfaces.',
+          'OpenUI corner radius primitives in `--radius-*`; semantic roles for controls and surfaces.',
       },
     },
   },
@@ -34,7 +34,7 @@ export const Primitives: Story = {
     <DocPage
       eyebrow="Foundational · Effects"
       title="Corner radius"
-      description="Align UI 2.0 radius scale. Device screen corners use --device-screen-radius (58px) — not this scale."
+      description="OpenUI radius scale. Device screen corners use --device-screen-radius (58px) — not this scale."
     >
       <Panel>
         <RadiusScale />

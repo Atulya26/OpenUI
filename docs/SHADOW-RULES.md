@@ -1,7 +1,6 @@
 # Shadow rules
 
-Rules for humans and AI when using elevation and shadows in OpenUI.  
-Source: [Align UI 2.0 — Shadows](https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-?node-id=2767-1801&m=dev) (Figma node `2767:1801`).
+Rules for humans and AI when using elevation and shadows in OpenUI.
 
 **Navigation:** [docs/README.md](./README.md) · [RADIUS](./RADIUS-RULES.md) · [LAYOUT](./LAYOUT-RULES.md) · [COMPONENT](./COMPONENT-RULES.md)
 
@@ -13,13 +12,13 @@ Source: [Align UI 2.0 — Shadows](https://www.figma.com/design/uUbwmKRHEIIaSIUS
 
 2. **Primitives are internal** — Full stacks live in `src/tokens/primitives/shadows.ts` and `shadows.css`. Storybook **Foundational → Effects → Shadows** shows all families.
 
-3. **Semantic first in product UI** — Prefer `--shadow-elevation-subtle`, `--shadow-surface-card`, `--shadow-surface-custom-xs`, etc., unless you need an exact Align primitive (e.g. colored brand card).
+3. **Semantic first in product UI** — Prefer `--shadow-elevation-subtle`, `--shadow-surface-card`, `--shadow-surface-custom-xs`, etc., unless a component rule calls for a specific OpenUI primitive.
 
-4. **Component tokens are reserved** — `--shadow-component-*` variables match Align UI component effect styles. Wire them when building Button, Input, Tooltip, Toggle — do not duplicate values.
+4. **Component tokens are reserved** — `--shadow-component-*` variables are OpenUI component effect roles. Wire them when building Button, Input, Tooltip, Toggle — do not duplicate values.
 
 5. **Mobile restraint** — Avoid `--shadow-custom-large` on phone screens (heavy 96px blur). Use `regular`, `card`, or `custom` xs–md for mobile surfaces.
 
-6. **Theme** — Shadow stacks use fixed rgba/hex from Align; they do not swap with `data-theme` today. Surfaces behind shadows should still use `--color-bg-*` tokens.
+6. **Theme** — Shadow stacks are fixed effect tokens; they do not swap with `data-theme` today. Surfaces behind shadows should still use `--color-bg-*` tokens.
 
 ---
 
@@ -40,7 +39,7 @@ Source: [Align UI 2.0 — Shadows](https://www.figma.com/design/uUbwmKRHEIIaSIUS
 
 ---
 
-## Families (Align UI)
+## Families
 
 | Family | Variables | Use |
 |--------|-----------|-----|
@@ -77,7 +76,7 @@ Source: [Align UI 2.0 — Shadows](https://www.figma.com/design/uUbwmKRHEIIaSIUS
 
 | File | Role |
 |------|------|
-| `src/tokens/primitives/shadows.ts` | Source stacks (Align export) |
+| `src/tokens/primitives/shadows.ts` | Source stacks |
 | `src/tokens/semantic/shadows.ts` | Semantic role aliases |
 | `src/tokens/shadows.css` | `--shadow-*` CSS variables |
 | `src/tokens/shadows.ts` | TS helpers + `buildShadowCssVariables()` |
