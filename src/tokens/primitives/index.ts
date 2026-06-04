@@ -31,3 +31,10 @@ export {
   spacingPrimitives,
   type SpaceStep,
 } from './spacing';
+
+export {
+  radiusPrimitive,
+  type RadiusPrimitiveToken,
+} from './radius';
+
+export { shadowPrimitive } from './shadows';

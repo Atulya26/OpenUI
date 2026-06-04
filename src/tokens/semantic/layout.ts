@@ -57,7 +57,9 @@ export const layoutGapSection = {
   loose: 8,
 } as const satisfies Record<string, LayoutSpaceRef>;
 
-/** Corner radii used by foundational components */
+/**
+ * @deprecated Corner radii moved to `src/tokens/semantic/radius.ts` — use `--radius-*` / `--layout-radius-*` in CSS.
+ */
 export const layoutRadius = {
   sm: 2,
   md: 3,

@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import './tokens/tokens.css';
 import './tokens/typography.css';
 import './tokens/layout.css';
+import './tokens/radius.css';
+import './tokens/shadows.css';
 import './styles/global.css';
 
 createRoot(document.getElementById('root')!).render(

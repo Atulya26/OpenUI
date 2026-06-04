@@ -15,8 +15,9 @@ import {
   layoutGapSection,
   layoutGapStack,
   layoutInset,
-  layoutRadius,
 } from './semantic/layout';
+import { layoutRadiusSemantic } from './semantic/radius';
+import { radiusPrimitive } from './primitives/radius';
 
 function px(step: SpaceStep): string {
   return `${space[step]}px`;
@@ -53,10 +54,10 @@ export const layoutTokens = {
     loose: px(layoutGapSection.loose),
   },
   radius: {
-    sm: px(layoutRadius.sm),
-    md: px(layoutRadius.md),
-    lg: px(layoutRadius.lg),
-    full: px(layoutRadius.full),
+    sm: `${radiusPrimitive[layoutRadiusSemantic.sm]}px`,
+    md: `${radiusPrimitive[layoutRadiusSemantic.md]}px`,
+    lg: `${radiusPrimitive[layoutRadiusSemantic.lg]}px`,
+    full: `${radiusPrimitive[layoutRadiusSemantic.full]}px`,
   },
   fixed: {
     touchTargetMin: `${layoutFixed.touchTargetMin}px`,
@@ -121,11 +122,6 @@ export function buildLayoutCssVariables(): string {
     `  --layout-gap-stack-lg: ${layoutTokens.gapStack.lg};`,
     `  --layout-gap-section: ${layoutTokens.gapSection.default};`,
     `  --layout-gap-section-loose: ${layoutTokens.gapSection.loose};`,
-    '',
-    `  --layout-radius-sm: ${layoutTokens.radius.sm};`,
-    `  --layout-radius-md: ${layoutTokens.radius.md};`,
-    `  --layout-radius-lg: ${layoutTokens.radius.lg};`,
-    `  --layout-radius-full: ${layoutTokens.radius.full};`,
     '',
     `  --layout-border-width: ${layoutTokens.fixed.borderWidth};`,
     `  --layout-touch-target-min: ${layoutTokens.fixed.touchTargetMin};`,

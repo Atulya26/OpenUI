@@ -1,7 +1,7 @@
 .openui-button {
   appearance: none;
   border: var(--layout-border-width) solid transparent;
-  border-radius: var(--layout-radius-md);
+  border-radius: var(--radius-control);
   min-height: var(--layout-touch-target-min);
   display: inline-flex;
   align-items: center;
@@ -13,12 +13,14 @@
   font-weight: var(--text-headline-font-weight);
   letter-spacing: var(--text-headline-letter-spacing);
   cursor: pointer;
+  box-shadow: var(--shadow-elevation-none);
   user-select: none;
 }
 
 .openui-button:focus-visible {
   outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
   outline-offset: var(--layout-focus-ring-offset);
+  box-shadow: var(--shadow-component-button-primary-focus);
 }
 
 .openui-button:disabled {
@@ -44,12 +46,14 @@
 .openui-button--primary {
   background: var(--color-primary-base);
   color: var(--color-static-white);
+  box-shadow: var(--shadow-component-fancy-button-primary);
 }
 
 .openui-button--secondary {
   background: var(--color-bg-white0);
   color: var(--color-text-strong950);
   border-color: var(--color-stroke-soft200);
+  box-shadow: var(--shadow-component-fancy-button-stroke);
 }
 
 .openui-button--ghost {
@@ -60,6 +64,15 @@
 .openui-button--destructive {
   background: var(--color-state-error-base);
   color: var(--color-static-white);
+  box-shadow: var(--shadow-component-fancy-button-error);
+}
+
+.openui-button--ghost:focus-visible {
+  box-shadow: var(--shadow-component-button-important-focus);
+}
+
+.openui-button--destructive:focus-visible {
+  box-shadow: var(--shadow-component-button-error-focus);
 }
 
 .openui-button__label {

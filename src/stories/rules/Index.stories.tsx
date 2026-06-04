@@ -43,6 +43,16 @@ const RULE_FILES = [
     when: 'Spacing, insets, grid, touch targets',
   },
   {
+    file: 'docs/SHADOW-RULES.md',
+    title: 'Shadows',
+    when: 'Elevation, cards, component focus/hover stacks',
+  },
+  {
+    file: 'docs/RADIUS-RULES.md',
+    title: 'Corner radius',
+    when: 'Border radius on controls and surfaces',
+  },
+  {
     file: 'docs/COMPONENT-RULES.md',
     title: 'Components',
     when: 'Building or changing src/components/*',

@@ -80,6 +80,9 @@ References: [Apple HIG Layout](https://developer.apple.com/design/human-interfac
 | Major sections | `--layout-gap-section` | 32px |
 | Touch target min | `--layout-touch-target-min` | 44px |
 | Tablet breakpoint | `--layout-breakpoint-tablet` | 600px |
+| Corner radius (legacy aliases) | `--layout-radius-sm` … `full` | See [RADIUS-RULES.md](./RADIUS-RULES.md) |
+
+Corner radius primitives and semantic roles (`--radius-*`) live in **[RADIUS-RULES.md](./RADIUS-RULES.md)** — not on the spacing scale.
 
 ---
 

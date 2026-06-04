@@ -20,6 +20,10 @@ Lightweight React design system based on [Align UI 2.0](https://www.figma.com/de
 | **Layout primitives** | `src/tokens/primitives/spacing.ts` | 4px spacing scale (`space-0` … `space-10`) |
 | **Layout semantic** | `src/tokens/semantic/layout.ts` | Insets, stack/inline gaps, touch & grid guardrails |
 | **Layout tokens** | `src/tokens/layout.ts`, `layout.css` | `--layout-*` CSS variables |
+| **Radius primitives** | `src/tokens/primitives/radius.ts` | Align UI corner radius (0–28px, full) |
+| **Radius tokens** | `src/tokens/radius.ts`, `radius.css` | `--radius-*` CSS variables |
+| **Shadow primitives** | `src/tokens/primitives/shadows.ts` | Align UI effect styles |
+| **Shadow tokens** | `src/tokens/shadows.ts`, `shadows.css` | `--shadow-*` CSS variables |
 
 ## Scripts
 
@@ -41,6 +45,8 @@ Storybook 10 requires Node.js **20.19+** or **22.12+**. Run `nvm use` from the r
 - **Foundational → Colors → Resolved** — computed values with theme toolbar
 - **Foundational → Typography** — primitives, semantic refs, mobile type scale (Inter / Inter Display)
 - **Components → Core** — first reusable mobile primitives and a device-frame composition
+- **Foundational → Effects → Shadows** — regular, custom, colored, card, and component shadow stacks
+- **Foundational → Effects → Radius** — Align UI corner radius scale and semantic roles
 - **Foundational → Rules** — how to navigate `docs/*-RULES.md` for AI and humans
 
 Use the **Theme** toolbar control to switch `data-theme` between light and dark.
@@ -76,5 +82,7 @@ Mobile layout based on [Apple HIG Layout](https://developer.apple.com/design/hum
 | **[docs/ICON-RULES.md](docs/ICON-RULES.md)** | Icons (Lucide) |
 | **[docs/DEVICE-RULES.md](docs/DEVICE-RULES.md)** | iPhone 402×874, safe areas |
 | **[docs/LAYOUT-RULES.md](docs/LAYOUT-RULES.md)** | Spacing & layout |
+| **[docs/SHADOW-RULES.md](docs/SHADOW-RULES.md)** | Shadows & elevation |
+| **[docs/RADIUS-RULES.md](docs/RADIUS-RULES.md)** | Corner radius |
 | **[docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md)** | Building DS components |
 | **[docs/PATTERN-RULES.md](docs/PATTERN-RULES.md)** | Screens & composite UI |

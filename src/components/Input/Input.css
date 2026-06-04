@@ -18,8 +18,9 @@
   width: 100%;
   min-height: var(--layout-touch-target-min);
   border: var(--layout-border-width) solid var(--color-stroke-soft200);
-  border-radius: var(--layout-radius-md);
+  border-radius: var(--radius-control);
   background: var(--color-bg-white0);
+  box-shadow: var(--shadow-component-custom-input-default);
   color: var(--color-text-strong950);
   padding-inline: var(--layout-inset-container);
   font-family: var(--text-body-font-family);
@@ -36,6 +37,11 @@
 .openui-input:focus {
   outline: none;
   border-color: var(--color-primary-base);
+  box-shadow: var(--shadow-component-custom-input-active);
+}
+
+.openui-input:hover:not(:disabled):not(:focus) {
+  box-shadow: var(--shadow-component-custom-input-hover);
 }
 
 .openui-input:focus-visible {
@@ -46,6 +52,7 @@
 .openui-input:disabled {
   color: var(--color-text-disabled300);
   background: var(--color-bg-soft200);
+  box-shadow: var(--shadow-elevation-none);
   cursor: not-allowed;
 }
 

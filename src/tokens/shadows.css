@@ -1,0 +1,156 @@
+/* Shadow tokens — Align UI 2.0 effect styles (Figma node 2767:1801) */
+:root {
+  --shadow-none: none;
+
+  /* Regular */
+  --shadow-regular-x-small: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
+  --shadow-regular-medium: 0px 16px 32px -12px rgba(14, 18, 27, 0.1);
+
+  /* Card */
+  --shadow-card-large:
+    inset 0px -1px 1px -0.5px rgba(23, 23, 23, 0.06),
+    0px 0px 0px 1px rgba(23, 23, 23, 0.08),
+    0px 1px 1px -0.5px rgba(23, 23, 23, 0.04),
+    0px 3px 3px -1.5px rgba(23, 23, 23, 0.04),
+    0px 6px 6px -3px rgba(23, 23, 23, 0.04),
+    0px 10px 10px -5px rgba(23, 23, 23, 0.04),
+    0px 20px 20px -10px rgba(23, 23, 23, 0.04);
+
+  /* Custom */
+  --shadow-custom-x-small:
+    inset 0px -1px 1px -0.5px rgba(51, 51, 51, 0.06),
+    0px 0px 0px 1px #f5f5f5,
+    0px 1px 2px 0px rgba(51, 51, 51, 0.04),
+    0px 2px 4px 0px rgba(51, 51, 51, 0.04),
+    0px 4px 8px -2px rgba(51, 51, 51, 0.06);
+  --shadow-custom-small:
+    0px 1px 3px -1.5px rgba(51, 51, 51, 0.16),
+    0px 5px 5px -2.5px rgba(51, 51, 51, 0.08),
+    0px 12px 6px -6px rgba(51, 51, 51, 0.02),
+    0px 16px 8px -8px rgba(51, 51, 51, 0.01),
+    0px 0px 0px 1px rgba(51, 51, 51, 0.04),
+    inset 0px -0.5px 0.5px 0px rgba(51, 51, 51, 0.08);
+  --shadow-custom-medium:
+    inset 0px -1px 1px -0.5px rgba(51, 51, 51, 0.06),
+    0px 0px 0px 1px #f5f5f5,
+    0px 48px 48px -24px rgba(51, 51, 51, 0.04),
+    0px 24px 24px -12px rgba(51, 51, 51, 0.04),
+    0px 12px 12px -6px rgba(51, 51, 51, 0.04),
+    0px 6px 6px -3px rgba(51, 51, 51, 0.04),
+    0px 3px 3px -1.5px rgba(51, 51, 51, 0.02),
+    0px 1px 1px 0.5px rgba(51, 51, 51, 0.04);
+  --shadow-custom-large:
+    0px 96px 96px -32px rgba(51, 51, 51, 0.06),
+    0px 48px 48px -24px rgba(51, 51, 51, 0.04),
+    0px 24px 24px -12px rgba(51, 51, 51, 0.04),
+    0px 12px 12px -6px rgba(51, 51, 51, 0.04),
+    0px 6px 6px -3px rgba(51, 51, 51, 0.04),
+    0px 3px 3px -1.5px rgba(51, 51, 51, 0.02),
+    0px 1px 1px 0.5px rgba(51, 51, 51, 0.04),
+    0px 0px 0px 1px rgba(51, 51, 51, 0.04),
+    inset 0px -1px 1px -0.5px rgba(51, 51, 51, 0.06);
+
+  /* Colored */
+  --shadow-colored-gray:
+    inset 0px -1px 1px -0.5px rgba(23, 23, 23, 0.06),
+    0px 0px 0px 1px rgba(23, 23, 23, 0.04),
+    0px 1px 1px -0.5px rgba(23, 23, 23, 0.04),
+    0px 3px 3px -1.5px rgba(23, 23, 23, 0.04),
+    0px 6px 6px -3px rgba(23, 23, 23, 0.04),
+    0px 10px 10px -5px rgba(23, 23, 23, 0.04),
+    0px 20px 20px -10px rgba(23, 23, 23, 0.04);
+  --shadow-colored-blue:
+    inset 0px -1px 1px -0.5px rgba(18, 35, 104, 0.04),
+    0px 0px 0px 1px rgba(18, 35, 104, 0.04),
+    0px 1px 1px -0.5px rgba(18, 35, 104, 0.04),
+    0px 3px 3px -1.5px rgba(18, 35, 104, 0.04),
+    0px 6px 6px -3px rgba(18, 35, 104, 0.04),
+    0px 10px 10px -5px rgba(18, 35, 104, 0.04),
+    0px 20px 20px -10px rgba(18, 35, 104, 0.06);
+  --shadow-colored-purple:
+    inset 0px -1px 1px -0.5px rgba(53, 26, 117, 0.04),
+    0px 0px 0px 1px rgba(53, 26, 117, 0.04),
+    0px 1px 1px -0.5px rgba(53, 26, 117, 0.04),
+    0px 3px 3px -1.5px rgba(53, 26, 117, 0.04),
+    0px 6px 6px -3px rgba(53, 26, 117, 0.04),
+    0px 10px 10px -5px rgba(53, 26, 117, 0.04),
+    0px 20px 20px -10px rgba(53, 26, 117, 0.04);
+  --shadow-colored-orange:
+    inset 0px -1px 1px -0.5px rgba(113, 51, 10, 0.04),
+    0px 0px 0px 1px rgba(113, 51, 10, 0.04),
+    0px 1px 1px -0.5px rgba(113, 51, 10, 0.04),
+    0px 3px 3px -1.5px rgba(113, 51, 10, 0.04),
+    0px 6px 6px -3px rgba(113, 51, 10, 0.04),
+    0px 10px 10px -5px rgba(113, 51, 10, 0.04),
+    0px 20px 20px -10px rgba(113, 51, 10, 0.04);
+  --shadow-colored-green:
+    inset 0px -1px 1px -0.5px rgba(11, 70, 39, 0.04),
+    0px 0px 0px 1px rgba(11, 70, 39, 0.04),
+    0px 1px 1px -0.5px rgba(11, 70, 39, 0.04),
+    0px 3px 3px -1.5px rgba(11, 70, 39, 0.04),
+    0px 6px 6px -3px rgba(11, 70, 39, 0.04),
+    0px 10px 10px -5px rgba(11, 70, 39, 0.04),
+    0px 20px 20px -10px rgba(11, 70, 39, 0.04);
+  --shadow-colored-primary:
+    inset 0px -1px 1px -0.5px rgba(18, 35, 104, 0.04),
+    0px 0px 0px 1px rgba(18, 35, 104, 0.04),
+    0px 1px 1px -0.5px rgba(18, 35, 104, 0.04),
+    0px 3px 3px -1.5px rgba(18, 35, 104, 0.04),
+    0px 6px 6px -3px rgba(18, 35, 104, 0.04),
+    0px 10px 10px -5px rgba(18, 35, 104, 0.04),
+    0px 20px 20px -10px rgba(18, 35, 104, 0.04);
+
+  /* Components (wire to Button, Input, etc. when built) */
+  --shadow-component-tooltip:
+    inset 0px -1px 1px -0.5px rgba(23, 23, 23, 0.06),
+    0px 0px 0px 1px #ebebeb,
+    0px 48px 48px -24px rgba(23, 23, 23, 0.04),
+    0px 24px 24px -12px rgba(23, 23, 23, 0.04),
+    0px 12px 12px -6px rgba(23, 23, 23, 0.04),
+    0px 6px 6px -3px rgba(23, 23, 23, 0.04),
+    0px 3px 3px -1.5px rgba(23, 23, 23, 0.02),
+    0px 1px 1px 0.5px rgba(23, 23, 23, 0.04);
+  --shadow-component-button-primary-focus:
+    0px 0px 0px 4px rgba(71, 108, 255, 0.1), 0px 0px 0px 2px #ffffff;
+  --shadow-component-button-important-focus:
+    0px 0px 0px 4px rgba(153, 160, 174, 0.16), 0px 0px 0px 2px #ffffff;
+  --shadow-component-button-error-focus:
+    0px 0px 0px 4px rgba(251, 55, 72, 0.1), 0px 0px 0px 2px #ffffff;
+  --shadow-component-fancy-button-neutral:
+    0px 0px 0px 1px #242628, 0px 1px 2px 0px rgba(27, 28, 29, 0.48);
+  --shadow-component-fancy-button-primary:
+    0px 0px 0px 1px #335cff, 0px 1px 2px 0px rgba(14, 18, 27, 0.24);
+  --shadow-component-fancy-button-error:
+    0px 0px 0px 1px #fb3748, 0px 1px 2px 0px rgba(14, 18, 27, 0.24);
+  --shadow-component-fancy-button-stroke:
+    0px 0px 0px 1px #ebebeb, 0px 1px 3px 0px rgba(14, 18, 27, 0.12);
+  --shadow-component-toggle-switch:
+    0px 2px 4px 0px rgba(14, 18, 27, 0.03), 0px 6px 10px 0px rgba(14, 18, 27, 0.06);
+  --shadow-component-custom-button:
+    inset 0px -1px 1px -0.5px rgba(23, 23, 23, 0.04),
+    0px 0px 0px 1px rgba(23, 23, 23, 0.08),
+    0px 1px 1px -0.5px rgba(23, 23, 23, 0.04),
+    0px 3px 3px -1.5px rgba(23, 23, 23, 0.04),
+    0px 6px 6px -3px rgba(23, 23, 23, 0.04);
+  --shadow-component-custom-button-hover: 0px 0px 0px 1px rgba(23, 23, 23, 0.08);
+  --shadow-component-custom-input-default:
+    0px 0px 0px 1px rgba(23, 23, 23, 0.08),
+    0px 1px 1px -0.5px rgba(23, 23, 23, 0.04),
+    0px 3px 3px -1.5px rgba(23, 23, 23, 0.04);
+  --shadow-component-custom-input-hover: 0px 0px 0px 1px rgba(23, 23, 23, 0.08);
+  --shadow-component-custom-input-active:
+    0px 0px 0px 1.4px #335cff,
+    0px 1px 1px -0.5px rgba(23, 23, 23, 0.04),
+    0px 3px 3px -1.5px rgba(23, 23, 23, 0.04),
+    0px 6px 6px -3px rgba(23, 23, 23, 0.02);
+
+  /* Semantic aliases */
+  --shadow-elevation-none: var(--shadow-none);
+  --shadow-elevation-subtle: var(--shadow-regular-x-small);
+  --shadow-elevation-raised: var(--shadow-regular-medium);
+  --shadow-surface-card: var(--shadow-card-large);
+  --shadow-surface-custom-xs: var(--shadow-custom-x-small);
+  --shadow-surface-custom-sm: var(--shadow-custom-small);
+  --shadow-surface-custom-md: var(--shadow-custom-medium);
+  --shadow-surface-custom-lg: var(--shadow-custom-large);
+}

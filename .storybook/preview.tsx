@@ -2,6 +2,8 @@ import type { Preview } from '@storybook/react-vite';
 import '../src/tokens/tokens.css';
 import '../src/tokens/typography.css';
 import '../src/tokens/layout.css';
+import '../src/tokens/radius.css';
+import '../src/tokens/shadows.css';
 import '../src/styles/global.css';
 import '../src/styles/storybook.css';
 

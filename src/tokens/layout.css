@@ -34,11 +34,6 @@
   --layout-gap-section: var(--space-7);
   --layout-gap-section-loose: var(--space-8);
 
-  --layout-radius-sm: var(--space-2);
-  --layout-radius-md: var(--space-3);
-  --layout-radius-lg: var(--space-4);
-  --layout-radius-full: var(--space-10);
-
   --layout-border-width: 1px;
   --layout-touch-target-min: 44px;
   --layout-focus-ring-width: 2px;
