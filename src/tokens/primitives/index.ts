@@ -38,3 +38,13 @@ export {
 } from './radius';
 
 export { shadowPrimitive } from './shadows';
+
+export {
+  motionDurationPrimitive,
+  motionEasingPrimitive,
+  motionPrimitive,
+  motionTransformPrimitive,
+  type MotionDurationPrimitiveToken,
+  type MotionEasingPrimitiveToken,
+  type MotionTransformPrimitiveToken,
+} from './motion';

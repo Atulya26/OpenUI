@@ -24,6 +24,8 @@ Lightweight React design system for AI-generated mobile app screens, patterns, a
 | **Radius tokens** | `src/tokens/radius.ts`, `radius.css` | `--radius-*` CSS variables |
 | **Shadow primitives** | `src/tokens/primitives/shadows.ts` | OpenUI effect styles |
 | **Shadow tokens** | `src/tokens/shadows.ts`, `shadows.css` | `--shadow-*` CSS variables |
+| **Motion primitives** | `src/tokens/primitives/motion.ts` | Durations, easing, transform values |
+| **Motion tokens** | `src/tokens/motion.ts`, `motion.css` | `--motion-*` CSS variables |
 
 ## Scripts
 
@@ -47,6 +49,7 @@ Storybook 10 requires Node.js **20.19+** or **22.12+**. Run `nvm use` from the r
 - **Components → Core** — first reusable mobile primitives and a device-frame composition
 - **Foundational → Effects → Shadows** — regular, custom, colored, card, and component shadow stacks
 - **Foundational → Effects → Radius** — OpenUI corner radius scale and semantic roles
+- **Foundational → Motion** — duration, easing, transition contracts, and reduced-motion behavior
 - **Foundational → Rules** — how to navigate `docs/*-RULES.md` for AI and humans
 
 Use the **Theme** toolbar control to switch `data-theme` between light and dark.
@@ -84,5 +87,6 @@ Mobile layout based on [Apple HIG Layout](https://developer.apple.com/design/hum
 | **[docs/LAYOUT-RULES.md](docs/LAYOUT-RULES.md)** | Spacing & layout |
 | **[docs/SHADOW-RULES.md](docs/SHADOW-RULES.md)** | Shadows & elevation |
 | **[docs/RADIUS-RULES.md](docs/RADIUS-RULES.md)** | Corner radius |
+| **[docs/MOTION-RULES.md](docs/MOTION-RULES.md)** | Motion & transitions |
 | **[docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md)** | Building DS components |
 | **[docs/PATTERN-RULES.md](docs/PATTERN-RULES.md)** | Screens & composite UI |

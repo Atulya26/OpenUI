@@ -1,0 +1,91 @@
+/* OpenUI motion tokens */
+:root {
+  /* Duration primitives */
+  --motion-duration-instant: 0ms;
+  --motion-duration-micro: 90ms;
+  --motion-duration-fast: 140ms;
+  --motion-duration-base: 220ms;
+  --motion-duration-slow: 320ms;
+  --motion-duration-slower: 420ms;
+  --motion-duration-celebration: 520ms;
+  --motion-duration-loop: 900ms;
+
+  /* Easing primitives */
+  --motion-ease-linear: linear;
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --motion-ease-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --motion-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --motion-ease-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  --motion-ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-ease-spring-soft: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Transform primitives */
+  --motion-distance-none: 0px;
+  --motion-distance-nudge: 2px;
+  --motion-distance-enter-y: 8px;
+  --motion-distance-sheet-y: 16px;
+  --motion-scale-rest: 1;
+  --motion-scale-press: 0.985;
+  --motion-scale-enter: 0.98;
+  --motion-scale-emphasized: 1.015;
+
+  /* Semantic duration roles */
+  --motion-duration-feedback: var(--motion-duration-micro);
+  --motion-duration-state: var(--motion-duration-fast);
+  --motion-duration-enter: var(--motion-duration-base);
+  --motion-duration-exit: var(--motion-duration-fast);
+  --motion-duration-layout: var(--motion-duration-slow);
+  --motion-duration-expressive: var(--motion-duration-slower);
+  --motion-duration-celebrate: var(--motion-duration-celebration);
+  --motion-duration-loading: var(--motion-duration-loop);
+
+  /* Semantic easing roles */
+  --motion-ease-feedback: var(--motion-ease-standard);
+  --motion-ease-state: var(--motion-ease-standard);
+  --motion-ease-enter: var(--motion-ease-emphasized-decelerate);
+  --motion-ease-exit: var(--motion-ease-emphasized-accelerate);
+  --motion-ease-layout: var(--motion-ease-smooth);
+  --motion-ease-expressive: var(--motion-ease-spring-soft);
+
+  /* Semantic transition contracts */
+  --motion-transition-feedback:
+    background-color var(--motion-duration-feedback) var(--motion-ease-feedback),
+    border-color var(--motion-duration-feedback) var(--motion-ease-feedback),
+    box-shadow var(--motion-duration-feedback) var(--motion-ease-feedback),
+    color var(--motion-duration-feedback) var(--motion-ease-feedback),
+    opacity var(--motion-duration-feedback) var(--motion-ease-feedback),
+    transform var(--motion-duration-feedback) var(--motion-ease-feedback);
+  --motion-transition-surface:
+    background-color var(--motion-duration-state) var(--motion-ease-state),
+    border-color var(--motion-duration-state) var(--motion-ease-state),
+    box-shadow var(--motion-duration-state) var(--motion-ease-state),
+    transform var(--motion-duration-state) var(--motion-ease-state);
+  --motion-transition-content:
+    opacity var(--motion-duration-enter) var(--motion-ease-enter),
+    transform var(--motion-duration-enter) var(--motion-ease-enter);
+  --motion-transition-layout:
+    grid-template-rows var(--motion-duration-layout) var(--motion-ease-layout),
+    max-height var(--motion-duration-layout) var(--motion-ease-layout),
+    opacity var(--motion-duration-layout) var(--motion-ease-layout),
+    transform var(--motion-duration-layout) var(--motion-ease-layout);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-micro: 0ms;
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+    --motion-duration-slow: 0ms;
+    --motion-duration-slower: 0ms;
+    --motion-duration-celebration: 0ms;
+    --motion-duration-loop: 0ms;
+    --motion-distance-nudge: 0px;
+    --motion-distance-enter-y: 0px;
+    --motion-distance-sheet-y: 0px;
+    --motion-scale-press: 1;
+    --motion-scale-enter: 1;
+    --motion-scale-emphasized: 1;
+  }
+}

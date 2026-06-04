@@ -53,6 +53,11 @@ const RULE_FILES = [
     when: 'Border radius on controls and surfaces',
   },
   {
+    file: 'docs/MOTION-RULES.md',
+    title: 'Motion',
+    when: 'Transitions, animation, feedback, reduced motion',
+  },
+  {
     file: 'docs/COMPONENT-RULES.md',
     title: 'Components',
     when: 'Building or changing src/components/*',
@@ -105,6 +110,7 @@ export const ForAIAndHumans: Story = {
             <li>Mobile app — not a dashboard</li>
             <li>Tokens only — no magic hex or spacing</li>
             <li>Semantic tokens in product UI</li>
+            <li>Motion tokens for transition and animation</li>
             <li>Light and dark themes</li>
             <li>Inter / Inter Display typography</li>
             <li>Lucide icons via Icon component</li>

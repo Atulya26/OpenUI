@@ -2,6 +2,7 @@
   border-radius: var(--radius-surface);
   padding: var(--layout-inset-container);
   box-shadow: var(--shadow-elevation-none);
+  transition: var(--motion-transition-surface);
 }
 
 .openui-card--surface {

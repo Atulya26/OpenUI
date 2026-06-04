@@ -58,6 +58,7 @@ for (const required of [
   "./tokens/layout.css",
   "./tokens/radius.css",
   "./tokens/shadows.css",
+  "./tokens/motion.css",
   "./styles/global.css",
 ]) {
   if (!main.includes(required)) {
@@ -112,6 +113,20 @@ for (const variable of [
   }
 }
 
+const motionCss = read('src/tokens/motion.css');
+for (const variable of [
+  '--motion-duration-feedback',
+  '--motion-duration-enter',
+  '--motion-ease-enter',
+  '--motion-ease-expressive',
+  '--motion-transition-feedback',
+  '--motion-transition-surface',
+]) {
+  if (!motionCss.includes(variable)) {
+    fail(`src/tokens/motion.css is missing ${variable}`);
+  }
+}
+
 for (const [file, selector] of [
   ['src/styles/global.css', '.openui-app-screen'],
   ['src/styles/storybook.css', '.openui-device-frame__viewport'],
@@ -147,15 +162,27 @@ for (const file of productFiles) {
     }
   }
 
+  for (const value of findCssDeclarationValues(source, 'transition')) {
+    if (!value.startsWith('var(--motion-transition-')) {
+      fail(`${file} contains a non-token transition (${value}); use --motion-transition-* tokens in product UI`);
+    }
+  }
+
+  for (const value of findCssDeclarationValues(source, 'animation')) {
+    if (!value.includes('var(--motion-duration-') || /\b\d+(ms|s)\b/.test(value)) {
+      fail(`${file} contains a non-token animation (${value}); use --motion-* tokens in product UI`);
+    }
+  }
+
   if (file.startsWith('src/components') && source.includes('@/storybook')) {
     fail(`${file} imports Storybook-only code`);
   }
 }
 
 for (const [file, expected] of [
-  ['src/components/Button/Button.css', ['border-radius: var(--radius-control)', 'box-shadow: var(--shadow-component-fancy-button-primary)']],
-  ['src/components/Input/Input.css', ['border-radius: var(--radius-control)', 'box-shadow: var(--shadow-component-custom-input-default)']],
-  ['src/components/Card/Card.css', ['border-radius: var(--radius-surface)', 'box-shadow: var(--shadow-surface-card)']],
+  ['src/components/Button/Button.css', ['border-radius: var(--radius-control)', 'box-shadow: var(--shadow-component-fancy-button-primary)', 'transition: var(--motion-transition-feedback)']],
+  ['src/components/Input/Input.css', ['border-radius: var(--radius-control)', 'box-shadow: var(--shadow-component-custom-input-default)', 'transition: var(--motion-transition-feedback)']],
+  ['src/components/Card/Card.css', ['border-radius: var(--radius-surface)', 'box-shadow: var(--shadow-surface-card)', 'transition: var(--motion-transition-surface)']],
 ]) {
   const source = read(file);
   for (const snippet of expected) {

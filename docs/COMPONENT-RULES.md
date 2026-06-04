@@ -4,13 +4,13 @@ Rules for humans and AI when **creating or changing design system components** (
 Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `Input`, `Field`, `Card`, `ListRow`) and future primitives.
 
 **Always also read** the foundational rule files for tokens used by the component:  
-[COLOR](./COLOR-RULES.md) · [TYPOGRAPHY](./TYPOGRAPHY-RULES.md) · [ICON](./ICON-RULES.md) · [LAYOUT](./LAYOUT-RULES.md) · [SHADOW](./SHADOW-RULES.md) · [RADIUS](./RADIUS-RULES.md)
+[COLOR](./COLOR-RULES.md) · [TYPOGRAPHY](./TYPOGRAPHY-RULES.md) · [ICON](./ICON-RULES.md) · [LAYOUT](./LAYOUT-RULES.md) · [SHADOW](./SHADOW-RULES.md) · [RADIUS](./RADIUS-RULES.md) · [MOTION](./MOTION-RULES.md)
 
 ---
 
 ## Hard rules (never break)
 
-1. **Tokens only** — Components consume `var(--color-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, and icon tokens. No embedded hex, spacing, shadow, or radius constants except re-exporting token maps.
+1. **Tokens only** — Components consume `var(--color-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, `var(--motion-*)`, and icon tokens. No embedded hex, spacing, shadow, motion, or radius constants except re-exporting token maps.
 
 2. **One component, one folder** — `src/components/{Name}/{Name}.tsx`, `index.ts`, optional stories under `src/stories/components/`.
 

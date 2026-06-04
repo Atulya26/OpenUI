@@ -22,6 +22,7 @@ Entry point from repo root: **[AGENTS.md](../AGENTS.md)** (short summary + link 
 | Spacing / insets / grid | [LAYOUT-RULES.md](./LAYOUT-RULES.md) |
 | Shadows / elevation | [SHADOW-RULES.md](./SHADOW-RULES.md) |
 | Corner radius | [RADIUS-RULES.md](./RADIUS-RULES.md) |
+| Motion / transitions / animation | [MOTION-RULES.md](./MOTION-RULES.md) |
 | New or changed **component** (Button, Input, …) | [COMPONENT-RULES.md](./COMPONENT-RULES.md) + all foundational rules that apply |
 | Screen / flow / composite UI | [PATTERN-RULES.md](./PATTERN-RULES.md) + component + foundational rules |
 
@@ -54,6 +55,7 @@ npm run storybook   # http://localhost:6006
 | Layout | Foundational → Layout |
 | Shadows | Foundational → Effects → Shadows |
 | Corner radius | Foundational → Effects → Radius |
+| Motion | Foundational → Motion |
 
 ### Step 5 — Run the global checklist (below)
 
@@ -70,6 +72,7 @@ npm run storybook   # http://localhost:6006
 | [LAYOUT-RULES.md](./LAYOUT-RULES.md) | Spacing scale, insets, gaps, touch targets, grid |
 | [SHADOW-RULES.md](./SHADOW-RULES.md) | Elevation, OpenUI effect styles, component shadows |
 | [RADIUS-RULES.md](./RADIUS-RULES.md) | Corner radius scale, semantic roles |
+| [MOTION-RULES.md](./MOTION-RULES.md) | Motion duration, easing, transition contracts, reduced motion |
 | [COMPONENT-RULES.md](./COMPONENT-RULES.md) | How to author DS components (API, tokens, a11y) |
 | [PATTERN-RULES.md](./PATTERN-RULES.md) | Composite mobile patterns (forms, lists, nav, sheets) |
 
@@ -78,7 +81,7 @@ npm run storybook   # http://localhost:6006
 ## Global hard rules (every change)
 
 1. **iPhone app** — **402×874** logical screen (iPhone 16 / 17 Pro class). Safe top **62px**, bottom **34px**. Content margins **16px** horizontal inside safe area. Not a web dashboard. No desktop-first layouts or desktop dashboard type sizes (40px+). Details: [DEVICE-RULES.md](./DEVICE-RULES.md) · [LAYOUT-RULES.md](./LAYOUT-RULES.md).
-2. **Tokens only** — use CSS variables (`--color-*`, `--text-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--device-*`). No hard-coded hex, rgb, or arbitrary px for spacing/type/shadows/radius.
+2. **Tokens only** — use CSS variables (`--color-*`, `--text-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--motion-*`, `--device-*`). No hard-coded hex, rgb, or arbitrary px for spacing/type/shadows/radius/motion.
 3. **Semantic over primitive** — product UI uses semantic tokens (`--color-text-sub600`), not primitive ramps (`gray.600`), except in token definitions and Storybook primitives stories.
 4. **Light + dark** — UI must work with `data-theme="light"` \| `"dark"` on `<html>`. Never assume light-only.
 5. **One source of truth** — change tokens in `src/tokens/`, then CSS, then components. Do not fork values in Storybook-only CSS for product patterns.
@@ -117,6 +120,7 @@ src/tokens/
   layout.css      --space-*, --layout-*, --device-*
   radius.css      --radius-*, --layout-radius-* (aliases)
   shadows.css     --shadow-*
+  motion.css      --motion-*
 
 src/index.ts      package entry: components + tokens
 src/styles.css    package CSS entry: color + type + layout + app shell

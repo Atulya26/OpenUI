@@ -94,6 +94,21 @@ export {
 } from './shadows';
 
 export {
+  buildMotionCssVariables,
+  motionDurationPrimitive,
+  motionDurationSemantic,
+  motionEasingPrimitive,
+  motionEasingSemantic,
+  motionPrimitive,
+  motionTokens,
+  motionTransformPrimitive,
+  motionTransitionSemantic,
+  type MotionDurationPrimitiveToken,
+  type MotionEasingPrimitiveToken,
+  type MotionTransformPrimitiveToken,
+} from './motion';
+
+export {
   iphoneContentHeight,
   iphoneContentWidth,
   iphoneDynamicIsland,

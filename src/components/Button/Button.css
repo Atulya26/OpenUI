@@ -14,6 +14,7 @@
   letter-spacing: var(--text-headline-letter-spacing);
   cursor: pointer;
   box-shadow: var(--shadow-elevation-none);
+  transition: var(--motion-transition-feedback);
   user-select: none;
 }
 
@@ -26,6 +27,10 @@
 .openui-button:disabled {
   cursor: not-allowed;
   opacity: 0.64;
+}
+
+.openui-button:active:not(:disabled) {
+  transform: scale(var(--motion-scale-press));
 }
 
 .openui-button--sm {
@@ -80,7 +85,7 @@
 }
 
 .openui-button__spinner {
-  animation: openui-button-spin 900ms linear infinite;
+  animation: openui-button-spin var(--motion-duration-loading) var(--motion-ease-linear) infinite;
 }
 
 @keyframes openui-button-spin {

@@ -28,6 +28,7 @@
   line-height: var(--text-body-line-height);
   font-weight: var(--text-body-font-weight);
   letter-spacing: var(--text-body-letter-spacing);
+  transition: var(--motion-transition-feedback);
 }
 
 .openui-input::placeholder {

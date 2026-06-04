@@ -23,6 +23,7 @@ You are working in a **mobile-first** React design system. **Read this file firs
 | Spacing, insets, grid, touch targets | [docs/LAYOUT-RULES.md](docs/LAYOUT-RULES.md) |
 | Shadows, elevation | [docs/SHADOW-RULES.md](docs/SHADOW-RULES.md) |
 | Corner radius | [docs/RADIUS-RULES.md](docs/RADIUS-RULES.md) |
+| Motion, transitions, animation | [docs/MOTION-RULES.md](docs/MOTION-RULES.md) |
 | A DS component (`src/components/`) | [docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md) + all relevant rows above |
 | A screen / form / list / flow | [docs/PATTERN-RULES.md](docs/PATTERN-RULES.md) + component + foundational rules |
 
@@ -41,6 +42,7 @@ Each `*-RULES.md` has: **hard rules → cheat sheet → decisions → AI checkli
 | Layout | `src/tokens/layout.css`, `src/styles/global.css` | Foundational → Layout |
 | Shadows | `src/tokens/shadows.css` | Foundational → Effects → Shadows |
 | Radius | `src/tokens/radius.css` | Foundational → Effects → Radius |
+| Motion | `src/tokens/motion.css` | Foundational → Motion |
 
 ```bash
 npm run storybook    # http://localhost:6006
@@ -51,7 +53,7 @@ npx tsc --noEmit
 
 ## Global hard rules (never break)
 
-1. **Tokens only** — `var(--color-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, `var(--device-*)`; icon/token props for icons.
+1. **Tokens only** — `var(--color-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, `var(--motion-*)`, `var(--device-*)`; icon/token props for icons.
 2. **iPhone 402×874** — safe top **62px**, bottom **34px**; content margins **16px** horizontal inside safe area ([DEVICE-RULES.md](docs/DEVICE-RULES.md), [LAYOUT-RULES.md](docs/LAYOUT-RULES.md)).
 3. **Device frame** — Storybook uses `DeviceFrame` + `src/assets/devices/iphone-17-pro-frame.png` (chrome baked in). **Do not** add status bar, Dynamic Island, or home indicator overlays.
 4. **Product shell** — `.openui-app-screen` (safe area) + `.openui-app-content` (layout margins) in `src/styles/global.css`.
@@ -86,6 +88,9 @@ min-height: var(--layout-touch-target-min);
 /* Radius + shadow */
 border-radius: var(--radius-control);
 box-shadow: var(--shadow-surface-card);
+
+/* Motion */
+transition: var(--motion-transition-feedback);
 
 /* Icons */
 <Icon icon={Home} size="md" color="strong" />
