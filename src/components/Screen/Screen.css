@@ -1,0 +1,10 @@
+.openui-screen {
+  background: var(--color-bg-weak50);
+  color: var(--color-text-strong950);
+}
+
+.openui-screen__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gap-section);
+}

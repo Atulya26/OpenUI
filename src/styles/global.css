@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&family=Inter+Display:opsz,wght@14..32,400..700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+ * Full-screen iPhone root — safe area only (system regions).
+ * Pair with `.openui-app-content` for layout margins inside safe area.
+ */
+.openui-app-screen {
+  width: 100%;
+  max-width: var(--device-screen-width);
+  min-height: var(--device-screen-height);
+  margin-inline: auto;
+  box-sizing: border-box;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: max(
+    var(--device-safe-area-top),
+    env(safe-area-inset-top, 0px)
+  );
+  padding-bottom: max(
+    var(--device-safe-area-bottom),
+    env(safe-area-inset-bottom, 0px)
+  );
+  padding-left: max(0px, env(safe-area-inset-left, 0px));
+  padding-right: max(0px, env(safe-area-inset-right, 0px));
+}
+
+.openui-app-screen::-webkit-scrollbar {
+  display: none;
+}
+
+/**
+ * Interactive content — layout margins inside safe area (iOS 26).
+ */
+.openui-app-content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--device-screen-width);
+  margin-inline: auto;
+  padding-inline: var(--layout-margin-horizontal);
+  min-height: 100%;
+}
+
+.openui-demo-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--layout-gap-stack-xs);
+}
+
+.openui-demo-home__title {
+  margin: 0;
+  font-family: var(--text-large-title-font-family);
+  font-size: var(--text-large-title-font-size);
+  line-height: var(--text-large-title-line-height);
+  font-weight: var(--text-large-title-font-weight);
+  letter-spacing: var(--text-large-title-letter-spacing);
+}
+
+.openui-demo-home__body {
+  margin: 0;
+  font-family: var(--text-body-font-family);
+  font-size: var(--text-body-font-size);
+  line-height: var(--text-body-line-height);
+  letter-spacing: var(--text-body-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-demo-home__body code {
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  color: var(--color-text-strong950);
+}
+
+body {
+  margin: 0;
+  font-family: var(--text-body-font-family);
+  font-size: var(--text-body-font-size);
+  line-height: var(--text-body-line-height);
+  font-weight: var(--text-body-font-weight);
+  letter-spacing: var(--text-body-letter-spacing);
+  color: var(--color-text-strong950);
+  background: var(--color-bg-weak50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,175 @@
+.openui-text {
+  margin: 0;
+}
+
+.openui-text--role-screenTitle,
+.openui-text--style-largeTitle {
+  font-family: var(--text-large-title-font-family);
+  font-size: var(--text-large-title-font-size);
+  line-height: var(--text-large-title-line-height);
+  font-weight: var(--text-large-title-font-weight);
+  letter-spacing: var(--text-large-title-letter-spacing);
+}
+
+.openui-text--role-heroTitle,
+.openui-text--style-title1 {
+  font-family: var(--text-title1-font-family);
+  font-size: var(--text-title1-font-size);
+  line-height: var(--text-title1-line-height);
+  font-weight: var(--text-title1-font-weight);
+  letter-spacing: var(--text-title1-letter-spacing);
+}
+
+.openui-text--role-sectionTitle,
+.openui-text--style-title2 {
+  font-family: var(--text-title2-font-family);
+  font-size: var(--text-title2-font-size);
+  line-height: var(--text-title2-line-height);
+  font-weight: var(--text-title2-font-weight);
+  letter-spacing: var(--text-title2-letter-spacing);
+}
+
+.openui-text--role-cardTitle,
+.openui-text--style-title3 {
+  font-family: var(--text-title3-font-family);
+  font-size: var(--text-title3-font-size);
+  line-height: var(--text-title3-line-height);
+  font-weight: var(--text-title3-font-weight);
+  letter-spacing: var(--text-title3-letter-spacing);
+}
+
+.openui-text--role-listTitle,
+.openui-text--role-button,
+.openui-text--style-headline {
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+}
+
+.openui-text--role-paragraph,
+.openui-text--role-input,
+.openui-text--style-body {
+  font-family: var(--text-body-font-family);
+  font-size: var(--text-body-font-size);
+  line-height: var(--text-body-line-height);
+  font-weight: var(--text-body-font-weight);
+  letter-spacing: var(--text-body-letter-spacing);
+}
+
+.openui-text--role-secondary,
+.openui-text--role-placeholder,
+.openui-text--style-subheadline {
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: var(--text-subheadline-font-weight);
+  letter-spacing: var(--text-subheadline-letter-spacing);
+}
+
+.openui-text--role-tertiary,
+.openui-text--role-label,
+.openui-text--style-footnote {
+  font-family: var(--text-footnote-font-family);
+  font-size: var(--text-footnote-font-size);
+  line-height: var(--text-footnote-line-height);
+  font-weight: var(--text-footnote-font-weight);
+  letter-spacing: var(--text-footnote-letter-spacing);
+}
+
+.openui-text--role-tabLabel,
+.openui-text--style-caption1 {
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  font-weight: var(--text-caption1-font-weight);
+  letter-spacing: var(--text-caption1-letter-spacing);
+}
+
+.openui-text--role-badge,
+.openui-text--style-caption2 {
+  font-family: var(--text-caption2-font-family);
+  font-size: var(--text-caption2-font-size);
+  line-height: var(--text-caption2-line-height);
+  font-weight: var(--text-caption2-font-weight);
+  letter-spacing: var(--text-caption2-letter-spacing);
+}
+
+.openui-text--style-extraLargeTitle {
+  font-family: var(--text-extra-large-title-font-family);
+  font-size: var(--text-extra-large-title-font-size);
+  line-height: var(--text-extra-large-title-line-height);
+  font-weight: var(--text-extra-large-title-font-weight);
+  letter-spacing: var(--text-extra-large-title-letter-spacing);
+}
+
+.openui-text--style-extraLargeTitle2 {
+  font-family: var(--text-extra-large-title2-font-family);
+  font-size: var(--text-extra-large-title2-font-size);
+  line-height: var(--text-extra-large-title2-line-height);
+  font-weight: var(--text-extra-large-title2-font-weight);
+  letter-spacing: var(--text-extra-large-title2-letter-spacing);
+}
+
+.openui-text--style-callout {
+  font-family: var(--text-callout-font-family);
+  font-size: var(--text-callout-font-size);
+  line-height: var(--text-callout-line-height);
+  font-weight: var(--text-callout-font-weight);
+  letter-spacing: var(--text-callout-letter-spacing);
+}
+
+.openui-text--color-strong {
+  color: var(--color-text-strong950);
+}
+
+.openui-text--color-sub {
+  color: var(--color-text-sub600);
+}
+
+.openui-text--color-soft {
+  color: var(--color-text-soft400);
+}
+
+.openui-text--color-disabled {
+  color: var(--color-text-disabled300);
+}
+
+.openui-text--color-white {
+  color: var(--color-text-white0);
+}
+
+.openui-text--color-primary {
+  color: var(--color-primary-base);
+}
+
+.openui-text--color-error {
+  color: var(--color-state-error-base);
+}
+
+.openui-text--color-success {
+  color: var(--color-state-success-base);
+}
+
+.openui-text--color-warning {
+  color: var(--color-state-warning-base);
+}
+
+.openui-text--align-start {
+  text-align: start;
+}
+
+.openui-text--align-center {
+  text-align: center;
+}
+
+.openui-text--align-end {
+  text-align: end;
+}
+
+.openui-text--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

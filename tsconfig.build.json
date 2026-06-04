@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "emitDeclarationOnly": true,
+    "noEmit": false
+  },
+  "include": ["src/index.ts", "src/components", "src/tokens", "src/vite-env.d.ts"],
+  "exclude": ["src/main.tsx", "src/stories", "src/storybook"]
+}

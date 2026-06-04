@@ -1,0 +1,77 @@
+.openui-button {
+  appearance: none;
+  border: var(--layout-border-width) solid transparent;
+  border-radius: var(--layout-radius-md);
+  min-height: var(--layout-touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--layout-gap-inline-sm);
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+  cursor: pointer;
+  user-select: none;
+}
+
+.openui-button:focus-visible {
+  outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
+  outline-offset: var(--layout-focus-ring-offset);
+}
+
+.openui-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.64;
+}
+
+.openui-button--sm {
+  padding-block: var(--layout-gap-inline-xs);
+  padding-inline: var(--layout-inset-container);
+}
+
+.openui-button--md {
+  padding-block: var(--layout-gap-inline-sm);
+  padding-inline: var(--layout-inset-container);
+}
+
+.openui-button--lg {
+  padding-block: var(--layout-gap-stack-sm);
+  padding-inline: var(--layout-gap-section);
+}
+
+.openui-button--primary {
+  background: var(--color-primary-base);
+  color: var(--color-static-white);
+}
+
+.openui-button--secondary {
+  background: var(--color-bg-white0);
+  color: var(--color-text-strong950);
+  border-color: var(--color-stroke-soft200);
+}
+
+.openui-button--ghost {
+  background: transparent;
+  color: var(--color-text-strong950);
+}
+
+.openui-button--destructive {
+  background: var(--color-state-error-base);
+  color: var(--color-static-white);
+}
+
+.openui-button__label {
+  min-width: 0;
+}
+
+.openui-button__spinner {
+  animation: openui-button-spin 900ms linear infinite;
+}
+
+@keyframes openui-button-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}

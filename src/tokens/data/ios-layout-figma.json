@@ -1,0 +1,55 @@
+{
+  "$schema": "OpenUI iOS layout sync from Figma",
+  "figma": {
+    "fileKey": "du4UrXNeeELPb3KqtdwWJQ",
+    "nodeId": "754:62878",
+    "url": "https://www.figma.com/design/du4UrXNeeELPb3KqtdwWJQ/iOS-and-iPadOS-26--Community-?node-id=754-62878",
+    "communityKit": "https://www.figma.com/community/file/1527721578857867021/ios-and-ipados-26",
+    "lastSynced": null,
+    "syncedBy": null
+  },
+  "screen": {
+    "width": 402,
+    "height": 874,
+    "note": "iPhone 16/17 Pro class — verify against Figma frame"
+  },
+  "safeArea": {
+    "top": 62,
+    "bottom": 34,
+    "left": 0,
+    "right": 0,
+    "note": "Portrait; no primary app content in these zones"
+  },
+  "layoutMargins": {
+    "horizontal": 16,
+    "vertical": 16,
+    "contentWidth": 370,
+    "contentHeight": 778,
+    "note": "16pt iPhone portrait per HIG/UIKit. Figma status bar 24px padding is chrome-only."
+  },
+  "dynamicIsland": {
+    "width": 154,
+    "height": 37,
+    "top": 21,
+    "bottomGap": 19
+  },
+  "frameAsset": {
+    "bundled": "src/assets/devices/iphone-17-pro-frame.png",
+    "public": "public/devices/iphone-17-pro-frame.png",
+    "assetWidth": 450,
+    "assetHeight": 920,
+    "screenOffsetX": 24,
+    "screenOffsetY": 23,
+    "screenCornerRadius": 58,
+    "note": "RGBA with transparent screen. Status bar, Dynamic Island, home indicator baked in. Storybook DeviceFrame only."
+  },
+  "chrome": {
+    "statusBarHeight": 54,
+    "homeIndicatorHeight": 34,
+    "homeIndicatorBarWidth": 134,
+    "homeIndicatorBarHeight": 5,
+    "toolbarHeight": null,
+    "floatingTabBarHeight": null,
+    "note": "Visual chrome from frame PNG — do not overlay in DeviceFrame"
+  }
+}

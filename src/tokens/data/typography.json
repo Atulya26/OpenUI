@@ -1,0 +1,31 @@
+{
+  "source": {
+    "figma": "Align UI 2.0 — Type Scale (reference only, node 2697:307)",
+    "hig": "https://developer.apple.com/design/human-interface-guidelines/typography"
+  },
+  "fonts": {
+    "allowed": ["Inter", "Inter Display"],
+    "rule": "Inter Display for sizes ≥ 20px; Inter for sizes ≤ 19px"
+  },
+  "productDecisions": {
+    "screenTitle": "Uses largeTitle size with bold weight for generated mobile screen headings."
+  },
+  "excludedFromAlign": [
+    "Dashboard display sizes (40px–80px) — not used on mobile"
+  ],
+  "textStyles": [
+    "extraLargeTitle",
+    "extraLargeTitle2",
+    "largeTitle",
+    "title1",
+    "title2",
+    "title3",
+    "headline",
+    "body",
+    "callout",
+    "subheadline",
+    "footnote",
+    "caption1",
+    "caption2"
+  ]
+}

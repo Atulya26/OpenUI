@@ -1,0 +1,19 @@
+.openui-card {
+  border-radius: var(--layout-radius-md);
+  padding: var(--layout-inset-container);
+}
+
+.openui-card--surface {
+  background: var(--color-bg-white0);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+}
+
+.openui-card--soft {
+  background: var(--color-bg-soft200);
+  border: var(--layout-border-width) solid transparent;
+}
+
+.openui-card--outline {
+  background: transparent;
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+}

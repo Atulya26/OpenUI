@@ -1,0 +1,65 @@
+/* Layout & spacing tokens — 4px grid + semantic roles */
+:root {
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+
+  /* Layout margins inside safe area (iOS 26 kit) */
+  --layout-margin-horizontal: var(--space-4);
+  --layout-margin-vertical: var(--space-4);
+  --layout-content-width: 370px;
+
+  --layout-inset-screen-x: var(--layout-margin-horizontal);
+  --layout-inset-screen-y: var(--layout-margin-vertical);
+  --layout-inset-container: var(--space-4);
+  --layout-inset-screen-x-compact: var(--space-3);
+
+  --layout-gap-inline-xs: var(--space-1);
+  --layout-gap-inline-sm: var(--space-2);
+  --layout-gap-inline-md: var(--space-3);
+
+  --layout-gap-stack-xs: var(--space-2);
+  --layout-gap-stack-sm: var(--space-3);
+  --layout-gap-stack-md: var(--space-4);
+  --layout-gap-stack-lg: var(--space-6);
+
+  --layout-gap-section: var(--space-7);
+  --layout-gap-section-loose: var(--space-8);
+
+  --layout-radius-sm: var(--space-2);
+  --layout-radius-md: var(--space-3);
+  --layout-radius-lg: var(--space-4);
+  --layout-radius-full: var(--space-10);
+
+  --layout-border-width: 1px;
+  --layout-touch-target-min: 44px;
+  --layout-focus-ring-width: 2px;
+  --layout-focus-ring-offset: 2px;
+  --layout-breakpoint-tablet: 600px;
+  --layout-max-content-width: 402px;
+  --layout-columns-compact: 1;
+  --layout-columns-expanded: 2;
+
+  /* iPhone Pro target (402×874) — design canvas & safe areas */
+  --device-screen-width: 402px;
+  --device-screen-height: 874px;
+  --device-safe-area-top: 62px;
+  --device-safe-area-bottom: 34px;
+  --device-safe-area-left: 0px;
+  --device-safe-area-right: 0px;
+  --device-content-height: 778px;
+  --device-content-width: 370px;
+  --device-layout-margin-horizontal: 16px;
+  --device-status-bar-height: 54px;
+  --device-dynamic-island-width: 154px;
+  --device-dynamic-island-height: 37px;
+  --device-home-indicator-height: 34px;
+}

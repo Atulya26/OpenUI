@@ -1,0 +1,173 @@
+/**
+ * Primitive color palette — sourced from Align UI 2.0 Color Palette [Overview]
+ * https://www.figma.com/design/uUbwmKRHEIIaSIUSoTsmL6/Align-UI-2.0--NEW-?node-id=2623-2287
+ */
+
+export type ColorStep =
+  | 0
+  | 50
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 950;
+
+export type ColorScale = Partial<Record<ColorStep, string>>;
+
+export const primitiveColors = {
+  gray: {
+    950: '#171717',
+    900: '#1C1C1C',
+    800: '#262626',
+    700: '#333333',
+    600: '#5C5C5C',
+    500: '#7B7B7B',
+    400: '#A3A3A3',
+    300: '#D1D1D1',
+    200: '#EBEBEB',
+    100: '#F5F5F5',
+    50: '#F7F7F7',
+    0: '#FFFFFF',
+  },
+  slate: {
+    950: '#0E121B',
+    900: '#181B25',
+    800: '#222530',
+    700: '#2B303B',
+    600: '#525866',
+    500: '#717784',
+    400: '#99A0AE',
+    300: '#CACFD8',
+    200: '#E1E4EA',
+    100: '#F2F5F8',
+    50: '#F5F7FA',
+    0: '#FFFFFF',
+  },
+  blue: {
+    950: '#122368',
+    900: '#182F8B',
+    800: '#1F3BAD',
+    700: '#2547D0',
+    600: '#3559E9',
+    500: '#335CFF',
+    400: '#6895FF',
+    300: '#97BAFF',
+    200: '#C0D5FF',
+    100: '#D5E2FF',
+    50: '#EBF1FF',
+  },
+  orange: {
+    950: '#71330A',
+    900: '#96440D',
+    800: '#B75310',
+    700: '#CE5E12',
+    600: '#E16614',
+    500: '#FA7319',
+    400: '#FFA468',
+    300: '#FFC197',
+    200: '#FFD9C0',
+    100: '#FFE6D5',
+    50: '#FFF3EB',
+  },
+  red: {
+    950: '#681219',
+    900: '#8B1822',
+    800: '#AD1F2B',
+    700: '#D02533',
+    600: '#E93544',
+    500: '#FB3748',
+    400: '#FF6875',
+    300: '#FF97A0',
+    200: '#FFC0C5',
+    100: '#FFD5D8',
+    50: '#FFEBEC',
+  },
+  green: {
+    950: '#0B4627',
+    900: '#16643B',
+    800: '#1A7544',
+    700: '#178C4E',
+    600: '#1DAF61',
+    500: '#1FC16B',
+    400: '#3EE089',
+    300: '#84EBB4',
+    200: '#C2F5DA',
+    100: '#D0FBE9',
+    50: '#E3F7EC',
+  },
+  yellow: {
+    950: '#624C18',
+    900: '#86661D',
+    800: '#A78025',
+    700: '#C99A2C',
+    600: '#E6A819',
+    500: '#F6B51E',
+    400: '#FFD268',
+    300: '#FFE097',
+    200: '#FFECC0',
+    100: '#FFEFCC',
+    50: '#FFFAEB',
+  },
+  purple: {
+    950: '#351A75',
+    900: '#3D1D86',
+    800: '#4C25A7',
+    700: '#5B2CC9',
+    600: '#693EE0',
+    500: '#7D52F4',
+    400: '#8C71F6',
+    300: '#A897FF',
+    200: '#CAC0FF',
+    100: '#DCD5FF',
+    50: '#EFEBFF',
+  },
+  sky: {
+    950: '#124B68',
+    900: '#18658B',
+    800: '#1F7EAD',
+    700: '#2597D0',
+    600: '#35ADE9',
+    500: '#47C2FF',
+    400: '#68CDFF',
+    300: '#97DCFF',
+    200: '#C0EAFF',
+    100: '#D5F1FF',
+    50: '#EBF8FF',
+  },
+  pink: {
+    950: '#68123D',
+    900: '#8B1852',
+    800: '#AD1F66',
+    700: '#D0257A',
+    600: '#E9358F',
+    500: '#FB4BA3',
+    400: '#FF68B3',
+    300: '#FF97CB',
+    200: '#FFC0DF',
+    100: '#FFD5EA',
+    50: '#FFEBF4',
+  },
+  teal: {
+    950: '#0B463E',
+    900: '#16645A',
+    800: '#1A7569',
+    700: '#178C7D',
+    600: '#1DAF9C',
+    500: '#22D3BB',
+    400: '#3FDEC9',
+    300: '#84EBDD',
+    200: '#C2F5EE',
+    100: '#D0FBF5',
+    50: '#E4FBF8',
+  },
+} as const satisfies Record<string, ColorScale>;
+
+/** Align UI uses "neutral" in semantic tokens — maps to gray scale */
+export const neutral = primitiveColors.gray;
+
+export type PrimitivePalette = keyof typeof primitiveColors;

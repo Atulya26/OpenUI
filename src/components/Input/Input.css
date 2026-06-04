@@ -1,0 +1,66 @@
+.openui-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gap-stack-xs);
+}
+
+.openui-field__label {
+  font-family: var(--text-footnote-font-family);
+  font-size: var(--text-footnote-font-size);
+  line-height: var(--text-footnote-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-footnote-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-input {
+  appearance: none;
+  width: 100%;
+  min-height: var(--layout-touch-target-min);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--layout-radius-md);
+  background: var(--color-bg-white0);
+  color: var(--color-text-strong950);
+  padding-inline: var(--layout-inset-container);
+  font-family: var(--text-body-font-family);
+  font-size: var(--text-body-font-size);
+  line-height: var(--text-body-line-height);
+  font-weight: var(--text-body-font-weight);
+  letter-spacing: var(--text-body-letter-spacing);
+}
+
+.openui-input::placeholder {
+  color: var(--color-text-soft400);
+}
+
+.openui-input:focus {
+  outline: none;
+  border-color: var(--color-primary-base);
+}
+
+.openui-input:focus-visible {
+  outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
+  outline-offset: var(--layout-focus-ring-offset);
+}
+
+.openui-input:disabled {
+  color: var(--color-text-disabled300);
+  background: var(--color-bg-soft200);
+  cursor: not-allowed;
+}
+
+.openui-input--invalid {
+  border-color: var(--color-state-error-base);
+}
+
+.openui-field__message {
+  margin: 0;
+  font-family: var(--text-footnote-font-family);
+  font-size: var(--text-footnote-font-size);
+  line-height: var(--text-footnote-line-height);
+  color: var(--color-text-sub600);
+}
+
+.openui-field__message--error {
+  color: var(--color-state-error-base);
+}

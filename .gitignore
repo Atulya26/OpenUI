@@ -1,0 +1,9 @@
+node_modules
+.agents
+dist
+dist-app
+storybook-static
+tsconfig.tsbuildinfo
+skills-lock.json
+*.local
+.DS_Store
