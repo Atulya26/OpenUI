@@ -61,11 +61,11 @@
 
 .openui-list-row--selected {
   background: var(--color-primary-alpha10);
-  border-bottom-color: var(--color-primary-alpha16);
+  border-bottom-color: var(--color-primary-base);
 }
 
 .openui-list-row--selected:hover:not(:disabled):not(.openui-list-row--disabled) {
-  background: var(--color-primary-alpha10);
+  background: var(--color-primary-alpha16);
 }
 
 .openui-list-row--destructive {
@@ -137,7 +137,7 @@
 }
 
 .openui-list-row--selected .openui-list-row__trailing-text {
-  color: var(--color-primary-base);
+  color: var(--color-primary-dark);
 }
 
 .openui-list-row--destructive .openui-list-row__trailing-text {

@@ -25,6 +25,7 @@ You are working in a **mobile-first** React design system. **Read this file firs
 | Z-index, elevation layering | [docs/ELEVATION-RULES.md](docs/ELEVATION-RULES.md) |
 | Corner radius | [docs/RADIUS-RULES.md](docs/RADIUS-RULES.md) |
 | Motion, transitions, animation | [docs/MOTION-RULES.md](docs/MOTION-RULES.md) |
+| Visual taste, state language, Storybook presentation | [docs/VISUAL-LANGUAGE.md](docs/VISUAL-LANGUAGE.md) |
 | A DS component (`src/components/`) | [docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md) · [docs/COMPONENT-CHECKLIST.md](docs/COMPONENT-CHECKLIST.md) + all relevant rows above |
 | A screen / form / list / flow | [docs/PATTERN-RULES.md](docs/PATTERN-RULES.md) + component + foundational rules |
 

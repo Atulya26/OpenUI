@@ -115,10 +115,10 @@ export const Overview: Story = {
       <Panel>
         <Section
           title="States"
-          description="Selected, destructive, disabled, and divider states remain quiet enough for dense phone lists."
+          description="Selected, destructive, disabled, and divider states stay compact enough for dense phone lists. Selected rows use surface tint instead of dark control fill."
         >
           <div className="openui-list-row-spec-grid">
-            <SpecCell title="Selected" description="Use for chosen options, active filters, or current destinations.">
+            <SpecCell title="Selected" description="Use for chosen options, active filters, or current destinations in a list group.">
               <Card>
                 <ListRow
                   selected
