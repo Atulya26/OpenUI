@@ -59,6 +59,7 @@ for (const required of [
   "./tokens/radius.css",
   "./tokens/shadows.css",
   "./tokens/motion.css",
+  "./tokens/elevation.css",
   "./styles/global.css",
 ]) {
   if (!main.includes(required)) {
@@ -127,6 +128,25 @@ for (const variable of [
   }
 }
 
+const elevationCss = read('src/tokens/elevation.css');
+for (const variable of [
+  '--z-base',
+  '--z-sticky',
+  '--z-dropdown',
+  '--z-backdrop',
+  '--z-sheet',
+  '--z-modal',
+  '--z-toast',
+  '--elevation-level-0',
+  '--elevation-card-shadow',
+  '--elevation-card-z',
+  '--elevation-overlay-shadow',
+]) {
+  if (!elevationCss.includes(variable)) {
+    fail(`src/tokens/elevation.css is missing ${variable}`);
+  }
+}
+
 for (const [file, selector] of [
   ['src/styles/global.css', '.openui-app-screen'],
   ['src/styles/storybook.css', '.openui-device-frame__viewport'],
@@ -171,6 +191,20 @@ for (const file of productFiles) {
   for (const value of findCssDeclarationValues(source, 'animation')) {
     if (!value.includes('var(--motion-duration-') || /\b\d+(ms|s)\b/.test(value)) {
       fail(`${file} contains a non-token animation (${value}); use --motion-* tokens in product UI`);
+    }
+  }
+
+  for (const value of findCssDeclarationValues(source, 'z-index')) {
+    const allowed =
+      value.startsWith('var(--z-') ||
+      value.startsWith('var(--elevation-') ||
+      value === 'auto' ||
+      value === 'inherit' ||
+      value === 'initial' ||
+      value.startsWith('calc(var(--z-') ||
+      value.startsWith('calc(var(--elevation-');
+    if (!allowed) {
+      fail(`${file} contains a non-token z-index (${value}); use --z-* or --elevation-* tokens in product UI`);
     }
   }
 

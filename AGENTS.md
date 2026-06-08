@@ -21,10 +21,11 @@ You are working in a **mobile-first** React design system. **Read this file firs
 | Icons | [docs/ICON-RULES.md](docs/ICON-RULES.md) |
 | iPhone screen, safe areas, Figma iOS 26 layout | [docs/DEVICE-RULES.md](docs/DEVICE-RULES.md) · [docs/FIGMA-IOS26-REFERENCE.md](docs/FIGMA-IOS26-REFERENCE.md) |
 | Spacing, insets, grid, touch targets | [docs/LAYOUT-RULES.md](docs/LAYOUT-RULES.md) |
-| Shadows, elevation | [docs/SHADOW-RULES.md](docs/SHADOW-RULES.md) |
+| Shadows | [docs/SHADOW-RULES.md](docs/SHADOW-RULES.md) |
+| Z-index, elevation layering | [docs/ELEVATION-RULES.md](docs/ELEVATION-RULES.md) |
 | Corner radius | [docs/RADIUS-RULES.md](docs/RADIUS-RULES.md) |
 | Motion, transitions, animation | [docs/MOTION-RULES.md](docs/MOTION-RULES.md) |
-| A DS component (`src/components/`) | [docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md) + all relevant rows above |
+| A DS component (`src/components/`) | [docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md) · [docs/COMPONENT-CHECKLIST.md](docs/COMPONENT-CHECKLIST.md) + all relevant rows above |
 | A screen / form / list / flow | [docs/PATTERN-RULES.md](docs/PATTERN-RULES.md) + component + foundational rules |
 
 Each `*-RULES.md` has: **hard rules → cheat sheet → decisions → AI checklist → file map**.
@@ -41,6 +42,7 @@ Each `*-RULES.md` has: **hard rules → cheat sheet → decisions → AI checkli
 | Device / frame | `src/tokens/device/iphone.ts`, `src/storybook/DeviceFrame.tsx`, `src/assets/devices/` | Foundational → Layout → Device |
 | Layout | `src/tokens/layout.css`, `src/styles/global.css` | Foundational → Layout |
 | Shadows | `src/tokens/shadows.css` | Foundational → Effects → Shadows |
+| Elevation / z-index | `src/tokens/elevation.css` | Foundational → Effects → Elevation |
 | Radius | `src/tokens/radius.css` | Foundational → Effects → Radius |
 | Motion | `src/tokens/motion.css` | Foundational → Motion |
 
@@ -53,7 +55,7 @@ npx tsc --noEmit
 
 ## Global hard rules (never break)
 
-1. **Tokens only** — `var(--color-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, `var(--motion-*)`, `var(--device-*)`; icon/token props for icons.
+1. **Tokens only** — `var(--color-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, `var(--z-*)`, `var(--elevation-*)`, `var(--motion-*)`, `var(--device-*)`; icon/token props for icons.
 2. **iPhone 402×874** — safe top **62px**, bottom **34px**; content margins **16px** horizontal inside safe area ([DEVICE-RULES.md](docs/DEVICE-RULES.md), [LAYOUT-RULES.md](docs/LAYOUT-RULES.md)).
 3. **Device frame** — Storybook uses `DeviceFrame` + `src/assets/devices/iphone-17-pro-frame.png` (chrome baked in). **Do not** add status bar, Dynamic Island, or home indicator overlays.
 4. **Product shell** — `.openui-app-screen` (safe area) + `.openui-app-content` (layout margins) in `src/styles/global.css`.

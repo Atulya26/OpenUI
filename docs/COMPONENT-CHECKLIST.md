@@ -1,0 +1,400 @@
+# OpenUI component checklist
+
+Master checklist for building the mobile design system on branch `feature/components`.  
+Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
+
+**Legend:** `[x]` done · `[~]` partial / needs hardening · `[ ]` not started
+
+**Related:** [COMPONENT-RULES.md](./COMPONENT-RULES.md) · [PATTERN-RULES.md](./PATTERN-RULES.md) · [docs/README.md](./README.md)
+
+---
+
+## How to use
+
+1. Pick a **phase** (bottom of this file) or work top-down within a section.
+2. When a component ships: mark `[x]`, add Storybook story, export from `src/components/index.ts`.
+3. Update status in the **Summary** table when a section is mostly complete.
+4. Do **not** build desktop-only patterns (sidebar, dense tables, 12-col grids).
+
+---
+
+## Summary
+
+| Section | Done | Partial | Remaining |
+|---------|------|---------|-----------|
+| Foundations | 9 | 1 | 1 |
+| Layout & structure | 2 | 0 | 9 |
+| Typography | 1 | 0 | 5 |
+| Actions | 0 | 1 | 7 |
+| Form controls | 2 | 1 | 18 |
+| Selection & chips | 0 | 0 | 6 |
+| Feedback & status | 0 | 0 | 11 |
+| Navigation | 0 | 0 | 9 |
+| Overlays & sheets | 0 | 0 | 11 |
+| Lists & collections | 0 | 1 | 10 |
+| Cards & surfaces | 0 | 1 | 6 |
+| Media & content | 1 | 0 | 7 |
+| Commerce (optional) | 0 | 0 | 5 |
+| Auth UI (optional) | 0 | 0 | 4 |
+| Messaging (optional) | 0 | 0 | 5 |
+| Patterns (recipes) | 3 | 1 | 12 |
+| Utilities | 0 | 1 | 6 |
+
+---
+
+## 0. Foundations
+
+| Status | Item | Notes |
+|--------|------|-------|
+| [x] | Color tokens | `tokens.css`, themes |
+| [x] | Typography tokens | HIG mobile scale |
+| [x] | Icons + `Icon` | Lucide, curated set |
+| [x] | Layout / spacing | `layout.css`, 4px grid |
+| [x] | Device / `DeviceFrame` | iPhone 402×874 |
+| [x] | Radius tokens | `radius.css` |
+| [x] | Shadow tokens | `shadows.css` |
+| [x] | Motion tokens | `motion.css` |
+| [~] | Focus / a11y tokens | Outline on Button/Input; no `FocusRing` util |
+| [x] | Z-index / elevation scale | `elevation.css`, `ELEVATION-RULES.md` |
+| [ ] | Opacity / blur (glass) | Optional iOS 26 surfaces |
+
+---
+
+## 1. Layout & structure
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [x] | `Screen` | P0 |
+| [x] | `Stack` | P0 |
+| [ ] | `Box` / `View` | P1 |
+| [ ] | `Spacer` | P2 |
+| [ ] | `Divider` / `Separator` | P1 |
+| [ ] | `ScrollArea` | P1 |
+| [ ] | `Section` | P1 |
+| [ ] | `Inset` | P2 |
+| [ ] | `Grid` | P2 |
+| [ ] | `StickyHeader` | P2 |
+| [ ] | `SafeArea` | P2 |
+
+---
+
+## 2. Typography
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [x] | `Text` | P0 |
+| [ ] | `Heading` | P1 |
+| [ ] | `Label` | P1 |
+| [ ] | `Link` | P1 |
+| [ ] | `Code` / `Mono` | P3 |
+| [ ] | `TruncatedText` | P2 |
+| [ ] | `RichText` | P3 |
+
+---
+
+## 3. Actions
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [~] | `Button` | P0 — wire shadow/focus tokens |
+| [ ] | `IconButton` | P0 |
+| [ ] | `ButtonGroup` | P2 |
+| [ ] | `FAB` | P2 |
+| [ ] | `LinkButton` | P2 |
+| [ ] | `SwipeAction` | P3 |
+| [ ] | `Pressable` | P1 |
+| [ ] | `HoldMenu` | P3 |
+
+---
+
+## 4. Form controls
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [x] | `Field` | P0 |
+| [~] | `Input` | P0 — wire component shadows |
+| [ ] | `TextArea` | P1 |
+| [ ] | `SearchBar` | P1 |
+| [ ] | `OTPInput` | P2 |
+| [ ] | `PasswordInput` | P2 |
+| [ ] | `PhoneInput` | P3 |
+| [ ] | `NumberInput` | P2 |
+| [ ] | `Select` | P1 |
+| [ ] | `Combobox` | P3 |
+| [ ] | `Autocomplete` | P3 |
+| [ ] | `Checkbox` | P1 |
+| [ ] | `CheckboxGroup` | P2 |
+| [ ] | `Radio` | P1 |
+| [ ] | `RadioGroup` | P1 |
+| [ ] | `Switch` | P1 |
+| [ ] | `SegmentedControl` | P1 |
+| [ ] | `Slider` | P2 |
+| [ ] | `Stepper` | P2 |
+| [ ] | `DatePicker` | P2 |
+| [ ] | `TimePicker` | P2 |
+| [ ] | `DateRangePicker` | P3 |
+| [ ] | `ColorPicker` | P3 |
+| [ ] | `FileUpload` | P2 |
+| [ ] | `Form` | P2 |
+
+---
+
+## 5. Selection & identity
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `Chip` | P1 |
+| [ ] | `Tag` | P2 |
+| [ ] | `Badge` | P1 |
+| [ ] | `Avatar` | P1 |
+| [ ] | `AvatarGroup` | P2 |
+| [ ] | `Presence` | P3 |
+
+---
+
+## 6. Feedback & status
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `Alert` | P1 |
+| [ ] | `Banner` | P1 |
+| [ ] | `Toast` / `Snackbar` | P1 |
+| [ ] | `InlineMessage` | P1 |
+| [ ] | `Progress` | P1 |
+| [ ] | `Spinner` / `ActivityIndicator` | P1 |
+| [ ] | `Skeleton` | P1 |
+| [ ] | `EmptyState` | P1 |
+| [ ] | `ErrorState` | P1 |
+| [ ] | `OfflineBanner` | P2 |
+| [ ] | `Rating` | P3 |
+| [ ] | `StatusDot` | P2 |
+
+---
+
+## 7. Navigation
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `NavBar` / `TopBar` | P0 |
+| [ ] | `LargeTitleNavBar` | P1 |
+| [ ] | `TabBar` | P0 |
+| [ ] | `Toolbar` | P2 |
+| [ ] | `BackButton` | P1 |
+| [ ] | `Breadcrumb` | P3 |
+| [ ] | `Pagination` | P2 |
+| [ ] | `StepIndicator` | P2 |
+| [ ] | `SideMenu` | P2 |
+
+---
+
+## 8. Overlays & sheets
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `Modal` | P1 |
+| [ ] | `AlertDialog` | P1 |
+| [ ] | `BottomSheet` | P0 |
+| [ ] | `ActionSheet` | P1 |
+| [ ] | `Popover` | P3 |
+| [ ] | `Tooltip` | P2 |
+| [ ] | `DropdownMenu` | P2 |
+| [ ] | `ContextMenu` | P3 |
+| [ ] | `FullScreenCover` | P2 |
+| [ ] | `Drawer` | P3 |
+| [ ] | `Portal` | P1 |
+| [ ] | `FocusTrap` | P1 |
+
+---
+
+## 9. Lists & collections
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `List` | P1 |
+| [~] | `ListRow` | P0 — leading/trailing slots, swipe |
+| [ ] | `ListSection` | P1 |
+| [ ] | `ListHeader` / `ListFooter` | P2 |
+| [ ] | `Accordion` | P1 |
+| [ ] | `Timeline` | P3 |
+| [ ] | `Feed` | P2 |
+| [ ] | `CompactTable` | P2 |
+| [ ] | `KeyValueRow` | P1 |
+| [ ] | `ReorderableList` | P3 |
+
+---
+
+## 10. Cards & surfaces
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [~] | `Card` | P0 — wire `shadow-surface-card` |
+| [ ] | `Panel` | P1 |
+| [ ] | `AccordionCard` | P2 |
+| [ ] | `MediaCard` | P2 |
+| [ ] | `StatCard` | P2 |
+| [ ] | `HeroCard` | P3 |
+| [ ] | `ListCard` | P2 |
+
+---
+
+## 11. Media & content
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [x] | `Icon` | P0 |
+| [ ] | `Image` | P1 |
+| [ ] | `ImageCarousel` | P2 |
+| [ ] | `Video` | P3 |
+| [ ] | `AudioPlayer` | P3 |
+| [ ] | `LocationRow` | P3 |
+| [ ] | `QRCode` | P3 |
+| [ ] | `Illustration` | P2 |
+
+---
+
+## 12. Commerce (optional)
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `Price` | P3 |
+| [ ] | `QuantitySelector` | P3 |
+| [ ] | `ProductCard` | P3 |
+| [ ] | `CartBar` | P3 |
+| [ ] | `PaymentMethodRow` | P3 |
+
+---
+
+## 13. Auth UI (optional)
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `PinPad` | P3 |
+| [ ] | `BiometricPrompt` | P3 |
+| [ ] | `SocialSignInButton` | P3 |
+| [ ] | `TermsCheckbox` | P3 |
+
+---
+
+## 14. Messaging (optional)
+
+| Status | Component | Priority |
+|--------|-----------|----------|
+| [ ] | `MessageBubble` | P3 |
+| [ ] | `Composer` | P3 |
+| [ ] | `ThreadListRow` | P3 |
+| [ ] | `ReactionBar` | P3 |
+| [ ] | `StoryRing` | P3 |
+
+---
+
+## 15. Patterns (recipes — document + Storybook)
+
+Patterns compose components; extend [PATTERN-RULES.md](./PATTERN-RULES.md).
+
+| Status | Pattern | Priority |
+|--------|---------|----------|
+| [x] | Screen scaffold | P0 |
+| [x] | Form stack | P0 |
+| [~] | List row | P0 |
+| [ ] | Toolbar / nav bar | P0 |
+| [ ] | Empty state | P1 |
+| [ ] | Alert / banner | P1 |
+| [ ] | Settings group (inset list) | P1 |
+| [ ] | Onboarding carousel | P2 |
+| [ ] | Login / sign-up flow | P2 |
+| [ ] | OTP verification | P2 |
+| [ ] | Profile header | P2 |
+| [ ] | Search results | P2 |
+| [ ] | Pull-to-refresh list | P2 |
+| [ ] | Infinite scroll footer | P2 |
+| [ ] | Permission prompt | P2 |
+| [ ] | Paywall / upgrade | P3 |
+
+---
+
+## 16. Utilities
+
+| Status | Utility | Priority |
+|--------|---------|----------|
+| [ ] | `VisuallyHidden` | P1 |
+| [ ] | `Slot` / `asChild` | P2 |
+| [~] | `ThemeProvider` | P0 — `data-theme` on `<html>` today |
+| [ ] | `useMediaQuery` | P2 |
+| [ ] | `useSafeArea` | P2 |
+| [ ] | Motion wrapper (`AnimatePresence`) | P2 |
+
+---
+
+## Build phases
+
+### Phase 1 — Unblock every screen (start here)
+
+- [ ] Harden `Button`, `Card`, `ListRow`, `Input`
+- [ ] `Divider`
+- [ ] `IconButton`
+- [ ] `NavBar`
+- [ ] `TabBar`
+- [ ] `BottomSheet`
+- [ ] `Modal`
+- [ ] `Alert`
+- [ ] `Toast`
+- [ ] `Spinner`
+- [ ] `Badge`
+- [ ] `Avatar`
+- [ ] `Checkbox`
+- [ ] `Switch`
+- [ ] `Select`
+
+### Phase 2 — Forms & settings apps
+
+- [ ] `TextArea`
+- [ ] `SearchBar`
+- [ ] `Radio` + `RadioGroup`
+- [ ] `SegmentedControl`
+- [ ] `Slider`
+- [ ] `ListSection`
+- [ ] `Accordion`
+- [ ] `EmptyState`
+- [ ] `Skeleton`
+- [ ] `ActionSheet`
+
+### Phase 3 — Polish & density
+
+- [ ] `FAB`
+- [ ] `SwipeAction`
+- [ ] `DatePicker`
+- [ ] `OTPInput`
+- [ ] `Progress`
+- [ ] `ImageCarousel`
+- [ ] Pull-to-refresh pattern
+- [ ] `ReorderableList`
+
+### Phase 4 — Vertical / optional
+
+- [ ] Commerce block (§12)
+- [ ] Auth block (§13)
+- [ ] Messaging block (§14)
+
+---
+
+## Explicitly out of scope
+
+- [ ] ~~Persistent sidebar / multi-panel desktop chrome~~
+- [ ] ~~Dense data tables (10+ columns)~~
+- [ ] ~~12-column dashboard grids~~
+- [ ] ~~Landing-page 56px+ display type~~
+- [ ] ~~Status bar / Dynamic Island drawn in code~~ (use `DeviceFrame` PNG)
+
+---
+
+## Per-component done criteria
+
+When marking a component `[x]`, verify:
+
+- [ ] Lives in `src/components/{Name}/`
+- [ ] Exported from `src/components/index.ts`
+- [ ] Uses tokens only (`--color-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--motion-*`)
+- [ ] Storybook: variants + states + light/dark
+- [ ] Meets 44px touch target where interactive
+- [ ] `forwardRef` if focusable
+- [ ] Documented in [COMPONENT-RULES.md](./COMPONENT-RULES.md) if API is non-obvious

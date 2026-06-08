@@ -20,10 +20,11 @@ Entry point from repo root: **[AGENTS.md](../AGENTS.md)** (short summary + link 
 | Icons | [ICON-RULES.md](./ICON-RULES.md) |
 | iPhone canvas, safe areas, Figma iOS 26 sync | [DEVICE-RULES.md](./DEVICE-RULES.md) · [FIGMA-IOS26-REFERENCE.md](./FIGMA-IOS26-REFERENCE.md) |
 | Spacing / insets / grid | [LAYOUT-RULES.md](./LAYOUT-RULES.md) |
-| Shadows / elevation | [SHADOW-RULES.md](./SHADOW-RULES.md) |
+| Shadows | [SHADOW-RULES.md](./SHADOW-RULES.md) |
+| Z-index / elevation layering | [ELEVATION-RULES.md](./ELEVATION-RULES.md) |
 | Corner radius | [RADIUS-RULES.md](./RADIUS-RULES.md) |
 | Motion / transitions / animation | [MOTION-RULES.md](./MOTION-RULES.md) |
-| New or changed **component** (Button, Input, …) | [COMPONENT-RULES.md](./COMPONENT-RULES.md) + all foundational rules that apply |
+| New or changed **component** (Button, Input, …) | [COMPONENT-RULES.md](./COMPONENT-RULES.md) · [COMPONENT-CHECKLIST.md](./COMPONENT-CHECKLIST.md) + foundational rules |
 | Screen / flow / composite UI | [PATTERN-RULES.md](./PATTERN-RULES.md) + component + foundational rules |
 
 ### Step 2 — Read the rule file(s)
@@ -54,6 +55,7 @@ npm run storybook   # http://localhost:6006
 | Icons | Foundational → Icons |
 | Layout | Foundational → Layout |
 | Shadows | Foundational → Effects → Shadows |
+| Elevation / z-index | Foundational → Effects → Elevation |
 | Corner radius | Foundational → Effects → Radius |
 | Motion | Foundational → Motion |
 
@@ -70,7 +72,9 @@ npm run storybook   # http://localhost:6006
 | [ICON-RULES.md](./ICON-RULES.md) | Lucide, `Icon` wrapper, sizes, a11y, tree-shaking |
 | [DEVICE-RULES.md](./DEVICE-RULES.md) | iPhone 402×874, safe areas, Dynamic Island |
 | [LAYOUT-RULES.md](./LAYOUT-RULES.md) | Spacing scale, insets, gaps, touch targets, grid |
-| [SHADOW-RULES.md](./SHADOW-RULES.md) | Elevation, OpenUI effect styles, component shadows |
+| [SHADOW-RULES.md](./SHADOW-RULES.md) | OpenUI shadow effect styles, component shadows |
+| [ELEVATION-RULES.md](./ELEVATION-RULES.md) | Z-index scale, overlay stack, M3 elevation levels |
+| [COMPONENT-CHECKLIST.md](./COMPONENT-CHECKLIST.md) | **Master component build checklist** (track progress) |
 | [RADIUS-RULES.md](./RADIUS-RULES.md) | Corner radius scale, semantic roles |
 | [MOTION-RULES.md](./MOTION-RULES.md) | Motion duration, easing, transition contracts, reduced motion |
 | [COMPONENT-RULES.md](./COMPONENT-RULES.md) | How to author DS components (API, tokens, a11y) |
@@ -81,7 +85,7 @@ npm run storybook   # http://localhost:6006
 ## Global hard rules (every change)
 
 1. **iPhone app** — **402×874** logical screen (iPhone 16 / 17 Pro class). Safe top **62px**, bottom **34px**. Content margins **16px** horizontal inside safe area. Not a web dashboard. No desktop-first layouts or desktop dashboard type sizes (40px+). Details: [DEVICE-RULES.md](./DEVICE-RULES.md) · [LAYOUT-RULES.md](./LAYOUT-RULES.md).
-2. **Tokens only** — use CSS variables (`--color-*`, `--text-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--motion-*`, `--device-*`). No hard-coded hex, rgb, or arbitrary px for spacing/type/shadows/radius/motion.
+2. **Tokens only** — use CSS variables (`--color-*`, `--text-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--z-*`, `--elevation-*`, `--motion-*`, `--device-*`). No hard-coded hex, rgb, or arbitrary px for spacing/type/shadows/radius/z-index/motion.
 3. **Semantic over primitive** — product UI uses semantic tokens (`--color-text-sub600`), not primitive ramps (`gray.600`), except in token definitions and Storybook primitives stories.
 4. **Light + dark** — UI must work with `data-theme="light"` \| `"dark"` on `<html>`. Never assume light-only.
 5. **One source of truth** — change tokens in `src/tokens/`, then CSS, then components. Do not fork values in Storybook-only CSS for product patterns.
@@ -120,6 +124,7 @@ src/tokens/
   layout.css      --space-*, --layout-*, --device-*
   radius.css      --radius-*, --layout-radius-* (aliases)
   shadows.css     --shadow-*
+  elevation.css   --z-*, --elevation-*
   motion.css      --motion-*
 
 src/index.ts      package entry: components + tokens

@@ -45,7 +45,12 @@ const RULE_FILES = [
   {
     file: 'docs/SHADOW-RULES.md',
     title: 'Shadows',
-    when: 'Elevation, cards, component focus/hover stacks',
+    when: 'Box-shadow stacks, cards, component focus/hover',
+  },
+  {
+    file: 'docs/ELEVATION-RULES.md',
+    title: 'Elevation & z-index',
+    when: 'Overlay stack, sheets, modals, menus, toasts',
   },
   {
     file: 'docs/RADIUS-RULES.md',
@@ -61,6 +66,11 @@ const RULE_FILES = [
     file: 'docs/COMPONENT-RULES.md',
     title: 'Components',
     when: 'Building or changing src/components/*',
+  },
+  {
+    file: 'docs/COMPONENT-CHECKLIST.md',
+    title: 'Component checklist',
+    when: 'Tracking DS build progress — what to build next',
   },
   {
     file: 'docs/PATTERN-RULES.md',

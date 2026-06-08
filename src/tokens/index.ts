@@ -109,6 +109,19 @@ export {
 } from './motion';
 
 export {
+  buildElevationCssVariables,
+  elevationLevelPrimitive,
+  elevationSemantic,
+  elevationTokens,
+  overlayZIndexSemantic,
+  zIndexPrimitive,
+  zIndexSemantic,
+  type ElevationSemanticToken,
+  type OverlayZIndexSemanticToken,
+  type ZIndexSemanticToken,
+} from './elevation';
+
+export {
   iphoneContentHeight,
   iphoneContentWidth,
   iphoneDynamicIsland,

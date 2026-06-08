@@ -5,6 +5,7 @@ import '../src/tokens/layout.css';
 import '../src/tokens/radius.css';
 import '../src/tokens/shadows.css';
 import '../src/tokens/motion.css';
+import '../src/tokens/elevation.css';
 import '../src/styles/global.css';
 import '../src/styles/storybook.css';
 

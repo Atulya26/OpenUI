@@ -1,0 +1,68 @@
+/* OpenUI elevation + z-index tokens */
+:root {
+  /* Z-index primitives */
+  --z-index-base: 0;
+  --z-index-raised: 1;
+  --z-index-sticky: 10;
+  --z-index-fab: 20;
+  --z-index-dropdown: 100;
+  --z-index-backdrop: 200;
+  --z-index-sheet: 250;
+  --z-index-modal: 300;
+  --z-index-popover: 400;
+  --z-index-toast: 500;
+  --z-index-max: 999;
+
+  /* Semantic z-index roles (product UI) */
+  --z-base: var(--z-index-base);
+  --z-raised: var(--z-index-raised);
+  --z-sticky: var(--z-index-sticky);
+  --z-fab: var(--z-index-fab);
+  --z-dropdown: var(--z-index-dropdown);
+  --z-backdrop: var(--z-index-backdrop);
+  --z-sheet: var(--z-index-sheet);
+  --z-modal: var(--z-index-modal);
+  --z-popover: var(--z-index-popover);
+  --z-toast: var(--z-index-toast);
+
+  /* Overlay z-index roles */
+  --z-overlay-backdrop: var(--z-index-backdrop);
+  --z-overlay-sheet: var(--z-index-sheet);
+  --z-overlay-modal: var(--z-index-modal);
+  --z-overlay-popover: var(--z-index-popover);
+  --z-overlay-toast: var(--z-index-toast);
+  --z-overlay-dropdown: var(--z-index-dropdown);
+
+  /* Elevation levels (Material 3 scale 0–5) */
+  --elevation-level-0: 0;
+  --elevation-level-1: 1;
+  --elevation-level-2: 2;
+  --elevation-level-3: 3;
+  --elevation-level-4: 4;
+  --elevation-level-5: 5;
+
+  /* Semantic elevation roles — shadow + z-index bundles */
+  --elevation-flat-level: var(--elevation-level-0);
+  --elevation-flat-shadow: var(--shadow-elevation-none);
+  --elevation-flat-z: var(--z-base);
+
+  --elevation-resting-level: var(--elevation-level-1);
+  --elevation-resting-shadow: var(--shadow-elevation-subtle);
+  --elevation-resting-z: var(--z-raised);
+
+  --elevation-card-level: var(--elevation-level-2);
+  --elevation-card-shadow: var(--shadow-surface-card);
+  --elevation-card-z: var(--z-raised);
+
+  --elevation-floating-level: var(--elevation-level-3);
+  --elevation-floating-shadow: var(--shadow-elevation-raised);
+  --elevation-floating-z: var(--z-fab);
+
+  --elevation-overlay-level: var(--elevation-level-4);
+  --elevation-overlay-shadow: var(--shadow-surface-custom-md);
+  --elevation-overlay-z: var(--z-sheet);
+
+  --elevation-modal-level: var(--elevation-level-5);
+  --elevation-modal-shadow: var(--shadow-surface-custom-lg);
+  --elevation-modal-z: var(--z-modal);
+}

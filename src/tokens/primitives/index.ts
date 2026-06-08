@@ -48,3 +48,10 @@ export {
   type MotionEasingPrimitiveToken,
   type MotionTransformPrimitiveToken,
 } from './motion';
+
+export { zIndexPrimitive, type ZIndexPrimitiveToken } from './zIndex';
+
+export {
+  elevationLevelPrimitive,
+  type ElevationLevelPrimitiveToken,
+} from './elevationLevels';

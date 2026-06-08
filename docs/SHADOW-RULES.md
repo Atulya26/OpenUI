@@ -1,8 +1,8 @@
 # Shadow rules
 
-Rules for humans and AI when using elevation and shadows in OpenUI.
+Rules for humans and AI when using shadows in OpenUI. For **stacking order and z-index**, see [ELEVATION-RULES.md](./ELEVATION-RULES.md).
 
-**Navigation:** [docs/README.md](./README.md) · [RADIUS](./RADIUS-RULES.md) · [LAYOUT](./LAYOUT-RULES.md) · [COMPONENT](./COMPONENT-RULES.md)
+**Navigation:** [docs/README.md](./README.md) · [ELEVATION](./ELEVATION-RULES.md) · [RADIUS](./RADIUS-RULES.md) · [LAYOUT](./LAYOUT-RULES.md) · [COMPONENT](./COMPONENT-RULES.md)
 
 ---
 

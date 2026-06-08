@@ -6,6 +6,7 @@ import './tokens/layout.css';
 import './tokens/radius.css';
 import './tokens/shadows.css';
 import './tokens/motion.css';
+import './tokens/elevation.css';
 import './styles/global.css';
 
 createRoot(document.getElementById('root')!).render(

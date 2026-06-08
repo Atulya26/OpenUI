@@ -1651,3 +1651,91 @@
   font-family: var(--text-title3-font-family) !important;
   font-size: var(--text-title3-font-size) !important;
 }
+
+/* Elevation specimens */
+.openui-elevation-stack {
+  position: relative;
+  min-height: 360px;
+  padding: var(--layout-gap-stack-lg);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-weak50);
+  overflow: hidden;
+}
+
+.openui-elevation-stack__layer {
+  position: absolute;
+  left: calc(var(--layout-gap-stack-lg) + var(--elevation-stack-index, 0) * 18px);
+  right: calc(var(--layout-gap-stack-lg) - var(--elevation-stack-index, 0) * 6px);
+  top: calc(24px + var(--elevation-stack-index, 0) * 34px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gap-stack-xs);
+  padding: var(--layout-gap-stack-sm) var(--layout-gap-stack-md);
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-stroke-soft200);
+  background: var(--color-bg-white0);
+  box-sizing: border-box;
+}
+
+.openui-elevation-stack__layer--scrim {
+  background: color-mix(in srgb, var(--color-bg-strong950) 40%, transparent);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.openui-elevation-stack__layer--accent {
+  border-color: var(--color-stroke-sub300);
+}
+
+.openui-elevation-stack__label {
+  margin: 0;
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  font-weight: var(--text-subheadline-font-weight);
+  color: var(--color-text-strong950);
+}
+
+.openui-elevation-stack__var {
+  font-family: var(--text-caption-font-family);
+  font-size: var(--text-caption-font-size);
+  color: var(--color-text-sub600);
+}
+
+.openui-elevation-role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--layout-gap-stack-md);
+}
+
+.openui-elevation-role-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gap-stack-xs);
+}
+
+.openui-elevation-role-card__tile {
+  position: relative;
+  height: 88px;
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-white0);
+  border: 1px solid var(--color-stroke-soft200);
+}
+
+.openui-elevation-role-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.openui-elevation-role-card__name {
+  margin: 0;
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  color: var(--color-text-strong950);
+}
+
+.openui-elevation-role-card__var {
+  font-family: var(--text-caption-font-family);
+  font-size: var(--text-caption-font-size);
+  color: var(--color-text-sub600);
+}
