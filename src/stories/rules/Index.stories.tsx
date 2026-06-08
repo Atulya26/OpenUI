@@ -63,6 +63,11 @@ const RULE_FILES = [
     when: 'Transitions, animation, feedback, reduced motion',
   },
   {
+    file: 'docs/VISUAL-LANGUAGE.md',
+    title: 'Visual language',
+    when: 'Taste, surface hierarchy, selected states, Storybook presentation',
+  },
+  {
     file: 'docs/COMPONENT-RULES.md',
     title: 'Components',
     when: 'Building or changing src/components/*',

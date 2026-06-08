@@ -75,7 +75,7 @@ export const Overview: Story = {
               </Card>
             </SpecCell>
 
-            <SpecCell title="Soft" description="Subtle grouped content where elevation should stay quiet.">
+            <SpecCell title="Soft" description="Subtle grouped content where elevation should stay flat and quiet.">
               <Card variant="soft">
                 <CardHeader>
                   <Text as="h3" variant="cardTitle">Notifications</Text>
@@ -99,7 +99,7 @@ export const Overview: Story = {
               </Card>
             </SpecCell>
 
-            <SpecCell title="Elevated" description="Higher hierarchy card for important content above siblings.">
+            <SpecCell title="Elevated" description="Higher hierarchy card for one important module above siblings.">
               <Card variant="elevated">
                 <CardHeader>
                   <Text as="h3" variant="cardTitle">Upgrade available</Text>
@@ -199,7 +199,7 @@ export const Overview: Story = {
               </Card>
             </SpecCell>
 
-            <SpecCell title="Selected" description="Selected surface uses primary tint and a stronger stroke.">
+            <SpecCell title="Selected" description="Selected surface uses primary tint plus a clear primary stroke.">
               <Card
                 as="button"
                 type="button"

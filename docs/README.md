@@ -24,6 +24,7 @@ Entry point from repo root: **[AGENTS.md](../AGENTS.md)** (short summary + link 
 | Z-index / elevation layering | [ELEVATION-RULES.md](./ELEVATION-RULES.md) |
 | Corner radius | [RADIUS-RULES.md](./RADIUS-RULES.md) |
 | Motion / transitions / animation | [MOTION-RULES.md](./MOTION-RULES.md) |
+| Visual taste / state language / Storybook presentation | [VISUAL-LANGUAGE.md](./VISUAL-LANGUAGE.md) |
 | New or changed **component** (Button, Input, …) | [COMPONENT-RULES.md](./COMPONENT-RULES.md) · [COMPONENT-CHECKLIST.md](./COMPONENT-CHECKLIST.md) + foundational rules |
 | Screen / flow / composite UI | [PATTERN-RULES.md](./PATTERN-RULES.md) + component + foundational rules |
 
@@ -77,6 +78,7 @@ npm run storybook   # http://localhost:6006
 | [COMPONENT-CHECKLIST.md](./COMPONENT-CHECKLIST.md) | **Master component build checklist** (track progress) |
 | [RADIUS-RULES.md](./RADIUS-RULES.md) | Corner radius scale, semantic roles |
 | [MOTION-RULES.md](./MOTION-RULES.md) | Motion duration, easing, transition contracts, reduced motion |
+| [VISUAL-LANGUAGE.md](./VISUAL-LANGUAGE.md) | OpenUI taste contract, surface hierarchy, state language, Storybook presentation |
 | [COMPONENT-RULES.md](./COMPONENT-RULES.md) | How to author DS components (API, tokens, a11y) |
 | [PATTERN-RULES.md](./PATTERN-RULES.md) | Composite mobile patterns (forms, lists, nav, sheets) |
 

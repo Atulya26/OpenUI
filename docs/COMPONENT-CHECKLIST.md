@@ -5,7 +5,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 **Legend:** `[x]` done · `[~]` partial / needs hardening · `[ ]` not started
 
-**Related:** [COMPONENT-RULES.md](./COMPONENT-RULES.md) · [PATTERN-RULES.md](./PATTERN-RULES.md) · [docs/README.md](./README.md)
+**Related:** [COMPONENT-RULES.md](./COMPONENT-RULES.md) · [PATTERN-RULES.md](./PATTERN-RULES.md) · [VISUAL-LANGUAGE.md](./VISUAL-LANGUAGE.md) · [docs/README.md](./README.md)
 
 ---
 
@@ -54,7 +54,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | [x] | Radius tokens | `radius.css` |
 | [x] | Shadow tokens | `shadows.css` |
 | [x] | Motion tokens | `motion.css` |
-| [~] | Focus / a11y tokens | Outline on Button/Input; no `FocusRing` util |
+| [~] | Focus / a11y tokens | Outlines on Button/Input/Input actions; no `FocusRing` util |
 | [x] | Z-index / elevation scale | `elevation.css`, `ELEVATION-RULES.md` |
 | [ ] | Opacity / blur (glass) | Optional iOS 26 surfaces |
 

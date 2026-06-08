@@ -39,9 +39,9 @@
 }
 
 .openui-card--soft {
-  background: var(--color-bg-soft200);
-  border: var(--layout-border-width) solid transparent;
-  box-shadow: var(--shadow-elevation-subtle);
+  background: var(--color-bg-weak50);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  box-shadow: var(--shadow-elevation-none);
 }
 
 .openui-card--outline {
@@ -58,18 +58,22 @@
 .openui-card--elevated {
   background: var(--color-bg-white0);
   border-color: var(--color-stroke-soft200);
-  box-shadow: var(--shadow-surface-card);
+  box-shadow: var(--shadow-elevation-raised);
 }
 
 .openui-card--selected {
   background: var(--color-primary-alpha10);
-  border-color: var(--color-primary-alpha16);
+  border-color: var(--color-primary-base);
   box-shadow: var(--shadow-elevation-subtle);
 }
 
 .openui-card--selected.openui-card--elevated,
 .openui-card--selected.openui-card--surface {
   box-shadow: var(--shadow-surface-card);
+}
+
+.openui-card--selected.openui-card--elevated {
+  box-shadow: var(--shadow-elevation-raised);
 }
 
 .openui-card--interactive {
@@ -83,9 +87,12 @@
 }
 
 .openui-card--interactive.openui-card--surface:hover,
-.openui-card--interactive.openui-card--elevated:hover,
 .openui-card--interactive.openui-card--selected:hover {
   box-shadow: var(--shadow-surface-card);
+}
+
+.openui-card--interactive.openui-card--elevated:hover {
+  box-shadow: var(--shadow-elevation-raised);
 }
 
 .openui-card--interactive:active {
