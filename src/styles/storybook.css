@@ -259,6 +259,292 @@
   gap: 12px;
 }
 
+/* ─── Button component docs ───────────────────────────── */
+
+.openui-button-matrix {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.2fr) repeat(3, minmax(150px, 1fr));
+  gap: var(--layout-gap-stack-sm);
+  align-items: center;
+}
+
+.openui-button-matrix__header {
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  font-weight: 600;
+  letter-spacing: var(--text-caption1-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-button-matrix__label {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+}
+
+.openui-button-matrix__label span,
+.openui-button-spec-cell__copy span {
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: 600;
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-button-matrix__label p,
+.openui-button-spec-cell__copy p {
+  margin: 0;
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  letter-spacing: var(--text-caption1-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-button-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--layout-gap-stack-md);
+}
+
+.openui-button-spec-cell {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  align-content: start;
+  min-height: var(--space-10);
+}
+
+.openui-button-spec-cell__example {
+  display: flex;
+  align-items: center;
+  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-sm));
+}
+
+.openui-button-spec-cell__copy {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+}
+
+@media (max-width: 760px) {
+  .openui-button-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .openui-button-matrix__header {
+    display: none;
+  }
+}
+
+/* ─── Input component docs ────────────────────────────── */
+
+.openui-input-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--device-content-width)), 1fr));
+  gap: var(--layout-gap-stack-lg);
+  align-items: start;
+}
+
+.openui-input-spec-cell {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  align-content: start;
+  min-width: 0;
+}
+
+.openui-input-spec-cell__example {
+  display: block;
+  min-width: 0;
+}
+
+.openui-input-spec-cell__copy {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+  min-width: 0;
+}
+
+.openui-input-spec-cell__copy span {
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: 600;
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-input-spec-cell__copy p {
+  margin: 0;
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  letter-spacing: var(--text-caption1-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+/* ─── Separator component docs ────────────────────────── */
+
+.openui-separator-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--device-content-width)), 1fr));
+  gap: var(--layout-gap-stack-lg);
+  align-items: start;
+}
+
+.openui-separator-spec-cell {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  align-content: start;
+  min-width: 0;
+}
+
+.openui-separator-spec-cell__example {
+  display: flex;
+  align-items: center;
+  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-sm));
+  min-width: 0;
+}
+
+.openui-separator-spec-cell__copy {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+  min-width: 0;
+}
+
+.openui-separator-spec-cell__copy span {
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: 600;
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-separator-spec-cell__copy p {
+  margin: 0;
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  letter-spacing: var(--text-caption1-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+/* ─── Card component docs ─────────────────────────────── */
+
+.openui-card-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--device-content-width)), 1fr));
+  gap: var(--layout-gap-stack-lg);
+  align-items: start;
+}
+
+.openui-card-spec-cell {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  align-content: start;
+  min-width: 0;
+}
+
+.openui-card-spec-cell__example {
+  display: grid;
+  align-items: start;
+  min-width: 0;
+}
+
+.openui-card-spec-cell__copy {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+  min-width: 0;
+}
+
+.openui-card-spec-cell__copy span {
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: 600;
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-card-spec-cell__copy p {
+  margin: 0;
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  letter-spacing: var(--text-caption1-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-card-demo-media {
+  min-height: calc(var(--layout-touch-target-min) * 3);
+  background: var(--color-primary-alpha10);
+  border-bottom: var(--layout-border-width) solid var(--color-stroke-soft200);
+}
+
+.openui-card-demo-inset {
+  display: grid;
+  gap: var(--layout-gap-stack-xs);
+  padding: var(--layout-inset-container);
+}
+
+.openui-card-demo-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-gap-inline-sm);
+  text-align: start;
+  color: var(--color-text-strong950);
+  font: inherit;
+}
+
+/* ─── ListRow component docs ──────────────────────────── */
+
+.openui-list-row-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--device-content-width)), 1fr));
+  gap: var(--layout-gap-stack-lg);
+  align-items: start;
+}
+
+.openui-list-row-spec-cell {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  align-content: start;
+  min-width: 0;
+}
+
+.openui-list-row-spec-cell__example {
+  display: grid;
+  align-items: start;
+  width: 100%;
+  max-width: var(--device-content-width);
+  min-width: 0;
+}
+
+.openui-list-row-spec-cell__copy {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+  min-width: 0;
+}
+
+.openui-list-row-spec-cell__copy span {
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: 600;
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-list-row-spec-cell__copy p {
+  margin: 0;
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  letter-spacing: var(--text-caption1-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
 .openui-motion-chip {
   display: flex;
   align-items: center;

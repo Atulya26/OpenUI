@@ -76,8 +76,8 @@ export const Overview: Story = {
         <Section title="Buttons">
           <Stack direction="horizontal" gap="sm" wrap>
             <Button>Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="ghost">Ghost</Button>
+            <Button appearance="outline">Outline</Button>
+            <Button appearance="transparent">Transparent</Button>
             <Button variant="destructive">Delete</Button>
             <Button loading>Loading</Button>
           </Stack>

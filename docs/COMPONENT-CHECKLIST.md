@@ -23,16 +23,16 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | Section | Done | Partial | Remaining |
 |---------|------|---------|-----------|
 | Foundations | 9 | 1 | 1 |
-| Layout & structure | 2 | 0 | 9 |
+| Layout & structure | 3 | 0 | 8 |
 | Typography | 1 | 0 | 5 |
-| Actions | 0 | 1 | 7 |
-| Form controls | 2 | 1 | 18 |
+| Actions | 2 | 0 | 6 |
+| Form controls | 3 | 0 | 18 |
 | Selection & chips | 0 | 0 | 6 |
 | Feedback & status | 0 | 0 | 11 |
 | Navigation | 0 | 0 | 9 |
 | Overlays & sheets | 0 | 0 | 11 |
-| Lists & collections | 0 | 1 | 10 |
-| Cards & surfaces | 0 | 1 | 6 |
+| Lists & collections | 1 | 0 | 9 |
+| Cards & surfaces | 1 | 0 | 6 |
 | Media & content | 1 | 0 | 7 |
 | Commerce (optional) | 0 | 0 | 5 |
 | Auth UI (optional) | 0 | 0 | 4 |
@@ -68,7 +68,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | [x] | `Stack` | P0 |
 | [ ] | `Box` / `View` | P1 |
 | [ ] | `Spacer` | P2 |
-| [ ] | `Divider` / `Separator` | P1 |
+| [x] | `Divider` / `Separator` | P1 |
 | [ ] | `ScrollArea` | P1 |
 | [ ] | `Section` | P1 |
 | [ ] | `Inset` | P2 |
@@ -96,8 +96,8 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 | Status | Component | Priority |
 |--------|-----------|----------|
-| [~] | `Button` | P0 — wire shadow/focus tokens |
-| [ ] | `IconButton` | P0 |
+| [x] | `Button` | P0 |
+| [x] | `IconButton` | P0 |
 | [ ] | `ButtonGroup` | P2 |
 | [ ] | `FAB` | P2 |
 | [ ] | `LinkButton` | P2 |
@@ -112,7 +112,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | Status | Component | Priority |
 |--------|-----------|----------|
 | [x] | `Field` | P0 |
-| [~] | `Input` | P0 — wire component shadows |
+| [x] | `Input` | P0 |
 | [ ] | `TextArea` | P1 |
 | [ ] | `SearchBar` | P1 |
 | [ ] | `OTPInput` | P2 |
@@ -211,7 +211,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | Status | Component | Priority |
 |--------|-----------|----------|
 | [ ] | `List` | P1 |
-| [~] | `ListRow` | P0 — leading/trailing slots, swipe |
+| [x] | `ListRow` | P0 — leading/trailing slots, states, sizes |
 | [ ] | `ListSection` | P1 |
 | [ ] | `ListHeader` / `ListFooter` | P2 |
 | [ ] | `Accordion` | P1 |
@@ -227,7 +227,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 | Status | Component | Priority |
 |--------|-----------|----------|
-| [~] | `Card` | P0 — wire `shadow-surface-card` |
+| [x] | `Card` | P0 — variants, padding, radius, selected, interactive, structure slots |
 | [ ] | `Panel` | P1 |
 | [ ] | `AccordionCard` | P2 |
 | [ ] | `MediaCard` | P2 |
@@ -329,9 +329,12 @@ Patterns compose components; extend [PATTERN-RULES.md](./PATTERN-RULES.md).
 
 ### Phase 1 — Unblock every screen (start here)
 
-- [ ] Harden `Button`, `Card`, `ListRow`, `Input`
-- [ ] `Divider`
-- [ ] `IconButton`
+- [x] Harden `Button`
+- [x] `IconButton`
+- [x] Harden `Input`
+- [x] Harden `Card`
+- [x] Harden `ListRow`
+- [x] `Divider`
 - [ ] `NavBar`
 - [ ] `TabBar`
 - [ ] `BottomSheet`

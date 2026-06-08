@@ -8,12 +8,17 @@ import { Loader2 } from '../Icon/icons';
 import { Icon } from '../Icon';
 import './Button.css';
 
-type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'destructive';
-type ButtonSize = 'sm' | 'md' | 'lg';
+type ButtonVariant = 'default' | 'primary' | 'destructive';
+type DeprecatedButtonVariant = 'secondary' | 'ghost';
+type ButtonAppearance = 'fill' | 'outline' | 'transparent';
+type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 
 export type ButtonProps = {
-  variant?: ButtonVariant;
+  variant?: ButtonVariant | DeprecatedButtonVariant;
+  appearance?: ButtonAppearance;
   size?: ButtonSize;
+  fullWidth?: boolean;
+  selected?: boolean;
   leadingIcon?: LucideIcon;
   trailingIcon?: LucideIcon;
   loading?: boolean;
@@ -28,7 +33,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant = 'primary',
+      appearance,
       size = 'md',
+      fullWidth = false,
+      selected,
       leadingIcon,
       trailingIcon,
       loading = false,
@@ -41,6 +49,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const isDisabled = disabled || loading;
+    const resolvedVariant =
+      variant === 'secondary' || variant === 'ghost' ? 'default' : variant;
+    const resolvedAppearance =
+      appearance ?? (variant === 'secondary' ? 'outline' : variant === 'ghost' ? 'transparent' : 'fill');
+    const iconSize = size === 'sm' ? 'sm' : 'md';
 
     return (
       <button
@@ -48,28 +61,32 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         className={cx(
           'openui-button',
-          `openui-button--${variant}`,
+          `openui-button--${resolvedVariant}`,
+          `openui-button--${resolvedAppearance}`,
           `openui-button--${size}`,
+          fullWidth && 'openui-button--full-width',
+          selected && 'openui-button--selected',
           loading && 'openui-button--loading',
           className,
         )}
         disabled={isDisabled}
         aria-busy={loading || undefined}
+        aria-pressed={selected !== undefined ? selected : undefined}
         {...rest}
       >
         {loading ? (
           <Icon
             icon={Loader2}
-            size="md"
+            size={iconSize}
             color="inherit"
             className="openui-button__spinner"
           />
         ) : leadingIcon ? (
-          <Icon icon={leadingIcon} size="md" color="inherit" />
+          <Icon icon={leadingIcon} size={iconSize} color="inherit" />
         ) : null}
         {children ? <span className="openui-button__label">{children}</span> : null}
         {!loading && trailingIcon ? (
-          <Icon icon={trailingIcon} size="md" color="inherit" />
+          <Icon icon={trailingIcon} size={iconSize} color="inherit" />
         ) : null}
       </button>
     );

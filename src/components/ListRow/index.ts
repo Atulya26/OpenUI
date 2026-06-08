@@ -1,1 +1,1 @@
-export { ListRow, type ListRowProps } from './ListRow';
+export { ListRow, type ListRowProps, type ListRowSize } from './ListRow';

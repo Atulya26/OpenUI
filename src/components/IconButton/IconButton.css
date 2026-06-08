@@ -1,0 +1,154 @@
+.openui-icon-button {
+  appearance: none;
+  border: var(--layout-border-width) solid transparent;
+  border-radius: var(--radius-control);
+  min-width: var(--layout-touch-target-min);
+  min-height: var(--layout-touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-elevation-none);
+  transition: var(--motion-transition-feedback);
+  user-select: none;
+}
+
+.openui-icon-button:focus-visible {
+  outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
+  outline-offset: var(--layout-focus-ring-offset);
+  box-shadow: var(--shadow-component-button-primary-focus);
+}
+
+.openui-icon-button:disabled {
+  cursor: not-allowed;
+  background: var(--color-bg-soft200);
+  border-color: transparent;
+  color: var(--color-icon-disabled300);
+  box-shadow: var(--shadow-elevation-none);
+}
+
+.openui-icon-button:active:not(:disabled) {
+  transform: scale(var(--motion-scale-press));
+}
+
+.openui-icon-button--sm {
+  width: var(--layout-touch-target-min);
+  height: var(--layout-touch-target-min);
+}
+
+.openui-icon-button--md {
+  width: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
+  height: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
+}
+
+.openui-icon-button--lg {
+  width: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-sm));
+  height: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-sm));
+}
+
+.openui-icon-button--default.openui-icon-button--fill {
+  background: var(--color-bg-strong950);
+  color: var(--color-text-white0);
+  box-shadow: var(--shadow-component-fancy-button-neutral);
+}
+
+.openui-icon-button--default.openui-icon-button--fill:hover:not(:disabled) {
+  background: var(--color-bg-surface800);
+}
+
+.openui-icon-button--default.openui-icon-button--outline {
+  background: var(--color-bg-white0);
+  color: var(--color-icon-strong950);
+  border-color: var(--color-stroke-soft200);
+  box-shadow: var(--shadow-component-fancy-button-stroke);
+}
+
+.openui-icon-button--default.openui-icon-button--transparent {
+  background: transparent;
+  color: var(--color-icon-strong950);
+}
+
+.openui-icon-button--default.openui-icon-button--outline:hover:not(:disabled),
+.openui-icon-button--default.openui-icon-button--transparent:hover:not(:disabled) {
+  background: var(--color-bg-soft200);
+}
+
+.openui-icon-button--primary.openui-icon-button--fill {
+  background: var(--color-primary-base);
+  color: var(--color-static-white);
+  box-shadow: var(--shadow-component-fancy-button-primary);
+}
+
+.openui-icon-button--primary.openui-icon-button--fill:hover:not(:disabled) {
+  background: var(--color-primary-darker);
+}
+
+.openui-icon-button--primary.openui-icon-button--outline {
+  background: var(--color-bg-white0);
+  color: var(--color-primary-base);
+  border-color: var(--color-primary-base);
+  box-shadow: var(--shadow-component-fancy-button-stroke);
+}
+
+.openui-icon-button--primary.openui-icon-button--transparent {
+  background: transparent;
+  color: var(--color-primary-base);
+}
+
+.openui-icon-button--primary.openui-icon-button--outline:hover:not(:disabled),
+.openui-icon-button--primary.openui-icon-button--transparent:hover:not(:disabled) {
+  background: var(--color-primary-alpha10);
+}
+
+.openui-icon-button--destructive.openui-icon-button--fill {
+  background: var(--color-state-error-base);
+  color: var(--color-static-white);
+  box-shadow: var(--shadow-component-fancy-button-error);
+}
+
+.openui-icon-button--destructive.openui-icon-button--outline {
+  background: var(--color-bg-white0);
+  color: var(--color-state-error-base);
+  border-color: var(--color-state-error-base);
+  box-shadow: var(--shadow-component-fancy-button-stroke);
+}
+
+.openui-icon-button--destructive.openui-icon-button--transparent {
+  background: transparent;
+  color: var(--color-state-error-base);
+}
+
+.openui-icon-button--destructive.openui-icon-button--outline:hover:not(:disabled),
+.openui-icon-button--destructive.openui-icon-button--transparent:hover:not(:disabled) {
+  background: var(--color-state-error-lighter);
+}
+
+.openui-icon-button--default.openui-icon-button--selected:not(:disabled),
+.openui-icon-button--default.openui-icon-button--selected:hover:not(:disabled),
+.openui-icon-button--default.openui-icon-button--selected:focus-visible:not(:disabled),
+.openui-icon-button--primary.openui-icon-button--selected:not(:disabled),
+.openui-icon-button--primary.openui-icon-button--selected:hover:not(:disabled),
+.openui-icon-button--primary.openui-icon-button--selected:focus-visible:not(:disabled) {
+  background: var(--color-primary-dark);
+  border-color: transparent;
+  color: var(--color-static-white);
+  box-shadow: var(--shadow-component-fancy-button-primary);
+}
+
+.openui-icon-button--destructive.openui-icon-button--selected:not(:disabled),
+.openui-icon-button--destructive.openui-icon-button--selected:hover:not(:disabled),
+.openui-icon-button--destructive.openui-icon-button--selected:focus-visible:not(:disabled) {
+  background: var(--color-state-error-dark);
+  border-color: transparent;
+  color: var(--color-static-white);
+  box-shadow: var(--shadow-component-fancy-button-error);
+}
+
+.openui-icon-button--transparent:focus-visible,
+.openui-icon-button--outline:focus-visible {
+  box-shadow: var(--shadow-component-button-important-focus);
+}
+
+.openui-icon-button--destructive:focus-visible {
+  box-shadow: var(--shadow-component-button-error-focus);
+}

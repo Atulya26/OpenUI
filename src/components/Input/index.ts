@@ -1,1 +1,1 @@
-export { Field, Input, type FieldProps, type InputProps } from './Input';
+export { Field, Input, type FieldProps, type InputProps, type InputSize, type InputStatus } from './Input';
