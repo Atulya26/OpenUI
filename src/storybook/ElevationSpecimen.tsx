@@ -1,3 +1,5 @@
+import { zIndexPrimitive } from '@/tokens';
+
 export type ElevationLayerItem = {
   label: string;
   zVar: string;
@@ -5,23 +7,41 @@ export type ElevationLayerItem = {
   tone?: 'neutral' | 'accent' | 'scrim';
 };
 
+function zValueForVar(zVar: string): number | undefined {
+  const key = zVar.replace(/^--z-/, '') as keyof typeof zIndexPrimitive;
+  return zIndexPrimitive[key];
+}
+
 export function ElevationStackDemo({ layers }: { layers: ElevationLayerItem[] }) {
   return (
-    <div className="openui-elevation-stack" aria-hidden>
-      {layers.map((layer, index) => (
-        <div
-          key={layer.zVar}
-          className={`openui-elevation-stack__layer openui-elevation-stack__layer--${layer.tone ?? 'neutral'}`}
-          style={{
-            zIndex: `var(${layer.zVar})`,
-            boxShadow: layer.shadowVar ? `var(${layer.shadowVar})` : undefined,
-            ['--elevation-stack-index' as string]: index,
-          }}
-        >
-          <span className="openui-elevation-stack__label">{layer.label}</span>
-          <code className="openui-elevation-stack__var">{layer.zVar}</code>
-        </div>
-      ))}
+    <div className="openui-elevation-ladder" aria-hidden>
+      <p className="openui-elevation-ladder__hint">Bottom of stack</p>
+      <ol className="openui-elevation-ladder__list">
+        {layers.map((layer, index) => {
+          const zValue = zValueForVar(layer.zVar);
+          return (
+            <li
+              key={layer.zVar}
+              className={`openui-elevation-ladder__step openui-elevation-ladder__step--${layer.tone ?? 'neutral'}`}
+            >
+              <span className="openui-elevation-ladder__rank">{index + 1}</span>
+              <div className="openui-elevation-ladder__body">
+                <span className="openui-elevation-ladder__label">{layer.label}</span>
+                <div className="openui-elevation-ladder__meta">
+                  <code className="openui-elevation-ladder__var">{layer.zVar}</code>
+                  {zValue !== undefined ? (
+                    <span className="openui-elevation-ladder__value">{zValue}</span>
+                  ) : null}
+                </div>
+                {layer.shadowVar ? (
+                  <code className="openui-elevation-ladder__shadow">{layer.shadowVar}</code>
+                ) : null}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+      <p className="openui-elevation-ladder__hint openui-elevation-ladder__hint--top">Top of stack</p>
     </div>
   );
 }

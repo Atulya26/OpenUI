@@ -65,10 +65,10 @@ Shadow values remain in [SHADOW-RULES.md](./SHADOW-RULES.md). This file owns **s
 | 1 | Base content | `--z-base` | `--elevation-flat-shadow` | M3 level 0 |
 | 2 | Sticky chrome | `--z-sticky` | `--elevation-resting-shadow` | Nav bar / tab bar |
 | 3 | Dropdown / menu | `--z-dropdown` | `--elevation-floating-shadow` | M3 menu |
-| 4 | Backdrop | `--z-backdrop` | none | HIG dimming layer |
-| 5 | Sheet | `--z-sheet` | `--elevation-overlay-shadow` | HIG sheet |
-| 6 | Modal | `--z-modal` | `--elevation-modal-shadow` | HIG full-screen cover |
-| 7 | Popover | `--z-popover` | `--elevation-floating-shadow` | HIG popover |
+| 4 | Popover | `--z-popover` | `--elevation-floating-shadow` | HIG popover |
+| 5 | Backdrop | `--z-backdrop` | none | HIG dimming layer |
+| 6 | Sheet | `--z-sheet` | `--elevation-overlay-shadow` | HIG sheet |
+| 7 | Modal | `--z-modal` | `--elevation-modal-shadow` | HIG full-screen cover |
 | 8 | Toast | `--z-toast` | `--elevation-floating-shadow` | M3 snackbar |
 
 ---

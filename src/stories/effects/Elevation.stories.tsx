@@ -27,11 +27,11 @@ type Story = StoryObj<typeof meta>;
 const OVERLAY_STACK: Parameters<typeof ElevationStackDemo>[0]['layers'] = [
   { label: 'Base content', zVar: '--z-base', tone: 'neutral' },
   { label: 'Sticky chrome', zVar: '--z-sticky', shadowVar: '--elevation-resting-shadow', tone: 'neutral' },
-  { label: 'Dropdown', zVar: '--z-dropdown', shadowVar: '--elevation-floating-shadow', tone: 'accent' },
+  { label: 'Dropdown / menu', zVar: '--z-dropdown', shadowVar: '--elevation-floating-shadow', tone: 'accent' },
+  { label: 'Popover', zVar: '--z-popover', shadowVar: '--elevation-floating-shadow', tone: 'accent' },
   { label: 'Backdrop', zVar: '--z-backdrop', tone: 'scrim' },
   { label: 'Sheet', zVar: '--z-sheet', shadowVar: '--elevation-overlay-shadow', tone: 'accent' },
   { label: 'Modal', zVar: '--z-modal', shadowVar: '--elevation-modal-shadow', tone: 'accent' },
-  { label: 'Popover', zVar: '--z-popover', shadowVar: '--elevation-floating-shadow', tone: 'accent' },
   { label: 'Toast', zVar: '--z-toast', shadowVar: '--elevation-floating-shadow', tone: 'accent' },
 ];
 

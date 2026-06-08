@@ -10,10 +10,10 @@ export const zIndexPrimitive = {
   sticky: 10,
   fab: 20,
   dropdown: 100,
+  popover: 150,
   backdrop: 200,
   sheet: 250,
   modal: 300,
-  popover: 400,
   toast: 500,
   max: 999,
 } as const;
