@@ -1,0 +1,221 @@
+.openui-sheet {
+  --openui-sheet-safe-bottom: max(
+    var(--device-safe-area-bottom),
+    env(safe-area-inset-bottom, 0px)
+  );
+
+  pointer-events: none;
+}
+
+.openui-sheet--fixed {
+  position: static;
+}
+
+.openui-sheet--contained {
+  --openui-sheet-safe-bottom: var(--space-0);
+
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-backdrop);
+}
+
+.openui-sheet__scrim {
+  appearance: none;
+  border: 0;
+  padding: var(--space-0);
+  margin: 0;
+  background: color-mix(in srgb, var(--color-static-black) 48%, transparent);
+  cursor: pointer;
+  pointer-events: auto;
+  animation: openui-sheet-scrim-in var(--motion-duration-enter) var(--motion-ease-enter) both;
+}
+
+.openui-sheet--fixed .openui-sheet__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-backdrop);
+}
+
+.openui-sheet--contained .openui-sheet__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-backdrop);
+}
+
+.openui-sheet__panel {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-text-strong950);
+  background: var(--color-bg-white0);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-bottom: 0;
+  border-start-start-radius: var(--radius-surface-lg);
+  border-start-end-radius: var(--radius-surface-lg);
+  box-shadow: var(--shadow-surface-custom-md);
+  transform-origin: center bottom;
+  animation: openui-sheet-panel-in var(--motion-duration-enter) var(--motion-ease-enter) both;
+}
+
+.openui-sheet--fixed .openui-sheet__panel {
+  position: fixed;
+  z-index: var(--z-sheet);
+  inset-inline-start: 50%;
+  bottom: 0;
+  width: min(100%, var(--device-screen-width));
+  max-height: calc(
+    100dvh - max(var(--device-safe-area-top), env(safe-area-inset-top, 0px)) -
+      var(--layout-gap-stack-lg)
+  );
+  transform: translateX(-50%);
+}
+
+.openui-sheet--contained .openui-sheet__panel {
+  position: absolute;
+  z-index: var(--z-sheet);
+  inset-inline: 0;
+  bottom: 0;
+  max-height: 100%;
+}
+
+.openui-sheet--size-content .openui-sheet__panel {
+  height: auto;
+}
+
+.openui-sheet--size-medium .openui-sheet__panel {
+  height: calc(
+    var(--device-content-height) - var(--layout-gap-section-loose) -
+      var(--layout-gap-section)
+  );
+}
+
+.openui-sheet--size-large .openui-sheet__panel {
+  height: calc(var(--device-content-height) - var(--layout-gap-section));
+}
+
+.openui-sheet--size-full .openui-sheet__panel {
+  height: calc(
+    100dvh - max(var(--device-safe-area-top), env(safe-area-inset-top, 0px))
+  );
+}
+
+.openui-sheet--contained.openui-sheet--size-full .openui-sheet__panel {
+  height: 100%;
+}
+
+.openui-sheet__handle-wrap {
+  display: flex;
+  justify-content: center;
+  padding-block-start: var(--layout-gap-stack-xs);
+  padding-block-end: var(--layout-gap-inline-xs);
+}
+
+.openui-sheet__handle {
+  display: block;
+  width: var(--layout-gap-section-loose);
+  height: var(--layout-gap-inline-xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-sub300);
+}
+
+.openui-sheet__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--layout-gap-inline-sm);
+  padding-inline: var(--layout-inset-container);
+  padding-block: var(--layout-gap-stack-xs);
+}
+
+.openui-sheet__title {
+  min-width: 0;
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-sheet__close {
+  justify-self: end;
+}
+
+.openui-sheet__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding-inline: var(--layout-inset-container);
+  padding-block: var(--layout-gap-stack-md);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.openui-sheet__body::-webkit-scrollbar {
+  display: none;
+}
+
+.openui-sheet--no-footer .openui-sheet__body {
+  padding-block-end: calc(
+    var(--layout-gap-stack-md) + var(--openui-sheet-safe-bottom)
+  );
+}
+
+.openui-sheet__footer {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--layout-gap-inline-sm);
+  padding-inline: var(--layout-inset-container);
+  padding-block-start: var(--layout-gap-inline-sm);
+  padding-block-end: calc(
+    var(--layout-gap-stack-sm) + var(--openui-sheet-safe-bottom)
+  );
+  border-top: var(--layout-border-width) solid var(--color-stroke-soft200);
+  background: var(--color-bg-white0);
+}
+
+.openui-sheet__footer > .openui-button {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.openui-sheet__footer > .openui-button:only-child {
+  width: 100%;
+  flex-basis: 100%;
+}
+
+@keyframes openui-sheet-scrim-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes openui-sheet-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.openui-sheet--fixed .openui-sheet__panel {
+  animation-name: openui-sheet-fixed-panel-in;
+}
+
+@keyframes openui-sheet-fixed-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openui-sheet__scrim,
+  .openui-sheet__panel {
+    animation-duration: var(--motion-duration-instant);
+  }
+}

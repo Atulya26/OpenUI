@@ -70,6 +70,9 @@ Controls should feel compact but tappable:
 - default form controls use the regular size
 - large controls are reserved for setup flows or prominent one-off actions
 - a single CTA in a card should fill the card content width
+- compact controls such as chips, checkbox marks, radio marks, and badges should not visually fill the whole tap zone
+- keep the tappable area at least 44px, but let the visible control remain smaller when the component lives in dense mobile rows
+- hover on touch-first selection controls should be subtle: prefer a stroke or very quiet surface shift over a strong fill
 
 ---
 

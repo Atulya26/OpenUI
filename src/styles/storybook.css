@@ -126,7 +126,7 @@
 
 /* ─── Badges & chips ───────────────────────────────────── */
 
-.openui-badge {
+.openui-doc-badge {
   flex-shrink: 0;
   padding: var(--layout-gap-inline-xs) var(--layout-gap-stack-xs);
   border-radius: var(--radius-pill);
@@ -140,7 +140,7 @@
   border: 1px solid var(--color-primary-alpha16);
 }
 
-.openui-badge--muted {
+.openui-doc-badge--muted {
   color: var(--color-text-sub600);
   background: var(--color-bg-soft200);
   border-color: var(--color-stroke-soft200);

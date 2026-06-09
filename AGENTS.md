@@ -27,6 +27,7 @@ You are working in a **mobile-first** React design system. **Read this file firs
 | Motion, transitions, animation | [docs/MOTION-RULES.md](docs/MOTION-RULES.md) |
 | Visual taste, state language, Storybook presentation | [docs/VISUAL-LANGUAGE.md](docs/VISUAL-LANGUAGE.md) |
 | A DS component (`src/components/`) | [docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md) · [docs/COMPONENT-CHECKLIST.md](docs/COMPONENT-CHECKLIST.md) + all relevant rows above |
+| Parallel component batch work | [docs/COMPONENT-BATCH-WORKFLOW.md](docs/COMPONENT-BATCH-WORKFLOW.md) |
 | A screen / form / list / flow | [docs/PATTERN-RULES.md](docs/PATTERN-RULES.md) + component + foundational rules |
 
 Each `*-RULES.md` has: **hard rules → cheat sheet → decisions → AI checklist → file map**.

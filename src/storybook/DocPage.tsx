@@ -65,7 +65,7 @@ export function Section({
             <p className="openui-section__description">{description}</p>
           ) : null}
         </div>
-        {meta ? <span className="openui-badge">{meta}</span> : null}
+        {meta ? <span className="openui-doc-badge">{meta}</span> : null}
       </div>
       <div className="openui-section__body">{children}</div>
     </section>

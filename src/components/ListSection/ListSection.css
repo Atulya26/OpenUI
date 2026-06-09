@@ -1,0 +1,96 @@
+.openui-list-section {
+  --openui-list-section-inset: var(--layout-inset-container);
+
+  display: grid;
+  gap: var(--layout-gap-stack-xs);
+  min-width: 0;
+  color: var(--color-text-strong950);
+}
+
+.openui-list-section--inset-none {
+  --openui-list-section-inset: var(--space-0);
+}
+
+.openui-list-section--inset-sm {
+  --openui-list-section-inset: var(--layout-gap-inline-sm);
+}
+
+.openui-list-section--inset-md {
+  --openui-list-section-inset: var(--layout-inset-container);
+}
+
+.openui-list-section__title,
+.openui-list-section__footer {
+  min-width: 0;
+  padding-inline: var(--openui-list-section-inset);
+  font-family: var(--text-footnote-font-family);
+  font-size: var(--text-footnote-font-size);
+  line-height: var(--text-footnote-line-height);
+  font-weight: var(--text-footnote-font-weight);
+  letter-spacing: var(--text-footnote-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-list-section__footer {
+  color: var(--color-text-soft400);
+}
+
+.openui-list-section__group {
+  min-width: 0;
+  overflow: hidden;
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  transition: var(--motion-transition-surface);
+}
+
+.openui-list-section--surface .openui-list-section__group {
+  background: var(--color-bg-white0);
+  box-shadow: var(--shadow-surface-card);
+}
+
+.openui-list-section--soft .openui-list-section__group {
+  background: var(--color-bg-weak50);
+  box-shadow: var(--shadow-elevation-none);
+}
+
+.openui-list-section--outline .openui-list-section__group {
+  background: transparent;
+  box-shadow: var(--shadow-elevation-none);
+}
+
+.openui-list-section__group > .openui-list-row {
+  background: transparent;
+  padding-inline: var(--openui-list-section-inset);
+}
+
+.openui-list-section__group > .openui-list-row:last-child,
+.openui-list-section__group > .openui-list-row--no-divider {
+  border-bottom-color: transparent;
+}
+
+.openui-list-section__group > .openui-list-row--selected {
+  background: var(--color-primary-alpha10);
+  border-bottom-color: var(--color-primary-base);
+}
+
+.openui-list-section__group > .openui-list-row--selected:hover:not(:disabled):not(.openui-list-row--disabled) {
+  background: var(--color-primary-alpha16);
+}
+
+.openui-list-section__group > .openui-list-row:disabled,
+.openui-list-section__group > .openui-list-row--disabled,
+.openui-list-section__group > .openui-list-row[aria-disabled='true'] {
+  background: var(--color-bg-soft200);
+}
+
+.openui-list-section__group > :not(.openui-list-row) {
+  padding-inline: var(--openui-list-section-inset);
+}
+
+.openui-list-section__group > :not(.openui-list-row):first-child {
+  padding-top: var(--layout-gap-stack-sm);
+}
+
+.openui-list-section__group > :not(.openui-list-row):last-child {
+  padding-bottom: var(--layout-gap-stack-sm);
+}

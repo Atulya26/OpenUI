@@ -26,12 +26,12 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | Layout & structure | 3 | 0 | 8 |
 | Typography | 1 | 0 | 5 |
 | Actions | 2 | 0 | 6 |
-| Form controls | 3 | 0 | 18 |
-| Selection & chips | 0 | 0 | 6 |
-| Feedback & status | 0 | 0 | 11 |
-| Navigation | 0 | 0 | 9 |
-| Overlays & sheets | 0 | 0 | 11 |
-| Lists & collections | 1 | 0 | 9 |
+| Form controls | 10 | 0 | 15 |
+| Selection & chips | 3 | 0 | 3 |
+| Feedback & status | 2 | 0 | 9 |
+| Navigation | 3 | 0 | 6 |
+| Overlays & sheets | 1 | 0 | 10 |
+| Lists & collections | 2 | 0 | 8 |
 | Cards & surfaces | 1 | 0 | 6 |
 | Media & content | 1 | 0 | 7 |
 | Commerce (optional) | 0 | 0 | 5 |
@@ -113,21 +113,21 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 |--------|-----------|----------|
 | [x] | `Field` | P0 |
 | [x] | `Input` | P0 |
-| [ ] | `TextArea` | P1 |
-| [ ] | `SearchBar` | P1 |
+| [x] | `TextArea` | P1 |
+| [x] | `SearchBar` | P1 |
 | [ ] | `OTPInput` | P2 |
 | [ ] | `PasswordInput` | P2 |
 | [ ] | `PhoneInput` | P3 |
 | [ ] | `NumberInput` | P2 |
-| [ ] | `Select` | P1 |
+| [x] | `Select` | P1 |
 | [ ] | `Combobox` | P3 |
 | [ ] | `Autocomplete` | P3 |
-| [ ] | `Checkbox` | P1 |
+| [x] | `Checkbox` | P1 |
 | [ ] | `CheckboxGroup` | P2 |
-| [ ] | `Radio` | P1 |
+| [x] | `Radio` | P1 |
 | [ ] | `RadioGroup` | P1 |
-| [ ] | `Switch` | P1 |
-| [ ] | `SegmentedControl` | P1 |
+| [x] | `Switch` | P1 |
+| [x] | `SegmentedControl` | P1 |
 | [ ] | `Slider` | P2 |
 | [ ] | `Stepper` | P2 |
 | [ ] | `DatePicker` | P2 |
@@ -143,10 +143,10 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 | Status | Component | Priority |
 |--------|-----------|----------|
-| [ ] | `Chip` | P1 |
+| [x] | `Chip` | P1 |
 | [ ] | `Tag` | P2 |
-| [ ] | `Badge` | P1 |
-| [ ] | `Avatar` | P1 |
+| [x] | `Badge` | P1 |
+| [x] | `Avatar` | P1 |
 | [ ] | `AvatarGroup` | P2 |
 | [ ] | `Presence` | P3 |
 
@@ -157,8 +157,8 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | Status | Component | Priority |
 |--------|-----------|----------|
 | [ ] | `Alert` | P1 |
-| [ ] | `Banner` | P1 |
-| [ ] | `Toast` / `Snackbar` | P1 |
+| [x] | `Banner` | P1 |
+| [x] | `Toast` / `Snackbar` | P1 |
 | [ ] | `InlineMessage` | P1 |
 | [ ] | `Progress` | P1 |
 | [ ] | `Spinner` / `ActivityIndicator` | P1 |
@@ -175,9 +175,9 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 | Status | Component | Priority |
 |--------|-----------|----------|
-| [ ] | `NavBar` / `TopBar` | P0 |
-| [ ] | `LargeTitleNavBar` | P1 |
-| [ ] | `TabBar` | P0 |
+| [x] | `NavBar` / `TopBar` | P0 |
+| [x] | `LargeTitleNavBar` | P1 - supported by `NavigationBar size="large"` |
+| [x] | `TabBar` | P0 |
 | [ ] | `Toolbar` | P2 |
 | [ ] | `BackButton` | P1 |
 | [ ] | `Breadcrumb` | P3 |
@@ -193,7 +193,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 |--------|-----------|----------|
 | [ ] | `Modal` | P1 |
 | [ ] | `AlertDialog` | P1 |
-| [ ] | `BottomSheet` | P0 |
+| [x] | `BottomSheet` | P0 - `Sheet` bottom placement |
 | [ ] | `ActionSheet` | P1 |
 | [ ] | `Popover` | P3 |
 | [ ] | `Tooltip` | P2 |
@@ -212,7 +212,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 |--------|-----------|----------|
 | [ ] | `List` | P1 |
 | [x] | `ListRow` | P0 — leading/trailing slots, states, sizes |
-| [ ] | `ListSection` | P1 |
+| [x] | `ListSection` | P1 — grouped mobile list wrapper |
 | [ ] | `ListHeader` / `ListFooter` | P2 |
 | [ ] | `Accordion` | P1 |
 | [ ] | `Timeline` | P3 |
@@ -335,27 +335,27 @@ Patterns compose components; extend [PATTERN-RULES.md](./PATTERN-RULES.md).
 - [x] Harden `Card`
 - [x] Harden `ListRow`
 - [x] `Divider`
-- [ ] `NavBar`
-- [ ] `TabBar`
-- [ ] `BottomSheet`
+- [x] `NavBar`
+- [x] `TabBar`
+- [x] `BottomSheet`
 - [ ] `Modal`
 - [ ] `Alert`
-- [ ] `Toast`
+- [x] `Toast`
 - [ ] `Spinner`
-- [ ] `Badge`
-- [ ] `Avatar`
-- [ ] `Checkbox`
-- [ ] `Switch`
-- [ ] `Select`
+- [x] `Badge`
+- [x] `Avatar`
+- [x] `Checkbox`
+- [x] `Switch`
+- [x] `Select`
 
 ### Phase 2 — Forms & settings apps
 
-- [ ] `TextArea`
-- [ ] `SearchBar`
-- [ ] `Radio` + `RadioGroup`
-- [ ] `SegmentedControl`
+- [x] `TextArea`
+- [x] `SearchBar`
+- [~] `Radio` + `RadioGroup`
+- [x] `SegmentedControl`
 - [ ] `Slider`
-- [ ] `ListSection`
+- [x] `ListSection`
 - [ ] `Accordion`
 - [ ] `EmptyState`
 - [ ] `Skeleton`

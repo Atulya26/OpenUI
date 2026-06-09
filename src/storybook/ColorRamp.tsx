@@ -19,7 +19,7 @@ export function ColorRamp({
             <p className="openui-ramp__desc">{description}</p>
           ) : null}
         </div>
-        <span className="openui-badge openui-badge--muted">
+        <span className="openui-doc-badge openui-doc-badge--muted">
           {swatches.length} steps
         </span>
       </div>

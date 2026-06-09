@@ -1,0 +1,129 @@
+.openui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  max-width: 100%;
+  border: var(--layout-border-width) solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-caption1-letter-spacing);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  user-select: none;
+  vertical-align: middle;
+  gap: var(--layout-gap-inline-xs);
+}
+
+.openui-badge--sm {
+  padding-block: calc(var(--layout-gap-inline-xs) / 2);
+  padding-inline: var(--layout-gap-stack-xs);
+  font-family: var(--text-caption2-font-family);
+  font-size: var(--text-caption2-font-size);
+  line-height: var(--text-caption2-line-height);
+  letter-spacing: var(--text-caption2-letter-spacing);
+}
+
+.openui-badge--md {
+  padding-block: calc(var(--layout-gap-inline-xs) / 2);
+  padding-inline: var(--layout-gap-stack-xs);
+}
+
+.openui-badge__label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.openui-badge--neutral.openui-badge--soft {
+  background: var(--color-bg-soft200);
+  border-color: var(--color-stroke-soft200);
+  color: var(--color-text-sub600);
+}
+
+.openui-badge--neutral.openui-badge--outline {
+  background: transparent;
+  border-color: var(--color-stroke-sub300);
+  color: var(--color-text-strong950);
+}
+
+.openui-badge--neutral.openui-badge--solid {
+  background: var(--color-bg-strong950);
+  border-color: transparent;
+  color: var(--color-text-white0);
+}
+
+.openui-badge--primary.openui-badge--soft {
+  background: var(--color-primary-alpha10);
+  border-color: var(--color-primary-alpha16);
+  color: var(--color-primary-base);
+}
+
+.openui-badge--primary.openui-badge--outline {
+  background: transparent;
+  border-color: var(--color-primary-base);
+  color: var(--color-primary-base);
+}
+
+.openui-badge--primary.openui-badge--solid {
+  background: var(--color-primary-base);
+  border-color: transparent;
+  color: var(--color-static-white);
+}
+
+.openui-badge--success.openui-badge--soft {
+  background: var(--color-state-success-lighter);
+  border-color: var(--color-state-success-light);
+  color: var(--color-state-success-dark);
+}
+
+.openui-badge--success.openui-badge--outline {
+  background: transparent;
+  border-color: var(--color-state-success-base);
+  color: var(--color-state-success-dark);
+}
+
+.openui-badge--success.openui-badge--solid {
+  background: var(--color-state-success-base);
+  border-color: transparent;
+  color: var(--color-static-black);
+}
+
+.openui-badge--warning.openui-badge--soft {
+  background: var(--color-state-warning-lighter);
+  border-color: var(--color-state-warning-light);
+  color: var(--color-state-warning-dark);
+}
+
+.openui-badge--warning.openui-badge--outline {
+  background: transparent;
+  border-color: var(--color-state-warning-base);
+  color: var(--color-state-warning-dark);
+}
+
+.openui-badge--warning.openui-badge--solid {
+  background: var(--color-state-warning-base);
+  border-color: transparent;
+  color: var(--color-static-black);
+}
+
+.openui-badge--error.openui-badge--soft {
+  background: var(--color-state-error-lighter);
+  border-color: var(--color-state-error-light);
+  color: var(--color-state-error-dark);
+}
+
+.openui-badge--error.openui-badge--outline {
+  background: transparent;
+  border-color: var(--color-state-error-base);
+  color: var(--color-state-error-dark);
+}
+
+.openui-badge--error.openui-badge--solid {
+  background: var(--color-state-error-base);
+  border-color: transparent;
+  color: var(--color-static-white);
+}

@@ -76,6 +76,7 @@ npm run storybook   # http://localhost:6006
 | [SHADOW-RULES.md](./SHADOW-RULES.md) | OpenUI shadow effect styles, component shadows |
 | [ELEVATION-RULES.md](./ELEVATION-RULES.md) | Z-index scale, overlay stack, M3 elevation levels |
 | [COMPONENT-CHECKLIST.md](./COMPONENT-CHECKLIST.md) | **Master component build checklist** (track progress) |
+| [COMPONENT-BATCH-WORKFLOW.md](./COMPONENT-BATCH-WORKFLOW.md) | Parallel component batch workflow and worker ownership rules |
 | [RADIUS-RULES.md](./RADIUS-RULES.md) | Corner radius scale, semantic roles |
 | [MOTION-RULES.md](./MOTION-RULES.md) | Motion duration, easing, transition contracts, reduced motion |
 | [VISUAL-LANGUAGE.md](./VISUAL-LANGUAGE.md) | OpenUI taste contract, surface hierarchy, state language, Storybook presentation |

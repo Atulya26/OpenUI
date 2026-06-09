@@ -50,6 +50,7 @@ export type ButtonProps = {
 - **Variants** → semantic color roles, not raw palette  
 - **Sizes** → map to `layout` + `typography` tokens internally  
 - **className** → allowed for layout positioning only; not for changing brand colors  
+- **Compact mobile controls** → the hit target must be at least 44px, but the visible mark/pill does not need to be 44px tall. Use an expanded wrapper or pseudo hit area for compact chips, checkbox marks, radio marks, and trailing row controls.
 
 ---
 
