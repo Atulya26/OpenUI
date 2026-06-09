@@ -78,10 +78,19 @@ for (const variable of [
   '--device-safe-area-top',
   '--device-safe-area-bottom',
   '--device-content-width',
+  '--control-height-sm',
+  '--control-height-md',
+  '--control-height-lg',
+  '--control-pad-x-sm',
+  '--control-pad-x-md',
+  '--control-pad-x-lg',
 ]) {
   if (!layoutCss.includes(variable)) {
     fail(`src/tokens/layout.css is missing ${variable}`);
   }
+}
+if (!layoutCss.includes('[data-density="compact"]')) {
+  fail('src/tokens/layout.css must define a [data-density="compact"] override block');
 }
 
 const typographyCss = read('src/tokens/typography.css');
@@ -223,6 +232,31 @@ for (const [file, expected] of [
     if (!source.includes(snippet)) {
       fail(`${file} must include ${snippet}`);
     }
+  }
+}
+
+for (const file of [
+  'src/components/Button/Button.css',
+  'src/components/Input/Input.css',
+  'src/components/Select/Select.css',
+  'src/components/SearchBar/SearchBar.css',
+  'src/components/IconButton/IconButton.css',
+]) {
+  const source = read(file);
+  if (!source.includes('var(--control-height-')) {
+    fail(`${file} must size controls from --control-height-* tokens`);
+  }
+}
+
+for (const file of [
+  'src/components/Button/Button.css',
+  'src/components/Input/Input.css',
+  'src/components/Select/Select.css',
+  'src/components/SearchBar/SearchBar.css',
+]) {
+  const source = read(file);
+  if (!source.includes('var(--control-pad-x-')) {
+    fail(`${file} must pad controls from --control-pad-x-* tokens`);
   }
 }
 

@@ -95,6 +95,33 @@ export const layoutFixed = {
   columnsExpanded: 2,
 } as const;
 
+/**
+ * Control sizing — shared height & horizontal padding scale for interactive
+ * controls (Button, Input, Select, SearchBar, IconButton). One scale so every
+ * control reads the same `sm | md | lg`. Values are px. Compact overrides live
+ * in layout.css under `[data-density="compact"]`.
+ */
+export const layoutControl = {
+  height: {
+    /** 44px — Apple HIG touch target */
+    sm: 44,
+    /** 48px */
+    md: 48,
+    /** 56px */
+    lg: 56,
+  },
+  /** Horizontal padding inside a control */
+  padX: {
+    /** 12px */
+    sm: 12,
+    /** 16px */
+    md: 16,
+    /** 20px */
+    lg: 20,
+  },
+} as const;
+
+export type LayoutControlSize = keyof typeof layoutControl.height;
 export type LayoutInsetToken = keyof typeof layoutInset;
 export type LayoutGapInlineToken = keyof typeof layoutGapInline;
 export type LayoutGapStackToken = keyof typeof layoutGapStack;

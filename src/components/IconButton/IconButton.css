@@ -32,18 +32,24 @@
 }
 
 .openui-icon-button--sm {
-  width: var(--layout-touch-target-min);
-  height: var(--layout-touch-target-min);
+  min-width: var(--control-height-sm);
+  min-height: var(--control-height-sm);
+  width: var(--control-height-sm);
+  height: var(--control-height-sm);
 }
 
 .openui-icon-button--md {
-  width: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
-  height: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
+  min-width: var(--control-height-md);
+  min-height: var(--control-height-md);
+  width: var(--control-height-md);
+  height: var(--control-height-md);
 }
 
 .openui-icon-button--lg {
-  width: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-sm));
-  height: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-sm));
+  min-width: var(--control-height-lg);
+  min-height: var(--control-height-lg);
+  width: var(--control-height-lg);
+  height: var(--control-height-lg);
 }
 
 .openui-icon-button--default.openui-icon-button--fill {

@@ -39,18 +39,18 @@
 }
 
 .openui-select--sm .openui-select__shell {
-  min-height: var(--layout-touch-target-min);
-  padding-inline-start: var(--layout-inset-screen-x-compact);
+  min-height: var(--control-height-sm);
+  padding-inline-start: var(--control-pad-x-sm);
 }
 
 .openui-select--md .openui-select__shell {
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
-  padding-inline-start: var(--layout-inset-container);
+  min-height: var(--control-height-md);
+  padding-inline-start: var(--control-pad-x-md);
 }
 
 .openui-select--lg .openui-select__shell {
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-xs));
-  padding-inline-start: calc(var(--layout-inset-container) + var(--layout-gap-inline-sm));
+  min-height: var(--control-height-lg);
+  padding-inline-start: var(--control-pad-x-lg);
 }
 
 .openui-select__shell:hover:not(:disabled):not(:focus-visible) {

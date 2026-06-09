@@ -51,7 +51,7 @@ export {
 } from './NavigationBar';
 export { Radio, type RadioProps, type RadioSize } from './Radio';
 export { SearchBar, type SearchBarProps, type SearchBarSize, type SearchBarStatus } from './SearchBar';
-export { Screen, type ScreenProps } from './Screen';
+export { Screen, type ScreenDensity, type ScreenProps } from './Screen';
 export {
   Select,
   type SelectOption,

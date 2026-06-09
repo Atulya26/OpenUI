@@ -38,24 +38,27 @@
 }
 
 .openui-button--sm {
-  padding-block: var(--layout-gap-inline-xs);
-  padding-inline: var(--layout-inset-container);
+  min-height: var(--control-height-sm);
+  padding-block: 0;
+  padding-inline: var(--control-pad-x-sm);
 }
 
 .openui-button--md {
-  padding-block: var(--layout-gap-inline-sm);
-  padding-inline: var(--layout-inset-container);
+  min-height: var(--control-height-md);
+  padding-block: 0;
+  padding-inline: var(--control-pad-x-md);
 }
 
 .openui-button--lg {
-  padding-block: var(--layout-gap-stack-sm);
-  padding-inline: var(--layout-gap-section);
+  min-height: var(--control-height-lg);
+  padding-block: 0;
+  padding-inline: var(--control-pad-x-lg);
 }
 
 .openui-button--xl {
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
-  padding-block: var(--layout-gap-stack-sm);
-  padding-inline: var(--layout-gap-section);
+  min-height: var(--control-height-lg);
+  padding-block: 0;
+  padding-inline: var(--control-pad-x-lg);
   width: 100%;
 }
 

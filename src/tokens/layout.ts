@@ -10,6 +10,7 @@ import {
   iphoneStatusBarHeight,
 } from './device/iphone';
 import {
+  layoutControl,
   layoutFixed,
   layoutGapInline,
   layoutGapSection,
@@ -58,6 +59,14 @@ export const layoutTokens = {
     md: `${radiusPrimitive[layoutRadiusSemantic.md]}px`,
     lg: `${radiusPrimitive[layoutRadiusSemantic.lg]}px`,
     full: `${radiusPrimitive[layoutRadiusSemantic.full]}px`,
+  },
+  control: {
+    heightSm: `${layoutControl.height.sm}px`,
+    heightMd: `${layoutControl.height.md}px`,
+    heightLg: `${layoutControl.height.lg}px`,
+    padXSm: `${layoutControl.padX.sm}px`,
+    padXMd: `${layoutControl.padX.md}px`,
+    padXLg: `${layoutControl.padX.lg}px`,
   },
   fixed: {
     touchTargetMin: `${layoutFixed.touchTargetMin}px`,
@@ -122,6 +131,14 @@ export function buildLayoutCssVariables(): string {
     `  --layout-gap-stack-lg: ${layoutTokens.gapStack.lg};`,
     `  --layout-gap-section: ${layoutTokens.gapSection.default};`,
     `  --layout-gap-section-loose: ${layoutTokens.gapSection.loose};`,
+    '',
+    '  /* Control sizing — shared height & horizontal padding scale */',
+    `  --control-height-sm: ${layoutTokens.control.heightSm};`,
+    `  --control-height-md: ${layoutTokens.control.heightMd};`,
+    `  --control-height-lg: ${layoutTokens.control.heightLg};`,
+    `  --control-pad-x-sm: ${layoutTokens.control.padXSm};`,
+    `  --control-pad-x-md: ${layoutTokens.control.padXMd};`,
+    `  --control-pad-x-lg: ${layoutTokens.control.padXLg};`,
     '',
     `  --layout-border-width: ${layoutTokens.fixed.borderWidth};`,
     `  --layout-touch-target-min: ${layoutTokens.fixed.touchTargetMin};`,

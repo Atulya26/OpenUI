@@ -34,6 +34,14 @@
   --layout-gap-section: var(--space-7);
   --layout-gap-section-loose: var(--space-8);
 
+  /* Control sizing — shared height & horizontal padding scale */
+  --control-height-sm: var(--layout-touch-target-min); /* 44px */
+  --control-height-md: var(--space-9); /* 48px */
+  --control-height-lg: 56px;
+  --control-pad-x-sm: var(--space-3); /* 12px */
+  --control-pad-x-md: var(--space-4); /* 16px */
+  --control-pad-x-lg: var(--space-5); /* 20px */
+
   --layout-border-width: 1px;
   --layout-touch-target-min: 44px;
   --layout-focus-ring-width: 2px;
@@ -57,4 +65,16 @@
   --device-dynamic-island-width: 154px;
   --device-dynamic-island-height: 37px;
   --device-home-indicator-height: 34px;
+}
+
+/* Compact density — tighten controls for small screens.
+   NOTE: sm/md drop below the 44px touch target on purpose; only
+   production-safe once Phase 2 expanded hit-area lands. */
+[data-density="compact"] {
+  --control-height-sm: 36px;
+  --control-height-md: var(--space-8); /* 40px */
+  --control-height-lg: var(--layout-touch-target-min); /* 44px */
+  --control-pad-x-sm: var(--space-2); /* 8px */
+  --control-pad-x-md: var(--space-3); /* 12px */
+  --control-pad-x-lg: var(--space-4); /* 16px */
 }

@@ -21,6 +21,7 @@ You are working in a **mobile-first** React design system. **Read this file firs
 | Icons | [docs/ICON-RULES.md](docs/ICON-RULES.md) |
 | iPhone screen, safe areas, Figma iOS 26 layout | [docs/DEVICE-RULES.md](docs/DEVICE-RULES.md) · [docs/FIGMA-IOS26-REFERENCE.md](docs/FIGMA-IOS26-REFERENCE.md) |
 | Spacing, insets, grid, touch targets | [docs/LAYOUT-RULES.md](docs/LAYOUT-RULES.md) |
+| Control sizing, density | [docs/SIZING-RULES.md](docs/SIZING-RULES.md) |
 | Shadows | [docs/SHADOW-RULES.md](docs/SHADOW-RULES.md) |
 | Z-index, elevation layering | [docs/ELEVATION-RULES.md](docs/ELEVATION-RULES.md) |
 | Corner radius | [docs/RADIUS-RULES.md](docs/RADIUS-RULES.md) |

@@ -20,6 +20,7 @@ Entry point from repo root: **[AGENTS.md](../AGENTS.md)** (short summary + link 
 | Icons | [ICON-RULES.md](./ICON-RULES.md) |
 | iPhone canvas, safe areas, Figma iOS 26 sync | [DEVICE-RULES.md](./DEVICE-RULES.md) · [FIGMA-IOS26-REFERENCE.md](./FIGMA-IOS26-REFERENCE.md) |
 | Spacing / insets / grid | [LAYOUT-RULES.md](./LAYOUT-RULES.md) |
+| Control sizing / density | [SIZING-RULES.md](./SIZING-RULES.md) |
 | Shadows | [SHADOW-RULES.md](./SHADOW-RULES.md) |
 | Z-index / elevation layering | [ELEVATION-RULES.md](./ELEVATION-RULES.md) |
 | Corner radius | [RADIUS-RULES.md](./RADIUS-RULES.md) |
@@ -73,6 +74,7 @@ npm run storybook   # http://localhost:6006
 | [ICON-RULES.md](./ICON-RULES.md) | Lucide, `Icon` wrapper, sizes, a11y, tree-shaking |
 | [DEVICE-RULES.md](./DEVICE-RULES.md) | iPhone 402×874, safe areas, Dynamic Island |
 | [LAYOUT-RULES.md](./LAYOUT-RULES.md) | Spacing scale, insets, gaps, touch targets, grid |
+| [SIZING-RULES.md](./SIZING-RULES.md) | Shared control heights, horizontal padding, density |
 | [SHADOW-RULES.md](./SHADOW-RULES.md) | OpenUI shadow effect styles, component shadows |
 | [ELEVATION-RULES.md](./ELEVATION-RULES.md) | Z-index scale, overlay stack, M3 elevation levels |
 | [COMPONENT-CHECKLIST.md](./COMPONENT-CHECKLIST.md) | **Master component build checklist** (track progress) |

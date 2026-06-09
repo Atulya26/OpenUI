@@ -21,14 +21,15 @@
 }
 
 .openui-search-bar--sm .openui-search-bar__field {
-  padding-inline-start: var(--layout-inset-screen-x-compact);
+  min-height: var(--control-height-sm);
+  padding-inline-start: var(--control-pad-x-sm);
   padding-inline-end: var(--layout-gap-inline-xs);
   gap: var(--layout-gap-inline-xs);
 }
 
 .openui-search-bar--md .openui-search-bar__field {
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
-  padding-inline-start: var(--layout-inset-container);
+  min-height: var(--control-height-md);
+  padding-inline-start: var(--control-pad-x-md);
   padding-inline-end: var(--layout-gap-inline-xs);
   gap: var(--layout-gap-inline-sm);
 }

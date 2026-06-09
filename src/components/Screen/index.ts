@@ -1,1 +1,1 @@
-export { Screen, type ScreenProps } from './Screen';
+export { Screen, type ScreenDensity, type ScreenProps } from './Screen';
