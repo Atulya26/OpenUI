@@ -177,6 +177,7 @@
   line-height: var(--text-headline-line-height);
   font-weight: var(--text-headline-font-weight);
   letter-spacing: var(--text-headline-letter-spacing);
+  font-variant-numeric: var(--text-numeric-tabular);
   color: var(--color-text-strong950);
 }
 
@@ -187,6 +188,7 @@
   line-height: var(--text-footnote-line-height);
   font-weight: var(--text-footnote-font-weight);
   letter-spacing: var(--text-footnote-letter-spacing);
+  font-variant-numeric: var(--text-numeric-tabular);
   color: var(--color-text-sub600);
 }
 
@@ -239,6 +241,7 @@
   line-height: var(--text-headline-line-height);
   font-weight: var(--text-headline-font-weight);
   letter-spacing: var(--text-headline-letter-spacing);
+  font-variant-numeric: var(--text-numeric-tabular);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

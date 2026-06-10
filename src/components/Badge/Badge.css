@@ -11,7 +11,7 @@
   line-height: var(--text-caption1-line-height);
   font-weight: var(--text-headline-font-weight);
   letter-spacing: var(--text-caption1-letter-spacing);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: var(--text-numeric-tabular);
   white-space: nowrap;
   user-select: none;
   vertical-align: middle;

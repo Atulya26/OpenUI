@@ -9,7 +9,7 @@ Reference: [Apple HIG Typography](https://developer.apple.com/design/human-inter
 
 ## Hard rules (never break)
 
-1. **Inter & Inter Display only** — No SF Pro, Roboto, system-ui as primary brand fonts in product UI. Tokens load Inter from Google Fonts in Storybook/global CSS.
+1. **Inter & Inter Display only** — No SF Pro, Roboto, system-ui as primary brand fonts in product UI. OpenUI self-hosts font files from `src/assets/fonts/`; do not add external font imports in components or Storybook.
 
 2. **Family split at 20px** — **Inter** for sizes ≤19px (body UI). **Inter Display** for sizes ≥20px (titles). Enforced in `textStyles` / `--text-*` variables.
 
@@ -42,6 +42,11 @@ Reference: [Apple HIG Typography](https://developer.apple.com/design/human-inter
 | `tabLabel` | caption1 | Tab bar |
 | `badge` | caption2 | Badges, smallest UI text |
 | `button` | headline | Button label (semibold) |
+
+### Emphasis and numerals
+
+- Use `<Text emphasized>` for title roles that need the stronger product-screen weight. It maps only title roles to `--text-title*-emphasized-font-weight`.
+- Use `font-variant-numeric: var(--text-numeric-tabular)` for badges, trailing values, progress/toast values, countdowns, and other changing numbers.
 
 ### CSS usage
 
@@ -92,6 +97,8 @@ Full table: Storybook → Foundational → Typography → Primitives.
 - [ ] All five properties (family, size, line-height, weight, tracking) from tokens
 - [ ] No font sizes outside 11–36px ramp
 - [ ] Display family only on ≥20px styles
+- [ ] Title emphasis uses `Text emphasized` or `--text-title*-emphasized-font-weight`
+- [ ] Changing numbers use `--text-numeric-tabular`
 - [ ] Primary screen titles use `screenTitle` / `largeTitle` and render bold
 - [ ] No dashboard/display marketing sizes
 - [ ] Vertical spacing uses layout tokens, not margin hacks on line-height
@@ -114,6 +121,7 @@ Full table: Storybook → Foundational → Typography → Primitives.
 | HIG + roles | `src/tokens/semantic/typography.ts` |
 | Resolved + CSS builder | `src/tokens/typography.ts` |
 | CSS variables | `src/tokens/typography.css` |
+| Font files | `src/assets/fonts/` |
 | JSON | `src/tokens/data/typography.json` |
 | Storybook | Foundational → Typography |
 | Master index | [docs/README.md](./README.md) |

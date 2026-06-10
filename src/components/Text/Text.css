@@ -20,6 +20,11 @@
   letter-spacing: var(--text-title1-letter-spacing);
 }
 
+.openui-text--emphasized.openui-text--role-heroTitle,
+.openui-text--emphasized.openui-text--style-title1 {
+  font-weight: var(--text-title1-emphasized-font-weight);
+}
+
 .openui-text--role-sectionTitle,
 .openui-text--style-title2 {
   font-family: var(--text-title2-font-family);
@@ -29,6 +34,11 @@
   letter-spacing: var(--text-title2-letter-spacing);
 }
 
+.openui-text--emphasized.openui-text--role-sectionTitle,
+.openui-text--emphasized.openui-text--style-title2 {
+  font-weight: var(--text-title2-emphasized-font-weight);
+}
+
 .openui-text--role-cardTitle,
 .openui-text--style-title3 {
   font-family: var(--text-title3-font-family);
@@ -36,6 +46,11 @@
   line-height: var(--text-title3-line-height);
   font-weight: var(--text-title3-font-weight);
   letter-spacing: var(--text-title3-letter-spacing);
+}
+
+.openui-text--emphasized.openui-text--role-cardTitle,
+.openui-text--emphasized.openui-text--style-title3 {
+  font-weight: var(--text-title3-emphasized-font-weight);
 }
 
 .openui-text--role-listTitle,

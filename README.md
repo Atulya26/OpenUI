@@ -58,13 +58,25 @@ Use the **Theme** toolbar control to switch `data-theme` between light and dark.
 
 Mobile-only scale based on [Apple HIG Typography](https://developer.apple.com/design/human-interface-guidelines/typography) (default Dynamic Type sizes). Desktop dashboard display sizes (40px+) are excluded. **Inter** for text ≤19px; **Inter Display** for text ≥20px.
 
+OpenUI self-hosts Inter assets from `src/assets/fonts/` and loads them through `@font-face` in `src/styles/global.css` with `font-display: swap`. Apps that serve the raw assets can preload the primary face before importing styles:
+
+```html
+<link
+  rel="preload"
+  href="/assets/fonts/InterVariable.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+>
+```
+
 ### Icons
 
 [Lucide React](https://lucide.dev/guide/react/) via the `Icon` component. `@/components/Icon/icons` re-exports a **curated** mobile starter set (~50 icons). The full library (~1,700+ icons) is browseable in Storybook under **Foundational → Icons → Catalog → All Lucide** — import any icon by name from `lucide-react` in app code (tree-shaken per import).
 
 ### Components
 
-The first production component set is available from `@openui/design-system`: `Text`, `Stack`, `Screen`, `Button`, `Input`, `Field`, `Card`, `ListRow`, and `Icon`. Import `@openui/design-system/styles.css` once in the consuming app.
+The first production component set is available from `@openui/design-system`: `Text`, `Stack`, `Screen`, `Button`, `Input`, `Field`, `Card`, `ListRow`, `Dialog`, `ActionSheet`, `Skeleton`, `Spinner`, `ProgressBar`, `EmptyState`, and `Icon`. Import `@openui/design-system/styles.css` once in the consuming app.
 
 ### Device (iPhone)
 

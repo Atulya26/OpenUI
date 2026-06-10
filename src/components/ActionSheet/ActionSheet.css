@@ -1,0 +1,279 @@
+.openui-action-sheet {
+  --action-sheet-safe-bottom: max(
+    var(--device-safe-area-bottom),
+    env(safe-area-inset-bottom, 0px)
+  );
+
+  pointer-events: none;
+}
+
+.openui-action-sheet--fixed {
+  position: static;
+}
+
+.openui-action-sheet--contained {
+  --action-sheet-safe-bottom: var(--space-0);
+
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-overlay-sheet);
+}
+
+.openui-action-sheet__scrim {
+  appearance: none;
+  border: 0;
+  padding: var(--space-0);
+  margin: 0;
+  background: var(--color-overlay-scrim);
+  cursor: pointer;
+  pointer-events: auto;
+  animation: openui-action-sheet-scrim-in var(--motion-duration-enter) var(--motion-ease-enter) both;
+}
+
+.openui-action-sheet[data-state='closing'] .openui-action-sheet__scrim {
+  pointer-events: none;
+  animation: openui-action-sheet-scrim-out var(--motion-duration-exit) var(--motion-ease-exit) both;
+}
+
+.openui-action-sheet--fixed .openui-action-sheet__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-backdrop);
+}
+
+.openui-action-sheet--contained .openui-action-sheet__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-backdrop);
+}
+
+.openui-action-sheet__panel {
+  pointer-events: auto;
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  min-width: 0;
+  width: min(100%, var(--device-screen-width));
+  padding: var(--layout-inset-container);
+  padding-block-end: calc(var(--layout-inset-container) + var(--action-sheet-safe-bottom));
+  color: var(--color-text-strong950);
+  border: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+  border-block-end: 0;
+  border-start-start-radius: var(--radius-surface-lg);
+  border-start-end-radius: var(--radius-surface-lg);
+  background: var(--color-bg-white0);
+  box-shadow: var(--shadow-surface-custom-md);
+  transform-origin: center bottom;
+  animation: openui-action-sheet-panel-in var(--motion-duration-expressive) var(--motion-ease-expressive) both;
+}
+
+.openui-action-sheet[data-state='closing'] .openui-action-sheet__panel {
+  pointer-events: none;
+  animation: openui-action-sheet-panel-out var(--motion-duration-exit) var(--motion-ease-exit) both;
+}
+
+.openui-action-sheet--fixed .openui-action-sheet__panel {
+  position: fixed;
+  z-index: var(--z-sheet);
+  inset-inline-start: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.openui-action-sheet--contained .openui-action-sheet__panel {
+  position: absolute;
+  z-index: var(--z-sheet);
+  inset-inline: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.openui-action-sheet__header,
+.openui-action-sheet__actions,
+.openui-action-sheet__cancel {
+  border: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-white0);
+  box-shadow: var(--shadow-elevation-none);
+}
+
+.openui-action-sheet__header {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+  padding: var(--layout-inset-container);
+  padding-block: var(--layout-gap-stack-sm);
+  text-align: center;
+}
+
+.openui-action-sheet__title {
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+}
+
+.openui-action-sheet__description,
+.openui-action-sheet__action-description {
+  font-family: var(--text-footnote-font-family);
+  font-size: var(--text-footnote-font-size);
+  line-height: var(--text-footnote-line-height);
+  font-weight: var(--text-footnote-font-weight);
+  letter-spacing: var(--text-footnote-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-action-sheet__actions {
+  display: grid;
+  overflow: hidden;
+}
+
+.openui-action-sheet__action,
+.openui-action-sheet__cancel {
+  appearance: none;
+  width: 100%;
+  min-height: var(--layout-touch-target-min);
+  border: 0;
+  background: transparent;
+  color: var(--color-text-strong950);
+  cursor: pointer;
+  transition: var(--motion-transition-feedback);
+  touch-action: manipulation;
+}
+
+.openui-action-sheet__action {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--layout-gap-inline-sm);
+  padding-block: var(--layout-gap-stack-xs);
+  padding-inline: var(--layout-inset-container);
+  text-align: start;
+}
+
+.openui-action-sheet__action + .openui-action-sheet__action {
+  border-top: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+}
+
+.openui-action-sheet__action:not(:has(.openui-action-sheet__action-icon)) {
+  grid-template-columns: minmax(0, 1fr);
+  text-align: center;
+}
+
+.openui-action-sheet__action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--layout-touch-target-min);
+  min-height: var(--layout-touch-target-min);
+  color: inherit;
+}
+
+.openui-action-sheet__action-copy {
+  display: grid;
+  gap: var(--layout-gap-inline-2xs);
+  min-width: 0;
+}
+
+.openui-action-sheet__action-label,
+.openui-action-sheet__cancel {
+  background: var(--color-bg-white0);
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+}
+
+.openui-action-sheet__action--primary {
+  color: var(--color-primary-base);
+}
+
+.openui-action-sheet__action--destructive {
+  color: var(--color-state-error-base);
+}
+
+.openui-action-sheet__action:disabled {
+  cursor: not-allowed;
+  color: var(--color-text-disabled300);
+}
+
+.openui-action-sheet__action:active:not(:disabled),
+.openui-action-sheet__cancel:active {
+  background: var(--color-state-layer-pressed-neutral);
+}
+
+.openui-action-sheet__action--primary:active:not(:disabled) {
+  background: var(--color-state-layer-pressed-primary);
+}
+
+.openui-action-sheet__action--destructive:active:not(:disabled) {
+  background: var(--color-state-layer-pressed-danger);
+}
+
+.openui-action-sheet__action:focus-visible,
+.openui-action-sheet__cancel:focus-visible {
+  outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
+  outline-offset: calc(var(--layout-focus-ring-offset) * -1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-action-sheet__action:hover:not(:disabled),
+  .openui-action-sheet__cancel:hover {
+    background: var(--color-bg-weak50);
+  }
+}
+
+@keyframes openui-action-sheet-scrim-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes openui-action-sheet-scrim-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes openui-action-sheet-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes openui-action-sheet-panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.openui-action-sheet--fixed .openui-action-sheet__panel {
+  animation-name: openui-action-sheet-fixed-panel-in;
+}
+
+.openui-action-sheet--fixed[data-state='closing'] .openui-action-sheet__panel {
+  animation-name: openui-action-sheet-fixed-panel-out;
+}
+
+@keyframes openui-action-sheet-fixed-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+  }
+}
+
+@keyframes openui-action-sheet-fixed-panel-out {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openui-action-sheet__scrim,
+  .openui-action-sheet__panel {
+    animation-duration: var(--motion-duration-instant);
+  }
+}

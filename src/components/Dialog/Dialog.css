@@ -1,0 +1,180 @@
+.openui-dialog {
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+
+.openui-dialog--fixed {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay-modal);
+  padding: var(--layout-inset-screen-x);
+}
+
+.openui-dialog--contained {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-overlay-modal);
+  padding: var(--layout-inset-container);
+}
+
+.openui-dialog__scrim {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: var(--space-0);
+  margin: 0;
+  background: var(--color-overlay-scrim);
+  cursor: pointer;
+  pointer-events: auto;
+  animation: openui-dialog-scrim-in var(--motion-duration-enter) var(--motion-ease-enter) both;
+}
+
+.openui-dialog[data-state='closing'] .openui-dialog__scrim {
+  pointer-events: none;
+  animation: openui-dialog-scrim-out var(--motion-duration-exit) var(--motion-ease-exit) both;
+}
+
+.openui-dialog__panel {
+  position: relative;
+  z-index: var(--z-modal);
+  pointer-events: auto;
+  display: grid;
+  width: 100%;
+  max-width: var(--device-content-width);
+  min-width: 0;
+  overflow: hidden;
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface-lg);
+  background: var(--color-bg-white0);
+  color: var(--color-text-strong950);
+  box-shadow: var(--shadow-surface-custom-lg);
+  transform-origin: center;
+  animation: openui-dialog-panel-in var(--motion-duration-enter) var(--motion-ease-enter) both;
+}
+
+.openui-dialog[data-state='closing'] .openui-dialog__panel {
+  pointer-events: none;
+  animation: openui-dialog-panel-out var(--motion-duration-exit) var(--motion-ease-exit) both;
+}
+
+.openui-dialog__header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--layout-gap-inline-sm);
+  padding: var(--layout-inset-container);
+}
+
+.openui-dialog--no-status-icon .openui-dialog__header {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.openui-dialog__heading {
+  display: grid;
+  min-width: 0;
+  gap: var(--layout-gap-inline-xs);
+}
+
+.openui-dialog__title {
+  min-width: 0;
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+}
+
+.openui-dialog__description,
+.openui-dialog__body {
+  min-width: 0;
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: var(--text-subheadline-font-weight);
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-dialog__status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--layout-touch-target-min);
+  min-height: var(--layout-touch-target-min);
+  margin-block-start: calc(var(--layout-gap-inline-sm) * -1);
+  margin-inline-start: calc(var(--layout-gap-inline-sm) * -1);
+  border-radius: var(--radius-pill);
+  color: var(--color-state-information-base);
+}
+
+.openui-dialog--success .openui-dialog__status-icon {
+  color: var(--color-state-success-base);
+}
+
+.openui-dialog--warning .openui-dialog__status-icon {
+  color: var(--color-state-warning-base);
+}
+
+.openui-dialog--error .openui-dialog__status-icon {
+  color: var(--color-state-error-base);
+}
+
+.openui-dialog__close {
+  justify-self: end;
+  margin-block-start: calc(var(--layout-gap-inline-xs) * -1);
+  margin-inline-end: calc(var(--layout-gap-inline-xs) * -1);
+}
+
+.openui-dialog__body {
+  padding-inline: var(--layout-inset-container);
+  padding-block-end: var(--layout-inset-container);
+}
+
+.openui-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--layout-gap-inline-sm);
+  padding-inline: var(--layout-inset-container);
+  padding-block: var(--layout-gap-inline-sm) var(--layout-inset-container);
+  border-top: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+}
+
+.openui-dialog__footer > .openui-button {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+@keyframes openui-dialog-scrim-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes openui-dialog-scrim-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes openui-dialog-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-distance-enter-y)) scale(var(--motion-scale-enter));
+  }
+}
+
+@keyframes openui-dialog-panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(var(--motion-distance-enter-y)) scale(var(--motion-scale-enter));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openui-dialog__scrim,
+  .openui-dialog__panel {
+    animation-duration: var(--motion-duration-instant);
+  }
+}

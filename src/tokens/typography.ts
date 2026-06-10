@@ -1,4 +1,6 @@
 import {
+  emphasizedTitleWeight,
+  fontFeature,
   fontFamily,
   fontSize,
   fontWeight,
@@ -21,6 +23,16 @@ export type TypographyToken = {
   fontWeight: number;
   letterSpacing: string;
 };
+
+export const typographyFeatureTokens = {
+  numericTabular: fontFeature.numericTabular,
+} as const;
+
+export const typographyEmphasisTokens = {
+  title1: emphasizedTitleWeight.title1,
+  title2: emphasizedTitleWeight.title2,
+  title3: emphasizedTitleWeight.title3,
+} as const;
 
 function resolveStyle(ref: TypographyPrimitiveRef): TypographyToken {
   const size = ref.size as FontSizeToken;
@@ -82,6 +94,11 @@ export function buildTypographyCssVariables(): string {
     lines.push(`  --text-${kebab}-font-weight: ${token.fontWeight};`);
     lines.push(`  --text-${kebab}-letter-spacing: ${token.letterSpacing};`);
   }
+
+  lines.push(`  --text-title1-emphasized-font-weight: ${typographyEmphasisTokens.title1};`);
+  lines.push(`  --text-title2-emphasized-font-weight: ${typographyEmphasisTokens.title2};`);
+  lines.push(`  --text-title3-emphasized-font-weight: ${typographyEmphasisTokens.title3};`);
+  lines.push(`  --text-numeric-tabular: ${typographyFeatureTokens.numericTabular};`);
 
   return `:root {\n${lines.join('\n')}\n}`;
 }

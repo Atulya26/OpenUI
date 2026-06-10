@@ -4,8 +4,8 @@ import {
   type ReactNode,
 } from 'react';
 import type { LucideIcon } from 'lucide-react';
-import { Loader2 } from '../Icon/icons';
 import { Icon } from '../Icon';
+import { Spinner } from '../Spinner';
 import './Button.css';
 
 type ButtonVariant = 'default' | 'primary' | 'destructive';
@@ -75,8 +75,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {loading ? (
-          <Icon
-            icon={Loader2}
+          <Spinner
             size={iconSize}
             color="inherit"
             className="openui-button__spinner"

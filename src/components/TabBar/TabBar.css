@@ -129,7 +129,7 @@
   line-height: var(--text-caption2-line-height);
   font-weight: var(--text-headline-font-weight);
   letter-spacing: var(--text-caption2-letter-spacing);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: var(--text-numeric-tabular);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

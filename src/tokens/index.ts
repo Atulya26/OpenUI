@@ -24,6 +24,8 @@ export {
   roleTypographyTokens,
   typographyToCssProperties,
   typographyToCssVars,
+  typographyEmphasisTokens,
+  typographyFeatureTokens,
   typographyTokens,
   type TypographyToken,
 } from './typography';

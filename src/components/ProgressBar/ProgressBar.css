@@ -1,0 +1,67 @@
+.openui-progress-bar {
+  --progress-bar-track-sm: 4px;
+  --progress-bar-track-md: 8px;
+  --progress-bar-indeterminate-width: 42%;
+
+  width: 100%;
+}
+
+.openui-progress-bar__track {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-soft200);
+}
+
+.openui-progress-bar--sm .openui-progress-bar__track {
+  height: var(--progress-bar-track-sm);
+}
+
+.openui-progress-bar--md .openui-progress-bar__track {
+  height: var(--progress-bar-track-md);
+}
+
+.openui-progress-bar__indicator {
+  position: absolute;
+  inset-block: var(--space-0);
+  inset-inline-start: var(--space-0);
+  width: var(--progress-bar-value);
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-base);
+  transition: width var(--motion-duration-state) var(--motion-ease-state);
+}
+
+.openui-progress-bar--success .openui-progress-bar__indicator {
+  background: var(--color-state-success-base);
+}
+
+.openui-progress-bar--warning .openui-progress-bar__indicator {
+  background: var(--color-state-warning-base);
+}
+
+.openui-progress-bar--error .openui-progress-bar__indicator {
+  background: var(--color-state-error-base);
+}
+
+.openui-progress-bar--indeterminate .openui-progress-bar__indicator {
+  width: var(--progress-bar-indeterminate-width);
+  animation: openui-progress-bar-slide var(--motion-duration-loading) var(--motion-ease-linear) infinite;
+}
+
+@keyframes openui-progress-bar-slide {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(240%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openui-progress-bar--indeterminate .openui-progress-bar__indicator {
+    animation-duration: var(--motion-duration-instant);
+  }
+}

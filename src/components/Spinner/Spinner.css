@@ -1,0 +1,47 @@
+.openui-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: var(--color-primary-base);
+}
+
+.openui-spinner--inherit {
+  color: inherit;
+}
+
+.openui-spinner--strong {
+  color: var(--color-icon-strong950);
+}
+
+.openui-spinner--sub {
+  color: var(--color-icon-sub600);
+}
+
+.openui-spinner--primary {
+  color: var(--color-primary-base);
+}
+
+.openui-spinner--white {
+  color: var(--color-static-white);
+}
+
+.openui-spinner--error {
+  color: var(--color-state-error-base);
+}
+
+.openui-spinner__icon {
+  animation: openui-spinner-rotate var(--motion-duration-loading) var(--motion-ease-linear) infinite;
+}
+
+@keyframes openui-spinner-rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openui-spinner__icon {
+    animation-duration: var(--motion-duration-instant);
+  }
+}

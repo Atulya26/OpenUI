@@ -23,15 +23,15 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 | Section | Done | Partial | Remaining |
 |---------|------|---------|-----------|
-| Foundations | 9 | 1 | 1 |
+| Foundations | 10 | 1 | 0 |
 | Layout & structure | 3 | 0 | 8 |
 | Typography | 1 | 0 | 5 |
 | Actions | 2 | 0 | 6 |
 | Form controls | 10 | 0 | 15 |
 | Selection & chips | 3 | 0 | 3 |
-| Feedback & status | 2 | 0 | 9 |
+| Feedback & status | 6 | 0 | 5 |
 | Navigation | 3 | 0 | 6 |
-| Overlays & sheets | 1 | 0 | 10 |
+| Overlays & sheets | 4 | 0 | 7 |
 | Lists & collections | 2 | 0 | 8 |
 | Cards & surfaces | 1 | 0 | 6 |
 | Media & content | 1 | 0 | 7 |
@@ -57,7 +57,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | [x] | Motion tokens | `motion.css` |
 | [~] | Focus / a11y tokens | Outlines on Button/Input/Input actions; no `FocusRing` util |
 | [x] | Z-index / elevation scale | `elevation.css`, `ELEVATION-RULES.md` |
-| [ ] | Opacity / blur (glass) | Optional iOS 26 surfaces |
+| [x] | Opacity / blur (glass) | `surfaces.css`, TabBar fixed, NavigationBar scrolled-under |
 
 ---
 
@@ -157,14 +157,14 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 | Status | Component | Priority |
 |--------|-----------|----------|
-| [ ] | `Alert` | P1 |
+| [x] | `Alert` | P1 - supported by `Dialog status="warning" / "error"` |
 | [x] | `Banner` | P1 |
 | [x] | `Toast` / `Snackbar` | P1 |
 | [ ] | `InlineMessage` | P1 |
-| [ ] | `Progress` | P1 |
-| [ ] | `Spinner` / `ActivityIndicator` | P1 |
-| [ ] | `Skeleton` | P1 |
-| [ ] | `EmptyState` | P1 |
+| [x] | `Progress` | P1 - `ProgressBar` |
+| [x] | `Spinner` / `ActivityIndicator` | P1 |
+| [x] | `Skeleton` | P1 |
+| [x] | `EmptyState` | P1 |
 | [ ] | `ErrorState` | P1 |
 | [ ] | `OfflineBanner` | P2 |
 | [ ] | `Rating` | P3 |
@@ -192,10 +192,10 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 
 | Status | Component | Priority |
 |--------|-----------|----------|
-| [ ] | `Modal` | P1 |
-| [ ] | `AlertDialog` | P1 |
+| [x] | `Modal` | P1 - `Dialog` |
+| [x] | `AlertDialog` | P1 - `Dialog` with alert status |
 | [x] | `BottomSheet` | P0 - `Sheet` bottom placement |
-| [ ] | `ActionSheet` | P1 |
+| [x] | `ActionSheet` | P1 |
 | [ ] | `Popover` | P3 |
 | [ ] | `Tooltip` | P2 |
 | [ ] | `DropdownMenu` | P2 |

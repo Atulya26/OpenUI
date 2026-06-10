@@ -1,0 +1,53 @@
+.openui-empty-state {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  min-width: 0;
+  padding: var(--layout-inset-container);
+  gap: var(--layout-gap-stack-sm);
+  color: var(--color-text-strong950);
+}
+
+.openui-empty-state--sm {
+  padding: var(--layout-gap-stack-md);
+  gap: var(--layout-gap-stack-xs);
+}
+
+.openui-empty-state--start {
+  justify-items: start;
+}
+
+.openui-empty-state__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--layout-touch-target-min);
+  min-height: var(--layout-touch-target-min);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-soft200);
+  color: var(--color-icon-sub600);
+}
+
+.openui-empty-state__copy {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+  min-width: 0;
+  max-width: var(--device-content-width);
+}
+
+.openui-empty-state__title,
+.openui-empty-state__description {
+  min-width: 0;
+}
+
+.openui-empty-state__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  margin-block-start: var(--layout-gap-inline-xs);
+}
+
+.openui-empty-state__action > .openui-button {
+  max-width: var(--device-content-width);
+}

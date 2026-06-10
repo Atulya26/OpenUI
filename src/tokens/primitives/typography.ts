@@ -21,6 +21,16 @@ export const fontWeight = {
   bold: 700,
 } as const;
 
+export const fontFeature = {
+  numericTabular: 'tabular-nums',
+} as const;
+
+export const emphasizedTitleWeight = {
+  title1: fontWeight.bold,
+  title2: fontWeight.semibold,
+  title3: fontWeight.semibold,
+} as const;
+
 /** Mobile size ramp (px). Omits dashboard-only steps (40, 48, 56, 64, 72, 80). */
 export const fontSize = {
   11: 11,
@@ -77,6 +87,8 @@ export const letterSpacing = {
 export const typographyPrimitives = {
   fontFamily,
   fontWeight,
+  fontFeature,
+  emphasizedTitleWeight,
   fontSize,
   lineHeight,
   letterSpacing,

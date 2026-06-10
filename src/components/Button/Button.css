@@ -177,7 +177,7 @@
 }
 
 .openui-button__spinner {
-  animation: openui-button-spin var(--motion-duration-loading) var(--motion-ease-linear) infinite;
+  color: inherit;
 }
 
 [data-density="compact"] .openui-button--sm::after,
@@ -210,11 +210,5 @@
   .openui-button--destructive.openui-button--outline:hover:not(:disabled),
   .openui-button--destructive.openui-button--transparent:hover:not(:disabled) {
     background: var(--color-state-error-lighter);
-  }
-}
-
-@keyframes openui-button-spin {
-  to {
-    transform: rotate(1turn);
   }
 }

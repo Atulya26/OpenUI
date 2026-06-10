@@ -111,6 +111,7 @@
   line-height: var(--text-subheadline-line-height);
   font-weight: var(--text-subheadline-font-weight);
   letter-spacing: var(--text-subheadline-letter-spacing);
+  font-variant-numeric: var(--text-numeric-tabular);
   color: var(--color-text-sub600);
   overflow: hidden;
   text-overflow: ellipsis;

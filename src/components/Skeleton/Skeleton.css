@@ -1,0 +1,89 @@
+.openui-skeleton {
+  --skeleton-circle-sm: 32px;
+  --skeleton-circle-md: 40px;
+  --skeleton-circle-lg: 48px;
+  --skeleton-rectangle-sm: 44px;
+  --skeleton-rectangle-md: 56px;
+  --skeleton-rectangle-lg: 72px;
+
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg-soft200);
+  border-radius: var(--radius-surface-sm);
+}
+
+.openui-skeleton--text {
+  border-radius: var(--radius-pill);
+}
+
+.openui-skeleton--text.openui-skeleton--sm {
+  height: var(--text-caption1-line-height);
+}
+
+.openui-skeleton--text.openui-skeleton--md {
+  height: var(--text-body-line-height);
+}
+
+.openui-skeleton--text.openui-skeleton--lg {
+  height: var(--text-title3-line-height);
+}
+
+.openui-skeleton--rectangle.openui-skeleton--sm {
+  min-height: var(--skeleton-rectangle-sm);
+}
+
+.openui-skeleton--rectangle.openui-skeleton--md {
+  min-height: var(--skeleton-rectangle-md);
+}
+
+.openui-skeleton--rectangle.openui-skeleton--lg {
+  min-height: var(--skeleton-rectangle-lg);
+}
+
+.openui-skeleton--circle {
+  flex: 0 0 auto;
+  border-radius: var(--radius-pill);
+}
+
+.openui-skeleton--circle.openui-skeleton--sm {
+  width: var(--skeleton-circle-sm);
+  height: var(--skeleton-circle-sm);
+}
+
+.openui-skeleton--circle.openui-skeleton--md {
+  width: var(--skeleton-circle-md);
+  height: var(--skeleton-circle-md);
+}
+
+.openui-skeleton--circle.openui-skeleton--lg {
+  width: var(--skeleton-circle-lg);
+  height: var(--skeleton-circle-lg);
+}
+
+.openui-skeleton--animated::after {
+  content: '';
+  position: absolute;
+  inset: var(--space-0);
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-state-layer-pressed-neutral),
+    transparent
+  );
+  animation: openui-skeleton-shimmer var(--motion-duration-loading) var(--motion-ease-linear) infinite;
+}
+
+@keyframes openui-skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openui-skeleton--animated::after {
+    animation-duration: var(--motion-duration-instant);
+  }
+}
