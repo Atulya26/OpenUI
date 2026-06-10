@@ -134,6 +134,7 @@ function isTokenizedTransition(value) {
 }
 
 const main = read('src/main.tsx');
+const packageJson = JSON.parse(read('package.json'));
 for (const required of [
   "./tokens/tokens.css",
   "./tokens/surfaces.css",
@@ -148,6 +149,36 @@ for (const required of [
   if (!main.includes(required)) {
     fail(`src/main.tsx must import ${required}`);
   }
+}
+
+const storybookPreview = read('.storybook/preview.tsx');
+for (const required of [
+  "../src/tokens/tokens.css",
+  "../src/tokens/surfaces.css",
+  "../src/tokens/typography.css",
+  "../src/tokens/layout.css",
+  "../src/tokens/radius.css",
+  "../src/tokens/shadows.css",
+  "../src/tokens/motion.css",
+  "../src/tokens/elevation.css",
+  "../src/styles/global.css",
+  "../src/styles/storybook.css",
+]) {
+  if (!storybookPreview.includes(required)) {
+    fail(`.storybook/preview.tsx must import ${required}`);
+  }
+}
+
+if (!packageJson.devDependencies?.['@storybook/test-runner']) {
+  fail('package.json must include @storybook/test-runner for Storybook regression checks');
+}
+for (const script of ['test:storybook', 'test:visual']) {
+  if (!packageJson.scripts?.[script]) {
+    fail(`package.json must define ${script}`);
+  }
+}
+if (!read('.storybook/test-runner.ts').includes('visualMatrix')) {
+  fail('.storybook/test-runner.ts must define the light/dark × density visualMatrix');
 }
 
 const layoutCss = read('src/tokens/layout.css');
@@ -204,6 +235,16 @@ for (const variable of [
 const typographyCss = read('src/tokens/typography.css');
 if (!typographyCss.includes('--text-large-title-font-weight: 700')) {
   fail('screen titles must be bold: --text-large-title-font-weight should be 700');
+}
+for (const variable of [
+  '--text-title1-emphasized-font-weight',
+  '--text-title2-emphasized-font-weight',
+  '--text-title3-emphasized-font-weight',
+  '--text-numeric-tabular',
+]) {
+  if (!typographyCss.includes(variable)) {
+    fail(`src/tokens/typography.css is missing ${variable}`);
+  }
 }
 
 const radiusCss = read('src/tokens/radius.css');
@@ -379,6 +420,10 @@ for (const file of productFiles) {
       fail(`${file} contains calc(var(--layout-gap-*) / 2); use --layout-gap-inline-2xs`);
     }
 
+    if (/\.openui-[^{]*story[-_]/.test(source) || /story-/.test(source)) {
+      fail(`${file} contains Storybook-only CSS; move story helpers to src/styles/storybook.css`);
+    }
+
     const missingExitKeyframes = findEnterKeyframesWithoutExit(source);
     if (missingExitKeyframes.length > 0) {
       fail(`${file} defines enter keyframes without paired exit keyframes: ${missingExitKeyframes.join(', ')}`);
@@ -461,6 +506,29 @@ const externalReferenceFiles = [
   ...walk('docs', ['.md']),
   ...walk('src', ['.ts', '.tsx', '.css', '.json']),
 ];
+
+try {
+  statSync(join(root, 'docs/superpowers'));
+  fail('docs/superpowers must not exist; remove dead audit artifact directories');
+} catch (error) {
+  if (error?.code !== 'ENOENT') {
+    throw error;
+  }
+}
+
+for (const [file, snippets] of [
+  ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css']],
+  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css']],
+  ['docs/MOTION-RULES.md', ['enter', 'exit']],
+  ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized']],
+]) {
+  const source = read(file);
+  for (const snippet of snippets) {
+    if (!source.includes(snippet)) {
+      fail(`${file} must mention ${snippet} so docs stay aligned with guardrails`);
+    }
+  }
+}
 
 for (const file of externalReferenceFiles) {
   const source = read(file);

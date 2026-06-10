@@ -2117,3 +2117,208 @@
   font-size: var(--text-caption-font-size);
   color: var(--color-text-sub600);
 }
+
+/* Component story helpers live here so package component CSS stays production-only. */
+.openui-navigation-bar-story-grid,
+.openui-tab-bar-story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--device-content-width), 1fr));
+  gap: var(--layout-gap-stack-md);
+}
+
+.openui-navigation-bar-story-cell,
+.openui-tab-bar-story-cell {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  min-width: 0;
+}
+
+.openui-navigation-bar-story-cell__example {
+  display: grid;
+  align-content: start;
+  min-height: calc(var(--layout-touch-target-min) * 3);
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-weak50);
+}
+
+.openui-tab-bar-story-cell__example {
+  display: grid;
+  align-items: end;
+  min-height: calc(var(--layout-touch-target-min) * 3);
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-weak50);
+}
+
+.openui-navigation-bar-story-cell__copy,
+.openui-tab-bar-story-cell__copy {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+}
+
+.openui-navigation-bar-story-cell__copy span,
+.openui-navigation-bar-story-card-title,
+.openui-tab-bar-story-cell__copy span,
+.openui-tab-bar-story-section-title,
+.openui-tab-bar-story-card-title {
+  margin: var(--space-0);
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-navigation-bar-story-cell__copy p,
+.openui-navigation-bar-story-card-copy,
+.openui-tab-bar-story-cell__copy p,
+.openui-tab-bar-story-copy,
+.openui-tab-bar-story-card-copy {
+  margin: var(--space-0);
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  font-weight: var(--text-subheadline-font-weight);
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-navigation-bar-story-phone {
+  display: grid;
+  gap: var(--layout-gap-stack-md);
+  padding-bottom: var(--layout-gap-section);
+}
+
+.openui-navigation-bar-story-panel {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-white0);
+  box-shadow: var(--shadow-surface-card);
+}
+
+.openui-navigation-bar-story-media {
+  display: grid;
+  align-content: end;
+  min-height: calc(var(--layout-touch-target-min) * 5);
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface-lg);
+  background: var(--color-bg-soft200);
+}
+
+.openui-navigation-bar-story-list,
+.openui-tab-bar-story-list {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+}
+
+.openui-navigation-bar-story-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--layout-gap-inline-sm);
+  min-height: var(--layout-touch-target-min);
+  padding: var(--layout-gap-stack-xs) var(--layout-gap-stack-sm);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-control);
+  background: var(--color-bg-white0);
+}
+
+.openui-navigation-bar-story-row span {
+  font-family: var(--text-subheadline-font-family);
+  font-size: var(--text-subheadline-font-size);
+  line-height: var(--text-subheadline-line-height);
+  letter-spacing: var(--text-subheadline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-navigation-bar-story-row small {
+  font-family: var(--text-caption1-font-family);
+  font-size: var(--text-caption1-font-size);
+  line-height: var(--text-caption1-line-height);
+  letter-spacing: var(--text-caption1-letter-spacing);
+  color: var(--color-text-sub600);
+}
+
+.openui-tab-bar-story-phone {
+  position: relative;
+  display: grid;
+  min-height: 100%;
+  gap: var(--layout-gap-stack-md);
+  padding-bottom: calc(
+    var(--layout-touch-target-min) + var(--layout-gap-section)
+  );
+}
+
+.openui-tab-bar-story-header {
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+}
+
+.openui-tab-bar-story-card {
+  display: grid;
+  gap: var(--layout-gap-stack-xs);
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-white0);
+}
+
+.openui-tab-bar-story-map {
+  display: grid;
+  align-content: end;
+  min-height: calc(var(--layout-touch-target-min) * 4);
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface-lg);
+  background: var(--color-bg-soft200);
+}
+
+.openui-tab-bar-story-device-bar {
+  position: absolute;
+  inset-inline: var(--space-0);
+  inset-block-end: var(--space-0);
+}
+
+.openui-tab-bar-story-fixed-preview {
+  position: relative;
+  min-height: calc(var(--layout-touch-target-min) * 4);
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-weak50);
+}
+
+.openui-tab-bar-story-fixed-preview .openui-tab-bar {
+  margin-block-start: calc(var(--layout-touch-target-min) * 2);
+}
+
+.openui-tab-bar-story-fixed-preview .openui-tab-bar--fixed {
+  position: absolute;
+  inset-inline: var(--layout-inset-container);
+  inset-block-end: var(--layout-inset-container);
+  bottom: auto;
+  width: auto;
+}
+
+.openui-toast-story-device-surface {
+  position: relative;
+  min-height: 100%;
+}
+
+.openui-toast-story-stack {
+  max-width: var(--device-content-width);
+}
+
+.openui-select-story-cell {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  max-width: var(--device-content-width);
+}

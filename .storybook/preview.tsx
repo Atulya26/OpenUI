@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import '../src/tokens/tokens.css';
+import '../src/tokens/surfaces.css';
 import '../src/tokens/typography.css';
 import '../src/tokens/layout.css';
 import '../src/tokens/radius.css';

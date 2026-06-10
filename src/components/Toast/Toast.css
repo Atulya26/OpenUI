@@ -373,12 +373,3 @@
     background: var(--color-state-error-dark);
   }
 }
-
-.openui-toast-story-device-surface {
-  position: relative;
-  min-height: 100%;
-}
-
-.openui-toast-story-stack {
-  max-width: var(--device-content-width);
-}

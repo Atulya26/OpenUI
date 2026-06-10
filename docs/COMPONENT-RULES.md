@@ -32,7 +32,9 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 11. **Storybook-only utilities** — `DeviceFrame`, `LucideFullCatalog`, and similar live under `src/storybook/`. They are **not** exported from `src/components/`. Screen previews use `DeviceFrame`; do not import it in product app code.
 
-12. **Mobile scrollbar chrome hidden** — Components that create mobile scrolling regions hide visible scrollbars while preserving scrolling behavior.
+12. **Storybook-only CSS** — story helper classes (`.openui-*-story-*`) live in `src/styles/storybook.css`, not component CSS. Component CSS is shipped in the package and must stay production-only.
+
+13. **Mobile scrollbar chrome hidden** — Components that create mobile scrolling regions hide visible scrollbars while preserving scrolling behavior.
 
 ---
 
@@ -118,6 +120,7 @@ New components should follow the same token-prop pattern.
 |------|--------|
 | Components | `src/components/` |
 | Component stories | `src/stories/components/` (create when needed) |
+| Storybook helper CSS | `src/styles/storybook.css` |
 | Storybook utilities | `src/storybook/` (`DeviceFrame`, catalogs) |
 | Tokens | `src/tokens/` |
 | Device / layout rules | [DEVICE-RULES.md](./DEVICE-RULES.md), [LAYOUT-RULES.md](./LAYOUT-RULES.md) |

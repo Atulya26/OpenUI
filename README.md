@@ -36,6 +36,7 @@ npm run build        # library package: dist/openui.js + dist/styles.css
 npm run build:app    # demo app output: dist-app/
 npm run storybook    # http://localhost:6006
 npm run build-storybook
+npm run test:visual  # Storybook test-runner: light/dark × default/compact iPhone overflow smoke
 ```
 
 Storybook 10 requires Node.js **20.19+** or **22.12+**. Run `nvm use` from the repo root to use [.nvmrc](.nvmrc).
@@ -53,6 +54,12 @@ Storybook 10 requires Node.js **20.19+** or **22.12+**. Run `nvm use` from the r
 - **Foundational → Rules** — how to navigate `docs/*-RULES.md` for AI and humans
 
 Use the **Theme** toolbar control to switch `data-theme` between light and dark.
+
+Run `npm run test:visual` against a running Storybook to smoke-test every story at the iPhone viewport in light/dark and default/compact density. Override the target when Storybook is on another port:
+
+```bash
+TARGET_URL=http://127.0.0.1:6007 npm run test:visual
+```
 
 ### Typography
 

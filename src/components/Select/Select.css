@@ -287,12 +287,6 @@
   }
 }
 
-.openui-select-story-cell {
-  display: grid;
-  gap: var(--layout-gap-stack-sm);
-  max-width: var(--device-content-width);
-}
-
 @media (hover: hover) and (pointer: fine) {
   .openui-select__shell:hover:not(:disabled):not(:focus-visible) {
     border-color: var(--color-stroke-sub300);
