@@ -138,6 +138,11 @@ export const Overview: Story = {
             <SpecCell title="Icon entity" description="Icon fallback stays tokenized and theme-aware.">
               <Thumbnail name="Saved place" fallbackIcon={MapPin} />
             </SpecCell>
+            <SpecCell title="RTL status" description="Presence dots use logical positioning and mirror correctly in RTL layouts.">
+              <div dir="rtl">
+                <Avatar size="md" name="Maya Chen" src={personImages.maya} status="online" />
+              </div>
+            </SpecCell>
           </div>
         </Section>
       </Panel>

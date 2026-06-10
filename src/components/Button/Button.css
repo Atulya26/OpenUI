@@ -176,6 +176,12 @@
   text-overflow: ellipsis;
 }
 
+@supports (text-box: trim-both cap alphabetic) {
+  .openui-button__label {
+    text-box: trim-both cap alphabetic;
+  }
+}
+
 .openui-button__spinner {
   color: inherit;
 }

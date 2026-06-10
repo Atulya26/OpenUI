@@ -23,6 +23,7 @@ export type TextProps<T extends ElementType = 'p'> = {
   color?: TextColor;
   align?: TextAlign;
   emphasized?: boolean;
+  trim?: boolean;
   truncate?: boolean;
   className?: string;
 } & Omit<ComponentPropsWithoutRef<T>, 'as' | 'children' | 'className' | 'color'>;
@@ -39,6 +40,7 @@ export function Text<T extends ElementType = 'p'>({
   color = 'strong',
   align = 'start',
   emphasized = false,
+  trim = false,
   truncate = false,
   className,
   ...rest
@@ -56,6 +58,7 @@ export function Text<T extends ElementType = 'p'>({
         `openui-text--color-${color}`,
         `openui-text--align-${align}`,
         emphasized && 'openui-text--emphasized',
+        trim && 'openui-text--trim',
         truncate && 'openui-text--truncate',
         className,
       )}

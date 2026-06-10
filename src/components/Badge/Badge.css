@@ -1,14 +1,18 @@
 .openui-badge {
+  --badge-h: calc(var(--text-caption1-font-size) + var(--layout-gap-inline-xs));
+  --badge-line-height: var(--text-caption1-font-size);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
   max-width: 100%;
+  min-height: var(--badge-h);
   border: var(--layout-border-width) solid transparent;
   border-radius: var(--radius-pill);
   font-family: var(--text-caption1-font-family);
   font-size: var(--text-caption1-font-size);
-  line-height: var(--text-caption1-line-height);
+  line-height: var(--badge-line-height);
   font-weight: var(--text-headline-font-weight);
   letter-spacing: var(--text-caption1-letter-spacing);
   font-variant-numeric: var(--text-numeric-tabular);
@@ -19,11 +23,14 @@
 }
 
 .openui-badge--sm {
+  --badge-h: calc(var(--text-caption2-font-size) + var(--layout-gap-inline-xs));
+  --badge-line-height: var(--text-caption2-font-size);
+
   padding-block: var(--layout-gap-inline-2xs);
   padding-inline: var(--layout-gap-stack-xs);
   font-family: var(--text-caption2-font-family);
   font-size: var(--text-caption2-font-size);
-  line-height: var(--text-caption2-line-height);
+  line-height: 1;
   letter-spacing: var(--text-caption2-letter-spacing);
 }
 
@@ -36,6 +43,13 @@
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@supports (text-box: trim-both cap alphabetic) {
+  .openui-badge,
+  .openui-badge__label {
+    text-box: trim-both cap alphabetic;
+  }
 }
 
 .openui-badge--neutral.openui-badge--soft {

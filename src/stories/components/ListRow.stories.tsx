@@ -84,6 +84,18 @@ export const Overview: Story = {
               </Card>
             </SpecCell>
 
+            <SpecCell title="Title-line value" description="With helper copy, trailing values align to the primary line instead of floating mid-row.">
+              <Card>
+                <ListRow
+                  leadingIcon={Calendar}
+                  title="Check-in"
+                  description="Host approval required"
+                  trailingText="4:00 PM"
+                  trailingIcon={null}
+                />
+              </Card>
+            </SpecCell>
+
             <SpecCell title="Static action slot" description="Use a static row when the trailing control is the only action.">
               <Card>
                 <ListRow
@@ -164,6 +176,43 @@ export const Overview: Story = {
                   showDivider={false}
                 />
               </Card>
+            </SpecCell>
+          </div>
+        </Section>
+      </Panel>
+
+      <Panel>
+        <Section
+          title="Direction and alignment"
+          description="Rows use logical layout and keep trailing values attached to the title line in both writing directions."
+        >
+          <div className="openui-list-row-spec-grid">
+            <SpecCell title="LTR value row" description="Default direction with a title, helper copy, and trailing value.">
+              <Card>
+                <ListRow
+                  as="div"
+                  leadingIcon={Calendar}
+                  title="Reservation"
+                  description="Two nights, downtown loft"
+                  trailingText="Jun 28"
+                  trailingIcon={null}
+                />
+              </Card>
+            </SpecCell>
+
+            <SpecCell title="RTL value row" description="Logical properties keep the trailing value pinned to the mirrored title line.">
+              <div dir="rtl">
+                <Card>
+                  <ListRow
+                    as="div"
+                    leadingIcon={Calendar}
+                    title="Reservation"
+                    description="Two nights, downtown loft"
+                    trailingText="Jun 28"
+                    trailingIcon={null}
+                  />
+                </Card>
+              </div>
             </SpecCell>
           </div>
         </Section>

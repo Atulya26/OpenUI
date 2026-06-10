@@ -55,14 +55,15 @@ Reference: [Lucide React](https://lucide.dev/guide/react/).
 
 ## When to use which size
 
-| Context | Size |
-|---------|------|
-| Inline with `footnote` / `caption` | `sm` |
-| List row, input adornment | `md` |
-| Tab bar, toolbar, FAB area | `lg` |
-| Next to `headline` button label | `md` or `lg` |
+| Text / context | Icon size | Stroke | Notes |
+|----------------|-----------|--------|-------|
+| `caption1`, `caption2`, `footnote` metadata | `sm` | `thin` or `regular` | Badges, tiny helper/status pairs |
+| `subheadline` supporting text | `sm` | `thin` | Secondary list affordances, chevrons, status hints |
+| `headline` / body-size controls | `md` | `regular` | Inputs, default button labels, leading list icons |
+| Tab bar, toolbar, FAB area | `lg` | `regular` | Primary navigation and large icon-only targets |
+| Dense disclosure affordance | `sm` | `thin` | Keeps chevrons from competing with row content |
 
-One icon size per control — do not mix `sm` and `lg` in the same button.
+One icon size per control — do not mix `sm` and `lg` in the same button. Icons that sit beside 17px text usually use `md`; trailing disclosure icons in rows intentionally step down to `sm` + `thin`.
 
 ---
 

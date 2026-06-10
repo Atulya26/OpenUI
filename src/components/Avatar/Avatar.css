@@ -96,13 +96,19 @@
 
 .openui-avatar__status {
   position: absolute;
-  right: 0;
-  bottom: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
   width: var(--openui-avatar-status-size);
   height: var(--openui-avatar-status-size);
   border: var(--layout-border-width) solid var(--color-bg-white0);
   border-radius: var(--radius-pill);
   background: var(--color-state-faded-base);
+}
+
+@supports (text-box: trim-both cap alphabetic) {
+  .openui-avatar__initials {
+    text-box: trim-both cap alphabetic;
+  }
 }
 
 .openui-avatar__status--online {

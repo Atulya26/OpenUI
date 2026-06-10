@@ -116,6 +116,7 @@ body {
   line-height: var(--text-body-line-height);
   font-weight: var(--text-body-font-weight);
   letter-spacing: var(--text-body-letter-spacing);
+  font-optical-sizing: auto;
   color: var(--color-text-strong950);
   background: var(--color-bg-weak50);
   -webkit-font-smoothing: antialiased;

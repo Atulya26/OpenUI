@@ -110,6 +110,21 @@ export const Overview: Story = {
             </SpecCell>
 
             <SpecCell
+              title="True center title"
+              description="The compact title remains optically centered even when side action counts differ."
+            >
+              <NavigationBar
+                title="Reservations"
+                leadingIcon={ArrowLeft}
+                leadingLabel="Go back"
+                trailingIcons={[
+                  { icon: Search, label: 'Search reservations' },
+                  { icon: MoreHorizontal, label: 'More options' },
+                ]}
+              />
+            </SpecCell>
+
+            <SpecCell
               title="Scrolled under"
               description="Use the glass surface when content scrolls beneath the bar."
             >

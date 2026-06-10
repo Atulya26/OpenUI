@@ -119,10 +119,22 @@ export const ListRow = forwardRef<
           <span className="openui-list-row__trailing-slot">{trailingSlot}</span>
         ) : null}
         {selected && !resolvedTrailingIcon && !trailingSlot ? (
-          <Icon icon={Check} size="md" color="primary" />
+          <Icon
+            icon={Check}
+            size="sm"
+            color="primary"
+            stroke="thin"
+            className="openui-list-row__trailing-icon"
+          />
         ) : null}
         {resolvedTrailingIcon ? (
-          <Icon icon={resolvedTrailingIcon} size="md" color={trailingIconColor} />
+          <Icon
+            icon={resolvedTrailingIcon}
+            size="sm"
+            color={trailingIconColor}
+            stroke="thin"
+            className="openui-list-row__trailing-icon"
+          />
         ) : null}
       </>
     );
@@ -130,6 +142,7 @@ export const ListRow = forwardRef<
     const rowClassName = cx(
       'openui-list-row',
       `openui-list-row--${size}`,
+      Boolean(description) && 'openui-list-row--has-description',
       !showDivider && 'openui-list-row--no-divider',
       selected && 'openui-list-row--selected',
       destructive && 'openui-list-row--destructive',

@@ -163,6 +163,19 @@ export const Overview: Story = {
                 Synced
               </Badge>
             </SpecCell>
+            <SpecCell title="Tabular count" description="Numeric badges use tabular figures and compact optical centering.">
+              <Stack direction="horizontal" gap="xs" align="center">
+                <Badge size="sm" tone="primary">
+                  8
+                </Badge>
+                <Badge size="sm" tone="neutral" variant="outline">
+                  128
+                </Badge>
+                <Badge size="sm" tone="warning">
+                  92%
+                </Badge>
+              </Stack>
+            </SpecCell>
           </div>
         </Section>
       </Panel>
