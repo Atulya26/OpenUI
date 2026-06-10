@@ -1,5 +1,6 @@
 /* Layout & spacing tokens — 4px grid + semantic roles */
 :root {
+  --space-half: 2px;
   --space-0: 0px;
   --space-1: 4px;
   --space-2: 8px;
@@ -22,6 +23,7 @@
   --layout-inset-container: var(--space-4);
   --layout-inset-screen-x-compact: var(--space-3);
 
+  --layout-gap-inline-2xs: var(--space-half);
   --layout-gap-inline-xs: var(--space-1);
   --layout-gap-inline-sm: var(--space-2);
   --layout-gap-inline-md: var(--space-3);
@@ -38,14 +40,18 @@
   --control-height-sm: var(--layout-touch-target-min); /* 44px */
   --control-height-md: var(--space-9); /* 48px */
   --control-height-lg: 56px;
+  --control-height-xl: 60px;
   --control-pad-x-sm: var(--space-3); /* 12px */
   --control-pad-x-md: var(--space-4); /* 16px */
   --control-pad-x-lg: var(--space-5); /* 20px */
+  --control-pad-x-xl: var(--space-6); /* 24px */
 
   --layout-border-width: 1px;
+  --layout-border-hairline: 1px;
   --layout-touch-target-min: 44px;
   --layout-focus-ring-width: 2px;
   --layout-focus-ring-offset: 2px;
+  --layout-hit-area-inset-compact: -4px;
   --layout-breakpoint-tablet: 600px;
   --layout-max-content-width: var(--device-content-width);
   --layout-columns-compact: 1;
@@ -67,14 +73,21 @@
   --device-home-indicator-height: 34px;
 }
 
-/* Compact density — tighten controls for small screens.
-   NOTE: sm/md drop below the 44px touch target on purpose; only
-   production-safe once Phase 2 expanded hit-area lands. */
+@media (min-resolution: 2dppx) {
+  :root {
+    --layout-border-hairline: 0.5px;
+  }
+}
+
+/* Compact density — tighten visible controls for small screens.
+   Components that can render below 44px expose expanded touch areas. */
 [data-density="compact"] {
   --control-height-sm: 36px;
   --control-height-md: var(--space-8); /* 40px */
   --control-height-lg: var(--layout-touch-target-min); /* 44px */
+  --control-height-xl: 52px;
   --control-pad-x-sm: var(--space-2); /* 8px */
   --control-pad-x-md: var(--space-3); /* 12px */
   --control-pad-x-lg: var(--space-4); /* 16px */
+  --control-pad-x-xl: var(--space-5); /* 20px */
 }

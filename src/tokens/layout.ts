@@ -1,4 +1,4 @@
-import { space, type SpaceStep } from './primitives/spacing';
+import { space, spaceHalf, type SpaceStep } from './primitives/spacing';
 import {
   iphoneContentHeight,
   iphoneContentWidth,
@@ -16,12 +16,13 @@ import {
   layoutGapSection,
   layoutGapStack,
   layoutInset,
+  type LayoutSpaceRef,
 } from './semantic/layout';
 import { layoutRadiusSemantic } from './semantic/radius';
 import { radiusPrimitive } from './primitives/radius';
 
-function px(step: SpaceStep): string {
-  return `${space[step]}px`;
+function px(step: LayoutSpaceRef): string {
+  return `${step === 'half' ? spaceHalf : space[step]}px`;
 }
 
 /** Resolved semantic layout values (px strings for CSS) */
@@ -40,6 +41,7 @@ export const layoutTokens = {
     screenXCompact: px(layoutInset.screenXCompact),
   },
   gapInline: {
+    '2xs': px(layoutGapInline['2xs']),
     xs: px(layoutGapInline.xs),
     sm: px(layoutGapInline.sm),
     md: px(layoutGapInline.md),
@@ -64,9 +66,11 @@ export const layoutTokens = {
     heightSm: `${layoutControl.height.sm}px`,
     heightMd: `${layoutControl.height.md}px`,
     heightLg: `${layoutControl.height.lg}px`,
+    heightXl: `${layoutControl.height.xl}px`,
     padXSm: `${layoutControl.padX.sm}px`,
     padXMd: `${layoutControl.padX.md}px`,
     padXLg: `${layoutControl.padX.lg}px`,
+    padXXl: `${layoutControl.padX.xl}px`,
   },
   fixed: {
     touchTargetMin: `${layoutFixed.touchTargetMin}px`,
@@ -77,8 +81,11 @@ export const layoutTokens = {
     breakpointTablet: `${layoutFixed.breakpointTablet}px`,
     maxContentWidth: `${iphoneContentWidth}px`,
     borderWidth: `${layoutFixed.borderWidth}px`,
+    borderHairline: `${layoutFixed.borderHairline}px`,
+    borderHairlineHighDensity: `${layoutFixed.borderHairlineHighDensity}px`,
     focusRingWidth: `${layoutFixed.focusRingWidth}px`,
     focusRingOffset: `${layoutFixed.focusRingOffset}px`,
+    hitAreaInsetCompact: `${layoutFixed.hitAreaInsetCompact}px`,
     columnsCompact: layoutFixed.columnsCompact,
     columnsExpanded: layoutFixed.columnsExpanded,
   },
@@ -101,12 +108,16 @@ export const layoutTokens = {
 
 /** Primitive space scale as CSS-ready values */
 export const spaceCssVars = Object.fromEntries(
-  Object.entries(space).map(([step, value]) => [`--space-${step}`, `${value}px`]),
-) as Record<`--space-${SpaceStep}`, string>;
+  [
+    ['half', spaceHalf],
+    ...Object.entries(space),
+  ].map(([step, value]) => [`--space-${step}`, `${value}px`]),
+) as Record<`--space-${SpaceStep}` | '--space-half', string>;
 
 export function buildLayoutCssVariables(): string {
   const lines: string[] = [':root {'];
 
+  lines.push(`  --space-half: ${spaceHalf}px;`);
   for (const [step, value] of Object.entries(space)) {
     lines.push(`  --space-${step}: ${value}px;`);
   }
@@ -122,6 +133,7 @@ export function buildLayoutCssVariables(): string {
     `  --layout-inset-screen-y: ${layoutTokens.inset.screenY};`,
     `  --layout-inset-container: ${layoutTokens.inset.container};`,
     `  --layout-inset-screen-x-compact: ${layoutTokens.inset.screenXCompact};`,
+    `  --layout-gap-inline-2xs: ${layoutTokens.gapInline['2xs']};`,
     `  --layout-gap-inline-xs: ${layoutTokens.gapInline.xs};`,
     `  --layout-gap-inline-sm: ${layoutTokens.gapInline.sm};`,
     `  --layout-gap-inline-md: ${layoutTokens.gapInline.md};`,
@@ -136,14 +148,18 @@ export function buildLayoutCssVariables(): string {
     `  --control-height-sm: ${layoutTokens.control.heightSm};`,
     `  --control-height-md: ${layoutTokens.control.heightMd};`,
     `  --control-height-lg: ${layoutTokens.control.heightLg};`,
+    `  --control-height-xl: ${layoutTokens.control.heightXl};`,
     `  --control-pad-x-sm: ${layoutTokens.control.padXSm};`,
     `  --control-pad-x-md: ${layoutTokens.control.padXMd};`,
     `  --control-pad-x-lg: ${layoutTokens.control.padXLg};`,
+    `  --control-pad-x-xl: ${layoutTokens.control.padXXl};`,
     '',
     `  --layout-border-width: ${layoutTokens.fixed.borderWidth};`,
+    `  --layout-border-hairline: ${layoutTokens.fixed.borderHairline};`,
     `  --layout-touch-target-min: ${layoutTokens.fixed.touchTargetMin};`,
     `  --layout-focus-ring-width: ${layoutTokens.fixed.focusRingWidth};`,
     `  --layout-focus-ring-offset: ${layoutTokens.fixed.focusRingOffset};`,
+    `  --layout-hit-area-inset-compact: ${layoutTokens.fixed.hitAreaInsetCompact};`,
     `  --layout-breakpoint-tablet: ${layoutTokens.fixed.breakpointTablet};`,
     `  --layout-max-content-width: ${layoutTokens.fixed.maxContentWidth};`,
     `  --layout-columns-compact: ${layoutTokens.fixed.columnsCompact};`,
@@ -163,6 +179,12 @@ export function buildLayoutCssVariables(): string {
     `  --device-dynamic-island-width: ${layoutTokens.device.dynamicIslandWidth};`,
     `  --device-dynamic-island-height: ${layoutTokens.device.dynamicIslandHeight};`,
     `  --device-home-indicator-height: ${layoutTokens.device.homeIndicatorHeight};`,
+    '}',
+    '',
+    '@media (min-resolution: 2dppx) {',
+    '  :root {',
+    `    --layout-border-hairline: ${layoutTokens.fixed.borderHairlineHighDensity};`,
+    '  }',
     '}',
   );
 

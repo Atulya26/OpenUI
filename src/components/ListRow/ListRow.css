@@ -1,4 +1,7 @@
 .openui-list-row {
+  --list-row-min-height-lg: 56px;
+  --list-row-leading-size: 32px;
+
   appearance: none;
   width: 100%;
   min-height: var(--layout-touch-target-min);
@@ -8,7 +11,7 @@
   padding-block: var(--layout-gap-stack-xs);
   padding-inline: 0;
   border: 0;
-  border-bottom: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-bottom: var(--layout-border-hairline) solid var(--color-stroke-soft200);
   background: var(--color-bg-white0);
   color: var(--color-text-strong950);
   text-align: start;
@@ -26,7 +29,7 @@
 }
 
 .openui-list-row--lg {
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-sm));
+  min-height: var(--list-row-min-height-lg);
   padding-block: var(--layout-gap-stack-sm);
 }
 
@@ -77,8 +80,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--layout-gap-section);
-  min-width: var(--layout-gap-section);
+  width: var(--list-row-leading-size);
+  min-width: var(--list-row-leading-size);
   min-height: var(--layout-touch-target-min);
   color: inherit;
 }

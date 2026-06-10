@@ -17,7 +17,7 @@ References: [Apple HIG Layout](https://developer.apple.com/design/human-interfac
    - Primitives: `--space-{0-10}` (Storybook / token docs only)
    - Product UI: `--layout-*` semantic tokens only
 
-2. **4px grid only** — Allowed spacing values come from `src/tokens/primitives/spacing.ts`. If a value is not on the scale, add a token via design review — do not invent one in a component.
+2. **4px grid only** — Allowed spacing values come from `src/tokens/primitives/spacing.ts`. The only half-step is `--space-half` / `--layout-gap-inline-2xs` for optical nesting and tight component insets. If a value is not on the scale, add a token via design review — do not invent one in a component.
 
 3. **Touch targets ≥ 44px** — Any tappable control must be at least `var(--layout-touch-target-min)` in both dimensions (or hit area expanded with padding).
 
@@ -79,6 +79,8 @@ References: [Apple HIG Layout](https://developer.apple.com/design/human-interfac
 | Related vertical items | `--layout-gap-stack-xs` … `lg` | 8–24px |
 | Major sections | `--layout-gap-section` | 32px |
 | Touch target min | `--layout-touch-target-min` | 44px |
+| Expanded compact hit inset | `--layout-hit-area-inset-compact` | -4px |
+| Hairline border | `--layout-border-hairline` | 1px fallback / 0.5px on 2x+ |
 | Tablet breakpoint | `--layout-breakpoint-tablet` | 600px |
 | Corner radius (legacy aliases) | `--layout-radius-sm` … `full` | See [RADIUS-RULES.md](./RADIUS-RULES.md) |
 
@@ -98,6 +100,8 @@ Corner radius primitives and semantic roles (`--radius-*`) live in **[RADIUS-RUL
 | `section-loose` | 40 | Rare; marketing / empty states |
 
 Pick the **smallest** token that keeps clear separation. Do not default everything to `section`.
+
+`--layout-gap-inline-2xs` is a 2px optical inset for nested controls, not a rhythm gap. Use it for segmented-control gutters, badge vertical padding, and nav title micro-gaps only.
 
 ---
 
@@ -126,6 +130,8 @@ Pick the **smallest** token that keeps clear separation. Do not default everythi
 - [ ] Read [DEVICE-RULES.md](./DEVICE-RULES.md) if the change touches screen edges or Storybook frame  
 - [ ] All spacing uses `--layout-*` (semantic preferred over `--space-*`)  
 - [ ] No new magic numbers in CSS/inline styles  
+- [ ] Component width/height/min/max dimensions use control tokens or component-owned dimension variables, not `--layout-gap-*` tokens
+- [ ] Hairline separators use `--layout-border-hairline` where the line represents a mobile divider/bar edge
 - [ ] Tap targets meet 44px minimum  
 - [ ] Mobile screen scrollbars are hidden  
 - [ ] Content respects safe top 62px / bottom 34px  

@@ -135,7 +135,7 @@ export const Overview: Story = {
       <Panel>
         <Section
           title="Size and width"
-          description="Size controls padding and emphasis while keeping mobile tap targets at or above 44px. Extended is the full-width mobile action inside the 370px iPhone content area."
+          description="Size controls control height and emphasis. Width is a layout choice: use fullWidth when the action should fill the 370px iPhone content area."
         >
           <div className="openui-button-spec-grid">
             <SpecCell label="Small" note="Compact repeated actions.">
@@ -147,8 +147,8 @@ export const Overview: Story = {
             <SpecCell label="Large" note="High-emphasis standalone actions.">
               <Button size="lg">Large</Button>
             </SpecCell>
-            <SpecCell label="Extended" note="Full-width mobile primary action.">
-              <Button size="xl">Extended</Button>
+            <SpecCell label="Extra large" note="Prominent height for a single high-emphasis action.">
+              <Button size="xl">Extra large</Button>
             </SpecCell>
           </div>
         </Section>
@@ -210,7 +210,7 @@ export const MobileFullWidth: Story = {
                 </Text>
               </Stack>
               <Stack gap="sm">
-                <Button size="xl" leadingIcon={Check}>
+                <Button size="xl" fullWidth leadingIcon={Check}>
                   Confirm booking
                 </Button>
                 <Button size="lg" fullWidth appearance="outline" trailingIcon={Share2}>

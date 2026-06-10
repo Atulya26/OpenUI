@@ -7,9 +7,9 @@
  * @see https://developer.apple.com/design/human-interface-guidelines/layout
  */
 
-import type { SpaceStep } from '../primitives/spacing';
+import type { SpaceHalfStep, SpaceStep } from '../primitives/spacing';
 
-export type LayoutSpaceRef = SpaceStep;
+export type LayoutSpaceRef = SpaceStep | SpaceHalfStep;
 
 /**
  * Layout margins — inset inside the safe area (UIKit `layoutMarginsGuide`).
@@ -38,6 +38,8 @@ export const layoutInset = {
 
 /** Horizontal gaps (icon + label, chips, inline controls) */
 export const layoutGapInline = {
+  /** 2px — optical inset for nested controls, not general rhythm */
+  '2xs': 'half',
   xs: 1,
   sm: 2,
   md: 3,
@@ -89,8 +91,11 @@ export const layoutFixed = {
   /** Max content width — matches the app content lane, not the full device shell */
   maxContentWidth: 370,
   borderWidth: 1,
+  borderHairline: 1,
+  borderHairlineHighDensity: 0.5,
   focusRingWidth: 2,
   focusRingOffset: 2,
+  hitAreaInsetCompact: -4,
   columnsCompact: 1,
   columnsExpanded: 2,
 } as const;
@@ -109,6 +114,8 @@ export const layoutControl = {
     md: 48,
     /** 56px */
     lg: 56,
+    /** 60px — high-emphasis mobile action height */
+    xl: 60,
   },
   /** Horizontal padding inside a control */
   padX: {
@@ -118,6 +125,8 @@ export const layoutControl = {
     md: 16,
     /** 20px */
     lg: 20,
+    /** 24px */
+    xl: 24,
   },
 } as const;
 

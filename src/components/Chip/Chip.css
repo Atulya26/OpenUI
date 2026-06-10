@@ -1,10 +1,15 @@
 .openui-chip {
+  --chip-min-size: 32px;
+  --chip-min-size-sm: 28px;
+  --chip-remove-size: 24px;
+  --chip-hit-area-inset: -8px;
+
   appearance: none;
   position: relative;
   border: var(--layout-border-width) solid var(--color-stroke-soft200);
   border-radius: var(--radius-pill);
-  min-width: var(--layout-gap-section);
-  min-height: var(--layout-gap-section);
+  min-width: var(--chip-min-size);
+  min-height: var(--chip-min-size);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -27,13 +32,13 @@
 .openui-chip::before {
   content: '';
   position: absolute;
-  inset: calc(var(--layout-gap-inline-sm) * -1);
+  inset: var(--chip-hit-area-inset);
   border-radius: var(--radius-pill);
 }
 
 .openui-chip--sm {
-  min-height: calc(var(--layout-gap-section) - var(--layout-gap-inline-xs));
-  padding-block: calc(var(--layout-gap-inline-xs) / 2);
+  min-height: var(--chip-min-size-sm);
+  padding-block: var(--layout-gap-inline-2xs);
   padding-inline: var(--layout-gap-stack-xs);
   font-family: var(--text-caption1-font-family);
   font-size: var(--text-caption1-font-size);
@@ -87,8 +92,8 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  min-width: var(--layout-gap-stack-lg);
-  min-height: var(--layout-gap-stack-lg);
+  min-width: var(--chip-remove-size);
+  min-height: var(--chip-remove-size);
   margin-inline-end: calc(var(--layout-gap-inline-sm) * -1);
   border-radius: var(--radius-pill);
   color: inherit;

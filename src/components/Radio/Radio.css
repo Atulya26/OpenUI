@@ -1,4 +1,9 @@
 .openui-radio {
+  --radio-control-sm: 16px;
+  --radio-control-md: 20px;
+  --radio-dot-sm: 6px;
+  --radio-dot-md: 8px;
+
   display: inline-flex;
   align-items: flex-start;
   min-width: 0;
@@ -55,19 +60,19 @@
 }
 
 .openui-radio--sm .openui-radio__control {
-  inline-size: var(--layout-inset-container);
-  block-size: var(--layout-inset-container);
+  inline-size: var(--radio-control-sm);
+  block-size: var(--radio-control-sm);
 }
 
 .openui-radio--md .openui-radio__control {
-  inline-size: calc(var(--layout-inset-container) + var(--layout-gap-inline-xs));
-  block-size: calc(var(--layout-inset-container) + var(--layout-gap-inline-xs));
+  inline-size: var(--radio-control-md);
+  block-size: var(--radio-control-md);
 }
 
 .openui-radio__control::after {
   content: '';
-  inline-size: var(--layout-gap-inline-sm);
-  block-size: var(--layout-gap-inline-sm);
+  inline-size: var(--radio-dot-md);
+  block-size: var(--radio-dot-md);
   border-radius: var(--radius-pill);
   background: var(--color-static-white);
   opacity: 0;
@@ -76,8 +81,8 @@
 }
 
 .openui-radio--sm .openui-radio__control::after {
-  inline-size: calc(var(--layout-gap-inline-sm) - (var(--layout-border-width) * 2));
-  block-size: calc(var(--layout-gap-inline-sm) - (var(--layout-border-width) * 2));
+  inline-size: var(--radio-dot-sm);
+  block-size: var(--radio-dot-sm);
 }
 
 .openui-radio__copy {

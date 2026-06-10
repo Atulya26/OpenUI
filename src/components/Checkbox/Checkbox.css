@@ -1,4 +1,8 @@
 .openui-checkbox {
+  --checkbox-control-sm: 16px;
+  --checkbox-control-md: 20px;
+  --checkbox-icon-size: 12px;
+
   display: inline-flex;
   align-items: flex-start;
   min-width: 0;
@@ -56,18 +60,18 @@
 }
 
 .openui-checkbox--sm .openui-checkbox__control {
-  inline-size: var(--layout-inset-container);
-  block-size: var(--layout-inset-container);
+  inline-size: var(--checkbox-control-sm);
+  block-size: var(--checkbox-control-sm);
 }
 
 .openui-checkbox--md .openui-checkbox__control {
-  inline-size: calc(var(--layout-inset-container) + var(--layout-gap-inline-xs));
-  block-size: calc(var(--layout-inset-container) + var(--layout-gap-inline-xs));
+  inline-size: var(--checkbox-control-md);
+  block-size: var(--checkbox-control-md);
 }
 
 .openui-checkbox__icon {
-  inline-size: var(--layout-gap-stack-sm);
-  block-size: var(--layout-gap-stack-sm);
+  inline-size: var(--checkbox-icon-size);
+  block-size: var(--checkbox-icon-size);
   opacity: 0;
   transform: scale(var(--motion-scale-enter));
   transition: var(--motion-transition-feedback);

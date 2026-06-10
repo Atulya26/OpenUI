@@ -18,7 +18,7 @@ Rules for humans and AI when using border radius in OpenUI.
 
 5. **Pills use full** — Chips, tags, and circular controls use `--radius-pill` (`9999px`), not `--layout-radius-full` (now also maps to `9999px`; previously 64px on the spacing scale).
 
-6. **Concentric nesting** — Inner radius ≈ outer radius − padding when nesting rounded containers.
+6. **Concentric nesting** — Inner radius ≈ outer radius − padding when nesting rounded containers. For example, a `--radius-control` outer container with a 2px inset should use `--radius-md` on the inner selected item.
 
 ---
 
@@ -37,6 +37,15 @@ Rules for humans and AI when using border radius in OpenUI.
 | Hero / large container | `--radius-28` | 28px |
 | Pill / avatar | `--radius-pill` | 9999px |
 | Legacy alias (compat only) | `--layout-radius-md` | 12px |
+
+## Concentric nesting
+
+When a rounded control contains another rounded active surface, subtract the inset from the outer radius and pick the closest token. This keeps corners visually parallel on mobile.
+
+| Outer | Inset | Inner |
+|-------|-------|-------|
+| `--radius-control` (10px) | `--layout-gap-inline-2xs` (2px) | `--radius-md` (8px) |
+| `--radius-surface` (12px) | `--layout-gap-inline-xs` (4px) | `--radius-md` (8px) |
 
 ---
 
@@ -63,6 +72,7 @@ Rules for humans and AI when using border radius in OpenUI.
 - [ ] Read this file when changing corner radius on a component  
 - [ ] Components use semantic `var(--radius-*)` roles, not layout radius aliases  
 - [ ] Did not use `--device-screen-radius` for UI chrome  
+- [ ] Nested rounded surfaces follow `inner = outer - inset` using the closest radius token
 - [ ] Checked **Foundational → Effects → Radius** in Storybook  
 - [ ] `npx tsc --noEmit` passes  
 

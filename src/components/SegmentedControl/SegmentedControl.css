@@ -1,10 +1,12 @@
 .openui-segmented-control {
+  --segmented-control-min-height: 48px;
+
   display: inline-flex;
   align-items: stretch;
-  gap: calc(var(--layout-gap-inline-xs) / 2);
+  gap: var(--layout-gap-inline-2xs);
   max-width: 100%;
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
-  padding: calc(var(--layout-gap-inline-xs) / 2);
+  min-height: var(--segmented-control-min-height);
+  padding: var(--layout-gap-inline-2xs);
   border: var(--layout-border-width) solid var(--color-stroke-soft200);
   border-radius: var(--radius-control);
   background: var(--color-bg-soft200);
@@ -34,7 +36,7 @@
   justify-content: center;
   gap: var(--layout-gap-inline-xs);
   border: var(--layout-border-width) solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   background: transparent;
   color: var(--color-text-sub600);
   box-shadow: var(--shadow-elevation-none);

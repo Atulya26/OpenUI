@@ -1,4 +1,8 @@
 .openui-separator {
+  --separator-block-sm: 8px;
+  --separator-block-md: 12px;
+  --separator-block-lg: 16px;
+
   width: 100%;
   flex: 0 0 auto;
   color: var(--color-text-sub600);
@@ -11,7 +15,7 @@
 
 .openui-separator--line {
   border: 0;
-  border-top: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-top: var(--layout-border-hairline) solid var(--color-stroke-soft200);
 }
 
 .openui-separator--line.openui-separator--md,
@@ -25,15 +29,15 @@
 }
 
 .openui-separator--block.openui-separator--sm {
-  height: var(--layout-gap-stack-xs);
+  height: var(--separator-block-sm);
 }
 
 .openui-separator--block.openui-separator--md {
-  height: var(--layout-gap-stack-sm);
+  height: var(--separator-block-md);
 }
 
 .openui-separator--block.openui-separator--lg {
-  height: var(--layout-gap-stack-md);
+  height: var(--separator-block-lg);
 }
 
 .openui-separator--text {
@@ -47,7 +51,7 @@
 .openui-separator--text::after {
   content: '';
   display: block;
-  border-top: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-top: var(--layout-border-hairline) solid var(--color-stroke-soft200);
 }
 
 .openui-separator__label {

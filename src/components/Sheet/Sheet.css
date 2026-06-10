@@ -1,4 +1,9 @@
 .openui-sheet {
+  --sheet-viewport-top-gap: 24px;
+  --sheet-medium-height-offset: 72px;
+  --sheet-large-height-offset: 32px;
+  --sheet-handle-width: 40px;
+  --sheet-handle-height: 4px;
   --openui-sheet-safe-bottom: max(
     var(--device-safe-area-bottom),
     env(safe-area-inset-bottom, 0px)
@@ -67,7 +72,7 @@
   width: min(100%, var(--device-screen-width));
   max-height: calc(
     100dvh - max(var(--device-safe-area-top), env(safe-area-inset-top, 0px)) -
-      var(--layout-gap-stack-lg)
+      var(--sheet-viewport-top-gap)
   );
   transform: translateX(-50%);
 }
@@ -85,14 +90,11 @@
 }
 
 .openui-sheet--size-medium .openui-sheet__panel {
-  height: calc(
-    var(--device-content-height) - var(--layout-gap-section-loose) -
-      var(--layout-gap-section)
-  );
+  height: calc(var(--device-content-height) - var(--sheet-medium-height-offset));
 }
 
 .openui-sheet--size-large .openui-sheet__panel {
-  height: calc(var(--device-content-height) - var(--layout-gap-section));
+  height: calc(var(--device-content-height) - var(--sheet-large-height-offset));
 }
 
 .openui-sheet--size-full .openui-sheet__panel {
@@ -114,8 +116,8 @@
 
 .openui-sheet__handle {
   display: block;
-  width: var(--layout-gap-section-loose);
-  height: var(--layout-gap-inline-xs);
+  width: var(--sheet-handle-width);
+  height: var(--sheet-handle-height);
   border-radius: var(--radius-pill);
   background: var(--color-bg-sub300);
 }
@@ -175,7 +177,7 @@
   padding-block-end: calc(
     var(--layout-gap-stack-sm) + var(--openui-sheet-safe-bottom)
   );
-  border-top: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-top: var(--layout-border-hairline) solid var(--color-stroke-soft200);
   background: var(--color-bg-white0);
 }
 

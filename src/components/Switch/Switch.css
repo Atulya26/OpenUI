@@ -1,4 +1,12 @@
 .openui-switch {
+  --switch-track-w: 52px;
+  --switch-track-h: 32px;
+  --switch-thumb: 24px;
+  --switch-track-inset: 4px;
+  --switch-travel: calc(
+    var(--switch-track-w) - var(--switch-thumb) - (var(--switch-track-inset) * 2)
+  );
+
   appearance: none;
   display: inline-flex;
   align-items: center;
@@ -39,9 +47,9 @@
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
-  width: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-sm));
-  height: var(--layout-gap-section);
-  padding: var(--layout-gap-inline-xs);
+  width: var(--switch-track-w);
+  height: var(--switch-track-h);
+  padding: var(--switch-track-inset);
   border: var(--layout-border-width) solid var(--color-stroke-soft200);
   border-radius: var(--radius-pill);
   background: var(--color-bg-soft200);
@@ -51,8 +59,8 @@
 
 .openui-switch__thumb {
   display: block;
-  width: var(--layout-gap-stack-lg);
-  height: var(--layout-gap-stack-lg);
+  width: var(--switch-thumb);
+  height: var(--switch-thumb);
   border-radius: var(--radius-pill);
   background: var(--color-bg-white0);
   box-shadow: var(--shadow-component-toggle-switch);
@@ -71,21 +79,13 @@
 }
 
 .openui-switch--checked .openui-switch__thumb {
-  transform: translateX(calc(var(--layout-inset-container) + var(--layout-gap-inline-xs)));
+  transform: translateX(var(--switch-travel));
 }
 
-.openui-switch--sm .openui-switch__track {
-  width: var(--layout-touch-target-min);
-  height: calc(var(--layout-gap-stack-lg) + var(--layout-gap-inline-xs));
-}
-
-.openui-switch--sm .openui-switch__thumb {
-  width: calc(var(--layout-inset-container) + var(--layout-gap-inline-xs));
-  height: calc(var(--layout-inset-container) + var(--layout-gap-inline-xs));
-}
-
-.openui-switch--sm.openui-switch--checked .openui-switch__thumb {
-  transform: translateX(var(--layout-inset-container));
+.openui-switch--sm {
+  --switch-track-w: 44px;
+  --switch-track-h: 28px;
+  --switch-thumb: 20px;
 }
 
 .openui-switch:disabled .openui-switch__track {

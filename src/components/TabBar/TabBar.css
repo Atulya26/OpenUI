@@ -1,9 +1,16 @@
 .openui-tab-bar {
+  --tab-bar-list-gap: var(--layout-gap-inline-2xs);
+  --tab-bar-min-height: 52px;
+  --tab-bar-selected-lift: -4px;
+  --tab-bar-icon-wrap-min-height: 16px;
+  --tab-bar-badge-size: 16px;
+  --tab-bar-badge-max-width: 48px;
+
   position: relative;
   z-index: var(--z-sticky);
   width: 100%;
   max-width: var(--device-content-width);
-  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border: var(--layout-border-hairline) solid var(--color-stroke-soft200);
   border-radius: var(--radius-pill);
   background: var(--color-bg-weak50);
   color: var(--color-text-sub600);
@@ -25,8 +32,8 @@
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 1fr);
   align-items: stretch;
-  gap: calc(var(--layout-gap-inline-xs) / 2);
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-sm));
+  gap: var(--tab-bar-list-gap);
+  min-height: var(--tab-bar-min-height);
   padding: var(--layout-gap-inline-xs);
 }
 
@@ -39,7 +46,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--layout-gap-inline-xs) / 2);
+  gap: var(--layout-gap-inline-2xs);
   padding: var(--layout-gap-inline-xs) var(--layout-gap-inline-xs);
   border: var(--layout-border-width) solid transparent;
   border-radius: var(--radius-pill);
@@ -71,7 +78,7 @@
   border-color: var(--color-primary-dark);
   color: var(--color-static-white);
   box-shadow: var(--shadow-component-fancy-button-primary);
-  transform: translateY(calc(var(--layout-gap-inline-xs) * -1));
+  transform: translateY(var(--tab-bar-selected-lift));
 }
 
 .openui-tab-bar__item--selected:active:not(:disabled) {
@@ -95,16 +102,16 @@
   align-items: center;
   justify-content: center;
   min-width: var(--layout-touch-target-min);
-  min-height: var(--layout-gap-stack-md);
+  min-height: var(--tab-bar-icon-wrap-min-height);
 }
 
 .openui-tab-bar__badge {
   position: absolute;
   inset-block-start: var(--space-0);
   inset-inline-start: calc(50% + var(--layout-gap-inline-sm));
-  min-width: var(--layout-gap-stack-md);
-  max-width: calc(var(--layout-touch-target-min) + var(--layout-gap-inline-xs));
-  height: var(--layout-gap-stack-md);
+  min-width: var(--tab-bar-badge-size);
+  max-width: var(--tab-bar-badge-max-width);
+  height: var(--tab-bar-badge-size);
   padding-inline: var(--layout-gap-inline-xs);
   display: inline-flex;
   align-items: center;

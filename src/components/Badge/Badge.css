@@ -19,7 +19,7 @@
 }
 
 .openui-badge--sm {
-  padding-block: calc(var(--layout-gap-inline-xs) / 2);
+  padding-block: var(--layout-gap-inline-2xs);
   padding-inline: var(--layout-gap-stack-xs);
   font-family: var(--text-caption2-font-family);
   font-size: var(--text-caption2-font-size);
@@ -28,7 +28,7 @@
 }
 
 .openui-badge--md {
-  padding-block: calc(var(--layout-gap-inline-xs) / 2);
+  padding-block: var(--layout-gap-inline-2xs);
   padding-inline: var(--layout-gap-stack-xs);
 }
 

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { space } from '@/tokens/primitives/spacing';
+import { space, spaceHalf } from '@/tokens/primitives/spacing';
 import {
   layoutFixed,
   layoutGapInline,
@@ -24,10 +24,13 @@ type Story = StoryObj<typeof meta>;
 function refRow(
   role: string,
   cssVar: string,
-  step: number,
+  step: keyof typeof space | 'half',
   resolved: string,
 ) {
-  return [role, cssVar, `space-${step} (${space[step as keyof typeof space]}px)`, resolved];
+  const primitive =
+    step === 'half' ? `space-half (${spaceHalf}px)` : `space-${step} (${space[step]}px)`;
+
+  return [role, cssVar, primitive, resolved];
 }
 
 export const Tokens: Story = {

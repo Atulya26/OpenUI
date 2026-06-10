@@ -148,7 +148,7 @@
 
 .openui-chip {
   display: inline-flex;
-  padding: calc(var(--layout-gap-inline-xs) / 2) var(--layout-gap-stack-xs);
+  padding: var(--layout-gap-inline-2xs) var(--layout-gap-stack-xs);
   border-radius: var(--radius-sm);
   font-family: var(--text-caption2-font-family);
   font-size: var(--text-caption2-font-size);

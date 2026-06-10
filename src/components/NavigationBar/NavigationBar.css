@@ -1,4 +1,6 @@
 .openui-navigation-bar {
+  --navigation-bar-compact-min-height: 52px;
+
   position: relative;
   z-index: var(--z-sticky);
   display: grid;
@@ -10,16 +12,16 @@
 
 .openui-navigation-bar--default {
   background: var(--color-bg-weak50);
-  border-bottom: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-bottom: var(--layout-border-hairline) solid var(--color-stroke-soft200);
 }
 
 .openui-navigation-bar--transparent {
   background: transparent;
-  border-bottom: var(--layout-border-width) solid transparent;
+  border-bottom: var(--layout-border-hairline) solid transparent;
 }
 
 .openui-navigation-bar--compact {
-  min-height: calc(var(--layout-touch-target-min) + var(--layout-gap-stack-xs));
+  min-height: var(--navigation-bar-compact-min-height);
   padding-block: var(--layout-gap-inline-xs);
 }
 
@@ -62,7 +64,7 @@
 
 .openui-navigation-bar__title-block {
   display: grid;
-  gap: calc(var(--layout-gap-inline-xs) / 2);
+  gap: var(--layout-gap-inline-2xs);
   min-width: 0;
 }
 

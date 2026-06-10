@@ -1,5 +1,6 @@
 .openui-button {
   appearance: none;
+  position: relative;
   border: var(--layout-border-width) solid transparent;
   border-radius: var(--radius-control);
   min-height: var(--layout-touch-target-min);
@@ -50,10 +51,9 @@
 }
 
 .openui-button--xl {
-  min-height: var(--control-height-lg);
+  min-height: var(--control-height-xl);
   padding-block: 0;
-  padding-inline: var(--control-pad-x-lg);
-  width: 100%;
+  padding-inline: var(--control-pad-x-xl);
 }
 
 .openui-button--full-width {
@@ -178,6 +178,14 @@
 
 .openui-button__spinner {
   animation: openui-button-spin var(--motion-duration-loading) var(--motion-ease-linear) infinite;
+}
+
+[data-density="compact"] .openui-button--sm::after,
+[data-density="compact"] .openui-button--md::after {
+  content: '';
+  position: absolute;
+  inset: var(--layout-hit-area-inset-compact);
+  border-radius: var(--radius-control);
 }
 
 @media (hover: hover) and (pointer: fine) {

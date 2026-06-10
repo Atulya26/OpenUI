@@ -118,7 +118,10 @@ for (const variable of [
   '--layout-margin-horizontal',
   '--layout-content-width',
   '--layout-inset-screen-x',
+  '--layout-gap-inline-2xs',
+  '--layout-border-hairline',
   '--layout-touch-target-min',
+  '--layout-hit-area-inset-compact',
   '--device-screen-width',
   '--device-screen-height',
   '--device-safe-area-top',
@@ -127,13 +130,18 @@ for (const variable of [
   '--control-height-sm',
   '--control-height-md',
   '--control-height-lg',
+  '--control-height-xl',
   '--control-pad-x-sm',
   '--control-pad-x-md',
   '--control-pad-x-lg',
+  '--control-pad-x-xl',
 ]) {
   if (!layoutCss.includes(variable)) {
     fail(`src/tokens/layout.css is missing ${variable}`);
   }
+}
+if (!layoutCss.includes('--space-half')) {
+  fail('src/tokens/layout.css must define --space-half for optical 2px insets');
 }
 if (!layoutCss.includes('[data-density="compact"]')) {
   fail('src/tokens/layout.css must define a [data-density="compact"] override block');
@@ -244,6 +252,21 @@ const productFiles = [
 ];
 
 const rawColor = /#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(/;
+const componentDimensionProperties = [
+  'width',
+  'height',
+  'min-width',
+  'min-height',
+  'max-width',
+  'max-height',
+  'inline-size',
+  'block-size',
+  'min-inline-size',
+  'min-block-size',
+  'max-inline-size',
+  'max-block-size',
+];
+const fractionalGapCalc = /calc\([^;{]*var\(--layout-gap-[^)]*\)\s*\/\s*2/;
 for (const file of productFiles) {
   const source = read(file);
   if (rawColor.test(source)) {
@@ -296,6 +319,18 @@ for (const file of productFiles) {
     const ungatedHoverLines = findUngatedHoverLines(source);
     if (ungatedHoverLines.length > 0) {
       fail(`${file} has :hover outside @media (hover: hover) at line(s) ${ungatedHoverLines.join(', ')}`);
+    }
+
+    if (fractionalGapCalc.test(source)) {
+      fail(`${file} contains calc(var(--layout-gap-*) / 2); use --layout-gap-inline-2xs`);
+    }
+
+    for (const property of componentDimensionProperties) {
+      for (const value of findCssDeclarationValues(source, property)) {
+        if (value.includes('--layout-gap-')) {
+          fail(`${file} uses --layout-gap-* as a ${property} dimension (${value}); use a control token or component dimension variable`);
+        }
+      }
     }
   }
 }
