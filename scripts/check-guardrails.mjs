@@ -455,6 +455,10 @@ for (const file of productFiles) {
       fail(`${file} contains Storybook-only CSS; move story helpers to src/styles/storybook.css`);
     }
 
+    if (hasExactCssDeclaration(source, 'text-box')) {
+      fail(`${file} uses text-box trimming; preserve full token line boxes to avoid clipped Inter glyphs`);
+    }
+
     const missingExitKeyframes = findEnterKeyframesWithoutExit(source);
     if (missingExitKeyframes.length > 0) {
       fail(`${file} defines enter keyframes without paired exit keyframes: ${missingExitKeyframes.join(', ')}`);
@@ -558,7 +562,7 @@ for (const [file, snippets] of [
   ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline']],
   ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],
-  ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized']],
+  ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized', 'Do not use `text-box`']],
 ]) {
   const source = read(file);
   for (const snippet of snippets) {

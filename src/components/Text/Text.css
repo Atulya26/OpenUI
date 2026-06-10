@@ -188,9 +188,3 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-@supports (text-box: trim-both cap alphabetic) {
-  .openui-text--trim {
-    text-box: trim-both cap alphabetic;
-  }
-}

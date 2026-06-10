@@ -127,13 +127,6 @@
   white-space: nowrap;
 }
 
-@supports (text-box: trim-both cap alphabetic) {
-  .openui-navigation-bar--compact .openui-navigation-bar__title,
-  .openui-navigation-bar--compact .openui-navigation-bar__subtitle {
-    text-box: trim-both cap alphabetic;
-  }
-}
-
 .openui-navigation-bar--large .openui-navigation-bar__subtitle {
   font-family: var(--text-subheadline-font-family);
   font-size: var(--text-subheadline-font-size);

@@ -25,6 +25,8 @@ Reference: [Apple HIG Typography](https://developer.apple.com/design/human-inter
 
 8. **Letter-spacing from tokens** — Large display sizes use negative tracking from `letterSpacing`; do not eyeball `-0.5px`.
 
+9. **No text-box trimming in shipped components** — Do not use `text-box`, `leading-trim`, or cap-height trimming in component CSS. It can clip Inter glyphs in mobile controls when paired with overflow or browser zoom. Use full token line boxes and flex/grid alignment instead.
+
 ---
 
 ## Token cheat sheet
@@ -48,7 +50,7 @@ Reference: [Apple HIG Typography](https://developer.apple.com/design/human-inter
 - Use `<Text emphasized>` for title roles that need the stronger product-screen weight. It maps only title roles to `--text-title*-emphasized-font-weight`.
 - Use `font-variant-numeric: var(--text-numeric-tabular)` for badges, trailing values, progress/toast values, countdowns, and other changing numbers.
 - OpenUI sets `font-optical-sizing: auto` globally so the self-hosted Inter variable face can optically compensate across mobile sizes.
-- Use `<Text trim>` or scoped `text-box: trim-both cap alphabetic` only for single-line UI labels where cap-height centering matters. Do not apply text trim to paragraph/body copy.
+- Avoid optical trim hacks in shipped UI. Do not use `text-box` for component labels; keep the token line-height intact and center with layout.
 
 ### CSS usage
 
@@ -100,7 +102,7 @@ Full table: Storybook → Foundational → Typography → Primitives.
 - [ ] No font sizes outside 11–36px ramp
 - [ ] Display family only on ≥20px styles
 - [ ] Title emphasis uses `Text emphasized` or `--text-title*-emphasized-font-weight`
-- [ ] Single-line label trim is scoped to labels only; no paragraph/body copy uses `text-box`
+- [ ] No shipped component CSS uses `text-box` / cap-height trim; glyphs keep their full token line box
 - [ ] Changing numbers use `--text-numeric-tabular`
 - [ ] Primary screen titles use `screenTitle` / `largeTitle` and render bold
 - [ ] No dashboard/display marketing sizes

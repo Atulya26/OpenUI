@@ -1,6 +1,6 @@
 .openui-badge {
   --badge-h: calc(var(--text-caption1-font-size) + var(--layout-gap-inline-xs));
-  --badge-line-height: var(--text-caption1-font-size);
+  --badge-line-height: var(--text-caption1-line-height);
 
   display: inline-flex;
   align-items: center;
@@ -24,13 +24,13 @@
 
 .openui-badge--sm {
   --badge-h: calc(var(--text-caption2-font-size) + var(--layout-gap-inline-xs));
-  --badge-line-height: var(--text-caption2-font-size);
+  --badge-line-height: var(--text-caption2-line-height);
 
   padding-block: var(--layout-gap-inline-2xs);
   padding-inline: var(--layout-gap-stack-xs);
   font-family: var(--text-caption2-font-family);
   font-size: var(--text-caption2-font-size);
-  line-height: 1;
+  line-height: var(--badge-line-height);
   letter-spacing: var(--text-caption2-letter-spacing);
 }
 
@@ -43,13 +43,6 @@
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-@supports (text-box: trim-both cap alphabetic) {
-  .openui-badge,
-  .openui-badge__label {
-    text-box: trim-both cap alphabetic;
-  }
 }
 
 .openui-badge--neutral.openui-badge--soft {

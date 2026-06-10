@@ -105,12 +105,6 @@
   background: var(--color-state-faded-base);
 }
 
-@supports (text-box: trim-both cap alphabetic) {
-  .openui-avatar__initials {
-    text-box: trim-both cap alphabetic;
-  }
-}
-
 .openui-avatar__status--online {
   background: var(--color-state-success-base);
 }

@@ -86,12 +86,6 @@
   text-overflow: ellipsis;
 }
 
-@supports (text-box: trim-both cap alphabetic) {
-  .openui-chip__label {
-    text-box: trim-both cap alphabetic;
-  }
-}
-
 .openui-chip__remove {
   position: relative;
   display: inline-flex;

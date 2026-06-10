@@ -38,6 +38,8 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 14. **RTL-safe component CSS** — Use logical inline properties (`inset-inline-*`, `margin-inline-*`, `padding-inline-*`, `border-inline-*`) instead of `left`, `right`, `margin-left`, or `padding-right`. Guardrails ban physical inline properties in `src/components/**/*.css`.
 
+15. **Do not trim text boxes** — Component labels keep their full token line-height. Do not use `text-box` / cap-height trimming in shipped component CSS because it can clip Inter glyphs inside mobile controls.
+
 ---
 
 ## Component API pattern
@@ -56,6 +58,7 @@ export type ButtonProps = {
 - **className** → allowed for layout positioning only; not for changing brand colors  
 - **Compact mobile controls** → the hit target must be at least 44px, but the visible mark/pill does not need to be 44px tall. Use an expanded wrapper or pseudo hit area for compact chips, checkbox marks, radio marks, and trailing row controls.
 - **Logical inline layout** → mirrorable details such as status dots, trailing icons, and row actions use logical inline placement so RTL stories behave like LTR.
+- **Text inside controls** → keep token line-height intact and center with flex/grid; avoid cap-height trim hacks.
 
 ---
 
@@ -88,6 +91,7 @@ Never: hard-coded design values in styled-components/theme objects unless genera
 - [ ] Light + dark verified  
 - [ ] Touch target ≥ 44px if interactive ([LAYOUT-RULES.md](./LAYOUT-RULES.md))  
 - [ ] RTL-safe: no physical inline CSS properties in component styles
+- [ ] Text is not clipped: no `text-box` trim in shipped component CSS
 - [ ] Typography from `--text-*` ([TYPOGRAPHY-RULES.md](./TYPOGRAPHY-RULES.md))  
 - [ ] Exported from `src/components/index.ts`  
 - [ ] Storybook under `Components/{Name}`  
