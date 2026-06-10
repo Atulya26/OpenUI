@@ -1,7 +1,6 @@
 .openui-tab-bar {
   --tab-bar-list-gap: var(--layout-gap-inline-2xs);
   --tab-bar-min-height: 52px;
-  --tab-bar-selected-lift: -4px;
   --tab-bar-icon-wrap-min-height: 16px;
   --tab-bar-badge-size: 16px;
   --tab-bar-badge-max-width: 48px;
@@ -78,11 +77,11 @@
   border-color: var(--color-primary-dark);
   color: var(--color-static-white);
   box-shadow: var(--shadow-component-fancy-button-primary);
-  transform: translateY(var(--tab-bar-selected-lift));
 }
 
 .openui-tab-bar__item--selected:active:not(:disabled) {
   background: var(--color-primary-dark);
+  transform: scale(var(--motion-scale-press));
 }
 
 .openui-tab-bar__item:focus-visible {
@@ -138,7 +137,7 @@
 }
 
 .openui-tab-bar__item--selected .openui-tab-bar__icon-wrap {
-  animation: openui-tab-bar-icon-settle var(--motion-duration-enter) var(--motion-ease-enter) both;
+  animation: openui-tab-bar-icon-settle var(--motion-duration-state) var(--motion-ease-state) both;
 }
 
 .openui-tab-bar__label {
@@ -275,5 +274,9 @@
 @keyframes openui-tab-bar-icon-settle {
   from {
     transform: scale(var(--motion-scale-enter));
+  }
+
+  to {
+    transform: scale(1);
   }
 }
