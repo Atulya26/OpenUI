@@ -1714,6 +1714,7 @@
 }
 
 .openui-icon-pagination__btn {
+  min-height: var(--layout-touch-target-min);
   padding: 8px 16px;
   border-radius: 8px;
   border: 1px solid var(--color-stroke-soft200);
@@ -1760,6 +1761,7 @@
 .openui-icon-search__input {
   width: 100%;
   max-width: 360px;
+  min-height: var(--layout-touch-target-min);
   padding: 10px 14px;
   border-radius: 10px;
   border: 1px solid var(--color-stroke-soft200);

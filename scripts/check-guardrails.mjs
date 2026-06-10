@@ -51,6 +51,11 @@ function findCssDeclarationValues(source, property) {
   return values;
 }
 
+function hasExactCssDeclaration(source, property) {
+  const escaped = property.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(^|[;{}\\n])\\s*${escaped}\\s*:`, 'm').test(source);
+}
+
 function findUngatedHoverLines(source) {
   const lines = [];
   const stack = [];
@@ -172,13 +177,21 @@ for (const required of [
 if (!packageJson.devDependencies?.['@storybook/test-runner']) {
   fail('package.json must include @storybook/test-runner for Storybook regression checks');
 }
-for (const script of ['test:storybook', 'test:visual']) {
+for (const script of ['test:storybook', 'test:visual', 'check:css-budget']) {
   if (!packageJson.scripts?.[script]) {
     fail(`package.json must define ${script}`);
   }
 }
+if (!packageJson.scripts?.check?.includes('check:css-budget')) {
+  fail('package.json check script must run check:css-budget after build');
+}
 if (!read('.storybook/test-runner.ts').includes('visualMatrix')) {
   fail('.storybook/test-runner.ts must define the light/dark × density visualMatrix');
+}
+for (const snippet of ['dir: ', 'interactiveSelectors', '44×44']) {
+  if (!read('.storybook/test-runner.ts').includes(snippet)) {
+    fail(`.storybook/test-runner.ts must include ${snippet} for RTL and touch-target coverage`);
+  }
 }
 
 const layoutCss = read('src/tokens/layout.css');
@@ -361,6 +374,24 @@ const componentDimensionProperties = [
   'max-inline-size',
   'max-block-size',
 ];
+const inlinePhysicalProperties = [
+  'left',
+  'right',
+  'margin-left',
+  'margin-right',
+  'padding-left',
+  'padding-right',
+  'border-left',
+  'border-right',
+  'border-left-color',
+  'border-right-color',
+  'border-left-width',
+  'border-right-width',
+  'border-left-style',
+  'border-right-style',
+  'inset-left',
+  'inset-right',
+];
 const fractionalGapCalc = /calc\([^;{]*var\(--layout-gap-[^)]*\)\s*\/\s*2/;
 for (const file of productFiles) {
   const source = read(file);
@@ -434,6 +465,12 @@ for (const file of productFiles) {
         if (value.includes('--layout-gap-')) {
           fail(`${file} uses --layout-gap-* as a ${property} dimension (${value}); use a control token or component dimension variable`);
         }
+      }
+    }
+
+    for (const property of inlinePhysicalProperties) {
+      if (hasExactCssDeclaration(source, property)) {
+        fail(`${file} uses physical inline property ${property}; use logical inline/block properties for RTL-safe components`);
       }
     }
   }
@@ -517,8 +554,9 @@ try {
 }
 
 for (const [file, snippets] of [
-  ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css']],
-  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css']],
+  ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget']],
+  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline']],
+  ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],
   ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized']],
 ]) {

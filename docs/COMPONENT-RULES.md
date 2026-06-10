@@ -36,6 +36,8 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 13. **Mobile scrollbar chrome hidden** — Components that create mobile scrolling regions hide visible scrollbars while preserving scrolling behavior.
 
+14. **RTL-safe component CSS** — Use logical inline properties (`inset-inline-*`, `margin-inline-*`, `padding-inline-*`, `border-inline-*`) instead of `left`, `right`, `margin-left`, or `padding-right`. Guardrails ban physical inline properties in `src/components/**/*.css`.
+
 ---
 
 ## Component API pattern
@@ -53,6 +55,7 @@ export type ButtonProps = {
 - **Sizes** → map to `layout` + `typography` tokens internally  
 - **className** → allowed for layout positioning only; not for changing brand colors  
 - **Compact mobile controls** → the hit target must be at least 44px, but the visible mark/pill does not need to be 44px tall. Use an expanded wrapper or pseudo hit area for compact chips, checkbox marks, radio marks, and trailing row controls.
+- **Logical inline layout** → mirrorable details such as status dots, trailing icons, and row actions use logical inline placement so RTL stories behave like LTR.
 
 ---
 
@@ -84,6 +87,7 @@ Never: hard-coded design values in styled-components/theme objects unless genera
 - [ ] Props map to semantic tokens (document mapping in story description)  
 - [ ] Light + dark verified  
 - [ ] Touch target ≥ 44px if interactive ([LAYOUT-RULES.md](./LAYOUT-RULES.md))  
+- [ ] RTL-safe: no physical inline CSS properties in component styles
 - [ ] Typography from `--text-*` ([TYPOGRAPHY-RULES.md](./TYPOGRAPHY-RULES.md))  
 - [ ] Exported from `src/components/index.ts`  
 - [ ] Storybook under `Components/{Name}`  

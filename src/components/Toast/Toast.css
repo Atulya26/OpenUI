@@ -232,7 +232,7 @@
 }
 
 .openui-toast__action {
-  min-width: 0;
+  min-width: var(--layout-touch-target-min);
   max-width: var(--device-content-width);
   min-height: var(--layout-touch-target-min);
   padding-inline: var(--layout-gap-stack-sm);

@@ -19,7 +19,7 @@ References: [Apple HIG Layout](https://developer.apple.com/design/human-interfac
 
 2. **4px grid only** — Allowed spacing values come from `src/tokens/primitives/spacing.ts`. The only half-step is `--space-half` / `--layout-gap-inline-2xs` for optical nesting and tight component insets. If a value is not on the scale, add a token via design review — do not invent one in a component.
 
-3. **Touch targets ≥ 44px** — Any tappable control must be at least `var(--layout-touch-target-min)` in both dimensions (or hit area expanded with padding).
+3. **Touch targets ≥ 44px** — Any tappable control must be at least `var(--layout-touch-target-min)` in both dimensions (or hit area expanded with padding/pseudo hit area). `npm run test:visual` audits 44×44 targets in comfortable density.
 
 4. **Mobile-first, one column default** — Screens use a single column with `var(--layout-inset-screen-x)`. Multi-column layouts only at `min-width: var(--layout-breakpoint-tablet)` and only when the pattern calls for it (e.g. card grid).
 
@@ -36,6 +36,8 @@ References: [Apple HIG Layout](https://developer.apple.com/design/human-interfac
 10. **Typography + spacing** — Use existing `--text-*` tokens for type. Do not nudge vertical spacing to “fix” line height; pick the correct stack gap token instead.
 
 11. **Three layers** — Always apply in order: **safe area** → **layout margins** → **content**. See [Region model](#region-model-safe-area--margins--content).
+
+12. **Logical inline properties** — Use `padding-inline`, `margin-inline`, `inset-inline-start/end`, and `border-inline-*` for component layout. Do not use physical inline properties such as `left`, `right`, `margin-left`, or `padding-right`; components must mirror cleanly under RTL.
 
 ---
 
@@ -133,6 +135,7 @@ Pick the **smallest** token that keeps clear separation. Do not default everythi
 - [ ] Component width/height/min/max dimensions use control tokens or component-owned dimension variables, not `--layout-gap-*` tokens
 - [ ] Hairline separators use `--layout-border-hairline` where the line represents a mobile divider/bar edge
 - [ ] Tap targets meet 44px minimum  
+- [ ] Inline placement uses logical inline properties; RTL visual smoke stays green
 - [ ] Mobile screen scrollbars are hidden  
 - [ ] Content respects safe top 62px / bottom 34px  
 - [ ] Horizontal inset is 16px (`--layout-inset-screen-x`), not 24px  

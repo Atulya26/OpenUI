@@ -48,7 +48,8 @@ Rules describe *behavior*; TypeScript/CSS is the *source of truth*. Always confi
 
 ```bash
 npm run storybook   # http://localhost:6006
-npm run test:visual # Storybook visual smoke: light/dark × default/compact iPhone viewport
+npm run test:visual # Storybook visual smoke: light/dark × density, RTL, overflow, touch targets
+npm run check:css-budget # after npm run build: dist/styles.css raw/gzip budget
 ```
 
 | Foundational area | Storybook path |

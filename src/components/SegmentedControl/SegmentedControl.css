@@ -51,7 +51,7 @@
   appearance: none;
   position: relative;
   flex: 1 1 0;
-  min-width: 0;
+  min-width: var(--layout-touch-target-min);
   min-height: var(--layout-touch-target-min);
   display: inline-flex;
   align-items: center;
