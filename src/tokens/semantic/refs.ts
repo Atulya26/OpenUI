@@ -88,6 +88,13 @@ export const semanticByMode = {
         lighter: 'green.50',
       },
     },
+    stateLayer: {
+      pressedNeutral: 'black-alpha-8',
+      pressedPrimary: 'blue-alpha-16',
+      pressedOnFill: 'white-alpha-12',
+      pressedDanger: 'red-alpha-16',
+      selected: 'blue-alpha-10',
+    },
   },
   dark: {
     bg: {
@@ -149,6 +156,13 @@ export const semanticByMode = {
         light: 'green-alpha-24',
         lighter: 'green-alpha-16',
       },
+    },
+    stateLayer: {
+      pressedNeutral: 'white-alpha-10',
+      pressedPrimary: 'blue-alpha-24',
+      pressedOnFill: 'white-alpha-12',
+      pressedDanger: 'red-alpha-24',
+      selected: 'blue-alpha-16',
     },
   },
 } as const satisfies Record<ThemeMode, Record<string, SemanticGroup | Record<string, SemanticGroup>>>;

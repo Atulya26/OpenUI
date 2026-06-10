@@ -27,6 +27,8 @@ Rules for humans and AI when using color in OpenUI.
 
 8. **Static black/white** — `--color-static-black` and `--color-static-white` do not flip in dark mode (overlays, media). For theme-aware surfaces use `bg-*` / `text-*` semantic tokens.
 
+9. **State layers for touch feedback** — Pressed/selected surface feedback uses `--color-state-layer-*` tokens. Do not invent component-local alpha fills.
+
 ---
 
 ## Token cheat sheet
@@ -47,6 +49,9 @@ Rules for humans and AI when using color in OpenUI.
 | Success | `--color-state-success-base` | Success states |
 | Warning | `--color-state-warning-base` | Warnings |
 | Info | `--color-state-information-base` | Informational |
+| Pressed neutral layer | `--color-state-layer-pressed-neutral` | Touch feedback on neutral surfaces |
+| Pressed primary layer | `--color-state-layer-pressed-primary` | Touch feedback on primary tinted surfaces |
+| Selected layer | `--color-state-layer-selected` | Selected surfaces / rows |
 
 Icon colors mirror text: `--color-icon-strong950`, `--color-icon-sub600`, etc.
 

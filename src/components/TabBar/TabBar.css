@@ -57,29 +57,30 @@
   touch-action: manipulation;
 }
 
-.openui-tab-bar__item:hover:not(:disabled):not(.openui-tab-bar__item--selected) {
-  background: var(--color-bg-white0);
-  color: var(--color-text-strong950);
-}
-
-.openui-tab-bar__item:focus-visible {
-  outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
-  outline-offset: var(--layout-focus-ring-offset);
-  box-shadow: var(--shadow-component-button-important-focus);
-}
-
 .openui-tab-bar__item:active:not(:disabled) {
   transform: scale(var(--motion-scale-press));
 }
 
-.openui-tab-bar__item--selected,
-.openui-tab-bar__item--selected:hover:not(:disabled),
-.openui-tab-bar__item--selected:focus-visible:not(:disabled) {
+.openui-tab-bar__item:active:not(:disabled):not(.openui-tab-bar__item--selected) {
+  background: var(--color-state-layer-pressed-neutral);
+  color: var(--color-text-strong950);
+}
+
+.openui-tab-bar__item--selected {
   background: var(--color-primary-base);
   border-color: var(--color-primary-dark);
   color: var(--color-static-white);
   box-shadow: var(--shadow-component-fancy-button-primary);
   transform: translateY(calc(var(--layout-gap-inline-xs) * -1));
+}
+
+.openui-tab-bar__item--selected:active:not(:disabled) {
+  background: var(--color-primary-dark);
+}
+
+.openui-tab-bar__item:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-component-button-important-focus);
 }
 
 .openui-tab-bar__item:disabled {
@@ -251,4 +252,11 @@
   inset-block-end: var(--layout-inset-container);
   bottom: auto;
   width: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-tab-bar__item:hover:not(:disabled):not(.openui-tab-bar__item--selected) {
+    background: var(--color-bg-white0);
+    color: var(--color-text-strong950);
+  }
 }

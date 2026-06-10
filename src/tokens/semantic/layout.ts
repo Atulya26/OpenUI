@@ -86,8 +86,8 @@ export const layoutFixed = {
   safeAreaRight: 0,
   /** Min width for two-column layout (rare on phone; iPad web) */
   breakpointTablet: 600,
-  /** Max content width — matches target screen width */
-  maxContentWidth: 402,
+  /** Max content width — matches the app content lane, not the full device shell */
+  maxContentWidth: 370,
   borderWidth: 1,
   focusRingWidth: 2,
   focusRingOffset: 2,

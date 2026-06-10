@@ -2,7 +2,7 @@
  * OpenUI alpha color primitives.
  */
 
-export type AlphaOpacity = 10 | 16 | 24;
+export type AlphaOpacity = 8 | 10 | 12 | 16 | 24;
 
 export type AlphaFamily =
   | 'neutral'
@@ -34,7 +34,7 @@ export const alphaBases: Record<AlphaFamily, string> = {
   black: '#171717',
 };
 
-export const alphaOpacities: AlphaOpacity[] = [24, 16, 10];
+export const alphaOpacities: AlphaOpacity[] = [24, 16, 12, 10, 8];
 
 function hexToRgb(hex: string): { r: number; g: number; b: number } {
   const h = hex.replace('#', '');

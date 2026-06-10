@@ -14,6 +14,7 @@ export type ColorTokens = {
   stroke: Record<string, string>;
   icon: Record<string, string>;
   state: Record<string, Record<string, string>>;
+  stateLayer: Record<string, string>;
 };
 
 function buildTheme(mode: ThemeMode): ColorTokens {
@@ -43,6 +44,7 @@ function buildTheme(mode: ThemeMode): ColorTokens {
       error: resolveSemanticRefs(modeSemantic.state.error),
       success: resolveSemanticRefs(modeSemantic.state.success),
     },
+    stateLayer: resolveSemanticRefs(modeSemantic.stateLayer),
   };
 }
 

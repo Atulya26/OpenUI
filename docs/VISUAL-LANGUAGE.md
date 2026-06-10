@@ -42,8 +42,8 @@ Principle: use the quietest surface that still separates the content. Elevation 
 | State | Rule |
 |-------|------|
 | Idle | Soft surface, clear label, no unnecessary decoration |
-| Hover | Slight surface or stroke shift only |
-| Pressed | Tiny scale feedback via motion tokens |
+| Hover | Pointer-only; slight surface or stroke shift behind `@media (hover: hover)` |
+| Pressed | Tiny scale plus a tokenized state-layer or darker/tinted surface shift |
 | Focus | One visible keyboard-focus treatment, never stacked outlines on touch-first controls |
 | Selected control | Dark filled state for buttons and icon buttons |
 | Selected surface | Primary-tinted background plus stronger border, not a dark block |
@@ -73,6 +73,7 @@ Controls should feel compact but tappable:
 - compact controls such as chips, checkbox marks, radio marks, and badges should not visually fill the whole tap zone
 - keep the tappable area at least 44px, but let the visible control remain smaller when the component lives in dense mobile rows
 - hover on touch-first selection controls should be subtle: prefer a stroke or very quiet surface shift over a strong fill
+- pressed states should be visible on touch even when hover never fires
 
 ---
 

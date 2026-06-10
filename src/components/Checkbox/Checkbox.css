@@ -100,12 +100,9 @@
   color: var(--color-text-sub600);
 }
 
-.openui-checkbox:hover:not(.openui-checkbox--disabled) .openui-checkbox__control {
-  border-color: var(--color-stroke-sub300);
-  background: var(--color-bg-weak50);
-}
-
 .openui-checkbox:active:not(.openui-checkbox--disabled) .openui-checkbox__control {
+  border-color: var(--color-stroke-sub300);
+  background: var(--color-state-layer-pressed-neutral);
   transform: scale(var(--motion-scale-press));
 }
 
@@ -121,16 +118,16 @@
   background: var(--color-primary-base);
 }
 
-.openui-checkbox:hover:not(.openui-checkbox--disabled)
+.openui-checkbox:active:not(.openui-checkbox--disabled)
   .openui-checkbox__input:checked
   + .openui-checkbox__control,
-.openui-checkbox:hover:not(.openui-checkbox--disabled)
+.openui-checkbox:active:not(.openui-checkbox--disabled)
   .openui-checkbox__input:indeterminate
   + .openui-checkbox__control,
-.openui-checkbox--indeterminate:hover:not(.openui-checkbox--disabled)
+.openui-checkbox--indeterminate:active:not(.openui-checkbox--disabled)
   .openui-checkbox__control {
   border-color: var(--color-primary-dark);
-  background: var(--color-primary-base);
+  background: var(--color-primary-dark);
 }
 
 .openui-checkbox__input:checked + .openui-checkbox__control .openui-checkbox__icon,
@@ -145,9 +142,9 @@
   border-color: var(--color-state-error-base);
 }
 
-.openui-checkbox--invalid:hover:not(.openui-checkbox--disabled) .openui-checkbox__control {
+.openui-checkbox--invalid:active:not(.openui-checkbox--disabled) .openui-checkbox__control {
   border-color: var(--color-state-error-dark);
-  background: var(--color-bg-weak50);
+  background: var(--color-state-layer-pressed-danger);
 }
 
 .openui-checkbox--invalid .openui-checkbox__input:focus-visible + .openui-checkbox__control {
@@ -161,16 +158,16 @@
   background: var(--color-state-error-base);
 }
 
-.openui-checkbox--invalid:hover:not(.openui-checkbox--disabled)
+.openui-checkbox--invalid:active:not(.openui-checkbox--disabled)
   .openui-checkbox__input:checked
   + .openui-checkbox__control,
-.openui-checkbox--invalid:hover:not(.openui-checkbox--disabled)
+.openui-checkbox--invalid:active:not(.openui-checkbox--disabled)
   .openui-checkbox__input:indeterminate
   + .openui-checkbox__control,
-.openui-checkbox--invalid.openui-checkbox--indeterminate:hover:not(.openui-checkbox--disabled)
+.openui-checkbox--invalid.openui-checkbox--indeterminate:active:not(.openui-checkbox--disabled)
   .openui-checkbox__control {
   border-color: var(--color-state-error-dark);
-  background: var(--color-state-error-base);
+  background: var(--color-state-error-dark);
 }
 
 .openui-checkbox--invalid .openui-checkbox__description {
@@ -198,4 +195,40 @@
 .openui-checkbox--disabled.openui-checkbox--indeterminate .openui-checkbox__control {
   border-color: var(--color-text-disabled300);
   background: var(--color-bg-soft200);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-checkbox:hover:not(.openui-checkbox--disabled) .openui-checkbox__control {
+    border-color: var(--color-stroke-sub300);
+    background: var(--color-bg-weak50);
+  }
+
+  .openui-checkbox:hover:not(.openui-checkbox--disabled)
+    .openui-checkbox__input:checked
+    + .openui-checkbox__control,
+  .openui-checkbox:hover:not(.openui-checkbox--disabled)
+    .openui-checkbox__input:indeterminate
+    + .openui-checkbox__control,
+  .openui-checkbox--indeterminate:hover:not(.openui-checkbox--disabled)
+    .openui-checkbox__control {
+    border-color: var(--color-primary-dark);
+    background: var(--color-primary-base);
+  }
+
+  .openui-checkbox--invalid:hover:not(.openui-checkbox--disabled) .openui-checkbox__control {
+    border-color: var(--color-state-error-dark);
+    background: var(--color-bg-weak50);
+  }
+
+  .openui-checkbox--invalid:hover:not(.openui-checkbox--disabled)
+    .openui-checkbox__input:checked
+    + .openui-checkbox__control,
+  .openui-checkbox--invalid:hover:not(.openui-checkbox--disabled)
+    .openui-checkbox__input:indeterminate
+    + .openui-checkbox__control,
+  .openui-checkbox--invalid.openui-checkbox--indeterminate:hover:not(.openui-checkbox--disabled)
+    .openui-checkbox__control {
+    border-color: var(--color-state-error-dark);
+    background: var(--color-state-error-base);
+  }
 }

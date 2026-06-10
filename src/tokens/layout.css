@@ -15,7 +15,7 @@
   /* Layout margins inside safe area (iOS 26 kit) */
   --layout-margin-horizontal: var(--space-4);
   --layout-margin-vertical: var(--space-4);
-  --layout-content-width: 370px;
+  --layout-content-width: var(--device-content-width);
 
   --layout-inset-screen-x: var(--layout-margin-horizontal);
   --layout-inset-screen-y: var(--layout-margin-vertical);
@@ -47,7 +47,7 @@
   --layout-focus-ring-width: 2px;
   --layout-focus-ring-offset: 2px;
   --layout-breakpoint-tablet: 600px;
-  --layout-max-content-width: 402px;
+  --layout-max-content-width: var(--device-content-width);
   --layout-columns-compact: 1;
   --layout-columns-expanded: 2;
 

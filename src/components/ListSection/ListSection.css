@@ -73,10 +73,6 @@
   border-bottom-color: var(--color-primary-base);
 }
 
-.openui-list-section__group > .openui-list-row--selected:hover:not(:disabled):not(.openui-list-row--disabled) {
-  background: var(--color-primary-alpha16);
-}
-
 .openui-list-section__group > .openui-list-row:disabled,
 .openui-list-section__group > .openui-list-row--disabled,
 .openui-list-section__group > .openui-list-row[aria-disabled='true'] {
@@ -93,4 +89,10 @@
 
 .openui-list-section__group > :not(.openui-list-row):last-child {
   padding-bottom: var(--layout-gap-stack-sm);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-list-section__group > .openui-list-row--selected:hover:not(:disabled):not(.openui-list-row--disabled) {
+    background: var(--color-primary-alpha16);
+  }
 }

@@ -13,12 +13,6 @@
   user-select: none;
 }
 
-.openui-icon-button:focus-visible {
-  outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
-  outline-offset: var(--layout-focus-ring-offset);
-  box-shadow: var(--shadow-component-button-primary-focus);
-}
-
 .openui-icon-button:disabled {
   cursor: not-allowed;
   background: var(--color-bg-soft200);
@@ -58,10 +52,6 @@
   box-shadow: var(--shadow-component-fancy-button-neutral);
 }
 
-.openui-icon-button--default.openui-icon-button--fill:hover:not(:disabled) {
-  background: var(--color-bg-surface800);
-}
-
 .openui-icon-button--default.openui-icon-button--outline {
   background: var(--color-bg-white0);
   color: var(--color-icon-strong950);
@@ -74,19 +64,10 @@
   color: var(--color-icon-strong950);
 }
 
-.openui-icon-button--default.openui-icon-button--outline:hover:not(:disabled),
-.openui-icon-button--default.openui-icon-button--transparent:hover:not(:disabled) {
-  background: var(--color-bg-soft200);
-}
-
 .openui-icon-button--primary.openui-icon-button--fill {
   background: var(--color-primary-base);
   color: var(--color-static-white);
   box-shadow: var(--shadow-component-fancy-button-primary);
-}
-
-.openui-icon-button--primary.openui-icon-button--fill:hover:not(:disabled) {
-  background: var(--color-primary-darker);
 }
 
 .openui-icon-button--primary.openui-icon-button--outline {
@@ -99,11 +80,6 @@
 .openui-icon-button--primary.openui-icon-button--transparent {
   background: transparent;
   color: var(--color-primary-base);
-}
-
-.openui-icon-button--primary.openui-icon-button--outline:hover:not(:disabled),
-.openui-icon-button--primary.openui-icon-button--transparent:hover:not(:disabled) {
-  background: var(--color-primary-alpha10);
 }
 
 .openui-icon-button--destructive.openui-icon-button--fill {
@@ -124,30 +100,51 @@
   color: var(--color-state-error-base);
 }
 
-.openui-icon-button--destructive.openui-icon-button--outline:hover:not(:disabled),
-.openui-icon-button--destructive.openui-icon-button--transparent:hover:not(:disabled) {
-  background: var(--color-state-error-lighter);
+.openui-icon-button--default.openui-icon-button--fill:active:not(:disabled) {
+  background: var(--color-bg-surface800);
+}
+
+.openui-icon-button--default.openui-icon-button--outline:active:not(:disabled),
+.openui-icon-button--default.openui-icon-button--transparent:active:not(:disabled) {
+  background: var(--color-state-layer-pressed-neutral);
+}
+
+.openui-icon-button--primary.openui-icon-button--fill:active:not(:disabled) {
+  background: var(--color-primary-dark);
+}
+
+.openui-icon-button--primary.openui-icon-button--outline:active:not(:disabled),
+.openui-icon-button--primary.openui-icon-button--transparent:active:not(:disabled) {
+  background: var(--color-state-layer-pressed-primary);
+}
+
+.openui-icon-button--destructive.openui-icon-button--fill:active:not(:disabled) {
+  background: var(--color-state-error-dark);
+}
+
+.openui-icon-button--destructive.openui-icon-button--outline:active:not(:disabled),
+.openui-icon-button--destructive.openui-icon-button--transparent:active:not(:disabled) {
+  background: var(--color-state-layer-pressed-danger);
 }
 
 .openui-icon-button--default.openui-icon-button--selected:not(:disabled),
-.openui-icon-button--default.openui-icon-button--selected:hover:not(:disabled),
-.openui-icon-button--default.openui-icon-button--selected:focus-visible:not(:disabled),
-.openui-icon-button--primary.openui-icon-button--selected:not(:disabled),
-.openui-icon-button--primary.openui-icon-button--selected:hover:not(:disabled),
-.openui-icon-button--primary.openui-icon-button--selected:focus-visible:not(:disabled) {
+.openui-icon-button--primary.openui-icon-button--selected:not(:disabled) {
   background: var(--color-primary-dark);
   border-color: transparent;
   color: var(--color-static-white);
   box-shadow: var(--shadow-component-fancy-button-primary);
 }
 
-.openui-icon-button--destructive.openui-icon-button--selected:not(:disabled),
-.openui-icon-button--destructive.openui-icon-button--selected:hover:not(:disabled),
-.openui-icon-button--destructive.openui-icon-button--selected:focus-visible:not(:disabled) {
+.openui-icon-button--destructive.openui-icon-button--selected:not(:disabled) {
   background: var(--color-state-error-dark);
   border-color: transparent;
   color: var(--color-static-white);
   box-shadow: var(--shadow-component-fancy-button-error);
+}
+
+.openui-icon-button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-component-button-primary-focus);
 }
 
 .openui-icon-button--transparent:focus-visible,
@@ -157,4 +154,29 @@
 
 .openui-icon-button--destructive:focus-visible {
   box-shadow: var(--shadow-component-button-error-focus);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-icon-button--default.openui-icon-button--fill:hover:not(:disabled) {
+    background: var(--color-bg-surface800);
+  }
+
+  .openui-icon-button--default.openui-icon-button--outline:hover:not(:disabled),
+  .openui-icon-button--default.openui-icon-button--transparent:hover:not(:disabled) {
+    background: var(--color-bg-soft200);
+  }
+
+  .openui-icon-button--primary.openui-icon-button--fill:hover:not(:disabled) {
+    background: var(--color-primary-darker);
+  }
+
+  .openui-icon-button--primary.openui-icon-button--outline:hover:not(:disabled),
+  .openui-icon-button--primary.openui-icon-button--transparent:hover:not(:disabled) {
+    background: var(--color-state-layer-selected);
+  }
+
+  .openui-icon-button--destructive.openui-icon-button--outline:hover:not(:disabled),
+  .openui-icon-button--destructive.openui-icon-button--transparent:hover:not(:disabled) {
+    background: var(--color-state-error-lighter);
+  }
 }

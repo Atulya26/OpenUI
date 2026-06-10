@@ -53,15 +53,16 @@
   padding-inline-start: var(--control-pad-x-lg);
 }
 
-.openui-select__shell:hover:not(:disabled):not(:focus-visible) {
-  border-color: var(--color-stroke-sub300);
-}
-
 .openui-select__shell:focus-visible,
 .openui-select--open .openui-select__shell {
   border-color: var(--color-primary-dark);
   background: var(--color-bg-white0);
   box-shadow: var(--shadow-elevation-none);
+}
+
+.openui-select__shell:active:not(:disabled) {
+  border-color: var(--color-stroke-sub300);
+  background: var(--color-bg-white0);
 }
 
 .openui-select--success .openui-select__shell {
@@ -222,19 +223,31 @@
   transition: var(--motion-transition-feedback);
 }
 
-.openui-select__option:hover:not(:disabled),
 .openui-select__option:focus-visible {
   border-color: var(--color-stroke-soft200);
   background: var(--color-bg-weak50);
   outline: none;
 }
 
-.openui-select__option--selected,
-.openui-select__option--selected:hover:not(:disabled),
+.openui-select__option:active:not(:disabled) {
+  border-color: var(--color-stroke-soft200);
+  background: var(--color-state-layer-pressed-neutral);
+}
+
+.openui-select__option--selected {
+  border-color: var(--color-primary-alpha16);
+  background: var(--color-state-layer-selected);
+  color: var(--color-primary-dark);
+}
+
 .openui-select__option--selected:focus-visible {
   border-color: var(--color-primary-alpha16);
-  background: var(--color-primary-alpha10);
+  background: var(--color-state-layer-selected);
   color: var(--color-primary-dark);
+}
+
+.openui-select__option--selected:active:not(:disabled) {
+  background: var(--color-state-layer-pressed-primary);
 }
 
 .openui-select__option:disabled {
@@ -266,4 +279,22 @@
   display: grid;
   gap: var(--layout-gap-stack-sm);
   max-width: var(--device-content-width);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-select__shell:hover:not(:disabled):not(:focus-visible) {
+    border-color: var(--color-stroke-sub300);
+  }
+
+  .openui-select__option:hover:not(:disabled) {
+    border-color: var(--color-stroke-soft200);
+    background: var(--color-bg-weak50);
+    outline: none;
+  }
+
+  .openui-select__option--selected:hover:not(:disabled) {
+    border-color: var(--color-primary-alpha16);
+    background: var(--color-state-layer-selected);
+    color: var(--color-primary-dark);
+  }
 }

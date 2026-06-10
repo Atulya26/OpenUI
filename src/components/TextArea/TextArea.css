@@ -69,10 +69,6 @@
   --openui-textarea-padding-inline: calc(var(--layout-inset-container) + var(--layout-gap-inline-sm));
 }
 
-.openui-textarea:hover:not(.openui-textarea--disabled):not(:focus-within) {
-  border-color: var(--color-stroke-sub300);
-}
-
 .openui-textarea:focus-within {
   border-color: var(--color-primary-dark);
   background: var(--color-bg-white0);
@@ -221,4 +217,10 @@
 
 .openui-textarea-field__message--success {
   color: var(--color-state-success-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-textarea:hover:not(.openui-textarea--disabled):not(:focus-within) {
+    border-color: var(--color-stroke-sub300);
+  }
 }

@@ -25,6 +25,11 @@
   transform: scale(var(--motion-scale-press));
 }
 
+.openui-switch:active:not(:disabled) .openui-switch__track {
+  border-color: var(--color-stroke-sub300);
+  background: var(--color-state-layer-pressed-neutral);
+}
+
 .openui-switch:disabled {
   cursor: not-allowed;
 }
@@ -55,18 +60,14 @@
   transition: var(--motion-transition-feedback);
 }
 
-.openui-switch:hover:not(:disabled) .openui-switch__track {
-  border-color: var(--color-stroke-sub300);
-}
-
 .openui-switch--checked .openui-switch__track {
   border-color: var(--color-primary-base);
   background: var(--color-primary-base);
 }
 
-.openui-switch--checked:hover:not(:disabled) .openui-switch__track {
+.openui-switch--checked:active:not(:disabled) .openui-switch__track {
   border-color: var(--color-primary-darker);
-  background: var(--color-primary-darker);
+  background: var(--color-primary-dark);
 }
 
 .openui-switch--checked .openui-switch__thumb {
@@ -101,4 +102,15 @@
 .openui-switch--checked:disabled .openui-switch__track {
   border-color: var(--color-bg-sub300);
   background: var(--color-bg-sub300);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-switch:hover:not(:disabled) .openui-switch__track {
+    border-color: var(--color-stroke-sub300);
+  }
+
+  .openui-switch--checked:hover:not(:disabled) .openui-switch__track {
+    border-color: var(--color-primary-darker);
+    background: var(--color-primary-darker);
+  }
 }

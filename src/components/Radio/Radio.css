@@ -107,12 +107,9 @@
   color: var(--color-text-sub600);
 }
 
-.openui-radio:hover:not(.openui-radio--disabled) .openui-radio__control {
-  border-color: var(--color-stroke-sub300);
-  background: var(--color-bg-weak50);
-}
-
 .openui-radio:active:not(.openui-radio--disabled) .openui-radio__control {
+  border-color: var(--color-stroke-sub300);
+  background: var(--color-state-layer-pressed-neutral);
   transform: scale(var(--motion-scale-press));
 }
 
@@ -126,11 +123,11 @@
   background: var(--color-primary-base);
 }
 
-.openui-radio:hover:not(.openui-radio--disabled)
+.openui-radio:active:not(.openui-radio--disabled)
   .openui-radio__input:checked
   + .openui-radio__control {
   border-color: var(--color-primary-dark);
-  background: var(--color-primary-base);
+  background: var(--color-primary-dark);
 }
 
 .openui-radio__input:checked + .openui-radio__control::after {
@@ -142,9 +139,9 @@
   border-color: var(--color-state-error-base);
 }
 
-.openui-radio--invalid:hover:not(.openui-radio--disabled) .openui-radio__control {
+.openui-radio--invalid:active:not(.openui-radio--disabled) .openui-radio__control {
   border-color: var(--color-state-error-dark);
-  background: var(--color-bg-weak50);
+  background: var(--color-state-layer-pressed-danger);
 }
 
 .openui-radio--invalid .openui-radio__input:focus-visible + .openui-radio__control {
@@ -156,11 +153,11 @@
   background: var(--color-state-error-base);
 }
 
-.openui-radio--invalid:hover:not(.openui-radio--disabled)
+.openui-radio--invalid:active:not(.openui-radio--disabled)
   .openui-radio__input:checked
   + .openui-radio__control {
   border-color: var(--color-state-error-dark);
-  background: var(--color-state-error-base);
+  background: var(--color-state-error-dark);
 }
 
 .openui-radio--invalid .openui-radio__description {
@@ -189,4 +186,30 @@
 
 .openui-radio--disabled .openui-radio__input:checked + .openui-radio__control::after {
   background: var(--color-text-disabled300);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-radio:hover:not(.openui-radio--disabled) .openui-radio__control {
+    border-color: var(--color-stroke-sub300);
+    background: var(--color-bg-weak50);
+  }
+
+  .openui-radio:hover:not(.openui-radio--disabled)
+    .openui-radio__input:checked
+    + .openui-radio__control {
+    border-color: var(--color-primary-dark);
+    background: var(--color-primary-base);
+  }
+
+  .openui-radio--invalid:hover:not(.openui-radio--disabled) .openui-radio__control {
+    border-color: var(--color-state-error-dark);
+    background: var(--color-bg-weak50);
+  }
+
+  .openui-radio--invalid:hover:not(.openui-radio--disabled)
+    .openui-radio__input:checked
+    + .openui-radio__control {
+    border-color: var(--color-state-error-dark);
+    background: var(--color-state-error-base);
+  }
 }

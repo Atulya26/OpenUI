@@ -141,13 +141,9 @@
   margin-block: calc(var(--layout-gap-inline-xs) * -1);
 }
 
-.openui-banner__action-button:hover,
-.openui-banner__dismiss:hover {
-  background: var(--color-bg-white0);
-}
-
 .openui-banner__action-button:active,
 .openui-banner__dismiss:active {
+  background: var(--color-state-layer-pressed-neutral);
   transform: scale(var(--motion-scale-press));
 }
 
@@ -172,4 +168,11 @@
 
 .openui-banner--error .openui-banner__action-button {
   color: var(--color-state-error-dark);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-banner__action-button:hover,
+  .openui-banner__dismiss:hover {
+    background: var(--color-bg-white0);
+  }
 }

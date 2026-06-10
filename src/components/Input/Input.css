@@ -71,10 +71,6 @@
   padding-inline: var(--control-pad-x-lg);
 }
 
-.openui-input-shell:hover:not(.openui-input-shell--disabled):not(:focus-within) {
-  border-color: var(--color-stroke-sub300);
-}
-
 .openui-input-shell:focus-within {
   border-color: var(--color-primary-dark);
   background: var(--color-bg-white0);
@@ -197,11 +193,6 @@
   transition: var(--motion-transition-feedback);
 }
 
-.openui-input-shell__action:hover {
-  color: var(--color-icon-strong950);
-  background: var(--color-primary-alpha10);
-}
-
 .openui-input-shell__action:focus-visible {
   outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
   outline-offset: calc(var(--layout-focus-ring-offset) * -1);
@@ -210,6 +201,7 @@
 }
 
 .openui-input-shell__action:active {
+  background: var(--color-state-layer-pressed-primary);
   transform: scale(var(--motion-scale-press));
 }
 
@@ -234,4 +226,15 @@
 
 .openui-field__message--success {
   color: var(--color-state-success-base);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-input-shell:hover:not(.openui-input-shell--disabled):not(:focus-within) {
+    border-color: var(--color-stroke-sub300);
+  }
+
+  .openui-input-shell__action:hover {
+    color: var(--color-icon-strong950);
+    background: var(--color-primary-alpha10);
+  }
 }

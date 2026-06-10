@@ -16,6 +16,9 @@ function kebab(value: string): string {
 
 const shadowCssVarBySemantic: Record<keyof typeof shadowSemantic, string> = {
   none: '--shadow-elevation-none',
+  ringCanvas: '--shadow-ring-canvas',
+  ringStroke: '--shadow-ring-stroke',
+  ringNeutralInk: '--shadow-ring-neutral-ink',
   elevationSubtle: '--shadow-elevation-subtle',
   elevationRaised: '--shadow-elevation-raised',
   surfaceCard: '--shadow-surface-card',

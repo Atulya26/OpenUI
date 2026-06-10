@@ -18,7 +18,7 @@ Rules for humans and AI when using shadows in OpenUI. For **stacking order and z
 
 5. **Mobile restraint** — Avoid `--shadow-custom-large` on phone screens (heavy 96px blur). Use `regular`, `card`, or `custom` xs–md for mobile surfaces.
 
-6. **Theme** — Shadow stacks are fixed effect tokens; they do not swap with `data-theme` today. Surfaces behind shadows should still use `--color-bg-*` tokens.
+6. **Theme-aware rings** — Focus and inset ring colors use `--shadow-ring-*` tokens, not baked light-mode hex. `src/tokens/shadows.css` owns dark-theme shadow recalibration.
 
 ---
 
@@ -36,6 +36,8 @@ Rules for humans and AI when using shadows in OpenUI. For **stacking order and z
 | Button focus | `--shadow-component-button-primary-focus` |
 | Input default | `--shadow-component-custom-input-default` |
 | Input focus | `--shadow-component-custom-input-active` |
+| Focus ring inner surface | `--shadow-ring-canvas` |
+| Neutral ring / inset stroke | `--shadow-ring-stroke` |
 
 ---
 
@@ -66,6 +68,7 @@ Rules for humans and AI when using shadows in OpenUI. For **stacking order and z
 - [ ] Read this file when adding elevation to a component or pattern  
 - [ ] Only `var(--shadow-*)` in component CSS  
 - [ ] No new shadow stacks outside `src/tokens/`  
+- [ ] No baked hex colors in `src/tokens/shadows.css`; use ring/color variables
 - [ ] Checked **Foundational → Effects → Shadows** in Storybook  
 - [ ] Mobile: avoided `custom-large` unless intentional  
 - [ ] `npx tsc --noEmit` passes  

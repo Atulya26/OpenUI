@@ -7,6 +7,9 @@ import { shadowPrimitive } from '../primitives/shadows';
 
 export const shadowSemantic = {
   none: shadowPrimitive.none,
+  ringCanvas: shadowPrimitive.ring.canvas,
+  ringStroke: shadowPrimitive.ring.stroke,
+  ringNeutralInk: shadowPrimitive.ring.neutralInk,
   elevationSubtle: shadowPrimitive.regular.xSmall,
   elevationRaised: shadowPrimitive.regular.medium,
   surfaceCard: shadowPrimitive.card.large,

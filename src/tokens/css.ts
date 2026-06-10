@@ -30,6 +30,7 @@ export function tokensToCssBlock(tokens: ColorTokens, selector: string): string 
     ...tokensToCssVars('stroke', tokens.stroke),
     ...tokensToCssVars('icon', tokens.icon),
     ...stateTokensToCss(tokens.state),
+    ...tokensToCssVars('state-layer', tokens.stateLayer),
   ];
 
   return `${selector} {\n${lines.join('\n')}\n}`;

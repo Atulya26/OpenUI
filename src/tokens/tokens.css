@@ -48,6 +48,11 @@
   --color-state-success-base: #1fc16b;
   --color-state-success-light: #c2f5da;
   --color-state-success-lighter: #e3f7ec;
+  --color-state-layer-pressed-neutral: rgba(23, 23, 23, 0.08);
+  --color-state-layer-pressed-primary: rgba(71, 108, 255, 0.16);
+  --color-state-layer-pressed-on-fill: rgba(255, 255, 255, 0.12);
+  --color-state-layer-pressed-danger: rgba(251, 55, 72, 0.16);
+  --color-state-layer-selected: rgba(71, 108, 255, 0.1);
 }
 
 :root[data-theme='dark'] {
@@ -98,4 +103,9 @@
   --color-state-success-base: #1daf61;
   --color-state-success-light: rgba(31, 193, 107, 0.24);
   --color-state-success-lighter: rgba(31, 193, 107, 0.16);
+  --color-state-layer-pressed-neutral: rgba(255, 255, 255, 0.1);
+  --color-state-layer-pressed-primary: rgba(71, 108, 255, 0.24);
+  --color-state-layer-pressed-on-fill: rgba(255, 255, 255, 0.12);
+  --color-state-layer-pressed-danger: rgba(251, 55, 72, 0.24);
+  --color-state-layer-selected: rgba(71, 108, 255, 0.16);
 }

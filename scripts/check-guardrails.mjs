@@ -51,6 +51,52 @@ function findCssDeclarationValues(source, property) {
   return values;
 }
 
+function findUngatedHoverLines(source) {
+  const lines = [];
+  const stack = [];
+  let index = 0;
+
+  while (index < source.length) {
+    if (source.startsWith('@media', index)) {
+      const openBraceIndex = source.indexOf('{', index);
+      if (openBraceIndex === -1) {
+        break;
+      }
+      stack.push({
+        type: 'media',
+        header: source.slice(index, openBraceIndex),
+      });
+      index = openBraceIndex + 1;
+      continue;
+    }
+
+    if (source[index] === '{') {
+      stack.push({ type: 'block', header: '' });
+      index += 1;
+      continue;
+    }
+
+    if (source[index] === '}') {
+      stack.pop();
+      index += 1;
+      continue;
+    }
+
+    if (source.startsWith(':hover', index)) {
+      const isPointerHoverGated = stack.some(
+        (entry) => entry.type === 'media' && entry.header.includes('hover: hover'),
+      );
+      if (!isPointerHoverGated) {
+        lines.push(source.slice(0, index).split('\n').length);
+      }
+    }
+
+    index += 1;
+  }
+
+  return lines;
+}
+
 const main = read('src/main.tsx');
 for (const required of [
   "./tokens/tokens.css",
@@ -92,6 +138,22 @@ for (const variable of [
 if (!layoutCss.includes('[data-density="compact"]')) {
   fail('src/tokens/layout.css must define a [data-density="compact"] override block');
 }
+if (!layoutCss.includes('--layout-content-width: var(--device-content-width)')) {
+  fail('src/tokens/layout.css must alias --layout-content-width to --device-content-width');
+}
+
+const tokensCss = read('src/tokens/tokens.css');
+for (const variable of [
+  '--color-state-layer-pressed-neutral',
+  '--color-state-layer-pressed-primary',
+  '--color-state-layer-pressed-on-fill',
+  '--color-state-layer-pressed-danger',
+  '--color-state-layer-selected',
+]) {
+  if (!tokensCss.includes(variable)) {
+    fail(`src/tokens/tokens.css is missing ${variable}`);
+  }
+}
 
 const typographyCss = read('src/tokens/typography.css');
 if (!typographyCss.includes('--text-large-title-font-weight: 700')) {
@@ -112,6 +174,9 @@ for (const variable of [
 const shadowsCss = read('src/tokens/shadows.css');
 for (const variable of [
   '--shadow-none',
+  '--shadow-ring-canvas',
+  '--shadow-ring-stroke',
+  '--shadow-ring-neutral-ink',
   '--shadow-elevation-none',
   '--shadow-regular-x-small',
   '--shadow-card-large',
@@ -121,6 +186,12 @@ for (const variable of [
   if (!shadowsCss.includes(variable)) {
     fail(`src/tokens/shadows.css is missing ${variable}`);
   }
+}
+if (!shadowsCss.includes(":root[data-theme='dark']")) {
+  fail('src/tokens/shadows.css must define dark-theme shadow overrides');
+}
+if (/#[0-9a-fA-F]{3,8}\b/.test(shadowsCss)) {
+  fail('src/tokens/shadows.css must not contain baked hex colors; use --shadow-ring-* or --color-* variables');
 }
 
 const motionCss = read('src/tokens/motion.css');
@@ -219,6 +290,31 @@ for (const file of productFiles) {
 
   if (file.startsWith('src/components') && source.includes('@/storybook')) {
     fail(`${file} imports Storybook-only code`);
+  }
+
+  if (file.startsWith('src/components') && file.endsWith('.css')) {
+    const ungatedHoverLines = findUngatedHoverLines(source);
+    if (ungatedHoverLines.length > 0) {
+      fail(`${file} has :hover outside @media (hover: hover) at line(s) ${ungatedHoverLines.join(', ')}`);
+    }
+  }
+}
+
+for (const file of [
+  'src/components/Button/Button.css',
+  'src/components/IconButton/IconButton.css',
+  'src/components/Card/Card.css',
+  'src/components/ListRow/ListRow.css',
+  'src/components/Chip/Chip.css',
+  'src/components/SegmentedControl/SegmentedControl.css',
+  'src/components/TabBar/TabBar.css',
+  'src/components/Select/Select.css',
+  'src/components/Input/Input.css',
+  'src/components/SearchBar/SearchBar.css',
+]) {
+  const source = read(file);
+  if (!source.includes('--color-state-layer-')) {
+    fail(`${file} must use --color-state-layer-* for pressed/touch feedback`);
   }
 }
 

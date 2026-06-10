@@ -237,13 +237,9 @@
   color: var(--color-icon-sub600);
 }
 
-.openui-toast__action:hover,
-.openui-toast__dismiss:hover {
-  background: var(--color-bg-weak50);
-}
-
 .openui-toast__action:active,
 .openui-toast__dismiss:active {
+  background: var(--color-state-layer-pressed-neutral);
   transform: scale(var(--motion-scale-press));
 }
 
@@ -278,20 +274,29 @@
   box-shadow: var(--shadow-component-fancy-button-error);
 }
 
-.openui-toast--info .openui-toast__action:hover,
 .openui-toast--info .openui-toast__action:focus-visible {
   background: var(--color-state-information-dark);
 }
 
-.openui-toast--success .openui-toast__action:hover,
 .openui-toast--success .openui-toast__action:focus-visible,
-.openui-toast--warning .openui-toast__action:hover,
 .openui-toast--warning .openui-toast__action:focus-visible {
   background: var(--color-bg-surface800);
 }
 
-.openui-toast--error .openui-toast__action:hover,
 .openui-toast--error .openui-toast__action:focus-visible {
+  background: var(--color-state-error-dark);
+}
+
+.openui-toast--info .openui-toast__action:active {
+  background: var(--color-state-information-dark);
+}
+
+.openui-toast--success .openui-toast__action:active,
+.openui-toast--warning .openui-toast__action:active {
+  background: var(--color-bg-surface800);
+}
+
+.openui-toast--error .openui-toast__action:active {
   background: var(--color-state-error-dark);
 }
 
@@ -312,6 +317,26 @@
 @media (prefers-reduced-motion: reduce) {
   .openui-toast {
     animation-duration: var(--motion-duration-instant);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openui-toast__action:hover,
+  .openui-toast__dismiss:hover {
+    background: var(--color-bg-weak50);
+  }
+
+  .openui-toast--info .openui-toast__action:hover {
+    background: var(--color-state-information-dark);
+  }
+
+  .openui-toast--success .openui-toast__action:hover,
+  .openui-toast--warning .openui-toast__action:hover {
+    background: var(--color-bg-surface800);
+  }
+
+  .openui-toast--error .openui-toast__action:hover {
+    background: var(--color-state-error-dark);
   }
 }
 
