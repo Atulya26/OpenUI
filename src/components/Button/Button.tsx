@@ -5,6 +5,7 @@ import {
 } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { Icon } from '../Icon';
+import { Pressable } from '../Pressable';
 import { Spinner } from '../Spinner';
 import './Button.css';
 
@@ -56,7 +57,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const iconSize = size === 'sm' ? 'sm' : 'md';
 
     return (
-      <button
+      <Pressable
+        as="button"
         ref={ref}
         type={type}
         className={cx(
@@ -69,6 +71,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           loading && 'openui-button--loading',
           className,
         )}
+        feedback="scale"
+        hitArea={size === 'sm' || size === 'md' ? 'compact' : 'none'}
+        stateLayer="none"
         disabled={isDisabled}
         aria-busy={loading || undefined}
         aria-pressed={selected !== undefined ? selected : undefined}
@@ -87,7 +92,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {!loading && trailingIcon ? (
           <Icon icon={trailingIcon} size={iconSize} color="inherit" />
         ) : null}
-      </button>
+      </Pressable>
     );
   },
 );

@@ -1,0 +1,57 @@
+.openui-pressable {
+  --openui-pressable-state-layer: var(--color-state-layer-pressed-neutral);
+
+  position: relative;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.openui-pressable--feedback-scale:active:not(:disabled):not(
+    [aria-disabled='true']
+  ) {
+  transform: scale(var(--motion-scale-press));
+}
+
+.openui-pressable--state-layer::before {
+  content: '';
+  position: absolute;
+  inset: var(--space-0);
+  border-radius: inherit;
+  background: var(--openui-pressable-state-layer);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--motion-transition-feedback);
+}
+
+.openui-pressable--state-layer:active:not(:disabled):not(
+    [aria-disabled='true']
+  )::before {
+  opacity: 1;
+}
+
+.openui-pressable--state-layer-neutral {
+  --openui-pressable-state-layer: var(--color-state-layer-pressed-neutral);
+}
+
+.openui-pressable--state-layer-primary {
+  --openui-pressable-state-layer: var(--color-state-layer-pressed-primary);
+}
+
+.openui-pressable--state-layer-danger {
+  --openui-pressable-state-layer: var(--color-state-layer-pressed-danger);
+}
+
+.openui-pressable--state-layer-onFill {
+  --openui-pressable-state-layer: var(--color-state-layer-pressed-on-fill);
+}
+
+[data-density="compact"] .openui-pressable--hit-area-compact::after {
+  content: '';
+  position: absolute;
+  inset: var(--layout-hit-area-inset-compact);
+  border-radius: inherit;
+}
+
+.openui-pressable--disabled {
+  cursor: not-allowed;
+}

@@ -103,7 +103,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | [ ] | `FAB` | P2 |
 | [ ] | `LinkButton` | P2 |
 | [ ] | `SwipeAction` | P3 |
-| [ ] | `Pressable` | P1 |
+| [x] | `Pressable` | P1 |
 | [ ] | `HoldMenu` | P3 |
 
 ---

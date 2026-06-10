@@ -22,10 +22,6 @@
   box-shadow: var(--shadow-elevation-none);
 }
 
-.openui-icon-button:active:not(:disabled) {
-  transform: scale(var(--motion-scale-press));
-}
-
 .openui-icon-button--sm {
   min-width: var(--control-height-sm);
   min-height: var(--control-height-sm);
@@ -155,14 +151,6 @@
 
 .openui-icon-button--destructive:focus-visible {
   box-shadow: var(--shadow-component-button-error-focus);
-}
-
-[data-density="compact"] .openui-icon-button--sm::after,
-[data-density="compact"] .openui-icon-button--md::after {
-  content: '';
-  position: absolute;
-  inset: var(--layout-hit-area-inset-compact);
-  border-radius: var(--radius-control);
 }
 
 @media (hover: hover) and (pointer: fine) {

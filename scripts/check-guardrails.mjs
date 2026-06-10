@@ -400,7 +400,7 @@ for (const file of productFiles) {
   }
 
   for (const value of findCssDeclarationValues(source, 'border-radius')) {
-    if (!value.startsWith('var(--radius-')) {
+    if (!value.startsWith('var(--radius-') && value !== 'inherit') {
       fail(`${file} contains a non-semantic border-radius (${value}); use --radius-* tokens in product UI`);
     }
   }
@@ -540,6 +540,17 @@ const componentsIndex = read('src/components/index.ts');
 if (componentsIndex.includes('DeviceFrame') || componentsIndex.includes('storybook')) {
   fail('src/components/index.ts must not export Storybook utilities');
 }
+if (!componentsIndex.includes("from './Pressable'")) {
+  fail('src/components/index.ts must export Pressable and its public types');
+}
+for (const file of [
+  'src/components/Button/Button.tsx',
+  'src/components/IconButton/IconButton.tsx',
+]) {
+  if (!read(file).includes('<Pressable')) {
+    fail(`${file} must use Pressable for shared mobile press feedback`);
+  }
+}
 
 const externalReferenceFiles = [
   'package.json',
@@ -559,7 +570,7 @@ try {
 
 for (const [file, snippets] of [
   ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget']],
-  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline']],
+  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable']],
   ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],
   ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized', 'Do not use `text-box`']],

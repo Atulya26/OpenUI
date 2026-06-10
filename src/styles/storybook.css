@@ -328,6 +328,62 @@
   gap: var(--layout-gap-inline-xs);
 }
 
+.openui-pressable-story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--device-content-width)), 1fr));
+  gap: var(--layout-gap-stack-md);
+  align-items: start;
+}
+
+.openui-pressable-story-card,
+.openui-pressable-story-pill {
+  appearance: none;
+  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-control);
+  background: var(--color-bg-white0);
+  color: var(--color-text-strong950);
+  box-shadow: var(--shadow-surface-card);
+  transition: var(--motion-transition-feedback);
+}
+
+.openui-pressable-story-card {
+  min-height: var(--control-height-lg);
+  display: grid;
+  gap: var(--layout-gap-inline-xs);
+  padding-block: var(--layout-inset-container);
+  padding-inline: var(--layout-inset-container);
+  text-align: start;
+}
+
+.openui-pressable-story-card span,
+.openui-pressable-story-pill {
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+}
+
+.openui-pressable-story-card small {
+  font-family: var(--text-footnote-font-family);
+  font-size: var(--text-footnote-font-size);
+  line-height: var(--text-footnote-line-height);
+  color: var(--color-text-sub600);
+}
+
+.openui-pressable-story-pill {
+  min-height: var(--control-height-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--control-pad-x-md);
+}
+
+.openui-pressable-story-pill--danger {
+  color: var(--color-state-error-base);
+  border-color: var(--color-state-error-base);
+}
+
 @media (max-width: 760px) {
   .openui-doc {
     padding: var(--layout-gap-stack-lg) var(--layout-inset-container)

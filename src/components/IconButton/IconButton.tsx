@@ -4,6 +4,7 @@ import {
 } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { Icon } from '../Icon';
+import { Pressable } from '../Pressable';
 import './IconButton.css';
 
 type IconButtonVariant = 'default' | 'primary' | 'destructive';
@@ -44,7 +45,8 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
     },
     ref,
   ) => (
-    <button
+    <Pressable
+      as="button"
       ref={ref}
       type={type}
       className={cx(
@@ -55,6 +57,9 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         selected && 'openui-icon-button--selected',
         className,
       )}
+      feedback="scale"
+      hitArea={size === 'sm' || size === 'md' ? 'compact' : 'none'}
+      stateLayer="none"
       disabled={disabled}
       aria-label={label ?? ariaLabel}
       aria-pressed={selected !== undefined ? selected : undefined}
@@ -65,7 +70,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         size={size === 'sm' ? 'sm' : size === 'md' ? 'md' : 'lg'}
         color="inherit"
       />
-    </button>
+    </Pressable>
   ),
 );
 
