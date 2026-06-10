@@ -1,5 +1,7 @@
 import {
   forwardRef,
+  useEffect,
+  type CSSProperties,
   type HTMLAttributes,
   useImperativeHandle,
   useMemo,
@@ -92,6 +94,11 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
     const [uncontrolledValue, setUncontrolledValue] = useState(() =>
       getInitialValue(items, defaultValue),
     );
+    const [indicatorStyle, setIndicatorStyle] = useState({
+      x: 0,
+      width: 0,
+      visible: false,
+    });
     const isControlled = value !== undefined;
     const selectedValue = isControlled ? value : uncontrolledValue;
     const accessibleLabel = ariaLabel ?? label;
@@ -106,6 +113,45 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
     const focusValue = activeItem?.value ?? enabledItems[0]?.value;
 
     useImperativeHandle(ref, () => rootRef.current as HTMLDivElement);
+
+    useEffect(() => {
+      const root = rootRef.current;
+
+      if (!root || !selectedValue) {
+        setIndicatorStyle((current) => ({ ...current, visible: false }));
+        return undefined;
+      }
+
+      function updateIndicator() {
+        const selectedItem = root?.querySelector<HTMLButtonElement>(
+          `[data-openui-segmented-control-item="${CSS.escape(selectedValue)}"]`,
+        );
+
+        if (!root || !selectedItem || selectedItem.disabled) {
+          setIndicatorStyle((current) => ({ ...current, visible: false }));
+          return;
+        }
+
+        setIndicatorStyle({
+          x: selectedItem.offsetLeft,
+          width: selectedItem.offsetWidth,
+          visible: true,
+        });
+      }
+
+      updateIndicator();
+
+      const resizeObserver = new ResizeObserver(updateIndicator);
+      resizeObserver.observe(root);
+
+      for (const item of root.querySelectorAll<HTMLElement>(
+        '.openui-segmented-control__item',
+      )) {
+        resizeObserver.observe(item);
+      }
+
+      return () => resizeObserver.disconnect();
+    }, [items, selectedValue]);
 
     function selectItem(nextValue: string) {
       if (nextValue === selectedValue) {
@@ -202,6 +248,17 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
         onKeyDown={handleKeyDown}
         {...rest}
       >
+        <span
+          className="openui-segmented-control__indicator"
+          data-visible={indicatorStyle.visible}
+          style={
+            {
+              '--segmented-control-indicator-x': `${indicatorStyle.x}px`,
+              '--segmented-control-indicator-width': `${indicatorStyle.width}px`,
+            } as CSSProperties
+          }
+          aria-hidden="true"
+        />
         {items.map((item) => {
           const selected = item.value === selectedValue;
           const iconSize = size === 'sm' ? 'sm' : 'md';

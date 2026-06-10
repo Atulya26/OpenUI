@@ -97,6 +97,42 @@ function findUngatedHoverLines(source) {
   return lines;
 }
 
+function findEnterKeyframesWithoutExit(source) {
+  const missing = [];
+  const keyframeNames = new Set();
+  const pattern = /@keyframes\s+([a-zA-Z0-9_-]+)/g;
+  let match;
+
+  while ((match = pattern.exec(source)) !== null) {
+    keyframeNames.add(match[1]);
+  }
+
+  for (const name of keyframeNames) {
+    if (!name.endsWith('-in')) {
+      continue;
+    }
+
+    const exitName = name.replace(/-in$/, '-out');
+    if (!keyframeNames.has(exitName)) {
+      missing.push(`${name} → ${exitName}`);
+    }
+  }
+
+  return missing;
+}
+
+function isTokenizedTransition(value) {
+  if (value.startsWith('var(--motion-transition-')) {
+    return true;
+  }
+
+  return (
+    value.includes('var(--motion-duration-') &&
+    value.includes('var(--motion-ease-') &&
+    !/\b\d+(ms|s)\b/.test(value)
+  );
+}
+
 const main = read('src/main.tsx');
 for (const required of [
   "./tokens/tokens.css",
@@ -286,7 +322,7 @@ for (const file of productFiles) {
   }
 
   for (const value of findCssDeclarationValues(source, 'transition')) {
-    if (!value.startsWith('var(--motion-transition-')) {
+    if (!isTokenizedTransition(value)) {
       fail(`${file} contains a non-token transition (${value}); use --motion-transition-* tokens in product UI`);
     }
   }
@@ -323,6 +359,11 @@ for (const file of productFiles) {
 
     if (fractionalGapCalc.test(source)) {
       fail(`${file} contains calc(var(--layout-gap-*) / 2); use --layout-gap-inline-2xs`);
+    }
+
+    const missingExitKeyframes = findEnterKeyframesWithoutExit(source);
+    if (missingExitKeyframes.length > 0) {
+      fail(`${file} defines enter keyframes without paired exit keyframes: ${missingExitKeyframes.join(', ')}`);
     }
 
     for (const property of componentDimensionProperties) {

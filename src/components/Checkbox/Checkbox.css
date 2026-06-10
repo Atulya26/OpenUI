@@ -2,6 +2,7 @@
   --checkbox-control-sm: 16px;
   --checkbox-control-md: 20px;
   --checkbox-icon-size: 12px;
+  --checkbox-check-path-length: 18;
 
   display: inline-flex;
   align-items: flex-start;
@@ -77,6 +78,14 @@
   transition: var(--motion-transition-feedback);
 }
 
+.openui-checkbox__icon * {
+  stroke-dasharray: var(--checkbox-check-path-length);
+  stroke-dashoffset: var(--checkbox-check-path-length);
+  transition:
+    stroke-dashoffset var(--motion-duration-state) var(--motion-ease-state),
+    opacity var(--motion-duration-state) var(--motion-ease-state);
+}
+
 .openui-checkbox__copy {
   display: flex;
   flex-direction: column;
@@ -140,6 +149,13 @@
 .openui-checkbox__icon--checked {
   opacity: 1;
   transform: scale(var(--motion-scale-rest));
+}
+
+.openui-checkbox__input:checked + .openui-checkbox__control .openui-checkbox__icon *,
+.openui-checkbox__input:indeterminate + .openui-checkbox__control .openui-checkbox__icon *,
+.openui-checkbox--indeterminate .openui-checkbox__icon *,
+.openui-checkbox__icon--checked * {
+  stroke-dashoffset: 0;
 }
 
 .openui-checkbox--invalid .openui-checkbox__control {

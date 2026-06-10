@@ -199,6 +199,11 @@
   animation: openui-select-menu-in var(--motion-duration-enter) var(--motion-ease-enter) both;
 }
 
+.openui-select__popover[data-state='closing'] {
+  pointer-events: none;
+  animation: openui-select-menu-out var(--motion-duration-exit) var(--motion-ease-exit) both;
+}
+
 .openui-select__option {
   appearance: none;
   display: flex;
@@ -264,6 +269,13 @@
 
 @keyframes openui-select-menu-in {
   from {
+    opacity: 0;
+    transform: translateY(calc(var(--motion-distance-enter-y) / -2)) scale(var(--motion-scale-enter));
+  }
+}
+
+@keyframes openui-select-menu-out {
+  to {
     opacity: 0;
     transform: translateY(calc(var(--motion-distance-enter-y) / -2)) scale(var(--motion-scale-enter));
   }

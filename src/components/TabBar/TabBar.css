@@ -137,6 +137,10 @@
   color: var(--color-state-error-base);
 }
 
+.openui-tab-bar__item--selected .openui-tab-bar__icon-wrap {
+  animation: openui-tab-bar-icon-settle var(--motion-duration-enter) var(--motion-ease-enter) both;
+}
+
 .openui-tab-bar__label {
   max-width: 100%;
   overflow: hidden;
@@ -265,5 +269,11 @@
   .openui-tab-bar__item:hover:not(:disabled):not(.openui-tab-bar__item--selected) {
     background: var(--color-bg-white0);
     color: var(--color-text-strong950);
+  }
+}
+
+@keyframes openui-tab-bar-icon-settle {
+  from {
+    transform: scale(var(--motion-scale-enter));
   }
 }

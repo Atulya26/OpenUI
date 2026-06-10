@@ -2,6 +2,8 @@ import {
   forwardRef,
   useEffect,
   useId,
+  useState,
+  type AnimationEvent,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
@@ -55,6 +57,14 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
   ) => {
     const generatedTitleId = useId();
     const titleId = title && !ariaLabel && !ariaLabelledBy ? generatedTitleId : undefined;
+    const [shouldRender, setShouldRender] = useState(open);
+    const dataState = open ? 'open' : 'closing';
+
+    useEffect(() => {
+      if (open) {
+        setShouldRender(true);
+      }
+    }, [open]);
 
     useEffect(() => {
       if (!open || !onClose) {
@@ -71,7 +81,15 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
       return () => document.removeEventListener('keydown', handleKeyDown);
     }, [onClose, open]);
 
-    if (!open) {
+    function handlePanelAnimationEnd(event: AnimationEvent<HTMLDivElement>) {
+      if (event.currentTarget !== event.target || open) {
+        return;
+      }
+
+      setShouldRender(false);
+    }
+
+    if (!shouldRender) {
       return null;
     }
 
@@ -84,13 +102,14 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
           footer ? 'openui-sheet--has-footer' : 'openui-sheet--no-footer',
           className,
         )}
+        data-state={dataState}
       >
         {onClose ? (
           <button
             type="button"
             className="openui-sheet__scrim"
             aria-label={dismissLabel}
-            onClick={onClose}
+            onClick={open ? onClose : undefined}
           />
         ) : (
           <div className="openui-sheet__scrim" aria-hidden />
@@ -103,6 +122,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
           aria-modal={open}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy ?? titleId}
+          onAnimationEnd={handlePanelAnimationEnd}
           {...rest}
         >
           {showHandle ? (

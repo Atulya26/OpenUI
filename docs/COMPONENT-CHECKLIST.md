@@ -15,6 +15,7 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 2. When a component ships: mark `[x]`, add Storybook story, export from `src/components/index.ts`.
 3. Update status in the **Summary** table when a section is mostly complete.
 4. Do **not** build desktop-only patterns (sidebar, dense tables, 12-col grids).
+5. New animation must use `--motion-duration-*` and `--motion-ease-*` tokens so `prefers-reduced-motion` can zero movement globally.
 
 ---
 

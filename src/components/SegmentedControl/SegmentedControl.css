@@ -1,6 +1,9 @@
 .openui-segmented-control {
   --segmented-control-min-height: 48px;
+  --segmented-control-indicator-x: var(--space-0);
+  --segmented-control-indicator-width: var(--space-0);
 
+  position: relative;
   display: inline-flex;
   align-items: stretch;
   gap: var(--layout-gap-inline-2xs);
@@ -14,6 +17,25 @@
   box-shadow: var(--shadow-elevation-none);
   transition: var(--motion-transition-feedback);
   touch-action: manipulation;
+}
+
+.openui-segmented-control__indicator {
+  position: absolute;
+  z-index: var(--z-base);
+  inset-block: var(--layout-gap-inline-2xs);
+  inset-inline-start: var(--space-0);
+  width: var(--segmented-control-indicator-width);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-strong950);
+  box-shadow: var(--shadow-component-fancy-button-neutral);
+  opacity: 1;
+  transform: translateX(var(--segmented-control-indicator-x));
+  transition: var(--motion-transition-layout);
+  pointer-events: none;
+}
+
+.openui-segmented-control__indicator[data-visible='false'] {
+  opacity: 0;
 }
 
 .openui-segmented-control--full-width {
@@ -51,6 +73,10 @@
   transition: var(--motion-transition-feedback);
 }
 
+.openui-segmented-control__item {
+  z-index: var(--z-base);
+}
+
 .openui-segmented-control--sm .openui-segmented-control__item {
   padding-inline: var(--layout-gap-stack-xs);
   font-family: var(--text-caption1-font-family);
@@ -76,13 +102,13 @@
 
 .openui-segmented-control__item--selected {
   border-color: transparent;
-  background: var(--color-bg-strong950);
+  background: transparent;
   color: var(--color-text-white0);
-  box-shadow: var(--shadow-component-fancy-button-neutral);
+  box-shadow: var(--shadow-elevation-none);
 }
 
 .openui-segmented-control__item--selected:active:not(:disabled) {
-  background: var(--color-bg-surface800);
+  background: var(--color-state-layer-pressed-on-fill);
 }
 
 .openui-segmented-control__item:focus-visible {

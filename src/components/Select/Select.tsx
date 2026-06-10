@@ -5,6 +5,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type AnimationEvent,
   type ButtonHTMLAttributes,
   type ChangeEventHandler,
   type KeyboardEvent,
@@ -93,6 +94,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     const listboxId = `${selectId}-listbox`;
     const rootRef = useRef<HTMLDivElement>(null);
     const [open, setOpen] = useState(false);
+    const [renderListbox, setRenderListbox] = useState(false);
+    const [listboxClosing, setListboxClosing] = useState(false);
     const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue ?? '');
     const resolvedStatus: SelectStatus = invalid ? 'error' : status;
     const resolvedDisabled = Boolean(disabled);
@@ -104,6 +107,16 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     );
     const isPlaceholderSelected = !selectedOption;
     const canOpen = !resolvedDisabled && !readOnly;
+    const listboxState = listboxClosing || !open ? 'closing' : 'open';
+
+    useEffect(() => {
+      if (open) {
+        setRenderListbox(true);
+        setListboxClosing(false);
+      } else if (renderListbox) {
+        setListboxClosing(true);
+      }
+    }, [open, renderListbox]);
 
     useEffect(() => {
       if (!open) {
@@ -178,6 +191,15 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       }
     }
 
+    function handleListboxAnimationEnd(event: AnimationEvent<HTMLDivElement>) {
+      if (event.currentTarget !== event.target || listboxState !== 'closing') {
+        return;
+      }
+
+      setRenderListbox(false);
+      setListboxClosing(false);
+    }
+
     return (
       <div
         ref={rootRef}
@@ -190,6 +212,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           resolvedDisabled && 'openui-select--disabled',
           readOnly && 'openui-select--readonly',
           open && 'openui-select--open',
+          listboxClosing && 'openui-select--closing',
           className,
         )}
       >
@@ -207,7 +230,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           disabled={resolvedDisabled}
           aria-haspopup="listbox"
           aria-expanded={open}
-          aria-controls={open ? listboxId : undefined}
+          aria-controls={renderListbox ? listboxId : undefined}
           aria-invalid={resolvedStatus === 'error' ? true : ariaInvalid}
           aria-readonly={readOnly || undefined}
           aria-describedby={ariaDescribedBy}
@@ -244,12 +267,14 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           />
         ) : null}
 
-        {open && canOpen ? (
+        {renderListbox && canOpen ? (
           <div
             className="openui-select__popover"
             id={listboxId}
             role="listbox"
             aria-labelledby={selectId}
+            data-state={listboxState}
+            onAnimationEnd={handleListboxAnimationEnd}
           >
             {options.map((option) => {
               const selected = option.value === selectedValue;

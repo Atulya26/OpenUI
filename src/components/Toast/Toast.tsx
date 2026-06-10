@@ -1,6 +1,10 @@
 import {
   forwardRef,
+  useEffect,
   useId,
+  useRef,
+  useState,
+  type AnimationEvent,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
@@ -24,6 +28,7 @@ export type ToastProps = {
   onDismiss?: () => void;
   dismissLabel?: string;
   placement?: ToastPlacement;
+  open?: boolean;
   className?: string;
   role?: 'status' | 'alert';
 } & Omit<
@@ -66,6 +71,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       onDismiss,
       dismissLabel = 'Dismiss notification',
       placement = 'bottom',
+      open = true,
       className,
       role,
       'aria-live': ariaLive,
@@ -76,13 +82,50 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       ...rest
     },
     ref,
-    ) => {
+  ) => {
     const titleId = useId();
     const messageId = useId();
+    const [shouldRender, setShouldRender] = useState(open);
+    const [closing, setClosing] = useState(false);
+    const dismissAfterExitRef = useRef(false);
     const StatusIcon = icon === false ? null : icon ?? statusIcons[status];
     const resolvedRole = role ?? getRole(status);
     const hasAction = Boolean(actionLabel && onAction);
     const messageOnly = !title && Boolean(message);
+    const dataState = closing || !open ? 'closing' : 'open';
+
+    useEffect(() => {
+      if (open) {
+        dismissAfterExitRef.current = false;
+        setShouldRender(true);
+        setClosing(false);
+      } else if (shouldRender) {
+        setClosing(true);
+      }
+    }, [open, shouldRender]);
+
+    function beginDismiss() {
+      dismissAfterExitRef.current = true;
+      setClosing(true);
+    }
+
+    function handleAnimationEnd(event: AnimationEvent<HTMLDivElement>) {
+      if (event.currentTarget !== event.target || dataState !== 'closing') {
+        return;
+      }
+
+      setShouldRender(false);
+      setClosing(false);
+
+      if (dismissAfterExitRef.current) {
+        dismissAfterExitRef.current = false;
+        onDismiss?.();
+      }
+    }
+
+    if (!shouldRender) {
+      return null;
+    }
 
     return (
       <div
@@ -95,12 +138,14 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
           messageOnly && 'openui-toast--message-only',
           className,
         )}
+        data-state={dataState}
         role={resolvedRole}
         aria-live={ariaLive ?? (resolvedRole === 'alert' ? 'assertive' : 'polite')}
         aria-atomic={ariaAtomic ?? true}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy ?? (title ? titleId : undefined)}
         aria-describedby={ariaDescribedBy ?? (message ? messageId : undefined)}
+        onAnimationEnd={handleAnimationEnd}
         {...rest}
       >
         {StatusIcon ? (
@@ -139,7 +184,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
             className="openui-toast__dismiss"
             type="button"
             aria-label={dismissLabel}
-            onClick={onDismiss}
+            onClick={beginDismiss}
           >
             <Icon icon={X} size="md" color="inherit" />
           </button>

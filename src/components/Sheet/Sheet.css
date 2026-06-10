@@ -35,6 +35,11 @@
   animation: openui-sheet-scrim-in var(--motion-duration-enter) var(--motion-ease-enter) both;
 }
 
+.openui-sheet[data-state='closing'] .openui-sheet__scrim {
+  pointer-events: none;
+  animation: openui-sheet-scrim-out var(--motion-duration-exit) var(--motion-ease-exit) both;
+}
+
 .openui-sheet--fixed .openui-sheet__scrim {
   position: fixed;
   inset: 0;
@@ -61,7 +66,12 @@
   border-start-end-radius: var(--radius-surface-lg);
   box-shadow: var(--shadow-surface-custom-md);
   transform-origin: center bottom;
-  animation: openui-sheet-panel-in var(--motion-duration-enter) var(--motion-ease-enter) both;
+  animation: openui-sheet-panel-in var(--motion-duration-expressive) var(--motion-ease-expressive) both;
+}
+
+.openui-sheet[data-state='closing'] .openui-sheet__panel {
+  pointer-events: none;
+  animation: openui-sheet-panel-out var(--motion-duration-exit) var(--motion-ease-exit) both;
 }
 
 .openui-sheet--fixed .openui-sheet__panel {
@@ -197,8 +207,21 @@
   }
 }
 
+@keyframes openui-sheet-scrim-out {
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes openui-sheet-panel-in {
   from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes openui-sheet-panel-out {
+  to {
     opacity: 0;
     transform: translateY(100%);
   }
@@ -208,8 +231,19 @@
   animation-name: openui-sheet-fixed-panel-in;
 }
 
+.openui-sheet--fixed[data-state='closing'] .openui-sheet__panel {
+  animation-name: openui-sheet-fixed-panel-out;
+}
+
 @keyframes openui-sheet-fixed-panel-in {
   from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+  }
+}
+
+@keyframes openui-sheet-fixed-panel-out {
+  to {
     opacity: 0;
     transform: translateX(-50%) translateY(100%);
   }

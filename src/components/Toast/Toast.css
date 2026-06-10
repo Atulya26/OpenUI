@@ -70,6 +70,23 @@
   animation-name: openui-toast-in-top;
 }
 
+.openui-toast[data-state='closing'] {
+  pointer-events: none;
+  animation: openui-toast-out-bottom var(--motion-duration-exit) var(--motion-ease-exit) both;
+}
+
+.openui-toast--top[data-state='closing'] {
+  animation-name: openui-toast-out-top;
+}
+
+.openui-toast-viewport--bottom .openui-toast:not(:last-child) {
+  transform: translateY(var(--motion-distance-enter-y)) scale(var(--motion-scale-enter));
+}
+
+.openui-toast-viewport--top .openui-toast:not(:first-child) {
+  transform: translateY(calc(var(--motion-distance-enter-y) * -1)) scale(var(--motion-scale-enter));
+}
+
 .openui-toast--no-icon {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -309,6 +326,20 @@
 
 @keyframes openui-toast-in-top {
   from {
+    opacity: 0;
+    transform: translateY(calc(var(--motion-distance-enter-y) * -1)) scale(var(--motion-scale-enter));
+  }
+}
+
+@keyframes openui-toast-out-bottom {
+  to {
+    opacity: 0;
+    transform: translateY(var(--motion-distance-enter-y)) scale(var(--motion-scale-enter));
+  }
+}
+
+@keyframes openui-toast-out-top {
+  to {
     opacity: 0;
     transform: translateY(calc(var(--motion-distance-enter-y) * -1)) scale(var(--motion-scale-enter));
   }

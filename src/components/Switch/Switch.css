@@ -38,6 +38,10 @@
   background: var(--color-state-layer-pressed-neutral);
 }
 
+.openui-switch:active:not(:disabled) .openui-switch__thumb {
+  width: calc(var(--switch-thumb) + var(--space-half));
+}
+
 .openui-switch:disabled {
   cursor: not-allowed;
 }
@@ -76,6 +80,10 @@
 .openui-switch--checked:active:not(:disabled) .openui-switch__track {
   border-color: var(--color-primary-darker);
   background: var(--color-primary-dark);
+}
+
+.openui-switch--checked:active:not(:disabled) .openui-switch__thumb {
+  transform: translateX(calc(var(--switch-travel) - var(--space-half)));
 }
 
 .openui-switch--checked .openui-switch__thumb {
