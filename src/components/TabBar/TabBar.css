@@ -142,6 +142,7 @@
 
 .openui-tab-bar__label {
   max-width: 100%;
+  line-height: var(--text-caption1-font-size);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
