@@ -56,6 +56,9 @@ export const semanticByMode = {
       disabled300: 'neutral.300',
       white0: 'neutral.0',
     },
+    overlay: {
+      scrim: 'black-alpha-48',
+    },
     state: {
       faded: {
         dark: 'neutral.800',
@@ -124,6 +127,9 @@ export const semanticByMode = {
       soft400: 'neutral.500',
       disabled300: 'neutral.600',
       white0: 'neutral.950',
+    },
+    overlay: {
+      scrim: 'black-alpha-48',
     },
     state: {
       faded: {

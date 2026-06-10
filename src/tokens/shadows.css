@@ -21,6 +21,9 @@
     0px 6px 6px -3px rgba(23, 23, 23, 0.04),
     0px 10px 10px -5px rgba(23, 23, 23, 0.04),
     0px 20px 20px -10px rgba(23, 23, 23, 0.04);
+  --shadow-surface-card-mobile:
+    0px 0px 0px 1px var(--shadow-ring-stroke),
+    0px 2px 8px -4px rgba(23, 23, 23, 0.12);
 
   /* Custom */
   --shadow-custom-x-small:
@@ -154,7 +157,7 @@
   --shadow-elevation-none: var(--shadow-none);
   --shadow-elevation-subtle: var(--shadow-regular-x-small);
   --shadow-elevation-raised: var(--shadow-regular-medium);
-  --shadow-surface-card: var(--shadow-card-large);
+  --shadow-surface-card: var(--shadow-surface-card-mobile);
   --shadow-surface-custom-xs: var(--shadow-custom-x-small);
   --shadow-surface-custom-sm: var(--shadow-custom-small);
   --shadow-surface-custom-md: var(--shadow-custom-medium);
@@ -174,6 +177,10 @@
     inset 0px 1px 0px 0px color-mix(in srgb, var(--color-static-white) 6%, transparent),
     0px 0px 0px 1px var(--shadow-ring-stroke),
     0px 10px 28px -18px rgba(0, 0, 0, 0.72);
+  --shadow-surface-card-mobile:
+    inset 0px 1px 0px 0px color-mix(in srgb, var(--color-static-white) 5%, transparent),
+    0px 0px 0px 1px var(--shadow-ring-stroke),
+    0px 8px 18px -14px rgba(0, 0, 0, 0.74);
 
   --shadow-custom-x-small:
     inset 0px 1px 0px 0px color-mix(in srgb, var(--color-static-white) 5%, transparent),

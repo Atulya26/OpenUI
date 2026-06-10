@@ -29,7 +29,9 @@ Rules for humans and AI when using shadows in OpenUI. For **stacking order and z
 | No elevation | `--shadow-none` or `--shadow-elevation-none` |
 | Subtle lift | `--shadow-regular-x-small` or `--shadow-elevation-subtle` |
 | Modal / sheet depth | `--shadow-regular-medium` or `--shadow-elevation-raised` |
-| Default card | `--shadow-card-large` or `--shadow-surface-card` |
+| Default card | `--shadow-surface-card` |
+| Mobile card stack | `--shadow-surface-card-mobile` |
+| Heavy card catalog stack | `--shadow-card-large` |
 | Input / chip elevation | `--shadow-custom-x-small` or `--shadow-surface-custom-xs` |
 | Raised panel | `--shadow-custom-small` / `--shadow-custom-medium` |
 | Brand-tinted card | `--shadow-colored-primary` (or blue, green, …) |
@@ -46,7 +48,7 @@ Rules for humans and AI when using shadows in OpenUI. For **stacking order and z
 | Family | Variables | Use |
 |--------|-----------|-----|
 | **Regular** | `--shadow-regular-x-small`, `--shadow-regular-medium` | Simple elevation |
-| **Card** | `--shadow-card-large` | Default card stack |
+| **Card** | `--shadow-card-large`, `--shadow-surface-card-mobile` | Heavy catalog stack and mobile default |
 | **Custom** | `--shadow-custom-x-small` … `--shadow-custom-large` | Neutral layered surfaces |
 | **Colored** | `--shadow-colored-gray` … `--shadow-colored-primary` | Hue-matched elevation |
 | **Components** | `--shadow-component-*` | Per-component states (pre-wired for future DS components) |
@@ -57,7 +59,7 @@ Rules for humans and AI when using shadows in OpenUI. For **stacking order and z
 |-----------|--------|--------|
 | `Button` | `--radius-control` | Fancy button and focus component shadows by variant |
 | `Input` | `--radius-control` | Custom input default, hover, and active shadows |
-| `Card` `surface` | `--radius-surface` | `--shadow-surface-card` |
+| `Card` `surface` | `--radius-surface` | `--shadow-surface-card` (aliases mobile card stack) |
 | `Card` `soft` | `--radius-surface` | `--shadow-elevation-subtle` |
 | `Card` `outline` | `--radius-surface` | `--shadow-elevation-none` |
 

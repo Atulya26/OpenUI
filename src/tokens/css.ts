@@ -29,6 +29,7 @@ export function tokensToCssBlock(tokens: ColorTokens, selector: string): string 
     ...tokensToCssVars('text', tokens.text),
     ...tokensToCssVars('stroke', tokens.stroke),
     ...tokensToCssVars('icon', tokens.icon),
+    ...tokensToCssVars('overlay', tokens.overlay),
     ...stateTokensToCss(tokens.state),
     ...tokensToCssVars('state-layer', tokens.stateLayer),
   ];

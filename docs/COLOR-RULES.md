@@ -45,6 +45,7 @@ Rules for humans and AI when using color in OpenUI.
 | Strong border | `--color-stroke-sub300` | Emphasized divider |
 | Brand / link / CTA | `--color-primary-base` | Buttons, links |
 | Brand subtle fill | `--color-primary-alpha10` | Selected row tint |
+| Overlay scrim | `--color-overlay-scrim` | Sheets, dialogs, modal backdrops |
 | Error | `--color-state-error-base` | Errors, destructive emphasis |
 | Success | `--color-state-success-base` | Success states |
 | Warning | `--color-state-warning-base` | Warnings |
@@ -123,6 +124,7 @@ Do not manually invert colors in components — rely on `data-theme`.
 | Semantic refs | `src/tokens/semantic/refs.ts` |
 | Resolved themes | `src/tokens/themes.ts` |
 | CSS variables | `src/tokens/tokens.css` |
+| Surface material variables | `src/tokens/surfaces.css` |
 | JSON export | `src/tokens/data/palette.json` |
 | Storybook | Foundational → Colors |
 | Master index | [docs/README.md](./README.md) |

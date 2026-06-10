@@ -13,6 +13,7 @@ export type ColorTokens = {
   text: Record<string, string>;
   stroke: Record<string, string>;
   icon: Record<string, string>;
+  overlay: Record<string, string>;
   state: Record<string, Record<string, string>>;
   stateLayer: Record<string, string>;
 };
@@ -37,6 +38,7 @@ function buildTheme(mode: ThemeMode): ColorTokens {
     text: resolveSemanticRefs(modeSemantic.text),
     stroke: resolveSemanticRefs(modeSemantic.stroke),
     icon: resolveSemanticRefs(modeSemantic.icon),
+    overlay: resolveSemanticRefs(modeSemantic.overlay),
     state: {
       faded: resolveSemanticRefs(modeSemantic.state.faded),
       information: resolveSemanticRefs(modeSemantic.state.information),

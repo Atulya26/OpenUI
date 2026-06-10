@@ -58,7 +58,7 @@ npx tsc --noEmit
 
 ## Global hard rules (never break)
 
-1. **Tokens only** — `var(--color-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, `var(--z-*)`, `var(--elevation-*)`, `var(--motion-*)`, `var(--device-*)`; icon/token props for icons.
+1. **Tokens only** — `var(--color-*)`, `var(--surface-*)`, `var(--text-*)`, `var(--layout-*)`, `var(--radius-*)`, `var(--shadow-*)`, `var(--z-*)`, `var(--elevation-*)`, `var(--motion-*)`, `var(--device-*)`; icon/token props for icons.
 2. **iPhone 402×874** — safe top **62px**, bottom **34px**; content margins **16px** horizontal inside safe area ([DEVICE-RULES.md](docs/DEVICE-RULES.md), [LAYOUT-RULES.md](docs/LAYOUT-RULES.md)).
 3. **Device frame** — Storybook uses `DeviceFrame` + `src/assets/devices/iphone-17-pro-frame.png` (chrome baked in). **Do not** add status bar, Dynamic Island, or home indicator overlays.
 4. **Product shell** — `.openui-app-screen` (safe area) + `.openui-app-content` (layout margins) in `src/styles/global.css`.

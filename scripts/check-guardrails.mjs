@@ -136,6 +136,7 @@ function isTokenizedTransition(value) {
 const main = read('src/main.tsx');
 for (const required of [
   "./tokens/tokens.css",
+  "./tokens/surfaces.css",
   "./tokens/typography.css",
   "./tokens/layout.css",
   "./tokens/radius.css",
@@ -188,6 +189,7 @@ if (!layoutCss.includes('--layout-content-width: var(--device-content-width)')) 
 
 const tokensCss = read('src/tokens/tokens.css');
 for (const variable of [
+  '--color-overlay-scrim',
   '--color-state-layer-pressed-neutral',
   '--color-state-layer-pressed-primary',
   '--color-state-layer-pressed-on-fill',
@@ -224,6 +226,7 @@ for (const variable of [
   '--shadow-elevation-none',
   '--shadow-regular-x-small',
   '--shadow-card-large',
+  '--shadow-surface-card-mobile',
   '--shadow-custom-medium',
   '--shadow-component-custom-input-active',
 ]) {
@@ -236,6 +239,21 @@ if (!shadowsCss.includes(":root[data-theme='dark']")) {
 }
 if (/#[0-9a-fA-F]{3,8}\b/.test(shadowsCss)) {
   fail('src/tokens/shadows.css must not contain baked hex colors; use --shadow-ring-* or --color-* variables');
+}
+
+const surfacesCss = read('src/tokens/surfaces.css');
+for (const variable of [
+  '--surface-glass-bg',
+  '--surface-glass-bg-strong',
+  '--surface-glass-border',
+  '--surface-glass-blur',
+]) {
+  if (!surfacesCss.includes(variable)) {
+    fail(`src/tokens/surfaces.css is missing ${variable}`);
+  }
+}
+if (!surfacesCss.includes('@supports')) {
+  fail('src/tokens/surfaces.css must provide @supports-gated glass tokens with opaque fallbacks');
 }
 
 const motionCss = read('src/tokens/motion.css');

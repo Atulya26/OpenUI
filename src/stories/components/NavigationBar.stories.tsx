@@ -110,6 +110,17 @@ export const Overview: Story = {
             </SpecCell>
 
             <SpecCell
+              title="Scrolled under"
+              description="Use the glass surface when content scrolls beneath the bar."
+            >
+              <NavigationBar
+                title="Trips"
+                trailingIcons={[{ icon: Search, label: 'Search trips' }]}
+                scrolledUnder
+              />
+            </SpecCell>
+
+            <SpecCell
               title="Action slots"
               description="Slots let product code provide composed controls when icons alone are not enough."
             >
@@ -193,6 +204,7 @@ export const InDeviceFrame: Story = {
                 title="Explore"
                 subtitle="Curated stays for the week"
                 size="large"
+                scrolledUnder
                 trailingIcons={[
                   { icon: Search, label: 'Search stays' },
                   { icon: Bell, label: 'Notifications' },

@@ -90,7 +90,7 @@ npm run storybook   # http://localhost:6006
 ## Global hard rules (every change)
 
 1. **iPhone app** — **402×874** logical screen (iPhone 16 / 17 Pro class). Safe top **62px**, bottom **34px**. Content margins **16px** horizontal inside safe area. Not a web dashboard. No desktop-first layouts or desktop dashboard type sizes (40px+). Details: [DEVICE-RULES.md](./DEVICE-RULES.md) · [LAYOUT-RULES.md](./LAYOUT-RULES.md).
-2. **Tokens only** — use CSS variables (`--color-*`, `--text-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--z-*`, `--elevation-*`, `--motion-*`, `--device-*`). No hard-coded hex, rgb, or arbitrary px for spacing/type/shadows/radius/z-index/motion.
+2. **Tokens only** — use CSS variables (`--color-*`, `--surface-*`, `--text-*`, `--layout-*`, `--radius-*`, `--shadow-*`, `--z-*`, `--elevation-*`, `--motion-*`, `--device-*`). No hard-coded hex, rgb, or arbitrary px for spacing/type/shadows/radius/z-index/motion.
 3. **Semantic over primitive** — product UI uses semantic tokens (`--color-text-sub600`), not primitive ramps (`gray.600`), except in token definitions and Storybook primitives stories.
 4. **Light + dark** — UI must work with `data-theme="light"` \| `"dark"` on `<html>`. Never assume light-only.
 5. **One source of truth** — change tokens in `src/tokens/`, then CSS, then components. Do not fork values in Storybook-only CSS for product patterns.
@@ -125,6 +125,7 @@ src/tokens/
   device/         iphone.ts — screen, safe area, frame asset
   themes.ts       resolved light/dark colors
   tokens.css      --color-*
+  surfaces.css    --surface-* material roles
   typography.css  --text-*
   layout.css      --space-*, --layout-*, --device-*
   radius.css      --radius-*, --layout-radius-* (aliases)

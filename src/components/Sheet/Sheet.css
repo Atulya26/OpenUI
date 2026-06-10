@@ -29,7 +29,7 @@
   border: 0;
   padding: var(--space-0);
   margin: 0;
-  background: color-mix(in srgb, var(--color-static-black) 48%, transparent);
+  background: var(--color-overlay-scrim);
   cursor: pointer;
   pointer-events: auto;
   animation: openui-sheet-scrim-in var(--motion-duration-enter) var(--motion-ease-enter) both;

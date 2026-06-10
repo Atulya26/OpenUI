@@ -28,6 +28,7 @@
   --color-icon-soft400: #a3a3a3;
   --color-icon-disabled300: #d1d1d1;
   --color-icon-white0: #ffffff;
+  --color-overlay-scrim: rgba(23, 23, 23, 0.48);
   --color-state-faded-dark: #262626;
   --color-state-faded-base: #7b7b7b;
   --color-state-faded-light: #ebebeb;
@@ -83,6 +84,7 @@
   --color-icon-soft400: #7b7b7b;
   --color-icon-disabled300: #5c5c5c;
   --color-icon-white0: #171717;
+  --color-overlay-scrim: rgba(23, 23, 23, 0.48);
   --color-state-faded-dark: #d1d1d1;
   --color-state-faded-base: #7b7b7b;
   --color-state-faded-light: #333333;

@@ -38,6 +38,7 @@ export {
 } from './radius';
 
 export { shadowPrimitive } from './shadows';
+export { surfacePrimitive } from './surfaces';
 
 export {
   motionDurationPrimitive,

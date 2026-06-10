@@ -21,6 +21,8 @@ export const shadowPrimitive = {
   card: {
     large:
       'inset 0px -1px 1px -0.5px rgba(23, 23, 23, 0.06), 0px 0px 0px 1px rgba(23, 23, 23, 0.08), 0px 1px 1px -0.5px rgba(23, 23, 23, 0.04), 0px 3px 3px -1.5px rgba(23, 23, 23, 0.04), 0px 6px 6px -3px rgba(23, 23, 23, 0.04), 0px 10px 10px -5px rgba(23, 23, 23, 0.04), 0px 20px 20px -10px rgba(23, 23, 23, 0.04)',
+    mobile:
+      '0px 0px 0px 1px var(--shadow-ring-stroke), 0px 2px 8px -4px rgba(23, 23, 23, 0.12)',
   },
   custom: {
     xSmall:

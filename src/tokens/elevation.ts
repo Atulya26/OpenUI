@@ -22,6 +22,7 @@ const shadowCssVarBySemantic: Record<keyof typeof shadowSemantic, string> = {
   elevationSubtle: '--shadow-elevation-subtle',
   elevationRaised: '--shadow-elevation-raised',
   surfaceCard: '--shadow-surface-card',
+  surfaceCardMobile: '--shadow-surface-card-mobile',
   surfaceCustomXs: '--shadow-surface-custom-xs',
   surfaceCustomSm: '--shadow-surface-custom-sm',
   surfaceCustomMd: '--shadow-surface-custom-md',

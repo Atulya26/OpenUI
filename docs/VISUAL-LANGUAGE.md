@@ -32,8 +32,9 @@ The system can be iOS-adjacent, but it should remain OpenUI. Do not copy platfor
 | Outline surface | Transparent or white with stroke only | Low-emphasis previews and boundaries |
 | Elevated surface | Stronger hierarchy, used sparingly | One important module above siblings |
 | Selected surface | Primary-tinted surface with stronger primary stroke | Chosen cards, active list rows |
+| Glass bar | Tokenized translucent surface with hairline edge | Sticky navigation and tab bars only |
 
-Principle: use the quietest surface that still separates the content. Elevation should explain hierarchy, not decorate every container.
+Principle: use the quietest surface that still separates the content. Elevation should explain hierarchy, not decorate every container. Glass is a functional bar material, not a decorative effect.
 
 ---
 
@@ -94,7 +95,8 @@ Avoid dumping every prop in one dense row. A component story should answer: what
 ## Do not
 
 - Replace Inter, Lucide, or OpenUI tokens with another design system
-- Add decorative gradients, glass, blobs, or cinematic motion to base components
+- Add decorative gradients, blobs, or cinematic motion to base components
+- Use glass outside tokenized sticky bars without design review
 - Use desktop dashboard grids for component stories
 - Make every surface a card
 - Make every selected state dark

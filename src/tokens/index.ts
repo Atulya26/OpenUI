@@ -75,6 +75,12 @@ export {
 } from './semantic/radius';
 
 export { shadowSemantic, type ShadowSemanticToken } from './semantic/shadows';
+export {
+  surfacePrimitive,
+  surfaceSemantic,
+  surfaceTokens,
+  type SurfaceSemanticToken,
+} from './surfaces';
 
 export {
   buildLayoutCssVariables,

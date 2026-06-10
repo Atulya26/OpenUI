@@ -61,7 +61,7 @@
 
 .openui-list-row--selected {
   background: var(--color-primary-alpha10);
-  border-bottom-color: var(--color-primary-base);
+  border-bottom-color: var(--color-stroke-soft200);
 }
 
 .openui-list-row--selected:active:not(:disabled):not(.openui-list-row--disabled) {

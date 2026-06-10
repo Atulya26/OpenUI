@@ -41,6 +41,7 @@ type NavigationBarBaseProps = {
   trailingActions?: ReactNode;
   trailingIcons?: NavigationBarAction[];
   variant?: NavigationBarVariant;
+  scrolledUnder?: boolean;
   size?: NavigationBarSize;
   titleAs?: NavigationBarTitleElement;
 } & Omit<ComponentPropsWithoutRef<'nav'>, 'title'>;
@@ -78,6 +79,7 @@ export function NavigationBar({
   trailingActions,
   trailingIcons,
   variant = 'default',
+  scrolledUnder = false,
   size = 'compact',
   titleAs = 'h1',
   className,
@@ -117,6 +119,7 @@ export function NavigationBar({
         'openui-navigation-bar',
         `openui-navigation-bar--${variant}`,
         `openui-navigation-bar--${size}`,
+        scrolledUnder && 'openui-navigation-bar--scrolled-under',
         className,
       )}
       aria-label={ariaLabel}

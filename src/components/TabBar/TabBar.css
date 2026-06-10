@@ -24,6 +24,10 @@
   width: auto;
   max-width: var(--device-content-width);
   margin-inline: auto;
+  border-color: var(--surface-glass-border);
+  background: var(--surface-glass-bg);
+  -webkit-backdrop-filter: var(--surface-glass-blur);
+  backdrop-filter: var(--surface-glass-blur);
 }
 
 .openui-tab-bar__list {
@@ -73,14 +77,15 @@
 }
 
 .openui-tab-bar__item--selected {
-  background: var(--color-primary-base);
-  border-color: var(--color-primary-dark);
-  color: var(--color-static-white);
-  box-shadow: var(--shadow-component-fancy-button-primary);
+  background: var(--color-state-layer-selected);
+  border-color: var(--color-primary-alpha16);
+  color: var(--color-primary-base);
+  box-shadow: var(--shadow-elevation-none);
 }
 
 .openui-tab-bar__item--selected:active:not(:disabled) {
-  background: var(--color-primary-dark);
+  background: var(--color-state-layer-pressed-primary);
+  color: var(--color-primary-dark);
   transform: scale(var(--motion-scale-press));
 }
 
@@ -131,9 +136,9 @@
 }
 
 .openui-tab-bar__item--selected .openui-tab-bar__badge {
-  border-color: var(--color-primary-base);
-  background: var(--color-bg-white0);
-  color: var(--color-state-error-base);
+  border-color: var(--color-state-layer-selected);
+  background: var(--color-state-error-base);
+  color: var(--color-static-white);
 }
 
 .openui-tab-bar__item--selected .openui-tab-bar__icon-wrap {
