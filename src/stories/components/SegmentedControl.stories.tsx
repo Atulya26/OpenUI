@@ -168,6 +168,30 @@ function ActivitySample() {
   );
 }
 
+function SlidingThumbSample() {
+  const [mode, setMode] = useState('recommended');
+
+  return (
+    <Stack gap="sm">
+      <SegmentedControl
+        label="Stay result mode"
+        fullWidth={false}
+        value={mode}
+        onValueChange={setMode}
+        items={[
+          { value: 'nearby', label: 'Nearby' },
+          { value: 'recommended', label: 'Recommended' },
+          { value: 'saved', label: 'Saved' },
+        ]}
+      />
+      <Text variant="secondary" color="sub">
+        The selected surface is one measured thumb that slides under uneven
+        labels.
+      </Text>
+    </Stack>
+  );
+}
+
 export const Overview: Story = {
   render: () => (
     <DocPage
@@ -239,6 +263,12 @@ export const Overview: Story = {
               description="Use value and onValueChange when state lives above the component."
             >
               <ControlledSample />
+            </SpecCell>
+            <SpecCell
+              title="Sliding thumb"
+              description="One shared indicator moves under the selected item instead of painting each item independently."
+            >
+              <SlidingThumbSample />
             </SpecCell>
             <SpecCell
               title="Native aria-label"

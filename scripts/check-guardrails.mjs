@@ -649,6 +649,24 @@ for (const snippet of [
     fail(`src/components/NavigationBar/NavigationBar.css must include ${snippet} for large-title collapse styling`);
   }
 }
+for (const snippet of [
+  'data-pressing-selected',
+  'data-selected-disabled',
+  '--segmented-control-indicator-x',
+]) {
+  if (!read('src/components/SegmentedControl/SegmentedControl.tsx').includes(snippet)) {
+    fail(`src/components/SegmentedControl/SegmentedControl.tsx must include ${snippet} for shared-thumb segmented control state`);
+  }
+}
+for (const snippet of [
+  'translate3d(var(--segmented-control-indicator-x)',
+  "data-pressing-selected='true'",
+  "data-selected-disabled='true'",
+]) {
+  if (!read('src/components/SegmentedControl/SegmentedControl.css').includes(snippet)) {
+    fail(`src/components/SegmentedControl/SegmentedControl.css must include ${snippet} for shared-thumb segmented control styling`);
+  }
+}
 
 const externalReferenceFiles = [
   'package.json',
@@ -668,7 +686,7 @@ try {
 
 for (const [file, snippets] of [
   ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget']],
-  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden', 'Toast choreography', 'Scroll navigation']],
+  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden', 'Toast choreography', 'Scroll navigation', 'Segmented controls use one moving thumb']],
   ['docs/PATTERN-RULES.md', ['Collapsing large-title screen', '--nav-collapse']],
   ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],

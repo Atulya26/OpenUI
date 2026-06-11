@@ -50,6 +50,8 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 20. **Large navigation titles collapse through Screen** — Scroll-aware screens expose `--nav-collapse` and `data-scrolled` from `Screen`. Collapsible `NavigationBar` uses that progress to crossfade the large title into a centered compact title without moving side actions or duplicating heading semantics.
 
+21. **Segmented controls use one moving thumb** — `SegmentedControl` selected state is a shared measured indicator that slides under items. Individual segment buttons may change text/icon color, but must not paint their own selected filled background over the thumb.
+
 ---
 
 ## Component API pattern
@@ -74,6 +76,7 @@ export type ButtonProps = {
 - **Sheet gestures** → keep sheet drag behavior tied to `onClose`; do not make the handle decorative when the sheet is dismissible.
 - **Toast choreography** → keep transient feedback inside `ToastViewport`; stack a maximum of three visible toasts, make only the newest interactive, and pause timers during press/focus/swipe.
 - **Scroll navigation** → use `Screen navigation={...}` with `NavigationBar size="large" collapsible` for large-title collapse instead of attaching one-off scroll listeners in product screens.
+- **Segmented selection** → keep selected surface, disabled-selected surface, and press-selected feedback on the shared `SegmentedControl` indicator so uneven labels still move as one object.
 - **Hidden accessible text** → use `VisuallyHidden` for semantic labels that should stay available to assistive technology without adding visible chrome.
 
 ---
@@ -113,6 +116,7 @@ Never: hard-coded design values in styled-components/theme objects unless genera
 - [ ] Dismissible sheets keep an active drag handle and keyboard/click fallback for dismissal
 - [ ] Toast viewports portal fixed stacks, limit visible items, pause auto-dismiss on interaction, and support swipe dismissal
 - [ ] Large-title navigation collapse is driven by `Screen` scroll progress and keeps compact title centered
+- [ ] Segmented controls animate one shared thumb instead of painting selected backgrounds on each segment
 - [ ] Assistive-only text uses `VisuallyHidden`
 - [ ] Typography from `--text-*` ([TYPOGRAPHY-RULES.md](./TYPOGRAPHY-RULES.md))  
 - [ ] Exported from `src/components/index.ts`  

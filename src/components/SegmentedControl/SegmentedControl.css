@@ -2,6 +2,7 @@
   --segmented-control-min-height: 48px;
   --segmented-control-indicator-x: var(--space-0);
   --segmented-control-indicator-width: var(--space-0);
+  --segmented-control-indicator-scale: var(--motion-scale-rest);
 
   position: relative;
   display: inline-flex;
@@ -29,13 +30,31 @@
   background: var(--color-bg-strong950);
   box-shadow: var(--shadow-component-fancy-button-neutral);
   opacity: 1;
-  transform: translateX(var(--segmented-control-indicator-x));
-  transition: var(--motion-transition-layout);
+  transform: translate3d(var(--segmented-control-indicator-x), var(--motion-distance-none), var(--motion-distance-none))
+    scale(var(--segmented-control-indicator-scale));
+  transform-origin: center;
+  transition:
+    width var(--motion-duration-layout) var(--motion-ease-layout),
+    opacity var(--motion-duration-feedback) var(--motion-ease-feedback),
+    background-color var(--motion-duration-state) var(--motion-ease-state),
+    box-shadow var(--motion-duration-state) var(--motion-ease-state),
+    transform var(--motion-duration-layout) var(--motion-ease-layout);
+  will-change: transform, width;
   pointer-events: none;
 }
 
 .openui-segmented-control__indicator[data-visible='false'] {
   opacity: 0;
+  transition-duration: var(--motion-duration-instant);
+}
+
+.openui-segmented-control[data-pressing-selected='true'] {
+  --segmented-control-indicator-scale: var(--motion-scale-press);
+}
+
+.openui-segmented-control[data-selected-disabled='true'] .openui-segmented-control__indicator {
+  background: var(--color-bg-sub300);
+  box-shadow: var(--shadow-elevation-none);
 }
 
 .openui-segmented-control--full-width {
@@ -108,7 +127,7 @@
 }
 
 .openui-segmented-control__item--selected:active:not(:disabled) {
-  background: var(--color-state-layer-pressed-on-fill);
+  background: transparent;
 }
 
 .openui-segmented-control__item:focus-visible {
@@ -124,7 +143,6 @@
 }
 
 .openui-segmented-control__item--selected:disabled {
-  background: var(--color-bg-sub300);
   color: var(--color-text-disabled300);
 }
 

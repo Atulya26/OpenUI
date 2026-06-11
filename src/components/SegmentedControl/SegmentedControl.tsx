@@ -99,9 +99,13 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
       width: 0,
       visible: false,
     });
+    const [pressedValue, setPressedValue] = useState<string | null>(null);
     const isControlled = value !== undefined;
     const selectedValue = isControlled ? value : uncontrolledValue;
     const accessibleLabel = ariaLabel ?? label;
+    const selectedItem = items.find((item) => item.value === selectedValue);
+    const selectedItemDisabled = selectedItem?.disabled === true;
+    const pressingSelected = pressedValue === selectedValue;
 
     const enabledItems = useMemo(
       () => items.filter((item) => !item.disabled),
@@ -245,6 +249,8 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
         role="radiogroup"
         aria-label={accessibleLabel}
         aria-labelledby={ariaLabelledBy}
+        data-selected-disabled={selectedItemDisabled || undefined}
+        data-pressing-selected={pressingSelected || undefined}
         onKeyDown={handleKeyDown}
         {...rest}
       >
@@ -277,6 +283,15 @@ export const SegmentedControl = forwardRef<HTMLDivElement, SegmentedControlProps
               tabIndex={item.disabled || item.value !== focusValue ? -1 : 0}
               data-openui-segmented-control-item={item.value}
               data-state={selected ? 'checked' : 'unchecked'}
+              onPointerDown={() => {
+                if (!item.disabled) {
+                  setPressedValue(item.value);
+                }
+              }}
+              onPointerCancel={() => setPressedValue(null)}
+              onPointerLeave={() => setPressedValue(null)}
+              onPointerUp={() => setPressedValue(null)}
+              onBlur={() => setPressedValue(null)}
               onClick={() => {
                 if (!item.disabled) {
                   selectItem(item.value);
