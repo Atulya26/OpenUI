@@ -1,14 +1,17 @@
 import {
   forwardRef,
-  useEffect,
   useId,
-  useState,
+  useImperativeHandle,
+  useRef,
   type AnimationEvent,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
 import type { LucideIcon } from 'lucide-react';
+import { FocusTrap } from '../FocusTrap';
 import { Icon } from '../Icon';
+import { Portal } from '../Portal';
+import { usePresence } from '../Presence';
 import './ActionSheet.css';
 
 export type ActionSheetPlacement = 'fixed' | 'contained';
@@ -66,36 +69,18 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetProps>(
     const generatedDescriptionId = useId();
     const titleId = title && !ariaLabel && !ariaLabelledBy ? generatedTitleId : undefined;
     const descriptionId = description && !ariaDescribedBy ? generatedDescriptionId : undefined;
-    const [shouldRender, setShouldRender] = useState(open);
-    const dataState = open ? 'open' : 'closing';
+    const panelRef = useRef<HTMLDivElement>(null);
+    const presence = usePresence({ open });
+    const dataState = presence.state;
 
-    useEffect(() => {
-      if (open) {
-        setShouldRender(true);
-      }
-    }, [open]);
-
-    useEffect(() => {
-      if (!open || !onClose) {
-        return undefined;
-      }
-
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-          onClose();
-        }
-      };
-
-      document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [onClose, open]);
+    useImperativeHandle(ref, () => panelRef.current as HTMLDivElement, []);
 
     function handlePanelAnimationEnd(event: AnimationEvent<HTMLDivElement>) {
       if (event.currentTarget !== event.target || open) {
         return;
       }
 
-      setShouldRender(false);
+      presence.onExitComplete();
     }
 
     function handleActionSelect(action: ActionSheetAction) {
@@ -110,11 +95,11 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetProps>(
       }
     }
 
-    if (!shouldRender) {
+    if (!presence.isPresent) {
       return null;
     }
 
-    return (
+    const actionSheet = (
       <div
         className={cx(
           'openui-action-sheet',
@@ -123,6 +108,11 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetProps>(
         )}
         data-state={dataState}
       >
+        <FocusTrap
+          active={open}
+          containerRef={panelRef}
+          onEscapeKeyDown={onClose}
+        />
         {onClose ? (
           <button
             type="button"
@@ -135,7 +125,7 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetProps>(
         )}
 
         <div
-          ref={ref}
+          ref={panelRef}
           className={cx('openui-action-sheet__panel', panelClassName)}
           role="dialog"
           aria-modal={open}
@@ -201,6 +191,8 @@ export const ActionSheet = forwardRef<HTMLDivElement, ActionSheetProps>(
         </div>
       </div>
     );
+
+    return <Portal disabled={placement !== 'fixed'}>{actionSheet}</Portal>;
   },
 );
 

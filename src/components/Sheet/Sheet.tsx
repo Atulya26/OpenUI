@@ -1,14 +1,17 @@
 import {
   forwardRef,
-  useEffect,
   useId,
-  useState,
+  useImperativeHandle,
+  useRef,
   type AnimationEvent,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
+import { FocusTrap } from '../FocusTrap';
 import { X } from '../Icon/icons';
 import { IconButton } from '../IconButton';
+import { Portal } from '../Portal';
+import { usePresence } from '../Presence';
 import './Sheet.css';
 
 export type SheetSize = 'content' | 'medium' | 'large' | 'full';
@@ -57,43 +60,25 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
   ) => {
     const generatedTitleId = useId();
     const titleId = title && !ariaLabel && !ariaLabelledBy ? generatedTitleId : undefined;
-    const [shouldRender, setShouldRender] = useState(open);
-    const dataState = open ? 'open' : 'closing';
+    const panelRef = useRef<HTMLDivElement>(null);
+    const presence = usePresence({ open });
+    const dataState = presence.state;
 
-    useEffect(() => {
-      if (open) {
-        setShouldRender(true);
-      }
-    }, [open]);
-
-    useEffect(() => {
-      if (!open || !onClose) {
-        return undefined;
-      }
-
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-          onClose();
-        }
-      };
-
-      document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [onClose, open]);
+    useImperativeHandle(ref, () => panelRef.current as HTMLDivElement, []);
 
     function handlePanelAnimationEnd(event: AnimationEvent<HTMLDivElement>) {
       if (event.currentTarget !== event.target || open) {
         return;
       }
 
-      setShouldRender(false);
+      presence.onExitComplete();
     }
 
-    if (!shouldRender) {
+    if (!presence.isPresent) {
       return null;
     }
 
-    return (
+    const sheet = (
       <div
         className={cx(
           'openui-sheet',
@@ -104,6 +89,11 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
         )}
         data-state={dataState}
       >
+        <FocusTrap
+          active={open}
+          containerRef={panelRef}
+          onEscapeKeyDown={onClose}
+        />
         {onClose ? (
           <button
             type="button"
@@ -116,7 +106,7 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
         )}
 
         <div
-          ref={ref}
+          ref={panelRef}
           className={cx('openui-sheet__panel', panelClassName)}
           role="dialog"
           aria-modal={open}
@@ -164,6 +154,8 @@ export const Sheet = forwardRef<HTMLDivElement, SheetProps>(
         </div>
       </div>
     );
+
+    return <Portal disabled={placement !== 'fixed'}>{sheet}</Portal>;
   },
 );
 

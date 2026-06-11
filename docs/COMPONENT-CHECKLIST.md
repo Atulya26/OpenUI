@@ -202,8 +202,8 @@ Scope: **iPhone-first** (402×874), HIG-aligned, token-driven.
 | [ ] | `ContextMenu` | P3 |
 | [ ] | `FullScreenCover` | P2 |
 | [ ] | `Drawer` | P3 |
-| [ ] | `Portal` | P1 |
-| [ ] | `FocusTrap` | P1 |
+| [x] | `Portal` | P1 |
+| [x] | `FocusTrap` | P1 |
 
 ---
 
@@ -317,12 +317,12 @@ Patterns compose components; extend [PATTERN-RULES.md](./PATTERN-RULES.md).
 
 | Status | Utility | Priority |
 |--------|---------|----------|
-| [ ] | `VisuallyHidden` | P1 |
+| [x] | `VisuallyHidden` | P1 |
 | [ ] | `Slot` / `asChild` | P2 |
 | [~] | `ThemeProvider` | P0 — `data-theme` on `<html>` today |
 | [ ] | `useMediaQuery` | P2 |
 | [ ] | `useSafeArea` | P2 |
-| [ ] | Motion wrapper (`AnimatePresence`) | P2 |
+| [~] | Motion wrapper (`AnimatePresence`) | P2 — `usePresence` covers exit-before-unmount for overlays |
 
 ---
 

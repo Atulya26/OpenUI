@@ -42,6 +42,8 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 16. **Pressable for tactile interaction** — New tappable primitives should use `Pressable` for press lifecycle callbacks, state-layer feedback, compact hit-area expansion, and `data-haptic` metadata instead of duplicating pointer/key handling.
 
+17. **Portal + FocusTrap for overlays** — Dialogs, sheets, action sheets, popovers, menus, and toasts that leave normal document flow use `Portal` for root stacking. Modal surfaces use `FocusTrap` for Tab containment, Escape handling, and focus restoration.
+
 ---
 
 ## Component API pattern
@@ -62,6 +64,8 @@ export type ButtonProps = {
 - **Logical inline layout** → mirrorable details such as status dots, trailing icons, and row actions use logical inline placement so RTL stories behave like LTR.
 - **Text inside controls** → keep token line-height intact and center with flex/grid; avoid cap-height trim hacks.
 - **Press feedback** → prefer `Pressable` when a component needs scale, state-layer, compact hit-area, or press lifecycle behavior.
+- **Overlay plumbing** → prefer `Portal`, `FocusTrap`, and `usePresence` when a component needs root stacking, modal focus containment, Escape behavior, or exit-before-unmount animation.
+- **Hidden accessible text** → use `VisuallyHidden` for semantic labels that should stay available to assistive technology without adding visible chrome.
 
 ---
 
@@ -96,6 +100,8 @@ Never: hard-coded design values in styled-components/theme objects unless genera
 - [ ] RTL-safe: no physical inline CSS properties in component styles
 - [ ] Text is not clipped: no `text-box` trim in shipped component CSS
 - [ ] Tappable custom primitives use `Pressable` instead of duplicating press behavior
+- [ ] Overlay components use `Portal`, `FocusTrap`, and `usePresence` instead of duplicating root stacking, focus trapping, Escape handling, or closing state
+- [ ] Assistive-only text uses `VisuallyHidden`
 - [ ] Typography from `--text-*` ([TYPOGRAPHY-RULES.md](./TYPOGRAPHY-RULES.md))  
 - [ ] Exported from `src/components/index.ts`  
 - [ ] Storybook under `Components/{Name}`  

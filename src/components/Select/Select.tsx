@@ -14,6 +14,7 @@ import {
 import type { LucideIcon } from 'lucide-react';
 import { Icon } from '../Icon';
 import { Check, ChevronDown } from '../Icon/icons';
+import { usePresence } from '../Presence';
 import './Select.css';
 
 export type SelectSize = 'sm' | 'md' | 'lg';
@@ -94,8 +95,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     const listboxId = `${selectId}-listbox`;
     const rootRef = useRef<HTMLDivElement>(null);
     const [open, setOpen] = useState(false);
-    const [renderListbox, setRenderListbox] = useState(false);
-    const [listboxClosing, setListboxClosing] = useState(false);
     const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue ?? '');
     const resolvedStatus: SelectStatus = invalid ? 'error' : status;
     const resolvedDisabled = Boolean(disabled);
@@ -107,16 +106,8 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     );
     const isPlaceholderSelected = !selectedOption;
     const canOpen = !resolvedDisabled && !readOnly;
-    const listboxState = listboxClosing || !open ? 'closing' : 'open';
-
-    useEffect(() => {
-      if (open) {
-        setRenderListbox(true);
-        setListboxClosing(false);
-      } else if (renderListbox) {
-        setListboxClosing(true);
-      }
-    }, [open, renderListbox]);
+    const listboxPresence = usePresence({ open });
+    const listboxState = listboxPresence.state;
 
     useEffect(() => {
       if (!open) {
@@ -196,8 +187,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         return;
       }
 
-      setRenderListbox(false);
-      setListboxClosing(false);
+      listboxPresence.onExitComplete();
     }
 
     return (
@@ -212,7 +202,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           resolvedDisabled && 'openui-select--disabled',
           readOnly && 'openui-select--readonly',
           open && 'openui-select--open',
-          listboxClosing && 'openui-select--closing',
+          listboxState === 'closing' && listboxPresence.isPresent && 'openui-select--closing',
           className,
         )}
       >
@@ -230,7 +220,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           disabled={resolvedDisabled}
           aria-haspopup="listbox"
           aria-expanded={open}
-          aria-controls={renderListbox ? listboxId : undefined}
+          aria-controls={listboxPresence.isPresent ? listboxId : undefined}
           aria-invalid={resolvedStatus === 'error' ? true : ariaInvalid}
           aria-readonly={readOnly || undefined}
           aria-describedby={ariaDescribedBy}
@@ -267,7 +257,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           />
         ) : null}
 
-        {renderListbox && canOpen ? (
+        {listboxPresence.isPresent && canOpen ? (
           <div
             className="openui-select__popover"
             id={listboxId}

@@ -48,6 +48,7 @@ export {
   type EmptyStateProps,
   type EmptyStateSize,
 } from './EmptyState';
+export { FocusTrap, type FocusTrapProps } from './FocusTrap';
 export { Field, Input, type FieldProps, type InputProps, type InputSize, type InputStatus } from './Input';
 export { Icon, type IconProps } from './Icon';
 export { IconButton, type IconButtonProps } from './IconButton';
@@ -78,6 +79,13 @@ export {
   type PressableProps,
   type PressableStateLayer,
 } from './Pressable';
+export { Portal, type PortalProps } from './Portal';
+export {
+  usePresence,
+  type PresenceState,
+  type UsePresenceOptions,
+  type UsePresenceReturn,
+} from './Presence';
 export { Radio, type RadioProps, type RadioSize } from './Radio';
 export {
   ProgressBar,
@@ -153,3 +161,4 @@ export {
   type ToastViewportMode,
   type ToastViewportProps,
 } from './Toast';
+export { VisuallyHidden, type VisuallyHiddenProps } from './VisuallyHidden';

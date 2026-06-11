@@ -1,0 +1,11 @@
+.openui-visually-hidden {
+  position: absolute;
+  inline-size: var(--layout-border-width);
+  block-size: var(--layout-border-width);
+  margin: calc(var(--layout-border-width) * -1);
+  border: 0;
+  padding: var(--space-0);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

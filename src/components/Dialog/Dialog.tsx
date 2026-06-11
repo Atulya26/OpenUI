@@ -1,15 +1,18 @@
 import {
   forwardRef,
-  useEffect,
   useId,
-  useState,
+  useImperativeHandle,
+  useRef,
   type AnimationEvent,
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
+import { FocusTrap } from '../FocusTrap';
 import { Icon } from '../Icon';
 import { CircleAlert, CircleCheck, Info, X } from '../Icon/icons';
 import { IconButton } from '../IconButton';
+import { Portal } from '../Portal';
+import { usePresence } from '../Presence';
 import './Dialog.css';
 
 export type DialogStatus = 'default' | 'info' | 'success' | 'warning' | 'error';
@@ -70,44 +73,26 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
     const generatedDescriptionId = useId();
     const titleId = title && !ariaLabel && !ariaLabelledBy ? generatedTitleId : undefined;
     const descriptionId = description && !ariaDescribedBy ? generatedDescriptionId : undefined;
-    const [shouldRender, setShouldRender] = useState(open);
-    const dataState = open ? 'open' : 'closing';
+    const panelRef = useRef<HTMLDivElement>(null);
+    const presence = usePresence({ open });
+    const dataState = presence.state;
     const StatusIcon = status === 'default' ? null : statusIcons[status];
 
-    useEffect(() => {
-      if (open) {
-        setShouldRender(true);
-      }
-    }, [open]);
-
-    useEffect(() => {
-      if (!open || !onClose) {
-        return undefined;
-      }
-
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-          onClose();
-        }
-      };
-
-      document.addEventListener('keydown', handleKeyDown);
-      return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [onClose, open]);
+    useImperativeHandle(ref, () => panelRef.current as HTMLDivElement, []);
 
     function handlePanelAnimationEnd(event: AnimationEvent<HTMLDivElement>) {
       if (event.currentTarget !== event.target || open) {
         return;
       }
 
-      setShouldRender(false);
+      presence.onExitComplete();
     }
 
-    if (!shouldRender) {
+    if (!presence.isPresent) {
       return null;
     }
 
-    return (
+    const dialog = (
       <div
         className={cx(
           'openui-dialog',
@@ -116,8 +101,13 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
           !StatusIcon && 'openui-dialog--no-status-icon',
           className,
         )}
-        data-state={dataState}
+          data-state={dataState}
       >
+        <FocusTrap
+          active={open}
+          containerRef={panelRef}
+          onEscapeKeyDown={onClose}
+        />
         {onClose ? (
           <button
             type="button"
@@ -130,7 +120,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         )}
 
         <div
-          ref={ref}
+          ref={panelRef}
           className={cx('openui-dialog__panel', panelClassName)}
           role={status === 'error' || status === 'warning' ? 'alertdialog' : 'dialog'}
           aria-modal={open}
@@ -186,6 +176,8 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
         </div>
       </div>
     );
+
+    return <Portal disabled={placement !== 'fixed'}>{dialog}</Portal>;
   },
 );
 

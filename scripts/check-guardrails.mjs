@@ -543,12 +543,42 @@ if (componentsIndex.includes('DeviceFrame') || componentsIndex.includes('storybo
 if (!componentsIndex.includes("from './Pressable'")) {
   fail('src/components/index.ts must export Pressable and its public types');
 }
+for (const exportName of [
+  "from './Portal'",
+  "from './FocusTrap'",
+  "from './VisuallyHidden'",
+  "from './Presence'",
+]) {
+  if (!componentsIndex.includes(exportName)) {
+    fail(`src/components/index.ts must export ${exportName.replace("from './", '').replace("'", '')}`);
+  }
+}
 for (const file of [
   'src/components/Button/Button.tsx',
   'src/components/IconButton/IconButton.tsx',
 ]) {
   if (!read(file).includes('<Pressable')) {
     fail(`${file} must use Pressable for shared mobile press feedback`);
+  }
+}
+for (const file of [
+  'src/components/Dialog/Dialog.tsx',
+  'src/components/Sheet/Sheet.tsx',
+  'src/components/ActionSheet/ActionSheet.tsx',
+]) {
+  const source = read(file);
+  for (const snippet of ['<Portal', '<FocusTrap', 'usePresence']) {
+    if (!source.includes(snippet)) {
+      fail(`${file} must use ${snippet} for shared overlay layering, focus, and presence behavior`);
+    }
+  }
+}
+for (const file of [
+  'src/components/Select/Select.tsx',
+  'src/components/Toast/Toast.tsx',
+]) {
+  if (!read(file).includes('usePresence')) {
+    fail(`${file} must use usePresence for exit-before-unmount behavior`);
   }
 }
 
@@ -570,7 +600,7 @@ try {
 
 for (const [file, snippets] of [
   ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget']],
-  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable']],
+  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden']],
   ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],
   ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized', 'Do not use `text-box`']],

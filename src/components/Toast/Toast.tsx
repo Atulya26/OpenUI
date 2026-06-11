@@ -11,6 +11,7 @@ import {
 import type { LucideIcon } from 'lucide-react';
 import { Icon } from '../Icon';
 import { CircleAlert, CircleCheck, Info, X } from '../Icon/icons';
+import { usePresence } from '../Presence';
 import './Toast.css';
 
 export type ToastStatus = 'info' | 'success' | 'warning' | 'error';
@@ -85,28 +86,36 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
   ) => {
     const titleId = useId();
     const messageId = useId();
-    const [shouldRender, setShouldRender] = useState(open);
-    const [closing, setClosing] = useState(false);
+    const [dismissRequested, setDismissRequested] = useState(false);
     const dismissAfterExitRef = useRef(false);
+    const visible = open && !dismissRequested;
+    const presence = usePresence({
+      open: visible,
+      onExitComplete: () => {
+        if (dismissAfterExitRef.current) {
+          dismissAfterExitRef.current = false;
+          onDismiss?.();
+        }
+      },
+    });
     const StatusIcon = icon === false ? null : icon ?? statusIcons[status];
     const resolvedRole = role ?? getRole(status);
     const hasAction = Boolean(actionLabel && onAction);
     const messageOnly = !title && Boolean(message);
-    const dataState = closing || !open ? 'closing' : 'open';
+    const dataState = presence.state;
 
     useEffect(() => {
       if (open) {
         dismissAfterExitRef.current = false;
-        setShouldRender(true);
-        setClosing(false);
-      } else if (shouldRender) {
-        setClosing(true);
+        setDismissRequested(false);
+      } else {
+        dismissAfterExitRef.current = false;
       }
-    }, [open, shouldRender]);
+    }, [open]);
 
     function beginDismiss() {
       dismissAfterExitRef.current = true;
-      setClosing(true);
+      setDismissRequested(true);
     }
 
     function handleAnimationEnd(event: AnimationEvent<HTMLDivElement>) {
@@ -114,16 +123,10 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         return;
       }
 
-      setShouldRender(false);
-      setClosing(false);
-
-      if (dismissAfterExitRef.current) {
-        dismissAfterExitRef.current = false;
-        onDismiss?.();
-      }
+      presence.onExitComplete();
     }
 
-    if (!shouldRender) {
+    if (!presence.isPresent) {
       return null;
     }
 
