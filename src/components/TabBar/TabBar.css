@@ -4,15 +4,21 @@
   --tab-bar-icon-wrap-min-height: 16px;
   --tab-bar-badge-size: 16px;
   --tab-bar-badge-max-width: 48px;
+  --openui-tab-bar-border-width: var(--layout-border-hairline);
+  --openui-tab-bar-border-color: var(--color-stroke-soft200);
+  --openui-tab-bar-bg: var(--color-bg-weak50);
+  --openui-tab-bar-color: var(--color-text-sub600);
+  --openui-tab-bar-selected-border: var(--color-primary-alpha16);
+  --openui-tab-bar-badge-border-color: var(--color-bg-white0);
 
   position: relative;
   z-index: var(--z-sticky);
   width: 100%;
   max-width: var(--device-content-width);
-  border: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+  border: var(--openui-tab-bar-border-width) solid var(--openui-tab-bar-border-color);
   border-radius: var(--radius-pill);
-  background: var(--color-bg-weak50);
-  color: var(--color-text-sub600);
+  background: var(--openui-tab-bar-bg);
+  color: var(--openui-tab-bar-color);
   box-shadow: var(--shadow-surface-custom-xs);
   transition: var(--motion-transition-surface);
 }
@@ -24,8 +30,10 @@
   width: auto;
   max-width: var(--device-content-width);
   margin-inline: auto;
-  border-color: var(--surface-glass-border);
-  background: var(--surface-glass-bg);
+  --openui-tab-bar-border-width: var(--surface-glass-border-width);
+  --openui-tab-bar-border-color: var(--surface-glass-border);
+  --openui-tab-bar-bg: var(--surface-glass-bg);
+  --openui-tab-bar-color: var(--surface-glass-text);
   -webkit-backdrop-filter: var(--surface-glass-blur);
   backdrop-filter: var(--surface-glass-blur);
 }
@@ -54,7 +62,7 @@
   border: var(--layout-border-width) solid transparent;
   border-radius: var(--radius-pill);
   background: transparent;
-  color: var(--color-text-sub600);
+  color: var(--openui-tab-bar-color);
   cursor: pointer;
   font-family: var(--text-caption1-font-family);
   font-size: var(--text-caption1-font-size);
@@ -78,7 +86,7 @@
 
 .openui-tab-bar__item--selected {
   background: var(--color-state-layer-selected);
-  border-color: var(--color-primary-alpha16);
+  border-color: var(--openui-tab-bar-selected-border);
   color: var(--color-primary-base);
   box-shadow: var(--shadow-elevation-none);
 }
@@ -120,7 +128,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: var(--layout-border-width) solid var(--color-bg-white0);
+  border: var(--layout-border-width) solid var(--openui-tab-bar-badge-border-color);
   border-radius: var(--radius-pill);
   background: var(--color-state-error-base);
   color: var(--color-static-white);
@@ -157,6 +165,12 @@
   .openui-tab-bar__item:hover:not(:disabled):not(.openui-tab-bar__item--selected) {
     background: var(--color-bg-white0);
     color: var(--color-text-strong950);
+  }
+}
+
+@media (prefers-contrast: more) {
+  .openui-tab-bar {
+    --openui-tab-bar-selected-border: var(--color-primary-base);
   }
 }
 

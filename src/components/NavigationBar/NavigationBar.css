@@ -1,6 +1,9 @@
 .openui-navigation-bar {
   --navigation-bar-compact-min-height: 52px;
   --navigation-bar-collapse-progress: var(--nav-collapse, 0);
+  --openui-navigation-bar-border-width: var(--layout-border-hairline);
+  --openui-navigation-bar-border-color: var(--color-stroke-soft200);
+  --openui-navigation-bar-subtitle-color: var(--color-text-sub600);
 
   position: relative;
   z-index: var(--z-sticky);
@@ -13,17 +16,22 @@
 
 .openui-navigation-bar--default {
   background: var(--color-bg-weak50);
-  border-bottom: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+  border-bottom: var(--openui-navigation-bar-border-width) solid
+    var(--openui-navigation-bar-border-color);
 }
 
 .openui-navigation-bar--transparent {
   background: transparent;
-  border-bottom: var(--layout-border-hairline) solid transparent;
+  border-bottom: var(--openui-navigation-bar-border-width) solid transparent;
 }
 
 .openui-navigation-bar--scrolled-under {
+  --openui-navigation-bar-border-width: var(--surface-glass-border-width);
+  --openui-navigation-bar-border-color: var(--surface-glass-border);
+  --openui-navigation-bar-subtitle-color: var(--surface-glass-text);
+
   background: var(--surface-glass-bg);
-  border-bottom-color: var(--surface-glass-border);
+  border-bottom-color: var(--openui-navigation-bar-border-color);
   -webkit-backdrop-filter: var(--surface-glass-blur);
   backdrop-filter: var(--surface-glass-blur);
 }
@@ -158,7 +166,7 @@
 }
 
 .openui-navigation-bar__subtitle {
-  color: var(--color-text-sub600);
+  color: var(--openui-navigation-bar-subtitle-color);
 }
 
 .openui-navigation-bar--compact .openui-navigation-bar__subtitle,

@@ -667,10 +667,75 @@ for (const snippet of [
     fail(`src/components/SegmentedControl/SegmentedControl.css must include ${snippet} for shared-thumb segmented control styling`);
   }
 }
+if (!read('src/index.ts').includes("export * from './hooks'")) {
+  fail('src/index.ts must export hooks for safe-area and keyboard utilities');
+}
+for (const snippet of [
+  'useSafeArea',
+  'env(safe-area-inset-top',
+  '--openui-safe-area-bottom',
+]) {
+  if (!read('src/hooks/useSafeArea.ts').includes(snippet)) {
+    fail(`src/hooks/useSafeArea.ts must include ${snippet} for safe-area utilities`);
+  }
+}
+for (const snippet of [
+  'useKeyboardInset',
+  'visualViewport',
+  '--openui-keyboard-inset',
+]) {
+  if (!read('src/hooks/useKeyboardInset.ts').includes(snippet)) {
+    fail(`src/hooks/useKeyboardInset.ts must include ${snippet} for keyboard avoidance`);
+  }
+}
+for (const snippet of [
+  "| 'medium'",
+  "| 'destructive'",
+  "'data-haptic': !disabled && haptic !== 'none' ? haptic : undefined",
+]) {
+  if (!read('src/components/Pressable/Pressable.tsx').includes(snippet)) {
+    fail(`src/components/Pressable/Pressable.tsx must include ${snippet} for haptic metadata`);
+  }
+}
+for (const file of [
+  'src/components/Button/Button.tsx',
+  'src/components/IconButton/IconButton.tsx',
+]) {
+  if (!read(file).includes('haptic?: PressableHaptic')) {
+    fail(`${file} must expose haptic?: PressableHaptic while delegating to Pressable`);
+  }
+}
+for (const snippet of [
+  '--surface-glass-border-width',
+  '--surface-glass-text',
+  '--surface-glass-icon',
+  'prefers-reduced-transparency',
+  'prefers-contrast: more',
+]) {
+  if (!read('src/tokens/surfaces.css').includes(snippet)) {
+    fail(`src/tokens/surfaces.css must include ${snippet} for glass accessibility media support`);
+  }
+}
+for (const snippet of [
+  'openui-brand-theme-scope--teal',
+  '--color-state-layer-selected',
+  '--shadow-ring-focus-primary',
+]) {
+  if (!read('src/styles/storybook.css').includes(snippet)) {
+    fail(`src/styles/storybook.css must include ${snippet} for brand theming proof`);
+  }
+}
+if (!read('src/stories/tokens/BrandTheming.stories.tsx').includes('Foundational/Colors/Brand theming')) {
+  fail('src/stories/tokens/BrandTheming.stories.tsx must document scoped brand theming');
+}
+if (!read('src/stories/layout/KeyboardAvoidance.stories.tsx').includes('Foundational/Layout/Keyboard Avoidance')) {
+  fail('src/stories/layout/KeyboardAvoidance.stories.tsx must document keyboard avoidance');
+}
 
 const externalReferenceFiles = [
   'package.json',
   'README.md',
+  'AGENTS.md',
   ...walk('docs', ['.md']),
   ...walk('src', ['.ts', '.tsx', '.css', '.json']),
 ];
@@ -685,8 +750,9 @@ try {
 }
 
 for (const [file, snippets] of [
-  ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget']],
+  ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget', 'HAPTICS-RULES.md']],
   ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden', 'Toast choreography', 'Scroll navigation', 'Segmented controls use one moving thumb']],
+  ['docs/HAPTICS-RULES.md', ['data-haptic', 'PressableHaptic', 'navigator.vibrate', 'Selection change']],
   ['docs/PATTERN-RULES.md', ['Collapsing large-title screen', '--nav-collapse']],
   ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],

@@ -26,6 +26,7 @@ You are working in a **mobile-first** React design system. **Read this file firs
 | Z-index, elevation layering | [docs/ELEVATION-RULES.md](docs/ELEVATION-RULES.md) |
 | Corner radius | [docs/RADIUS-RULES.md](docs/RADIUS-RULES.md) |
 | Motion, transitions, animation | [docs/MOTION-RULES.md](docs/MOTION-RULES.md) |
+| Haptic metadata for native shells | [docs/HAPTICS-RULES.md](docs/HAPTICS-RULES.md) |
 | Visual taste, state language, Storybook presentation | [docs/VISUAL-LANGUAGE.md](docs/VISUAL-LANGUAGE.md) |
 | A DS component (`src/components/`) | [docs/COMPONENT-RULES.md](docs/COMPONENT-RULES.md) · [docs/COMPONENT-CHECKLIST.md](docs/COMPONENT-CHECKLIST.md) + all relevant rows above |
 | Parallel component batch work | [docs/COMPONENT-BATCH-WORKFLOW.md](docs/COMPONENT-BATCH-WORKFLOW.md) |

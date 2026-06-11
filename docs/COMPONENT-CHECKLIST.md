@@ -321,7 +321,7 @@ Patterns compose components; extend [PATTERN-RULES.md](./PATTERN-RULES.md).
 | [ ] | `Slot` / `asChild` | P2 |
 | [~] | `ThemeProvider` | P0 — `data-theme` on `<html>` today |
 | [ ] | `useMediaQuery` | P2 |
-| [ ] | `useSafeArea` | P2 |
+| [x] | `useSafeArea` | P2 |
 | [~] | Motion wrapper (`AnimatePresence`) | P2 — `usePresence` covers exit-before-unmount for overlays |
 
 ---

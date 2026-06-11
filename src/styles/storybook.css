@@ -2441,3 +2441,185 @@
   letter-spacing: var(--text-headline-letter-spacing);
   box-shadow: var(--shadow-elevation-none);
 }
+
+/* ─── Brand theming proof ─────────────────────────────── */
+
+.openui-brand-theme-scope {
+  color: var(--color-text-strong950);
+}
+
+.openui-brand-theme-scope--teal {
+  --openui-brand-teal-dark: var(--color-state-success-dark);
+  --openui-brand-teal-darker: color-mix(
+    in srgb,
+    var(--color-state-success-dark) 84%,
+    var(--color-bg-strong950)
+  );
+  --openui-brand-teal-base: var(--color-state-success-base);
+
+  --color-primary-dark: var(--openui-brand-teal-dark);
+  --color-primary-darker: var(--openui-brand-teal-darker);
+  --color-primary-base: var(--openui-brand-teal-base);
+  --color-primary-alpha16: color-mix(
+    in srgb,
+    var(--color-primary-base) 16%,
+    transparent
+  );
+  --color-primary-alpha10: color-mix(
+    in srgb,
+    var(--color-primary-base) 10%,
+    transparent
+  );
+  --color-state-layer-pressed-primary: color-mix(
+    in srgb,
+    var(--color-primary-base) 16%,
+    transparent
+  );
+  --color-state-layer-selected: color-mix(
+    in srgb,
+    var(--color-primary-base) 10%,
+    transparent
+  );
+  --shadow-ring-focus-primary: color-mix(
+    in srgb,
+    var(--color-primary-base) 14%,
+    transparent
+  );
+}
+
+.openui-brand-theme-doc-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(calc(var(--layout-touch-target-min) * 5), 1fr)
+  );
+  gap: var(--layout-gap-stack-md);
+}
+
+.openui-brand-theme-token-card {
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  min-width: 0;
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+  border-radius: var(--radius-surface);
+  background: var(--color-bg-weak50);
+}
+
+.openui-brand-theme-token-card__title {
+  font-family: var(--text-headline-font-family);
+  font-size: var(--text-headline-font-size);
+  line-height: var(--text-headline-line-height);
+  font-weight: var(--text-headline-font-weight);
+  letter-spacing: var(--text-headline-letter-spacing);
+  color: var(--color-text-strong950);
+}
+
+.openui-brand-theme-token-card__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-gap-inline-xs);
+}
+
+.openui-brand-theme-proof {
+  display: grid;
+  gap: var(--layout-gap-stack-lg);
+  max-width: var(--device-content-width);
+  margin-inline: auto;
+  padding: var(--layout-inset-container);
+  border: var(--layout-border-hairline) solid var(--color-primary-alpha16);
+  border-radius: var(--radius-surface-lg);
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-primary-alpha10),
+      transparent 38%
+    ),
+    var(--color-bg-white0);
+  box-shadow: var(--shadow-surface-card);
+}
+
+.openui-brand-theme-proof__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--layout-gap-stack-md);
+  min-width: 0;
+}
+
+.openui-brand-theme-action-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--layout-gap-stack-sm);
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .openui-brand-theme-action-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Keyboard avoidance proof ───────────────────────────── */
+
+.openui-keyboard-demo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100%;
+  gap: var(--layout-gap-stack-md);
+  padding-block: var(--layout-gap-stack-md);
+  overflow: hidden;
+  color: var(--color-text-strong950);
+  background: var(--color-bg-weak50);
+}
+
+.openui-keyboard-demo__body {
+  position: relative;
+  z-index: var(--z-raised);
+}
+
+.openui-keyboard-demo__footer {
+  position: relative;
+  z-index: var(--z-sticky);
+  display: grid;
+  gap: var(--layout-gap-stack-sm);
+  margin-block-start: auto;
+  padding-block: var(--layout-gap-stack-sm) var(--layout-gap-stack-md);
+  border-block-start: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+  background: var(--color-bg-white0);
+  transform: translateY(var(--openui-keyboard-offset-y));
+  transition:
+    transform var(--motion-duration-layout) var(--motion-ease-layout),
+    background-color var(--motion-duration-feedback) var(--motion-ease-feedback),
+    border-color var(--motion-duration-feedback) var(--motion-ease-feedback);
+}
+
+.openui-keyboard-demo__composer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--layout-gap-inline-sm);
+  align-items: center;
+}
+
+.openui-keyboard-demo__keyboard {
+  pointer-events: none;
+  position: absolute;
+  z-index: var(--z-base);
+  inset-block-end: calc(-1 * var(--device-safe-area-bottom));
+  inset-inline: calc(-1 * var(--layout-margin-horizontal));
+  block-size: var(--openui-keyboard-inset);
+  border-block-start: var(--layout-border-hairline) solid var(--color-stroke-soft200);
+  background: var(--color-bg-soft200);
+  box-shadow: var(--shadow-elevation-subtle);
+  opacity: 0;
+  transform: translateY(var(--openui-keyboard-inset));
+  transition:
+    opacity var(--motion-duration-layout) var(--motion-ease-layout),
+    transform var(--motion-duration-layout) var(--motion-ease-layout);
+}
+
+.openui-keyboard-demo--simulated .openui-keyboard-demo__keyboard {
+  opacity: 1;
+  transform: translateY(var(--motion-distance-none));
+}

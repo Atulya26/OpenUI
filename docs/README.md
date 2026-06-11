@@ -83,6 +83,7 @@ npm run check:css-budget # after npm run build: dist/styles.css raw/gzip budget
 | [COMPONENT-BATCH-WORKFLOW.md](./COMPONENT-BATCH-WORKFLOW.md) | Parallel component batch workflow and worker ownership rules |
 | [RADIUS-RULES.md](./RADIUS-RULES.md) | Corner radius scale, semantic roles |
 | [MOTION-RULES.md](./MOTION-RULES.md) | Motion duration, easing, transition contracts, reduced motion |
+| [HAPTICS-RULES.md](./HAPTICS-RULES.md) | Haptic metadata contract for native shells |
 | [VISUAL-LANGUAGE.md](./VISUAL-LANGUAGE.md) | OpenUI taste contract, surface hierarchy, state language, Storybook presentation |
 | [COMPONENT-RULES.md](./COMPONENT-RULES.md) | How to author DS components (API, tokens, a11y) |
 | [PATTERN-RULES.md](./PATTERN-RULES.md) | Composite mobile patterns (forms, lists, nav, sheets) |

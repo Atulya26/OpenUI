@@ -6,6 +6,7 @@ import {
 import type { LucideIcon } from 'lucide-react';
 import { Icon } from '../Icon';
 import { Pressable } from '../Pressable';
+import type { PressableHaptic } from '../Pressable';
 import { Spinner } from '../Spinner';
 import './Button.css';
 
@@ -23,6 +24,7 @@ export type ButtonProps = {
   leadingIcon?: LucideIcon;
   trailingIcon?: LucideIcon;
   loading?: boolean;
+  haptic?: PressableHaptic;
   children?: ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -41,6 +43,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       leadingIcon,
       trailingIcon,
       loading = false,
+      haptic,
       disabled,
       children,
       className,
@@ -74,6 +77,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         feedback="scale"
         hitArea={size === 'sm' || size === 'md' ? 'compact' : 'none'}
         stateLayer="none"
+        haptic={haptic}
         disabled={isDisabled}
         aria-busy={loading || undefined}
         aria-pressed={selected !== undefined ? selected : undefined}

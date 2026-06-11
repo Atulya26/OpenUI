@@ -16,8 +16,10 @@ export type PressableHaptic =
   | 'none'
   | 'light'
   | 'selection'
+  | 'medium'
   | 'success'
   | 'warning'
+  | 'destructive'
   | 'error';
 export type PressableStateLayer =
   | 'none'
@@ -192,7 +194,7 @@ export const Pressable = forwardRef<HTMLElement, PressableProps>(
       ),
       disabled: isNativeButton ? disabled : undefined,
       'aria-disabled': !isNativeButton && disabled ? true : undefined,
-      'data-haptic': haptic !== 'none' ? haptic : undefined,
+      'data-haptic': !disabled && haptic !== 'none' ? haptic : undefined,
       tabIndex: disabled && !isNativeButton ? -1 : tabIndex,
       onClick: handleClick,
       onKeyDown: handleKeyDown,

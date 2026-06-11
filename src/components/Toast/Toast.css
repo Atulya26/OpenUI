@@ -59,6 +59,8 @@
   --openui-toast-swipe-opacity: 1;
   --openui-toast-status-tint: var(--color-state-information-lighter);
   --openui-toast-status-border: var(--color-state-information-light);
+  --openui-toast-message-color: var(--surface-glass-text);
+  --openui-toast-dismiss-color: var(--surface-glass-icon);
 
   pointer-events: auto;
   position: relative;
@@ -238,7 +240,7 @@
   font-weight: var(--text-footnote-font-weight);
   letter-spacing: var(--text-footnote-letter-spacing);
   font-variant-numeric: var(--text-numeric-tabular);
-  color: var(--color-text-sub600);
+  color: var(--openui-toast-message-color);
 }
 
 .openui-toast--message-only .openui-toast__message {
@@ -308,7 +310,7 @@
   inset-inline-end: var(--layout-gap-inline-sm);
   min-width: var(--layout-touch-target-min);
   border-radius: var(--radius-pill);
-  color: var(--color-icon-sub600);
+  color: var(--openui-toast-dismiss-color);
 }
 
 .openui-toast__action:active,
@@ -449,9 +451,27 @@
         var(--openui-toast-status-tint) 0%,
         transparent 62%
       ),
-      var(--color-bg-white0);
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
+      var(--surface-glass-bg-strong);
+    -webkit-backdrop-filter: var(--surface-glass-blur);
+    backdrop-filter: var(--surface-glass-blur);
+  }
+}
+
+@media (prefers-contrast: more) {
+  .openui-toast--info {
+    --openui-toast-status-border: var(--color-state-information-base);
+  }
+
+  .openui-toast--success {
+    --openui-toast-status-border: var(--color-state-success-base);
+  }
+
+  .openui-toast--warning {
+    --openui-toast-status-border: var(--color-state-warning-base);
+  }
+
+  .openui-toast--error {
+    --openui-toast-status-border: var(--color-state-error-base);
   }
 }
 

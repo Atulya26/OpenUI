@@ -5,6 +5,7 @@ import {
 import type { LucideIcon } from 'lucide-react';
 import { Icon } from '../Icon';
 import { Pressable } from '../Pressable';
+import type { PressableHaptic } from '../Pressable';
 import './IconButton.css';
 
 type IconButtonVariant = 'default' | 'primary' | 'destructive';
@@ -21,6 +22,7 @@ export type IconButtonProps = {
   appearance?: IconButtonAppearance;
   size?: IconButtonSize;
   selected?: boolean;
+  haptic?: PressableHaptic;
 } & IconButtonA11y &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children' | 'aria-label'>;
 
@@ -37,6 +39,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       appearance = 'transparent',
       size = 'md',
       selected,
+      haptic,
       disabled,
       className,
       type = 'button',
@@ -60,6 +63,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       feedback="scale"
       hitArea={size === 'sm' || size === 'md' ? 'compact' : 'none'}
       stateLayer="none"
+      haptic={haptic}
       disabled={disabled}
       aria-label={label ?? ariaLabel}
       aria-pressed={selected !== undefined ? selected : undefined}

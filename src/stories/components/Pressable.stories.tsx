@@ -52,7 +52,7 @@ export const Overview: Story = {
       <Panel>
         <Section
           title="Interaction contract"
-          description="Use Pressable under components that need tactile mobile feedback. It emits press lifecycle callbacks and data-haptic without owning business behavior."
+          description="Use Pressable under components that need tactile mobile feedback. It emits press lifecycle callbacks and data-haptic metadata without owning business behavior or calling browser vibration APIs."
         >
           <div className="openui-pressable-story-grid">
             <PressableDemo />
@@ -82,6 +82,31 @@ export const Overview: Story = {
               </Pressable>
             </Stack>
           </div>
+        </Section>
+      </Panel>
+
+      <Panel>
+        <Section
+          title="Haptic metadata"
+          description="The public haptic prop uses PressableHaptic: none, light, selection, medium, success, warning, destructive, or error. Values other than none are emitted as data-haptic for native shells to bind."
+        >
+          <Stack gap="sm">
+            <Text variant="secondary" color="sub">
+              Use selection for selected-value changes, success for positive confirmations, warning or destructive for destructive confirmation, light for neutral presses, and medium for long press when supported.
+            </Text>
+            <Stack direction="horizontal" gap="sm" wrap>
+              <Button haptic="light">Neutral press</Button>
+              <Button haptic="success" leadingIcon={Check}>
+                Success
+              </Button>
+              <IconButton
+                icon={Bell}
+                label="Selection haptic"
+                haptic="selection"
+                appearance="outline"
+              />
+            </Stack>
+          </Stack>
         </Section>
       </Panel>
 
