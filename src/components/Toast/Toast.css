@@ -6,6 +6,10 @@
   z-index: var(--z-toast);
 }
 
+.openui-toast-viewport--stacked {
+  gap: var(--space-0);
+}
+
 .openui-toast-viewport--fixed {
   position: fixed;
   inset-inline-start: 50%;
@@ -45,6 +49,17 @@
 }
 
 .openui-toast {
+  --openui-toast-stack-depth: 0;
+  --openui-toast-stack-count: 1;
+  --openui-toast-stack-y: var(--space-0);
+  --openui-toast-stack-scale: calc(
+    var(--motion-scale-rest) - (var(--openui-toast-stack-depth) * 0.04)
+  );
+  --openui-toast-swipe-x: var(--space-0);
+  --openui-toast-swipe-opacity: 1;
+  --openui-toast-status-tint: var(--color-state-information-lighter);
+  --openui-toast-status-border: var(--color-state-information-light);
+
   pointer-events: auto;
   position: relative;
   display: grid;
@@ -55,19 +70,54 @@
   gap: var(--layout-gap-inline-md);
   padding-block: var(--layout-inset-container);
   padding-inline: var(--layout-inset-container);
-  border: var(--layout-border-width) solid var(--color-stroke-soft200);
+  border: var(--layout-border-width) solid var(--openui-toast-status-border);
   border-radius: var(--radius-surface-lg);
   box-shadow: var(--shadow-surface-custom-sm);
-  background: var(--color-bg-white0);
+  background:
+    linear-gradient(
+      110deg,
+      var(--openui-toast-status-tint) 0%,
+      transparent 62%
+    ),
+    var(--surface-glass-bg-strong);
   color: var(--color-text-strong950);
+  -webkit-backdrop-filter: var(--surface-glass-blur);
+  backdrop-filter: var(--surface-glass-blur);
   overflow: hidden;
+  z-index: calc(var(--z-toast) - var(--openui-toast-stack-depth));
   transform-origin: center bottom;
+  transform:
+    translateX(var(--openui-toast-swipe-x))
+    translateY(var(--openui-toast-stack-y))
+    scale(var(--openui-toast-stack-scale));
   animation: openui-toast-in-bottom var(--motion-duration-enter) var(--motion-ease-enter) both;
+  transition:
+    opacity var(--motion-duration-feedback) var(--motion-ease-feedback),
+    transform var(--motion-duration-expressive) var(--motion-ease-expressive);
+  opacity: var(--openui-toast-swipe-opacity);
+  touch-action: pan-y;
+  will-change: transform, opacity;
 }
 
 .openui-toast--top {
   transform-origin: center top;
   animation-name: openui-toast-in-top;
+}
+
+.openui-toast-viewport--bottom .openui-toast {
+  --openui-toast-stack-y: calc(
+    var(--openui-toast-stack-depth) * var(--layout-gap-stack-sm)
+  );
+}
+
+.openui-toast-viewport--top .openui-toast {
+  --openui-toast-stack-y: calc(
+    var(--openui-toast-stack-depth) * var(--layout-gap-stack-sm) * -1
+  );
+}
+
+.openui-toast-viewport--stacked .openui-toast + .openui-toast {
+  margin-block-start: calc(var(--layout-gap-section) * -1);
 }
 
 .openui-toast[data-state='closing'] {
@@ -79,12 +129,31 @@
   animation-name: openui-toast-out-top;
 }
 
-.openui-toast-viewport--bottom .openui-toast:not(:last-child) {
-  transform: translateY(var(--motion-distance-enter-y)) scale(var(--motion-scale-enter));
+.openui-toast[data-swipe-exit='positive'] {
+  animation-name: openui-toast-swipe-out-positive;
 }
 
-.openui-toast-viewport--top .openui-toast:not(:first-child) {
-  transform: translateY(calc(var(--motion-distance-enter-y) * -1)) scale(var(--motion-scale-enter));
+.openui-toast[data-swipe-exit='negative'] {
+  animation-name: openui-toast-swipe-out-negative;
+}
+
+.openui-toast--swiping {
+  transition:
+    opacity var(--motion-duration-instant) var(--motion-ease-feedback),
+    transform var(--motion-duration-instant) var(--motion-ease-feedback);
+}
+
+.openui-toast--swipe-enabled {
+  cursor: grab;
+}
+
+.openui-toast--swiping.openui-toast--swipe-enabled {
+  cursor: grabbing;
+}
+
+.openui-toast[data-stacked-behind='true'] {
+  pointer-events: none;
+  box-shadow: var(--shadow-surface-custom-xs);
 }
 
 .openui-toast--no-icon {
@@ -92,43 +161,23 @@
 }
 
 .openui-toast--info {
-  border-color: var(--color-state-information-light);
-  background:
-    linear-gradient(
-      110deg,
-      var(--color-state-information-lighter) 0%,
-      var(--color-bg-white0) 58%
-    );
+  --openui-toast-status-tint: var(--color-state-information-lighter);
+  --openui-toast-status-border: var(--color-state-information-light);
 }
 
 .openui-toast--success {
-  border-color: var(--color-state-success-light);
-  background:
-    linear-gradient(
-      110deg,
-      var(--color-state-success-lighter) 0%,
-      var(--color-bg-white0) 58%
-    );
+  --openui-toast-status-tint: var(--color-state-success-lighter);
+  --openui-toast-status-border: var(--color-state-success-light);
 }
 
 .openui-toast--warning {
-  border-color: var(--color-state-warning-light);
-  background:
-    linear-gradient(
-      110deg,
-      var(--color-state-warning-lighter) 0%,
-      var(--color-bg-white0) 58%
-    );
+  --openui-toast-status-tint: var(--color-state-warning-lighter);
+  --openui-toast-status-border: var(--color-state-warning-light);
 }
 
 .openui-toast--error {
-  border-color: var(--color-state-error-light);
-  background:
-    linear-gradient(
-      110deg,
-      var(--color-state-error-lighter) 0%,
-      var(--color-bg-white0) 58%
-    );
+  --openui-toast-status-tint: var(--color-state-error-lighter);
+  --openui-toast-status-border: var(--color-state-error-light);
 }
 
 .openui-toast__icon {
@@ -231,6 +280,11 @@
   touch-action: manipulation;
 }
 
+.openui-toast__action.openui-pressable,
+.openui-toast__dismiss.openui-pressable {
+  overflow: hidden;
+}
+
 .openui-toast__action {
   min-width: var(--layout-touch-target-min);
   max-width: var(--device-content-width);
@@ -323,34 +377,81 @@
 @keyframes openui-toast-in-bottom {
   from {
     opacity: 0;
-    transform: translateY(var(--motion-distance-enter-y)) scale(var(--motion-scale-enter));
+    transform:
+      translateX(var(--openui-toast-swipe-x))
+      translateY(calc(var(--openui-toast-stack-y) + var(--motion-distance-enter-y)))
+      scale(var(--motion-scale-enter));
   }
 }
 
 @keyframes openui-toast-in-top {
   from {
     opacity: 0;
-    transform: translateY(calc(var(--motion-distance-enter-y) * -1)) scale(var(--motion-scale-enter));
+    transform:
+      translateX(var(--openui-toast-swipe-x))
+      translateY(calc(var(--openui-toast-stack-y) - var(--motion-distance-enter-y)))
+      scale(var(--motion-scale-enter));
   }
 }
 
 @keyframes openui-toast-out-bottom {
   to {
     opacity: 0;
-    transform: translateY(var(--motion-distance-enter-y)) scale(var(--motion-scale-enter));
+    transform:
+      translateX(var(--openui-toast-swipe-x))
+      translateY(calc(var(--openui-toast-stack-y) + var(--motion-distance-enter-y)))
+      scale(var(--motion-scale-enter));
   }
 }
 
 @keyframes openui-toast-out-top {
   to {
     opacity: 0;
-    transform: translateY(calc(var(--motion-distance-enter-y) * -1)) scale(var(--motion-scale-enter));
+    transform:
+      translateX(var(--openui-toast-swipe-x))
+      translateY(calc(var(--openui-toast-stack-y) - var(--motion-distance-enter-y)))
+      scale(var(--motion-scale-enter));
+  }
+}
+
+@keyframes openui-toast-swipe-out-positive {
+  to {
+    opacity: 0;
+    transform:
+      translateX(100%)
+      translateY(var(--openui-toast-stack-y))
+      scale(var(--openui-toast-stack-scale));
+  }
+}
+
+@keyframes openui-toast-swipe-out-negative {
+  to {
+    opacity: 0;
+    transform:
+      translateX(-100%)
+      translateY(var(--openui-toast-stack-y))
+      scale(var(--openui-toast-stack-scale));
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .openui-toast {
     animation-duration: var(--motion-duration-instant);
+    transition-duration: var(--motion-duration-instant);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .openui-toast {
+    background:
+      linear-gradient(
+        110deg,
+        var(--openui-toast-status-tint) 0%,
+        transparent 62%
+      ),
+      var(--color-bg-white0);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 

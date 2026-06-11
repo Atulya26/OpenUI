@@ -46,6 +46,8 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 18. **Dismissible sheets have active handles** — A `Sheet` with `onClose` exposes drag-to-dismiss from the handle by default. The panel follows the pointer, the scrim fades with progress, quick downward flicks dismiss, and cancelled drags spring back with motion tokens.
 
+19. **Toasts are choreographed surfaces** — `ToastViewport` owns stacking, limits visible messages to the mobile-safe stack, portals fixed viewports to the root, and keeps older toasts visually behind the newest. Dismissible toasts support horizontal swipe, pause auto-dismiss during interaction, and fall back to solid surfaces when reduced transparency is requested.
+
 ---
 
 ## Component API pattern
@@ -68,6 +70,7 @@ export type ButtonProps = {
 - **Press feedback** → prefer `Pressable` when a component needs scale, state-layer, compact hit-area, or press lifecycle behavior.
 - **Overlay plumbing** → prefer `Portal`, `FocusTrap`, and `usePresence` when a component needs root stacking, modal focus containment, Escape behavior, or exit-before-unmount animation.
 - **Sheet gestures** → keep sheet drag behavior tied to `onClose`; do not make the handle decorative when the sheet is dismissible.
+- **Toast choreography** → keep transient feedback inside `ToastViewport`; stack a maximum of three visible toasts, make only the newest interactive, and pause timers during press/focus/swipe.
 - **Hidden accessible text** → use `VisuallyHidden` for semantic labels that should stay available to assistive technology without adding visible chrome.
 
 ---
@@ -105,6 +108,7 @@ Never: hard-coded design values in styled-components/theme objects unless genera
 - [ ] Tappable custom primitives use `Pressable` instead of duplicating press behavior
 - [ ] Overlay components use `Portal`, `FocusTrap`, and `usePresence` instead of duplicating root stacking, focus trapping, Escape handling, or closing state
 - [ ] Dismissible sheets keep an active drag handle and keyboard/click fallback for dismissal
+- [ ] Toast viewports portal fixed stacks, limit visible items, pause auto-dismiss on interaction, and support swipe dismissal
 - [ ] Assistive-only text uses `VisuallyHidden`
 - [ ] Typography from `--text-*` ([TYPOGRAPHY-RULES.md](./TYPOGRAPHY-RULES.md))  
 - [ ] Exported from `src/components/index.ts`  

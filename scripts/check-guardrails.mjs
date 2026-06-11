@@ -600,6 +600,27 @@ for (const file of [
     fail(`${file} must use usePresence for exit-before-unmount behavior`);
   }
 }
+for (const snippet of [
+  '<Portal',
+  'autoDismissDuration',
+  'pauseAutoDismiss',
+  'beginSwipe',
+  'stackDepth',
+]) {
+  if (!read('src/components/Toast/Toast.tsx').includes(snippet)) {
+    fail(`src/components/Toast/Toast.tsx must include ${snippet} for Toast v2 choreography`);
+  }
+}
+for (const snippet of [
+  '--openui-toast-stack-depth',
+  '--openui-toast-swipe-x',
+  'openui-toast-viewport--stacked',
+  'prefers-reduced-transparency',
+]) {
+  if (!read('src/components/Toast/Toast.css').includes(snippet)) {
+    fail(`src/components/Toast/Toast.css must include ${snippet} for Toast v2 styling`);
+  }
+}
 
 const externalReferenceFiles = [
   'package.json',
@@ -619,7 +640,7 @@ try {
 
 for (const [file, snippets] of [
   ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget']],
-  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden']],
+  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden', 'Toast choreography']],
   ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],
   ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized', 'Do not use `text-box`']],

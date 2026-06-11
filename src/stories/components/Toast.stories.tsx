@@ -81,6 +81,83 @@ function DismissibleToastDemo() {
   );
 }
 
+function StackedToastDemo() {
+  const initialToasts = [
+    {
+      id: 'payment',
+      status: 'error' as const,
+      title: 'Payment failed',
+      message: 'Update the card to finish renewal.',
+      actionLabel: 'Update',
+    },
+    {
+      id: 'sync',
+      status: 'info' as const,
+      title: 'Syncing changes',
+      message: 'Recent edits are updating on this device.',
+    },
+    {
+      id: 'saved',
+      status: 'success' as const,
+      title: 'Saved',
+      message: 'Your trip settings were applied.',
+    },
+    {
+      id: 'offline',
+      status: 'warning' as const,
+      title: 'Connection is weak',
+      message: 'Some updates may take a little longer.',
+    },
+  ];
+  const [toasts, setToasts] = useState(initialToasts);
+
+  return (
+    <div className="openui-toast-story-device-surface">
+      <Stack gap="lg">
+        <Stack gap="xs">
+          <Text as="h1" variant="screenTitle">
+            Inbox
+          </Text>
+          <Text variant="secondary" color="sub">
+            Review alerts without leaving the current task.
+          </Text>
+        </Stack>
+
+        <ListSection title="Today">
+          <ListRow leadingIcon={Bell} title="Guest message" description="Arrives tomorrow at 3 PM" />
+          <ListRow leadingIcon={Shield} title="Identity check" trailingText="Done" />
+          <ListRow leadingIcon={CreditCard} title="Renewal" description="Needs payment method" />
+        </ListSection>
+
+        <Button
+          fullWidth
+          onClick={() => setToasts(initialToasts)}
+        >
+          Reset stack
+        </Button>
+      </Stack>
+
+      <ToastViewport placement="bottom" mode="contained" limit={3}>
+        {toasts.map((toast) => (
+          <Toast
+            key={toast.id}
+            status={toast.status}
+            title={toast.title}
+            message={toast.message}
+            actionLabel={toast.actionLabel}
+            onAction={toast.actionLabel ? () => undefined : undefined}
+            dismissible
+            autoDismissDuration={8000}
+            onDismiss={() => {
+              setToasts((current) => current.filter((item) => item.id !== toast.id));
+            }}
+          />
+        ))}
+      </ToastViewport>
+    </div>
+  );
+}
+
 function DeviceTopExample() {
   return (
     <div className="openui-toast-story-device-surface">
@@ -221,6 +298,19 @@ export const Overview: Story = {
             <SpecCell title="Message only" description="A single short line can stay compact without losing semantics.">
               <Toast status="info" message="Offline changes will sync later." />
             </SpecCell>
+          </div>
+        </Section>
+      </Panel>
+
+      <Panel>
+        <Section
+          title="Stack and gesture"
+          description="Viewport management keeps three visible toasts, places older messages behind the newest, pauses the timer during interaction, and allows horizontal swipe dismiss."
+        >
+          <div className="openui-device-story-layout">
+            <DeviceFrame>
+              <StackedToastDemo />
+            </DeviceFrame>
           </div>
         </Section>
       </Panel>
