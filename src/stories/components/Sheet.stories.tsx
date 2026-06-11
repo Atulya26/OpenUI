@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import {
   Bell,
   Button,
@@ -86,6 +86,47 @@ function PhoneSurface({ children }: { children: ReactNode }) {
         {children}
       </Stack>
     </DeviceFrame>
+  );
+}
+
+function DragDismissDemo() {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <PhoneSurface>
+      <Button fullWidth onClick={() => setOpen(true)}>
+        Open sheet
+      </Button>
+      <Sheet
+        open={open}
+        placement="contained"
+        title="Trip options"
+        dismissLabel="Dismiss trip options"
+        onClose={() => setOpen(false)}
+        footer={<Button fullWidth onClick={() => setOpen(false)}>Apply</Button>}
+      >
+        <Stack gap="sm">
+          <Text variant="paragraph">
+            Drag the handle down to dismiss, or pull slightly upward to feel the rubber-band resistance.
+          </Text>
+          <ListRow
+            as="div"
+            leadingIcon={Calendar}
+            title="Flexible dates"
+            description="Search nearby weekends"
+            trailingText="On"
+          />
+          <ListRow
+            as="div"
+            leadingIcon={MapPin}
+            title="Nearby stays"
+            description="Include locations within a short ride"
+            trailingText="12"
+            showDivider={false}
+          />
+        </Stack>
+      </Sheet>
+    </PhoneSurface>
   );
 }
 
@@ -190,6 +231,30 @@ export const ScrollContent: Story = {
                 </Stack>
               </Sheet>
             </PhoneSurface>
+          </div>
+        </Section>
+      </Panel>
+    </DocPage>
+  ),
+};
+
+export const DragToDismiss: Story = {
+  args: {
+    open: true,
+  },
+  render: () => (
+    <DocPage
+      eyebrow="Components"
+      title="Drag to dismiss"
+      description="The handle is an active mobile affordance: the panel follows the finger, the scrim fades with progress, and release either dismisses or springs back."
+    >
+      <Panel>
+        <Section
+          title="Gesture behavior"
+          description="Dismiss past roughly a third of the sheet height, or with a quick downward flick."
+        >
+          <div className="openui-device-story-layout">
+            <DragDismissDemo />
           </div>
         </Section>
       </Panel>

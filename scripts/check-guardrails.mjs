@@ -573,6 +573,25 @@ for (const file of [
     }
   }
 }
+for (const snippet of [
+  'dragToDismiss',
+  'onPointerDown={beginDrag}',
+  'onPointerMove={updateDrag}',
+  'onPointerUp={endDrag}',
+]) {
+  if (!read('src/components/Sheet/Sheet.tsx').includes(snippet)) {
+    fail(`src/components/Sheet/Sheet.tsx must include ${snippet} for drag-to-dismiss behavior`);
+  }
+}
+for (const snippet of [
+  '--openui-sheet-drag-y',
+  '--openui-sheet-scrim-opacity',
+  'openui-sheet--dragging',
+]) {
+  if (!read('src/components/Sheet/Sheet.css').includes(snippet)) {
+    fail(`src/components/Sheet/Sheet.css must include ${snippet} for drag-to-dismiss styling`);
+  }
+}
 for (const file of [
   'src/components/Select/Select.tsx',
   'src/components/Toast/Toast.tsx',

@@ -44,6 +44,8 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 17. **Portal + FocusTrap for overlays** — Dialogs, sheets, action sheets, popovers, menus, and toasts that leave normal document flow use `Portal` for root stacking. Modal surfaces use `FocusTrap` for Tab containment, Escape handling, and focus restoration.
 
+18. **Dismissible sheets have active handles** — A `Sheet` with `onClose` exposes drag-to-dismiss from the handle by default. The panel follows the pointer, the scrim fades with progress, quick downward flicks dismiss, and cancelled drags spring back with motion tokens.
+
 ---
 
 ## Component API pattern
@@ -65,6 +67,7 @@ export type ButtonProps = {
 - **Text inside controls** → keep token line-height intact and center with flex/grid; avoid cap-height trim hacks.
 - **Press feedback** → prefer `Pressable` when a component needs scale, state-layer, compact hit-area, or press lifecycle behavior.
 - **Overlay plumbing** → prefer `Portal`, `FocusTrap`, and `usePresence` when a component needs root stacking, modal focus containment, Escape behavior, or exit-before-unmount animation.
+- **Sheet gestures** → keep sheet drag behavior tied to `onClose`; do not make the handle decorative when the sheet is dismissible.
 - **Hidden accessible text** → use `VisuallyHidden` for semantic labels that should stay available to assistive technology without adding visible chrome.
 
 ---
@@ -101,6 +104,7 @@ Never: hard-coded design values in styled-components/theme objects unless genera
 - [ ] Text is not clipped: no `text-box` trim in shipped component CSS
 - [ ] Tappable custom primitives use `Pressable` instead of duplicating press behavior
 - [ ] Overlay components use `Portal`, `FocusTrap`, and `usePresence` instead of duplicating root stacking, focus trapping, Escape handling, or closing state
+- [ ] Dismissible sheets keep an active drag handle and keyboard/click fallback for dismissal
 - [ ] Assistive-only text uses `VisuallyHidden`
 - [ ] Typography from `--text-*` ([TYPOGRAPHY-RULES.md](./TYPOGRAPHY-RULES.md))  
 - [ ] Exported from `src/components/index.ts`  

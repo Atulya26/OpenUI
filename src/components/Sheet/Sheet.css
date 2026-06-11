@@ -4,6 +4,8 @@
   --sheet-large-height-offset: 32px;
   --sheet-handle-width: 40px;
   --sheet-handle-height: 4px;
+  --openui-sheet-drag-y: var(--space-0);
+  --openui-sheet-scrim-opacity: 1;
   --openui-sheet-safe-bottom: max(
     var(--device-safe-area-bottom),
     env(safe-area-inset-bottom, 0px)
@@ -32,6 +34,7 @@
   background: var(--color-overlay-scrim);
   cursor: pointer;
   pointer-events: auto;
+  opacity: var(--openui-sheet-scrim-opacity);
   animation: openui-sheet-scrim-in var(--motion-duration-enter) var(--motion-ease-enter) both;
 }
 
@@ -66,6 +69,7 @@
   border-start-end-radius: var(--radius-surface-lg);
   box-shadow: var(--shadow-surface-custom-md);
   transform-origin: center bottom;
+  transition: transform var(--motion-duration-expressive) var(--motion-ease-expressive);
   animation: openui-sheet-panel-in var(--motion-duration-expressive) var(--motion-ease-expressive) both;
 }
 
@@ -84,7 +88,7 @@
     100dvh - max(var(--device-safe-area-top), env(safe-area-inset-top, 0px)) -
       var(--sheet-viewport-top-gap)
   );
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(var(--openui-sheet-drag-y));
 }
 
 .openui-sheet--contained .openui-sheet__panel {
@@ -93,6 +97,7 @@
   inset-inline: 0;
   bottom: 0;
   max-height: 100%;
+  transform: translateY(var(--openui-sheet-drag-y));
 }
 
 .openui-sheet--size-content .openui-sheet__panel {
@@ -118,10 +123,16 @@
 }
 
 .openui-sheet__handle-wrap {
+  appearance: none;
   display: flex;
+  align-items: center;
   justify-content: center;
-  padding-block-start: var(--layout-gap-stack-xs);
-  padding-block-end: var(--layout-gap-inline-xs);
+  min-block-size: var(--layout-touch-target-min);
+  border: 0;
+  margin: var(--space-0);
+  padding-block: var(--space-0);
+  background: transparent;
+  color: inherit;
 }
 
 .openui-sheet__handle {
@@ -130,6 +141,30 @@
   height: var(--sheet-handle-height);
   border-radius: var(--radius-pill);
   background: var(--color-bg-sub300);
+}
+
+.openui-sheet--drag-enabled .openui-sheet__handle-wrap {
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.openui-sheet--dragging .openui-sheet__handle-wrap {
+  cursor: grabbing;
+}
+
+.openui-sheet--dragging .openui-sheet__scrim,
+.openui-sheet--dragging .openui-sheet__panel {
+  animation-name: none;
+}
+
+.openui-sheet--dragging .openui-sheet__panel {
+  transition: transform var(--motion-duration-instant) var(--motion-ease-feedback);
+}
+
+.openui-sheet__handle-wrap:focus-visible {
+  outline: var(--layout-focus-ring-width) solid var(--color-primary-base);
+  outline-offset: calc(var(--layout-focus-ring-offset) * -1);
 }
 
 .openui-sheet__header {
