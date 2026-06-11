@@ -1,6 +1,40 @@
 .openui-screen {
+  --nav-collapse: 0;
+
   background: var(--color-bg-weak50);
   color: var(--color-text-strong950);
+}
+
+.openui-screen__navigation {
+  position: sticky;
+  inset-block-start: var(--space-0);
+  z-index: var(--z-sticky);
+  margin-block-start: calc(
+    max(var(--device-safe-area-top), env(safe-area-inset-top, 0px)) * -1
+  );
+  padding-block-start: max(
+    var(--device-safe-area-top),
+    env(safe-area-inset-top, 0px)
+  );
+  border-bottom: var(--layout-border-hairline) solid transparent;
+  background: transparent;
+  transition: var(--motion-transition-surface);
+}
+
+.openui-screen[data-scrolled='true'] .openui-screen__navigation {
+  border-bottom-color: var(--surface-glass-border);
+  background: var(--surface-glass-bg);
+  -webkit-backdrop-filter: var(--surface-glass-blur);
+  backdrop-filter: var(--surface-glass-blur);
+}
+
+.openui-screen__navigation .openui-navigation-bar {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.openui-screen__navigation-inner {
+  min-height: auto;
 }
 
 .openui-screen__content {

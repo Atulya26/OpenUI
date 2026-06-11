@@ -2251,6 +2251,21 @@
   padding-bottom: var(--layout-gap-section);
 }
 
+.openui-navigation-bar-story-collapsible-screen.openui-screen {
+  block-size: 100%;
+  min-block-size: 100%;
+  padding-block: var(--space-0);
+}
+
+.openui-navigation-bar-story-collapsible-screen .openui-screen__navigation {
+  margin-block-start: var(--space-0);
+  padding-block-start: var(--space-0);
+}
+
+.openui-navigation-bar-story-collapsible-screen .openui-screen__content {
+  padding-block-end: var(--layout-gap-section);
+}
+
 .openui-navigation-bar-story-panel {
   display: grid;
   gap: var(--layout-gap-stack-sm);

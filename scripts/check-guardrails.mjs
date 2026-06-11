@@ -621,6 +621,34 @@ for (const snippet of [
     fail(`src/components/Toast/Toast.css must include ${snippet} for Toast v2 styling`);
   }
 }
+for (const snippet of [
+  'navigation?: ReactNode',
+  'scrollCollapse',
+  '--nav-collapse',
+  'data-scrolled',
+]) {
+  if (!read('src/components/Screen/Screen.tsx').includes(snippet)) {
+    fail(`src/components/Screen/Screen.tsx must include ${snippet} for scroll-driven navigation collapse`);
+  }
+}
+for (const snippet of [
+  'collapsible?: boolean',
+  'openui-navigation-bar--collapsible',
+  'openui-navigation-bar__large-title-shell',
+]) {
+  if (!read('src/components/NavigationBar/NavigationBar.tsx').includes(snippet)) {
+    fail(`src/components/NavigationBar/NavigationBar.tsx must include ${snippet} for large-title collapse`);
+  }
+}
+for (const snippet of [
+  '--navigation-bar-collapse-progress',
+  'calc(1 - var(--navigation-bar-collapse-progress))',
+  'openui-navigation-bar__collapse-title-shell',
+]) {
+  if (!read('src/components/NavigationBar/NavigationBar.css').includes(snippet)) {
+    fail(`src/components/NavigationBar/NavigationBar.css must include ${snippet} for large-title collapse styling`);
+  }
+}
 
 const externalReferenceFiles = [
   'package.json',
@@ -640,7 +668,8 @@ try {
 
 for (const [file, snippets] of [
   ['docs/README.md', ['Storybook', 'test:visual', 'surfaces.css', 'check:css-budget']],
-  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden', 'Toast choreography']],
+  ['docs/COMPONENT-RULES.md', ['Storybook-only CSS', 'src/styles/storybook.css', 'logical inline', 'Pressable', 'Portal', 'FocusTrap', 'VisuallyHidden', 'Toast choreography', 'Scroll navigation']],
+  ['docs/PATTERN-RULES.md', ['Collapsing large-title screen', '--nav-collapse']],
   ['docs/LAYOUT-RULES.md', ['logical inline', '44×44']],
   ['docs/MOTION-RULES.md', ['enter', 'exit']],
   ['docs/TYPOGRAPHY-RULES.md', ['--text-numeric-tabular', 'Text emphasized', 'Do not use `text-box`']],

@@ -48,6 +48,8 @@ Applies to the current core set (`Icon`, `Text`, `Stack`, `Screen`, `Button`, `I
 
 19. **Toasts are choreographed surfaces** — `ToastViewport` owns stacking, limits visible messages to the mobile-safe stack, portals fixed viewports to the root, and keeps older toasts visually behind the newest. Dismissible toasts support horizontal swipe, pause auto-dismiss during interaction, and fall back to solid surfaces when reduced transparency is requested.
 
+20. **Large navigation titles collapse through Screen** — Scroll-aware screens expose `--nav-collapse` and `data-scrolled` from `Screen`. Collapsible `NavigationBar` uses that progress to crossfade the large title into a centered compact title without moving side actions or duplicating heading semantics.
+
 ---
 
 ## Component API pattern
@@ -71,6 +73,7 @@ export type ButtonProps = {
 - **Overlay plumbing** → prefer `Portal`, `FocusTrap`, and `usePresence` when a component needs root stacking, modal focus containment, Escape behavior, or exit-before-unmount animation.
 - **Sheet gestures** → keep sheet drag behavior tied to `onClose`; do not make the handle decorative when the sheet is dismissible.
 - **Toast choreography** → keep transient feedback inside `ToastViewport`; stack a maximum of three visible toasts, make only the newest interactive, and pause timers during press/focus/swipe.
+- **Scroll navigation** → use `Screen navigation={...}` with `NavigationBar size="large" collapsible` for large-title collapse instead of attaching one-off scroll listeners in product screens.
 - **Hidden accessible text** → use `VisuallyHidden` for semantic labels that should stay available to assistive technology without adding visible chrome.
 
 ---
@@ -109,6 +112,7 @@ Never: hard-coded design values in styled-components/theme objects unless genera
 - [ ] Overlay components use `Portal`, `FocusTrap`, and `usePresence` instead of duplicating root stacking, focus trapping, Escape handling, or closing state
 - [ ] Dismissible sheets keep an active drag handle and keyboard/click fallback for dismissal
 - [ ] Toast viewports portal fixed stacks, limit visible items, pause auto-dismiss on interaction, and support swipe dismissal
+- [ ] Large-title navigation collapse is driven by `Screen` scroll progress and keeps compact title centered
 - [ ] Assistive-only text uses `VisuallyHidden`
 - [ ] Typography from `--text-*` ([TYPOGRAPHY-RULES.md](./TYPOGRAPHY-RULES.md))  
 - [ ] Exported from `src/components/index.ts`  

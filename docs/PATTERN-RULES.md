@@ -91,6 +91,25 @@ See Storybook → Foundational → Layout → **Form stack**.
 | Title | `headline` centered or leading |
 | Background | `bg-white0` + bottom border `stroke-soft200` |
 
+### Collapsing large-title screen
+
+Use `Screen` as the scroll owner and pass the navigation region through
+`navigation`. The screen updates `--nav-collapse` from `0 → 1` and sets
+`data-scrolled` when content moves under the sticky header.
+
+```tsx
+<Screen
+  navigation={<NavigationBar title="Explore" size="large" collapsible />}
+>
+  {/* scrollable screen content */}
+</Screen>
+```
+
+The sticky header owns the scrolled-under glass surface. `NavigationBar` keeps
+side actions stable and crossfades the large title into the compact centered
+title; product screens should not attach their own one-off scroll listeners for
+this behavior.
+
 ### Empty state
 
 | Element | Token / style |

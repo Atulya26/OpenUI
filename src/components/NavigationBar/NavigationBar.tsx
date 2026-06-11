@@ -37,6 +37,7 @@ type NavigationBarLeadingIconProps =
 type NavigationBarBaseProps = {
   title: ReactNode;
   subtitle?: ReactNode;
+  collapsible?: boolean;
   leadingAction?: ReactNode;
   trailingActions?: ReactNode;
   trailingIcons?: NavigationBarAction[];
@@ -72,6 +73,7 @@ function renderAction(action: NavigationBarAction, index: number) {
 export function NavigationBar({
   title,
   subtitle,
+  collapsible = false,
   leadingAction,
   leadingIcon,
   leadingLabel,
@@ -104,14 +106,29 @@ export function NavigationBar({
     (trailingIcons?.length ? trailingIcons.map(renderAction) : null);
   const hasTrailing = Boolean(resolvedTrailing);
 
-  const titleBlock = (
-    <div className="openui-navigation-bar__title-block">
-      <Title className="openui-navigation-bar__title">{title}</Title>
-      {subtitle ? (
-        <p className="openui-navigation-bar__subtitle">{subtitle}</p>
-      ) : null}
-    </div>
-  );
+  function renderTitleBlock(slot: 'compact' | 'large', hidden = false) {
+    const TitleElement = hidden ? 'div' : Title;
+
+    return (
+      <div
+        className={cx(
+          'openui-navigation-bar__title-block',
+          `openui-navigation-bar__title-block--${slot}`,
+        )}
+        aria-hidden={hidden || undefined}
+      >
+        <TitleElement className="openui-navigation-bar__title">{title}</TitleElement>
+        {subtitle ? (
+          <p className="openui-navigation-bar__subtitle">{subtitle}</p>
+        ) : null}
+      </div>
+    );
+  }
+
+  const collapseTitle = collapsible && size === 'large';
+  const compactTitleBlock = renderTitleBlock('compact');
+  const compactCollapseTitleBlock = renderTitleBlock('compact', true);
+  const largeTitleBlock = renderTitleBlock('large');
 
   return (
     <nav
@@ -119,6 +136,7 @@ export function NavigationBar({
         'openui-navigation-bar',
         `openui-navigation-bar--${variant}`,
         `openui-navigation-bar--${size}`,
+        collapseTitle && 'openui-navigation-bar--collapsible',
         scrolledUnder && 'openui-navigation-bar--scrolled-under',
         className,
       )}
@@ -134,7 +152,15 @@ export function NavigationBar({
             {resolvedLeading}
           </div>
 
-          {size === 'compact' ? titleBlock : <span aria-hidden />}
+          {size === 'compact' ? (
+            compactTitleBlock
+          ) : collapseTitle ? (
+            <div className="openui-navigation-bar__collapse-title-shell">
+              {compactCollapseTitleBlock}
+            </div>
+          ) : (
+            <span aria-hidden />
+          )}
 
           <div
             className="openui-navigation-bar__trailing"
@@ -145,7 +171,15 @@ export function NavigationBar({
         </div>
       ) : null}
 
-      {size === 'large' ? titleBlock : null}
+      {size === 'large' ? (
+        collapseTitle ? (
+          <div className="openui-navigation-bar__large-title-shell">
+            {largeTitleBlock}
+          </div>
+        ) : (
+          largeTitleBlock
+        )
+      ) : null}
     </nav>
   );
 }

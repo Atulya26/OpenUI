@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import type { ReactNode } from 'react';
-import { Card, IconButton, Stack, Text } from '@/components';
+import { Card, IconButton, ListRow, Screen, Stack, Text } from '@/components';
 import {
   ArrowLeft,
   Bell,
@@ -62,6 +62,59 @@ function ActivityRows() {
         <small>Jun 18</small>
       </div>
     </div>
+  );
+}
+
+function ScrollCollapsePhone() {
+  const rows = [
+    ['Golden hour cabins', '4 new places'],
+    ['Saved weekends', '12 stays'],
+    ['Near the water', 'Flexible check-in'],
+    ['City apartments', 'Instant book'],
+    ['Work trip', 'Receipts ready'],
+    ['Family stays', 'Kitchen and parking'],
+    ['Pet friendly', '8 homes'],
+    ['Remote escapes', 'Long-stay discounts'],
+  ] as const;
+
+  return (
+    <Screen
+      className="openui-navigation-bar-story-collapsible-screen"
+      navigation={
+        <NavigationBar
+          title="Explore"
+          subtitle="Homes, rooms, and stays near you"
+          size="large"
+          collapsible
+          trailingIcons={[
+            { icon: Search, label: 'Search stays' },
+            { icon: Bell, label: 'Notifications' },
+          ]}
+        />
+      }
+    >
+      <Card>
+        <Stack gap="xs">
+          <Text as="h2" variant="cardTitle">
+            Curated for this weekend
+          </Text>
+          <Text variant="secondary" color="sub">
+            Scroll to see the large title settle into the compact navigation bar.
+          </Text>
+        </Stack>
+      </Card>
+
+      <Stack gap="sm">
+        {rows.map(([title, description]) => (
+          <ListRow
+            key={title}
+            title={title}
+            description={description}
+            trailingIcon={null}
+          />
+        ))}
+      </Stack>
+    </Screen>
   );
 }
 
@@ -240,6 +293,24 @@ export const InDeviceFrame: Story = {
 
               <ActivityRows />
             </div>
+          </DeviceFrame>
+        </div>
+      </Panel>
+    </DocPage>
+  ),
+};
+
+export const ScrollCollapse: Story = {
+  render: () => (
+    <DocPage
+      eyebrow="Components"
+      title="Scroll collapse"
+      description="Screen exposes scroll progress through --nav-collapse, while NavigationBar crossfades the large title into the centered compact title and turns on the glass scrolled-under surface."
+    >
+      <Panel>
+        <div className="openui-device-story-layout">
+          <DeviceFrame>
+            <ScrollCollapsePhone />
           </DeviceFrame>
         </div>
       </Panel>

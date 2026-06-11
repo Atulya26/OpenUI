@@ -1,5 +1,6 @@
 .openui-navigation-bar {
   --navigation-bar-compact-min-height: 52px;
+  --navigation-bar-collapse-progress: var(--nav-collapse, 0);
 
   position: relative;
   z-index: var(--z-sticky);
@@ -35,6 +36,10 @@
 .openui-navigation-bar--large {
   gap: var(--layout-gap-stack-xs);
   padding-block: var(--layout-gap-stack-xs) var(--layout-gap-stack-md);
+}
+
+.openui-navigation-bar--collapsible {
+  padding-block-end: var(--layout-gap-stack-sm);
 }
 
 .openui-navigation-bar__chrome-row {
@@ -74,16 +79,51 @@
   min-width: 0;
 }
 
-.openui-navigation-bar--compact .openui-navigation-bar__title-block {
+.openui-navigation-bar--compact .openui-navigation-bar__title-block,
+.openui-navigation-bar__title-block--compact {
   justify-items: center;
   justify-self: center;
   text-align: center;
   max-width: 100%;
 }
 
-.openui-navigation-bar--large .openui-navigation-bar__title-block {
+.openui-navigation-bar--large .openui-navigation-bar__title-block--large,
+.openui-navigation-bar--large:not(.openui-navigation-bar--collapsible)
+  .openui-navigation-bar__title-block {
   justify-items: start;
   text-align: start;
+}
+
+.openui-navigation-bar__collapse-title-shell {
+  display: grid;
+  min-width: 0;
+  opacity: var(--navigation-bar-collapse-progress);
+  transform: translateY(
+    calc((1 - var(--navigation-bar-collapse-progress)) * var(--motion-distance-enter-y))
+  );
+  transition:
+    opacity var(--motion-duration-layout) var(--motion-ease-layout),
+    transform var(--motion-duration-layout) var(--motion-ease-layout);
+}
+
+.openui-navigation-bar__large-title-shell {
+  display: grid;
+  min-width: 0;
+  opacity: calc(1 - var(--navigation-bar-collapse-progress));
+  transform:
+    translateY(
+      calc(var(--navigation-bar-collapse-progress) * var(--motion-distance-enter-y) * -1)
+    )
+    scale(
+      calc(
+        var(--motion-scale-rest) -
+          (var(--navigation-bar-collapse-progress) * 0.04)
+      )
+    );
+  transform-origin: center bottom;
+  transition:
+    opacity var(--motion-duration-layout) var(--motion-ease-layout),
+    transform var(--motion-duration-layout) var(--motion-ease-layout);
 }
 
 .openui-navigation-bar__title,
@@ -97,7 +137,8 @@
   color: var(--color-text-strong950);
 }
 
-.openui-navigation-bar--compact .openui-navigation-bar__title {
+.openui-navigation-bar--compact .openui-navigation-bar__title,
+.openui-navigation-bar__title-block--compact .openui-navigation-bar__title {
   font-family: var(--text-headline-font-family);
   font-size: var(--text-headline-font-size);
   line-height: var(--text-headline-line-height);
@@ -106,7 +147,9 @@
   white-space: nowrap;
 }
 
-.openui-navigation-bar--large .openui-navigation-bar__title {
+.openui-navigation-bar--large .openui-navigation-bar__title-block--large .openui-navigation-bar__title,
+.openui-navigation-bar--large:not(.openui-navigation-bar--collapsible)
+  .openui-navigation-bar__title {
   font-family: var(--text-large-title-font-family);
   font-size: var(--text-large-title-font-size);
   line-height: var(--text-large-title-line-height);
@@ -118,7 +161,8 @@
   color: var(--color-text-sub600);
 }
 
-.openui-navigation-bar--compact .openui-navigation-bar__subtitle {
+.openui-navigation-bar--compact .openui-navigation-bar__subtitle,
+.openui-navigation-bar__title-block--compact .openui-navigation-bar__subtitle {
   font-family: var(--text-caption1-font-family);
   font-size: var(--text-caption1-font-size);
   line-height: var(--text-caption1-line-height);
@@ -127,10 +171,19 @@
   white-space: nowrap;
 }
 
-.openui-navigation-bar--large .openui-navigation-bar__subtitle {
+.openui-navigation-bar--large .openui-navigation-bar__title-block--large .openui-navigation-bar__subtitle,
+.openui-navigation-bar--large:not(.openui-navigation-bar--collapsible)
+  .openui-navigation-bar__subtitle {
   font-family: var(--text-subheadline-font-family);
   font-size: var(--text-subheadline-font-size);
   line-height: var(--text-subheadline-line-height);
   font-weight: var(--text-subheadline-font-weight);
   letter-spacing: var(--text-subheadline-letter-spacing);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openui-navigation-bar__collapse-title-shell,
+  .openui-navigation-bar__large-title-shell {
+    transition-duration: var(--motion-duration-instant);
+  }
 }
