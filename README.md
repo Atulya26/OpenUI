@@ -1,5 +1,7 @@
 # OpenUI Design System
 
+**Live Storybook:** **[https://atulya26.github.io/OpenUI/](https://atulya26.github.io/OpenUI/)** — browse tokens, foundations, and components in the browser (no install required).
+
 Lightweight React design system for AI-generated mobile app screens, patterns, and product UI.
 
 - **Name:** OpenUI  
@@ -44,6 +46,11 @@ Storybook 10 requires Node.js **20.19+** or **22.12+**. Run `nvm use` from the r
 
 ## Storybook
 
+**Live:** [https://atulya26.github.io/OpenUI/](https://atulya26.github.io/OpenUI/) (auto-deployed from `main` via GitHub Pages)
+
+**Local:** `npm run storybook` → http://localhost:6006
+
+Sections:
 - **Foundational → Colors → Primitives** — color ramps from Figma
 - **Foundational → Colors → Semantic** — reference mappings (light & dark)
 - **Foundational → Colors → Resolved** — computed values with theme toolbar
